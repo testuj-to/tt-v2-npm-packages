@@ -15,6 +15,9 @@ $(PUBLISH_PREFIXED_PACKAGES):
 
 	@echo "Publishing NPM package '@testuj.to/$(NAME)'"
 
+	cd $(NAME) && \
+		make publish
+
 build: $(PACKAGES)
 	@echo "🙌 🙌 🙌"
 	@echo "All NPM packages are built 🎉"
