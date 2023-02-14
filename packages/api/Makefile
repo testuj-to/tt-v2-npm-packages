@@ -2,7 +2,7 @@
 PATH_BUILD := build
 PATH_DIST := dist
 
-NPM_INCLUDE := .gitignore .npmignore .npmrc README.md
+NPM_INCLUDE := .gitignore .npmignore README.md
 
 BUNDLE_ENV := \
 	PATH_BUILD=$(PATH_BUILD) \
