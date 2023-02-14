@@ -12,7 +12,7 @@ jobs:
   build-and-publish:
     name: 'Build and publish'
     runs-on: ubuntu-latest
-    environment: test
+    environment: prod
     # env:
     #   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
     steps:
