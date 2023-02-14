@@ -25,5 +25,6 @@ build: clean
 		-i package.json \
 		-o $(PATH_DIST)/package.json
 
-publish: build
-	npm publish --access public
+publish:
+	cd $(PATH_DIST) && \
+		npm publish --access public
