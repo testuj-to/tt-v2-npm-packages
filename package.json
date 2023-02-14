@@ -1,0 +1,24 @@
+{
+    "name": "tt-v2-npm-packages",
+    "version": "0.0.0",
+    "description": "",
+    "license": "MIT",
+    "author": {
+        "name": "Testuj.to s.r.o.",
+        "email": "technology@testuj.to"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/testuj-to/tt-v2-npm-packages"
+    },
+    "scripts": {},
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^24.0.1",
+        "@rollup/plugin-node-resolve": "^15.0.1",
+        "@types/node": "^18.13.0",
+        "minimist": "^1.2.8",
+        "rollup": "^3.15.0",
+        "rollup-plugin-dts": "^5.1.1",
+        "typescript": "^4.9.5"
+    }
+}
