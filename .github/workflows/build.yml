@@ -10,7 +10,11 @@ permissions:
 
 jobs:
   build-and-publish:
+    name: 'Build and publish'
     runs-on: ubuntu-latest
+    environment: test
+    # env:
+    #   ARM_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
