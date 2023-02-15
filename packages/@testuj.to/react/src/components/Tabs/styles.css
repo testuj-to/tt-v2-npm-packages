@@ -1,0 +1,57 @@
+
+.tt-tabs-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.tt-tabs-container > .tt-tabs {
+    flex-shrink: 0;
+    display: flex;
+    border-bottom: 1px solid var(--color-primary);
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab {
+    font-family: inherit;
+    background-color: white;
+    padding: 0 20px;
+    height: 45px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    line-height: 1;
+    color: var(--color-primary);
+    user-select: none;
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab:first-child {
+    border-top-left-radius: 6px;
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab:last-child {
+    border-top-right-radius: 6px;
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab:hover {
+    color: var(--color-primary);
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab[data-state='active'] {
+    color: var(--color-primary);
+    box-shadow: inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor;
+}
+
+.tt-tabs-container > .tt-tabs > .tt-tab:focus {
+    position: relative;
+    box-shadow: 0 0 0 2px black;
+}
+
+.tt-tabs-container > .tt-tabs-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    outline: none;
+}

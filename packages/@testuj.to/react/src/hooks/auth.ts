@@ -1,21 +1,8 @@
 
-import {
-    type FunctionComponent,
-    useState,
-    useEffect,
-    useRef,
-    useContext,
-    createElement,
-    createContext,
-} from 'react'
-import { AuthApi } from '@testuj.to/auth'
+import { type AuthApi } from '@testuj.to/auth'
 
-export interface Auth extends AuthApi {}
+import { useTTContext } from '../context'
 
-export const authContext = createContext<AuthApi>(null)
-
-export const useAuth = (): Auth => {
-    const auth = useContext(authContext)
-
-    return auth
+export const useAuth = (): AuthApi => {
+    return useTTContext().auth
 }

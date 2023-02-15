@@ -1,5 +1,6 @@
 
 import { type ButtonHTMLAttributes } from 'react'
+import cx from 'classnames'
 
 import './styles.css'
 
@@ -8,7 +9,7 @@ export const Button = ({ ...rest }: ButtonProps) => {
     return (
         <button
             {...rest}
-            className={`tt-button${rest?.className ? ` ${rest.className}` : ''}`}
+            className={cx('tt-button', rest?.className)}
         />
     )
 }

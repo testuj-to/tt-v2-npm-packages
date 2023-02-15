@@ -1,5 +1,6 @@
 
 import { type InputHTMLAttributes } from 'react'
+import cx from 'classnames'
 
 import './styles.css'
 
@@ -8,7 +9,7 @@ export const Input = ({ ...rest }: InputProps) => {
     return (
         <input
             {...rest}
-            className={`tt-input${rest.className ? ` ${rest.className}` : ''}`}
+            className={cx('tt-input', rest?.className)}
         />
     )
 }

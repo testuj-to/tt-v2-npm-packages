@@ -12,7 +12,11 @@ clean:
 
 build: clean
 	npm i
+
 	npm run build:ts
+	node ../../../scripts/copy-styles.js \
+		--pkg package.json
+
 	npm run build:bundle
 
 	cp $(NPM_INCLUDE) $(PATH_DIST)
