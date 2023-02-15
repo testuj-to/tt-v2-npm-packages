@@ -1,0 +1,38 @@
+{
+    "name": "@testuj.to/react",
+    "version": "0.0.2",
+    "description": "",
+    "license": "MIT",
+    "author": {
+        "name": "Testuj.to s.r.o.",
+        "email": "technology@testuj.to"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/testuj-to/tt-v2-npm-packages"
+    },
+    "types": "./index.d.ts",
+    "browser": "./umd/index.js",
+    "main": "./cjs/index.js",
+    "module": "./esm/index.js",
+    "scripts": {
+        "build:ts": "tsc",
+        "build:bundle": "rollup --config"
+    },
+    "dependencies": {
+        "@radix-ui/react-checkbox": "^1.0.1",
+        "@radix-ui/react-dropdown-menu": "^2.0.2",
+        "@radix-ui/react-icons": "^1.1.1",
+        "@radix-ui/react-radio-group": "^1.1.1",
+        "@radix-ui/react-select": "^1.2.0",
+        "@radix-ui/react-tabs": "^1.0.2",
+        "@radix-ui/react-toast": "^1.1.2",
+        "@types/react": "^18.0.28",
+        "classnames": "^2.3.2",
+        "lodash.get": "^4.4.2",
+        "react": "^18.2.0"
+    },
+    "devDependencies": {
+        "@types/lodash.get": "^4.4.7"
+    }
+}

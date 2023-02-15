@@ -1,0 +1,10 @@
+
+.tt-formitem-container {
+    margin-bottom: 1rem;
+}
+
+.tt-formitem-container > .tt-formitem-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}

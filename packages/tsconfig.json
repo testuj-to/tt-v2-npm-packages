@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "declaration": true,
+        "strict": false,
+        "strictNullChecks": false,
+        "esModuleInterop": true,
+        "lib": [
+            "es2015",
+            "es2015.promise",
+            "dom"
+        ],
+        "paths": {
+            "@lib/*": ["../lib/*"],
+            "@testuj.to/api": ["./@testuj.to/api/src/index.ts"],
+            "@testuj.to/auth": ["./@testuj.to/auth/src/index.ts"],
+            "@testuj.to/react": ["./@testuj.to/react/src/index.ts"]
+        }
+    }
+}
