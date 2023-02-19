@@ -14,3 +14,9 @@
     color: var(--color-button);
     background-color: var(--color-button-bg);
 }
+
+.tt-button.primary {
+}
+
+.tt-button.secondary {
+}

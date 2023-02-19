@@ -6,6 +6,7 @@
         "moduleResolution": "node",
         "declaration": true,
         "strict": false,
+        "resolveJsonModule": true,
         "strictNullChecks": false,
         "esModuleInterop": true,
         "lib": [
@@ -14,7 +15,7 @@
             "dom"
         ],
         "paths": {
-            "@lib/*": ["../lib/*"],
+            "@lib/*": ["./lib/*"],
             "@testuj.to/api": ["./@testuj.to/api/src/index.ts"],
             "@testuj.to/auth": ["./@testuj.to/auth/src/index.ts"],
             "@testuj.to/react": ["./@testuj.to/react/src/index.ts"]

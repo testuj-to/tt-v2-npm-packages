@@ -1,5 +1,6 @@
 
 import { type HTMLAttributes } from 'react'
+// import PropTypes from 'prop-types'
 import cx from 'classnames'
 
 import './styles.css'
@@ -13,3 +14,5 @@ export const Box = ({ ...rest }: BoxProps) => {
         />
     )
 }
+
+// Box.propTypes = {}

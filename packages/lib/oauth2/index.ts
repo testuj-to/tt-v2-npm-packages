@@ -1,5 +1,7 @@
 
 import {
+    OAuth2AuthorizeRequest,
+    OAuth2Response,
     Credentials,
     User,
 } from '@lib/types'
@@ -11,10 +13,9 @@ import {
     HttpClientOptions,
 } from '@lib/utils'
 
-import { OAuth2AuthorizeRequest, OAuth2Response } from './types'
-import { mustCredentials } from './credentials/credentials'
+import { mustCredentials } from './credentials'
 
-export interface AuthApiOptions extends Omit<HttpClientOptions, 'credentials'> {
+export interface OAuth2Options extends Omit<HttpClientOptions, 'credentials'> {
     credentials: Credentials
     stateLength?: number
     onRedirect?(url: string): void
@@ -29,55 +30,55 @@ const clearRotationInterval = (instanceKey: string) => {
     rotationIntervals[instanceKey] = null
 }
 
-const handleOAuth2Response = async(authApi: AuthApi, oAuth2Response: OAuth2Response) => {
+const handleOAuth2Response = async(oAuth2: OAuth2, oAuth2Response: OAuth2Response) => {
     if (oAuth2Response?.token_type) {
-        authApi.credentials.setTokenType(oAuth2Response.token_type)
+        oAuth2.credentials.setTokenType(oAuth2Response.token_type)
     }
 
     if (oAuth2Response?.access_token) {
-        authApi.credentials.setAccessToken(oAuth2Response.access_token)
+        oAuth2.credentials.setAccessToken(oAuth2Response.access_token)
     }
 
     if (oAuth2Response?.refresh_token) {
-        authApi.credentials.setRefreshToken(oAuth2Response.refresh_token)
+        oAuth2.credentials.setRefreshToken(oAuth2Response.refresh_token)
     }
 
     if (oAuth2Response?.expires_in) {
-        clearRotationInterval(authApi.instanceKey)
-        rotationIntervals[authApi.instanceKey] = setTimeout(() => rotateAuthorization(authApi), oAuth2Response.expires_in * 1000 * (1 / 4))
+        clearRotationInterval(oAuth2.instanceKey)
+        rotationIntervals[oAuth2.instanceKey] = setTimeout(() => rotateAuthorization(oAuth2), oAuth2Response.expires_in * 1000 * (1 / 4))
     }
 
-    if (!authApi.loggedAs) {
+    if (!oAuth2.loggedAs) {
         // console.log('load user after handling oAuth2 response:', oAuth2Response)
 
         try {
-            authApi.loggedAs = await authApi.getProfile()
+            oAuth2.loggedAs = await oAuth2.getProfile()
         } catch (err) {
-            clearRotationInterval(authApi.instanceKey)
+            clearRotationInterval(oAuth2.instanceKey)
 
             throw err
         }
     }
 }
 
-const rotateAuthorization = async(authApi: AuthApi) => {
+const rotateAuthorization = async(oAuth2: OAuth2) => {
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': `Basic ${base64Encode(`${authApi.credentials.getClientId()}:`)}`,
+        'Authorization': `Basic ${base64Encode(`${oAuth2.credentials.getClientId()}:`)}`,
     }
 
     const body = new FormData()
 
     body.set('grant_type', 'refresh_token')
-    body.set('refresh_token', authApi.credentials.getRefreshToken())
+    body.set('refresh_token', oAuth2.credentials.getRefreshToken())
 
-    const response = await authApi.httpClient.post('/oauth2/token', body, { headers })
+    const response = await oAuth2.httpClient.post('/oauth2/token', body, { headers })
 
     const oAuth2Response: OAuth2Response = await response.json()
-    await handleOAuth2Response(authApi, oAuth2Response)
+    await handleOAuth2Response(oAuth2, oAuth2Response)
 }
 
-export class AuthApi {
+export class OAuth2 {
     public instanceKey: string
 
     public credentials: Credentials
@@ -85,8 +86,8 @@ export class AuthApi {
     public loggedAs?: User
     public onRedirect?(url: string): void
 
-    constructor(options: AuthApiOptions) {
-        const { credentials, stateLength, onRedirect, ...httpClientOptions } = options || {} as AuthApiOptions
+    constructor(options: OAuth2Options) {
+        const { credentials, stateLength, onRedirect, ...httpClientOptions } = options || {} as OAuth2Options
 
         this.instanceKey = generateAlphaNumericString((stateLength && stateLength > 0) ? stateLength : 32)
         this.credentials = mustCredentials(credentials)

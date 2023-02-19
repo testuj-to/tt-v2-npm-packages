@@ -1,8 +1,8 @@
 
-import { type AuthApi } from '@testuj.to/auth'
+import { type OAuth2 } from '@lib/oauth2'
 
 import { useTTContext } from '../context'
 
-export const useAuth = (): AuthApi => {
+export const useAuth = (): OAuth2 => {
     return useTTContext().auth
 }

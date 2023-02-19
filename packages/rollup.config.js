@@ -4,25 +4,24 @@ const resolve = require('@rollup/plugin-node-resolve')
 const commonjs = require('@rollup/plugin-commonjs')
 const alias = require('@rollup/plugin-alias')
 const postcss = require('rollup-plugin-postcss')
+const { terser } = require('rollup-plugin-minification')
 const dts = require('rollup-plugin-dts').default
 
-const packages = [
-    '@testuj.to/api',
-    '@testuj.to/auth',
-    '@testuj.to/react',
-]
+const { listPackages } = require('../scripts/list-packages')
 
 module.exports = {
     getBaseConfigs(packageJson = null) {
-        if (!packageJson || !/^\@testuj\.to\//.test(packageJson.name)) {
+        const packages = listPackages()
+
+        if (!packageJson || packages.indexOf(packageJson.name) < 0) {
             throw Error('Rollup Config Error: Invalid package name \'' + packageJson.name + '\'')
         }
 
         const buildPath = path.resolve(__dirname, packageJson.name, 'build')
         const distPath = path.resolve(__dirname, packageJson.name, 'dist')
 
-        const input = path.join(buildPath, 'packages', packageJson.name, 'src/index.js')
-        const inputTypings = path.join(buildPath, 'typings/packages', packageJson.name, 'src/index.d.ts')
+        const input = path.join(buildPath, packageJson.name, 'src/index.js')
+        const inputTypings = path.join(buildPath, 'typings', packageJson.name, 'src/index.d.ts')
 
         const plugins = [
             postcss({
@@ -34,11 +33,12 @@ module.exports = {
                     replacement: path.resolve(buildPath, 'lib'),
                 }, ...packages.map(package => ({
                     find: package,
-                    replacement: path.resolve(buildPath, 'packages', package, 'src'),
+                    replacement: path.resolve(buildPath, package, 'src'),
                 }))],
             }),
             resolve(),
             commonjs(),
+            terser(),
         ]
 
         const external = []
@@ -75,7 +75,7 @@ module.exports = {
                         replacement: path.resolve(buildPath, 'typings/lib'),
                     }, ...packages.map(package => ({
                         find: package,
-                        replacement: path.resolve(buildPath, 'typings/packages', package, 'src'),
+                        replacement: path.resolve(buildPath, 'typings', package, 'src'),
                     }))],
                 }),
                 dts(),
