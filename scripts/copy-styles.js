@@ -2,8 +2,6 @@
 const path = require('path')
 const fs = require('fs')
 
-const args = require('minimist')(process.argv.slice(2))
-
 const deepListCSSPaths = (basePath) => {
     let cssPaths = []
 
@@ -29,18 +27,36 @@ const deepListCSSPaths = (basePath) => {
 }
 
 const main = () => {
-    const packageJsonPath = args.pkg || path.resolve(__dirname, 'package.json')
-    const rootPath = path.parse(packageJsonPath).dir
+    const args = require('minimist')(process.argv.slice(2))
 
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath))
+    if (!args.pkg) {
+        throw Error('Missing --pkg option (package.json path)')
+    }
+
+    let packageJson
+    let rootPath
+
+    try {
+        if (!fs.statSync(args.pkg).isFile()) {
+            throw Error()
+        }
+
+        rootPath = path.parse(args.pkg).dir
+
+        packageJson = JSON.parse(fs.readFileSync(args.pkg))
+    } catch (err) {
+        throw Error('Invalid package.json: \'' + args.pkg + '\'')
+    }
 
     const cssPaths = deepListCSSPaths(path.join(rootPath, 'src'))
 
     for (const cssPath of cssPaths) {
         console.log('Copying CSS file', cssPath)
 
-        fs.copyFileSync(cssPath, path.join('build/packages', packageJson.name, cssPath))
+        fs.copyFileSync(cssPath, path.join('build', packageJson.name, cssPath))
     }
 }
 
-main()
+if (require.main === module) {
+    main()
+}

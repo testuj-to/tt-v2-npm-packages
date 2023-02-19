@@ -1,6 +1,8 @@
 
-PACKAGES := @testuj.to/auth @testuj.to/api @testuj.to/react
-PUBLISH_PREFIXED_PACKAGES := $(foreach NAME,$(PACKAGES),"publish--$(NAME)")
+PACKAGES := $(shell node ../scripts/list-packages.js --one-line)
+
+PUBLISH_PREFIX := publish--
+PUBLISH_PREFIXED_PACKAGES := $(foreach NAME,$(PACKAGES),"$(PUBLISH_PREFIX)$(NAME)")
 
 .PHONY: build publish $(PACKAGES) $(PUBLISH_PREFIXED_PACKAGES)
 
@@ -11,17 +13,17 @@ $(PACKAGES):
 		make build
 
 $(PUBLISH_PREFIXED_PACKAGES):
-	$(eval NAME := $(shell echo "$@" | sed 's/publish--//'))
+	$(eval PACKAGE := $(shell echo "$@" | sed 's/$(PUBLISH_PREFIX)//'))
 
-	@echo "Publishing NPM package '$(NAME)'"
+	@echo "Publishing NPM package '$(PACKAGE)'"
 
-	$(eval CURRENT_VERSION := $(shell cd $(NAME) && npm pkg get version | sed 's/"//g'))
-	$(eval LATEST_VERSION := $(shell npm show $(NAME) version))
+	$(eval CURRENT_VERSION := $(shell cd $(PACKAGE) && npm pkg get version | sed 's/"//g'))
+	$(eval LATEST_VERSION := $(shell npm show $(PACKAGE) version))
 
 	@if [ "$(CURRENT_VERSION)" = "$(LATEST_VERSION)" ]; then \
-		echo "A version '$(CURRENT_VERSION)' of NPM package '$(NAME)' is already published. Skipping..."; \
+		echo "A version '$(CURRENT_VERSION)' of NPM package '$(PACKAGE)' is already published. Skipping..."; \
 	else \
-		cd $(NAME) && \
+		cd $(PACKAGE) && \
 			make publish; \
 	fi
 
