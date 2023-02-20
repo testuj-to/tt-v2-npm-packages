@@ -18,7 +18,7 @@
     "scripts": {
         "build:ts": "tsc",
         "build:bundle": "rollup --config",
-        "docs:build": "npm run build:ts && NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+        "docs:build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
         "docs:start": "npm run build:ts && NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 4000 --ci"
     },
     "dependencies": {
