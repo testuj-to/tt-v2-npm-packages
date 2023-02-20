@@ -26,6 +26,8 @@ build: clean
 		-o $(PATH_DIST)/package.json
 
 build-storybook:
+	npm i
+
 	npm run docs:build
 
 publish:
