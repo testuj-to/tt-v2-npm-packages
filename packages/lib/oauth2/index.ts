@@ -8,6 +8,7 @@ import {
     generateAlphaNumericString,
     HttpClient,
     HttpClientOptions,
+    Listenable,
 } from '@lib/utils'
 
 import {
@@ -49,37 +50,6 @@ const clearRotationInterval = (instanceKey: string) => {
     rotationIntervals[instanceKey] = null
 }
 
-const handleOAuth2Response = async(oAuth2Client: OAuth2Client, oAuth2Response: OAuth2Response) => {
-    if (oAuth2Response?.token_type) {
-        oAuth2Client.credentials.setTokenType(oAuth2Response.token_type)
-    }
-
-    if (oAuth2Response?.access_token) {
-        oAuth2Client.credentials.setAccessToken(oAuth2Response.access_token)
-    }
-
-    if (oAuth2Response?.refresh_token) {
-        oAuth2Client.credentials.setRefreshToken(oAuth2Response.refresh_token)
-    }
-
-    if (oAuth2Response?.expires_in) {
-        clearRotationInterval(oAuth2Client.instanceKey)
-        rotationIntervals[oAuth2Client.instanceKey] = setTimeout(() => rotateAuthorization(oAuth2Client), oAuth2Response.expires_in * 1000 * (1 / 4))
-    }
-
-    if (!oAuth2Client.loggedAs) {
-        // console.log('load user after handling oAuth2 response:', oAuth2Response)
-
-        try {
-            oAuth2Client.loggedAs = await oAuth2Client.getProfile()
-        } catch (err) {
-            clearRotationInterval(oAuth2Client.instanceKey)
-
-            throw err
-        }
-    }
-}
-
 const rotateAuthorization = async(oAuth2Client: OAuth2Client) => {
     const headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -94,18 +64,31 @@ const rotateAuthorization = async(oAuth2Client: OAuth2Client) => {
     const response = await oAuth2Client.httpClient.post('/oauth2/token', body, { headers })
 
     const oAuth2Response: OAuth2Response = await response.json()
-    await handleOAuth2Response(oAuth2Client, oAuth2Response)
+    await oAuth2Client.handleOAuth2Response(oAuth2Response)
 }
 
-export class OAuth2Client {
+export class OAuth2Client extends Listenable {
     public instanceKey: string
 
     public credentials: Credentials
     public httpClient: HttpClient
+    public isAuthenticated: boolean = false
+    // public isAuthenticating: boolean = true
     public loggedAs?: User
     public onRedirect?(url: string): void
 
+    // const [ isAuthenticated, setIsAuthenticated ] = useState(false)
+    // const [ isAuthenticating, setIsAuthenticating ] = useState(true)
+    // const [ user, setUser ] = useState<User>(null)
+    // public get isAuthenticated() {
+    //     if (this.credentials.getTokenType() && this.credentials.getAccessToken()) {
+    //     }
+    //     return false
+    // }
+
     constructor(options: OAuth2ClientOptions) {
+        super()
+
         const { credentials, stateLength, onRedirect, ...httpClientOptions } = options || {} as OAuth2ClientOptions
 
         this.instanceKey = generateAlphaNumericString((stateLength && stateLength > 0) ? stateLength : 32)
@@ -183,6 +166,41 @@ export class OAuth2Client {
         // }`)
     }
 
+    async handleOAuth2Response(oAuth2Response: OAuth2Response) {
+        if (oAuth2Response?.token_type) {
+            this.credentials.setTokenType(oAuth2Response.token_type)
+        }
+
+        if (oAuth2Response?.access_token) {
+            this.credentials.setAccessToken(oAuth2Response.access_token)
+        }
+
+        if (oAuth2Response?.refresh_token) {
+            this.credentials.setRefreshToken(oAuth2Response.refresh_token)
+        }
+
+        if (oAuth2Response?.expires_in) {
+            clearRotationInterval(this.instanceKey)
+            rotationIntervals[this.instanceKey] = setTimeout(() => rotateAuthorization(this), oAuth2Response.expires_in * 1000 * (1 / 4))
+        }
+
+        if (!this.loggedAs) {
+            // console.log('load user after handling oAuth2 response:', oAuth2Response)
+
+            try {
+                this.loggedAs = await this.getProfile()
+
+                this.isAuthenticated = true
+            } catch (err) {
+                clearRotationInterval(this.instanceKey)
+
+                throw err
+            } finally {
+                this.dispatch()
+            }
+        }
+    }
+
     async getAccessToken(): Promise<void> {
         const headers = {
             Authorization: `Basic ${base64Encode(`${this.credentials.getClientId()}:`)}`,
@@ -206,7 +224,7 @@ export class OAuth2Client {
         try {
             const response = await this.httpClient.post('/oauth2/token', body, { headers })
             const oAuth2Response = await response.json()
-            await handleOAuth2Response(this, oAuth2Response)
+            await this.handleOAuth2Response(oAuth2Response)
         } catch (err) {
             console.error(err)
         }

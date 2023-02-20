@@ -1,7 +1,6 @@
 
-# Testuj.to NPM packages
+## Monorepo of public `@testuj.to/*` NPM packages
 
-Public packages:
-- @testuj.to/auth
-- @testuj.to/api
-- @testuj.to/react
+See packages:
+- [@testuj.to/api](https://github.com/testuj-to/tt-v2-npm-packages/tree/develop/packages/%40testuj.to/api)
+- [@testuj.to/react](https://github.com/testuj-to/tt-v2-npm-packages/tree/develop/packages/%40testuj.to/react)
