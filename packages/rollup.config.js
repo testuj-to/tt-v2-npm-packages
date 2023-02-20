@@ -41,7 +41,7 @@ module.exports = {
             terser(),
         ]
 
-        const external = []
+        const external = [ 'react', 'react-dom' ]
 
         return [{
             input,
