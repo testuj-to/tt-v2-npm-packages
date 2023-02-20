@@ -17,7 +17,7 @@ build: clean
 
 	cp $(NPM_INCLUDE) $(PATH_DIST)
 
-	node ../../../scripts/transform-package-json.js \
+	node ../../../scripts/preparePackageJson.js \
 		-i package.json \
 		-o $(PATH_DIST)/package.json
 

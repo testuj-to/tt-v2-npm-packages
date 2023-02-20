@@ -1,7 +1,7 @@
 
 const path = require('path')
 
-const { listPackages } = require('../../../../scripts/list-packages')
+const { listPackages } = require('../../../../scripts/listPackages')
 
 module.exports = {
     framework: '@storybook/react',

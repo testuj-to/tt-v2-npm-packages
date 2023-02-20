@@ -26,6 +26,19 @@ const deepListCSSPaths = (basePath) => {
     return cssPaths
 }
 
+exports.copyStyles = (options = {
+    src: null,
+    dest: null,
+}) => {
+    const cssPaths = deepListCSSPaths(options.src)
+
+    for (const cssPath of cssPaths) {
+        console.log('Copying CSS file', cssPath)
+
+        fs.copyFileSync(cssPath, path.join(options.dest, cssPath))
+    }
+}
+
 const main = () => {
     const args = require('minimist')(process.argv.slice(2))
 
@@ -48,13 +61,10 @@ const main = () => {
         throw Error('Invalid package.json: \'' + args.pkg + '\'')
     }
 
-    const cssPaths = deepListCSSPaths(path.join(rootPath, 'src'))
-
-    for (const cssPath of cssPaths) {
-        console.log('Copying CSS file', cssPath)
-
-        fs.copyFileSync(cssPath, path.join('build', packageJson.name, cssPath))
-    }
+    exports.copyStyles({
+        src: path.join(rootPath, 'src'),
+        dest: path.join('build', packageJson.name),
+    })
 }
 
 if (require.main === module) {

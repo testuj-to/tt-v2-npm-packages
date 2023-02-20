@@ -4,7 +4,7 @@ PATH_DIST := dist
 
 NPM_INCLUDE := .gitignore .npmignore README.md
 
-.PHONY: clean build publish
+.PHONY: clean build build-storybook publish
 
 clean:
 	rm -Rf $(PATH_BUILD) || true
@@ -14,16 +14,19 @@ build: clean
 	npm i
 
 	npm run build:ts
-	node ../../../scripts/copy-styles.js \
+	node ../../../scripts/copyStyles.js \
 		--pkg package.json
 
 	npm run build:bundle
 
 	cp $(NPM_INCLUDE) $(PATH_DIST)
 
-	node ../../../scripts/transform-package-json.js \
+	node ../../../scripts/preparePackageJson.js \
 		-i package.json \
 		-o $(PATH_DIST)/package.json
+
+build-storybook:
+	npm run docs:build
 
 publish:
 	cd $(PATH_DIST) && \
