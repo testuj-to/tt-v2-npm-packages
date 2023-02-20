@@ -1,10 +1,4 @@
 
-// Imports
-
-import './globals.css'
-
-// Exports
-
 export { cssifyTheme } from './utils/cssifyTheme'
 
 export {

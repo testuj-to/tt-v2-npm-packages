@@ -13,8 +13,6 @@ jobs:
     name: 'Publish @testuj.to/react StoryBook'
     runs-on: ubuntu-latest
     environment: prod
-    # env:
-    #   FOO: 'bar'
     steps:
       - uses: actions/checkout@v1
       - run: |
@@ -28,4 +26,3 @@ jobs:
           workingDir: packages/@testuj.to/react
           buildScriptName: docs:build
           projectToken: ${{ secrets.CHROMATIC_REACT_TOKEN }}
-          # token: ${{ secrets.GITHUB_TOKEN }}

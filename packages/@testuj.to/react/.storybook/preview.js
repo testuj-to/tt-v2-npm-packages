@@ -1,5 +1,5 @@
 
-const { defaultPresets } = require('../storiesPresets')
+const { defaultPresets } = require('../contextPresets')
 
 exports.parameters = {
     actions: {
