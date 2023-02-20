@@ -1,8 +1,8 @@
 
-import { type Api } from '@testuj.to/api'
+import { type ApiClient } from '@testuj.to/api'
 
 import { useTTContext } from '../context'
 
-export const useApi = (): Api => {
+export const useApi = (): ApiClient => {
     return useTTContext().api
 }

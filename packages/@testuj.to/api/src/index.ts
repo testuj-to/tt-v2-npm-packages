@@ -20,21 +20,21 @@ export {
     type ResponseType,
     type ClientCredentialsOptions,
     type RefreshingCredentialsOptions,
-    type OAuth2Options,
+    type OAuth2ClientOptions,
     ClientCredentials,
     RefreshingCredentials,
-    OAuth2,
+    OAuth2Client,
 } from '@lib/oauth2'
 
-export interface ApiOptions extends Omit<HttpClientOptions, 'credentials'> {
+export interface ApiClientOptions extends Omit<HttpClientOptions, 'credentials'> {
     credentials: Credentials
 }
 
-export class Api {
+export class ApiClient {
     public httpClient: HttpClient
 
-    constructor(options: ApiOptions) {
-        const { credentials, ...httpClientOptions } = options || {} as ApiOptions
+    constructor(options: ApiClientOptions) {
+        const { credentials, ...httpClientOptions } = options || {} as ApiClientOptions
 
         this.httpClient = new HttpClient(httpClientOptions)
         this.httpClient.addRequestMiddleware(async(request) => {

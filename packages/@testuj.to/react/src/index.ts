@@ -8,10 +8,10 @@ export {
     type ResponseType,
     type ClientCredentialsOptions,
     type RefreshingCredentialsOptions,
-    type OAuth2Options,
+    type OAuth2ClientOptions,
     ClientCredentials,
     RefreshingCredentials,
-    OAuth2,
+    OAuth2Client,
 } from '@lib/oauth2'
 
 export { cssifyTheme } from './utils/cssifyTheme'
