@@ -7,7 +7,9 @@ import {
     createContext,
     useEffect,
     useMemo,
+    useState,
 } from 'react'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import merge from 'lodash.merge'
 import { Credentials, TenantTheme } from '@lib/types'
 import { OAuth2, OAuth2Options } from '@lib/oauth2'
@@ -34,12 +36,12 @@ export interface TTContextProviderProps {
     auth?: Omit<OAuth2Options, 'credentials'>
     api?: Omit<ApiOptions, 'credentials'>
     theme?: TenantTheme
-    injectFontFacesCSS?: boolean
+    injectFontsCSS?: boolean
     children?: ReactNode
 }
 
 export const TTContextProvider = ({
-    credentials, injectFontFacesCSS, children,
+    credentials, injectFontsCSS, children,
     auth: authOptions,
     api: apiOptions,
     theme: themeOptions,
@@ -88,19 +90,37 @@ export const TTContextProvider = ({
         style[variable.name] = variable.value
     }
 
-    useEffect(() => {
-        if (injectFontFacesCSS && theme?.cssFontFaces?.fontFaces?.length) {
-            // TODO: inject
-        }
-    }, [ injectFontFacesCSS, theme?.cssFontFaces ])
+    const [ globalCSS, setGlobalCSS ] = useState<string>()
 
-    return createElement(
-        'div',
-        { style },
+    useEffect(() => {
+        if (injectFontsCSS && theme && theme?.cssGlobal) {
+            setGlobalCSS(theme.cssGlobal)
+        }
+    }, [ injectFontsCSS, theme?.cssGlobal ])
+
+    const renderGlobalCSS = () => {
+        if (globalCSS) {
+            return createElement(Helmet, { key: 'globalcss' }, [
+                createElement('style', {
+                    key: 'style',
+                    dangerouslySetInnerHTML: { __html: globalCSS },
+                }),
+            ])
+        }
+
+        return null
+    }
+
+    return createElement(HelmetProvider, {},
         createElement(
-            ttContext.Provider,
-            { value: { auth, api, theme } },
-            children,
+            'div',
+            { style },
+            createElement(
+                ttContext.Provider,
+                { value: { auth, api, theme } },
+                children,
+                renderGlobalCSS(),
+            ),
         ),
     )
 }

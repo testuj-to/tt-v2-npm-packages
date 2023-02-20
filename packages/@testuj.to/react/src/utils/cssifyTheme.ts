@@ -9,6 +9,10 @@ export interface ThemeCSS {
         }[]
         toString(): string
     }
+    readonly cssFontImports: {
+        imports: string[]
+        toString(): string
+    }
     readonly cssFontFaces: {
         fontFaces: {
             family: string
@@ -18,10 +22,11 @@ export interface ThemeCSS {
         }[]
         toString(): string
     }
+    readonly cssGlobal: string
 }
 
 export const cssifyTheme = (theme: TenantTheme): ThemeCSS => {
-    return {
+    const themeCSS: ThemeCSS = {
         ...theme,
         get cssVariables() {
             const variables = []
@@ -47,6 +52,18 @@ export const cssifyTheme = (theme: TenantTheme): ThemeCSS => {
                 variables,
                 toString() {
                     return `\n${variables.map(({ name, value }) => `  ${name}: ${value};`).join('\n')}\n`
+                },
+            }
+        },
+        get cssFontImports() {
+            const imports = (theme?.fontFamily?.imports || []).map(_import => {
+                return _import?.statement
+            })
+
+            return {
+                imports,
+                toString() {
+                    return imports.map(_import => `  ${_import}\n`).join('')
                 },
             }
         },
@@ -80,5 +97,56 @@ export const cssifyTheme = (theme: TenantTheme): ThemeCSS => {
                 },
             }
         },
+        get cssGlobal() {
+            return `
+${themeCSS?.cssFontImports?.toString?.()}
+${themeCSS?.cssFontFaces?.toString?.()}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-text);
+}
+
+* {
+    box-sizing: border-box;
+    color: var(--color-text);
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--color-link);
+}
+
+h1,
+h2 {
+    font-family: var(--font-heading);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    html {
+        color-scheme: dark;
     }
+
+    body {
+        color: white;
+        background: black;
+    }
+} */
+`
+        },
+    }
+
+    return themeCSS
 }
