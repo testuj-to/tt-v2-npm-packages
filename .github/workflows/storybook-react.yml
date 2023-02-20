@@ -17,9 +17,11 @@ jobs:
     #   FOO: 'bar'
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: |
+          npm ci
+
+          cd packages/@testuj.to/react
+          npm i
       - uses: chromaui/action@v1
         with:
           workingDir: packages/@testuj.to/react
