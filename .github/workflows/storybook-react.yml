@@ -16,7 +16,7 @@ jobs:
     # env:
     #   FOO: 'bar'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
       - run: |
           npm ci
 
