@@ -10,7 +10,7 @@ const dts = require('rollup-plugin-dts').default
 const { listPackages } = require('../scripts/listPackages')
 
 module.exports = {
-    getBaseConfigs(packageJson = null) {
+    getBaseConfigs(packageJson = null, external = []) {
         const packages = listPackages()
 
         if (!packageJson || packages.indexOf(packageJson.name) < 0) {
@@ -40,8 +40,6 @@ module.exports = {
             commonjs(),
             terser(),
         ]
-
-        const external = []
 
         return [{
             input,
