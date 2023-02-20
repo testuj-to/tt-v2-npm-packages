@@ -22,3 +22,6 @@ export {
     ValidateStatusCodeSuccess,
     ValidateStatusCodeRedirect,
 } from './httpMiddlewares'
+export {
+    Listenable,
+} from './listenable'

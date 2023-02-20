@@ -14,18 +14,21 @@ import merge from 'lodash.merge'
 import { TenantTheme } from '@lib/types'
 import {
     Credentials,
-    OAuth2Options,
-    OAuth2,
+    OAuth2ClientOptions,
+    OAuth2Client,
 } from '@lib/oauth2'
-import { Api, ApiOptions } from '@testuj.to/api'
+import {
+    ApiClientOptions,
+    ApiClient,
+} from '@testuj.to/api'
 
 import { type Theme } from './hooks/theme'
 import { cssifyTheme } from './utils/cssifyTheme'
 import { ToastProvider } from './components/Toast'
 
 const ttContext = createContext<{
-    auth: OAuth2
-    api: Api
+    auth: OAuth2Client
+    api: ApiClient
     theme: Theme
 }>({
     auth: null,
@@ -38,8 +41,8 @@ export const useTTContext = () =>
 
 export interface TTContextProviderProps {
     credentials?: Credentials
-    auth?: Omit<OAuth2Options, 'credentials'>
-    api?: Omit<ApiOptions, 'credentials'>
+    auth?: Omit<OAuth2ClientOptions, 'credentials'>
+    api?: Omit<ApiClientOptions, 'credentials'>
     theme?: TenantTheme
     injectFontsCSS?: boolean
     children?: ReactNode
@@ -51,12 +54,12 @@ export const TTContextProvider = ({
     api: apiOptions,
     theme: themeOptions,
 }: TTContextProviderProps) => {
-    const { current: auth } = useRef(new OAuth2({
+    const { current: auth } = useRef(new OAuth2Client({
         credentials,
         ...authOptions,
     }))
 
-    const { current: api } = useRef(new Api({
+    const { current: api } = useRef(new ApiClient({
         credentials,
         ...apiOptions,
     }))
