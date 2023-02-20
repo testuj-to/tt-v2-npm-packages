@@ -25,10 +25,9 @@ build: clean
 		-i package.json \
 		-o $(PATH_DIST)/package.json
 
-build-storybook:
-	npm i
-
-	npm run docs:build
+# build-storybook:
+# 	npm i
+# 	npm run docs:build
 
 publish:
 	cd $(PATH_DIST) && \

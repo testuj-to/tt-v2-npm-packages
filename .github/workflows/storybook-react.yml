@@ -17,15 +17,12 @@ jobs:
     #   FOO: 'bar'
     steps:
       - uses: actions/checkout@v3
-      - run: |
-          npm ci
-
-          cd packages/@testuj.to/react
-          make build-storybook
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      - run: npm ci
+        # env:
+        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - uses: chromaui/action@v1
         with:
+          workingDir: packages/@testuj.to/react
+          buildScriptName: docs:build
           projectToken: ${{ secrets.CHROMATIC_REACT_TOKEN }}
           # token: ${{ secrets.GITHUB_TOKEN }}
