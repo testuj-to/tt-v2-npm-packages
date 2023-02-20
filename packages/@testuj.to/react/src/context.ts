@@ -11,8 +11,12 @@ import {
 } from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import merge from 'lodash.merge'
-import { Credentials, TenantTheme } from '@lib/types'
-import { OAuth2, OAuth2Options } from '@lib/oauth2'
+import { TenantTheme } from '@lib/types'
+import {
+    Credentials,
+    OAuth2Options,
+    OAuth2,
+} from '@lib/oauth2'
 import { Api, ApiOptions } from '@testuj.to/api'
 
 import { type Theme } from './hooks/theme'

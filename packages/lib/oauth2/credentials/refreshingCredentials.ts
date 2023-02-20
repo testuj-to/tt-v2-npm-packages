@@ -2,7 +2,7 @@
 import {
     GrantType,
     Credentials,
-} from '@lib/types'
+} from '../types'
 
 export interface RefreshingCredentialsOptions {}
 export class RefreshingCredentials implements Credentials {

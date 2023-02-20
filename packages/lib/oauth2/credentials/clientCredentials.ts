@@ -2,7 +2,7 @@
 import {
     GrantType,
     Credentials,
-} from '@lib/types'
+} from '../types'
 
 export interface ClientCredentialsOptions {}
 export class ClientCredentials implements Credentials {

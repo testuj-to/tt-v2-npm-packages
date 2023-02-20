@@ -10,7 +10,7 @@ const dts = require('rollup-plugin-dts').default
 const { listPackages } = require('../scripts/listPackages')
 
 module.exports = {
-    getBaseConfigs(packageJson = null, external = []) {
+    getBaseConfigs(packageJson = null) {
         const packages = listPackages()
 
         if (!packageJson || packages.indexOf(packageJson.name) < 0) {
@@ -41,6 +41,8 @@ module.exports = {
             terser(),
         ]
 
+        const external = []
+
         return [{
             input,
             plugins,
@@ -49,6 +51,10 @@ module.exports = {
                 file: path.join(distPath, packageJson.browser),
                 name: packageJson.name.split('/')[1],
                 format: 'umd',
+                globals: {
+                    'react': 'React',
+                    'react-dom': 'ReactDOM',
+                },
             },
         }, {
             input,
@@ -57,9 +63,17 @@ module.exports = {
             output: [{
                 file: path.join(distPath, packageJson.main),
                 format: 'cjs',
+                // globals: {
+                //     'react': 'React',
+                //     'react-dom': 'ReactDOM',
+                // },
             }, {
                 file: path.join(distPath, packageJson.module),
                 format: 'es',
+                globals: {
+                    'react': 'React',
+                    'react-dom': 'ReactDOM',
+                },
             }],
         }, {
             input: inputTypings,
