@@ -3,9 +3,9 @@ const path = require('path')
 const fs = require('fs')
 
 exports.listPackages = () => {
+    const basePath = path.resolve(__dirname, '../packages/@testuj.to')
     const packages = []
 
-    const basePath = path.resolve(__dirname, '../packages/@testuj.to')
     for (const package of fs.readdirSync(basePath)) {
         try {
             const packageJson = require(path.join(basePath, package, 'package.json'))

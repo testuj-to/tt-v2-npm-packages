@@ -1,0 +1,31 @@
+
+name: 'Publish @testuj.to/react StoryBook'
+
+on:
+  push:
+    branches: [ 'master' ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-publish-react-storybook:
+    name: 'Publish @testuj.to/react StoryBook'
+    runs-on: ubuntu-latest
+    environment: prod
+    # env:
+    #   FOO: 'bar'
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          npm ci
+
+          cd packages/@testuj.to/react
+          make build-storybook
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_REACT_TOKEN }}
+          # token: ${{ secrets.GITHUB_TOKEN }}

@@ -7,7 +7,7 @@ const postcss = require('rollup-plugin-postcss')
 const { terser } = require('rollup-plugin-minification')
 const dts = require('rollup-plugin-dts').default
 
-const { listPackages } = require('../scripts/list-packages')
+const { listPackages } = require('../scripts/listPackages')
 
 module.exports = {
     getBaseConfigs(packageJson = null) {

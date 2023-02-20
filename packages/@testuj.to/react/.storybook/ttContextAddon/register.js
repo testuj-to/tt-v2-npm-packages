@@ -53,7 +53,7 @@ const ToolbarItem = memo(() => {
         WithTooltip,
         {
             placement: 'bottom',
-            // trigger: 'click',
+            trigger: 'click',
             closeOnClick: true,
             closeOnOutsideClick: true,
             tooltip: () => {

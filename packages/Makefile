@@ -1,5 +1,7 @@
 
-PACKAGES := $(shell node ../scripts/list-packages.js --one-line)
+# include ../scripts/scripts.mk
+# $(call run_script,listPackages,"--one-line",PACKAGES)
+PACKAGES := $(shell node ../scripts/listPackages.js --one-line)
 
 PUBLISH_PREFIX := publish--
 PUBLISH_PREFIXED_PACKAGES := $(foreach NAME,$(PACKAGES),"$(PUBLISH_PREFIX)$(NAME)")
@@ -28,6 +30,7 @@ $(PUBLISH_PREFIXED_PACKAGES):
 	fi
 
 build: $(PACKAGES)
+	@echo "PACKAGES: $(PACKAGES)"
 	@echo "🙌 🙌 🙌"
 	@echo "All NPM packages are built 🎉"
 

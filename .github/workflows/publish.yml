@@ -1,5 +1,5 @@
 
-name: 'Build & publish all NPM packages'
+name: 'Publish NPM packages'
 
 on:
   push:
