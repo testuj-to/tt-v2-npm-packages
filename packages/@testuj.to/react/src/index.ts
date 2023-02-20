@@ -68,5 +68,7 @@ export {
 } from './components/Textarea'
 export {
     type ToastProps,
+    useToast,
+    ToastProvider,
     Toast,
 } from './components/Toast'

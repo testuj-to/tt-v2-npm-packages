@@ -17,6 +17,7 @@ import { Api, ApiOptions } from '@testuj.to/api'
 
 import { type Theme } from './hooks/theme'
 import { cssifyTheme } from './utils/cssifyTheme'
+import { ToastProvider } from './components/Toast'
 
 const ttContext = createContext<{
     auth: OAuth2
@@ -118,8 +119,8 @@ export const TTContextProvider = ({
             createElement(
                 ttContext.Provider,
                 { value: { auth, api, theme } },
-                children,
                 renderGlobalCSS(),
+                createElement(ToastProvider, {}, children),
             ),
         ),
     )
