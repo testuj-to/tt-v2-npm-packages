@@ -19,7 +19,7 @@ const toastContext = createContext<{
 export const useToast = () =>
     useContext(toastContext)
 
-export const ToastProvider = ({ children }: { children: ReactNode }) => {
+export const ToastProvider = ({ children }: { children?: ReactNode }) => {
     const [ toasts, setToasts ] = useState<ToastProps[]>([])
 
     const handleClose = useCallback((key: string) => {
