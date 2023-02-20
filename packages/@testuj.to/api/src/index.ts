@@ -1,13 +1,30 @@
 
 import {
-    Credentials,
     CampaignApplication,
 } from '@lib/types'
+import {
+    Credentials,
+} from '@lib/oauth2'
 import { HttpClient, HttpClientOptions } from '@lib/utils'
 
 import {
     Edges,
 } from './types'
+
+export {
+    type Credentials,
+    type OAuth2AuthorizeRequest,
+    type OAuth2TokenRequest,
+    type OAuth2Response,
+    type GrantType,
+    type ResponseType,
+    type ClientCredentialsOptions,
+    type RefreshingCredentialsOptions,
+    type OAuth2Options,
+    ClientCredentials,
+    RefreshingCredentials,
+    OAuth2,
+} from '@lib/oauth2'
 
 export interface ApiOptions extends Omit<HttpClientOptions, 'credentials'> {
     credentials: Credentials

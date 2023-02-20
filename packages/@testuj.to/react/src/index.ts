@@ -1,4 +1,19 @@
 
+export {
+    type Credentials,
+    type OAuth2AuthorizeRequest,
+    type OAuth2TokenRequest,
+    type OAuth2Response,
+    type GrantType,
+    type ResponseType,
+    type ClientCredentialsOptions,
+    type RefreshingCredentialsOptions,
+    type OAuth2Options,
+    ClientCredentials,
+    RefreshingCredentials,
+    OAuth2,
+} from '@lib/oauth2'
+
 export { cssifyTheme } from './utils/cssifyTheme'
 
 export {

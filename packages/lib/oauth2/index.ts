@@ -1,8 +1,5 @@
 
 import {
-    OAuth2AuthorizeRequest,
-    OAuth2Response,
-    Credentials,
     User,
 } from '@lib/types'
 import {
@@ -13,7 +10,29 @@ import {
     HttpClientOptions,
 } from '@lib/utils'
 
+import {
+    OAuth2Response,
+    OAuth2AuthorizeRequest,
+    Credentials,
+} from './types'
 import { mustCredentials } from './credentials'
+
+export type {
+    Credentials,
+    OAuth2AuthorizeRequest,
+    OAuth2TokenRequest,
+    OAuth2Response,
+    GrantType,
+    ResponseType,
+} from './types'
+export {
+    type ClientCredentialsOptions,
+    ClientCredentials,
+} from './credentials/clientCredentials'
+export {
+    type RefreshingCredentialsOptions,
+    RefreshingCredentials,
+} from './credentials/refreshingCredentials'
 
 export interface OAuth2Options extends Omit<HttpClientOptions, 'credentials'> {
     credentials: Credentials

@@ -2,7 +2,7 @@
 import {
     GrantType,
     Credentials,
-} from '@lib/types'
+} from '../types'
 
 export const mustCredentials = (tokenStore: Partial<Credentials>): Credentials => {
     let _tokenType: string
