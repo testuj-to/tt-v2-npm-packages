@@ -44,12 +44,13 @@ export interface TTContextProviderProps {
     auth?: Omit<OAuth2ClientOptions, 'credentials'>
     api?: Omit<ApiClientOptions, 'credentials'>
     theme?: TenantTheme
+    injectRootVariablesCSS?: boolean
     injectFontsCSS?: boolean
     children?: ReactNode
 }
 
 export const TTContextProvider = ({
-    credentials, injectFontsCSS, children,
+    credentials, injectRootVariablesCSS, injectFontsCSS, children,
     auth: authOptions,
     api: apiOptions,
     theme: themeOptions,
@@ -98,21 +99,13 @@ export const TTContextProvider = ({
         style[variable.name] = variable.value
     }
 
-    const [ globalCSS, setGlobalCSS ] = useState<string>()
-
-    useEffect(() => {
-        if (injectFontsCSS && theme && theme?.cssGlobal) {
-            setGlobalCSS(theme.cssGlobal)
-        }
-    }, [ injectFontsCSS, theme?.cssGlobal ])
-
     const renderGlobalCSS = () => {
-        if (globalCSS) {
-            return createElement(Helmet, { key: 'globalcss' }, [
-                createElement('style', {
-                    key: 'style',
-                    // dangerouslySetInnerHTML: { __html: globalCSS },
-                }, globalCSS),
+        if (injectRootVariablesCSS || injectFontsCSS) {
+            return createElement(Helmet, { key: 'head' }, [
+                (injectRootVariablesCSS && theme?.cssVariables?.variables?.length > 0) &&
+                    createElement('style', { key: 'variables' }, `\n:root {\n${theme.cssVariables.toString()}\n}\n`),
+                (injectFontsCSS && theme?.cssGlobal) &&
+                    createElement('style', { key: 'globals' }, theme.cssGlobal),
             ])
         }
 
