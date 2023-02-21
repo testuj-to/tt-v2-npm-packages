@@ -111,8 +111,8 @@ export const TTContextProvider = ({
             return createElement(Helmet, { key: 'globalcss' }, [
                 createElement('style', {
                     key: 'style',
-                    dangerouslySetInnerHTML: { __html: globalCSS },
-                }),
+                    // dangerouslySetInnerHTML: { __html: globalCSS },
+                }, globalCSS),
             ])
         }
 
