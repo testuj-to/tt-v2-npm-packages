@@ -5,7 +5,7 @@ import cx from 'classnames'
 import './styles.css'
 
 export interface FormItemProps {
-    label?: string
+    label?: ReactNode
     htmlFor?: string
     style?: CSSProperties
     children?: ReactNode

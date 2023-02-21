@@ -102,6 +102,63 @@ export const SelectDate = ({ value, onChange }: SelectDateProps) => {
     // // november   30 days
     // // december   31 days
 
+    const t = v => v
+    return (
+        <>
+            <Select
+                placeholder={t('year')}
+                options={Array(130).map((_, index) => (new Date()).getFullYear() - index).map(year => ({
+                    value: String(year),
+                    label: String(year),
+                }))}
+            />
+            <Select
+                placeholder={t('month')}
+                options={[{
+                    value: String(0),
+                    label: t('january'),
+                }, {
+                    value: String(1),
+                    label: t('february'),
+                }, {
+                    value: String(2),
+                    label: t('march'),
+                }, {
+                    value: String(3),
+                    label: t('april'),
+                }, {
+                    value: String(4),
+                    label: t('may'),
+                }, {
+                    value: String(5),
+                    label: t('june'),
+                }, {
+                    value: String(6),
+                    label: t('july'),
+                }, {
+                    value: String(7),
+                    label: t('august'),
+                }, {
+                    value: String(8),
+                    label: t('september'),
+                }, {
+                    value: String(9),
+                    label: t('october'),
+                }, {
+                    value: String(10),
+                    label: t('november'),
+                }, {
+                    value: String(11),
+                    label: t('december'),
+                }]}
+            />
+            <Select
+                placeholder={t('day')}
+                options={[]}
+            />
+        </>
+    )
+
     return (
         <div className={cx('tt-selectdate-container')}>
             {/* <Select
