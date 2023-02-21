@@ -9,7 +9,7 @@ import {
     useMemo,
     useState,
 } from 'react'
-import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { Helmet } from 'react-helmet'
 import merge from 'lodash.merge'
 import { TenantTheme } from '@lib/types'
 import {
@@ -119,16 +119,14 @@ export const TTContextProvider = ({
         return null
     }
 
-    return createElement(HelmetProvider, {},
+    return createElement(
+        'div',
+        { style },
         createElement(
-            'div',
-            { style },
-            createElement(
-                ttContext.Provider,
-                { value: { auth, api, theme } },
-                renderGlobalCSS(),
-                createElement(ToastProvider, {}, children),
-            ),
+            ttContext.Provider,
+            { value: { auth, api, theme } },
+            renderGlobalCSS(),
+            createElement(ToastProvider, {}, children),
         ),
     )
 }
