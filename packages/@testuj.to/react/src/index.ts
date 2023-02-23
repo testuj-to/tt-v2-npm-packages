@@ -54,6 +54,10 @@ export {
     Input,
 } from './components/Input'
 export {
+    type InputPasswordProps,
+    InputPassword,
+} from './components/InputPassword'
+export {
     type RadioGroupProps,
     RadioGroup,
 } from './components/RadioGroup'
