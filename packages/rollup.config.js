@@ -10,6 +10,10 @@ const dts = require('rollup-plugin-dts').default
 const { listPackages } = require('../scripts/listPackages')
 
 module.exports = {
+    /**
+     * @param {string} packageJson Path to a package.json file of the package being bundled
+     * @returns {import('rollup').RollupOptions}
+     */
     getBaseConfigs(packageJson = null) {
         const packages = listPackages()
 
