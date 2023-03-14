@@ -1,16 +1,32 @@
 
-import {
-    CampaignApplication,
+export {
+    type RichText,
+    type File,
+    type Address,
+    type User,
+    type AssociatedTenant,
+    type Questionnaire,
+    type QuestionnaireQuestion,
+    type QuestionnaireQuestionOption,
+    type QuestionnaireResponse,
+    type QuestionnaireResponseAnswer,
+    type ProductCategory,
+    type Product,
+    type Tenant,
+    type TenantDomain,
+    type TenantTheme,
+    type TenantThemeLogo,
+    type TenantThemeColorScheme,
+    type TenantThemeFontFamily,
+    type Campaign,
+    type CampaignImage,
+    type CampaignApplication,
+    Gender,
+    QuestionnaireType,
+    QuestionnaireQuestionType,
+    CampaignStatus,
+    CampaignApplicationStatus,
 } from '@lib/types'
-import {
-    Credentials,
-} from '@lib/oauth2'
-import { HttpClient, HttpClientOptions } from '@lib/utils'
-
-import {
-    Edges,
-} from './types'
-
 export {
     type Credentials,
     type OAuth2AuthorizeRequest,
@@ -26,41 +42,10 @@ export {
     OAuth2Client,
 } from '@lib/oauth2'
 
-export interface ApiClientOptions extends Omit<HttpClientOptions, 'credentials'> {
-    credentials: Credentials
-}
-
-export class ApiClient {
-    public httpClient: HttpClient
-
-    constructor(options: ApiClientOptions) {
-        const { credentials, ...httpClientOptions } = options || {} as ApiClientOptions
-
-        this.httpClient = new HttpClient(httpClientOptions)
-        this.httpClient.addRequestMiddleware(async(request) => {
-            if (credentials.getTokenType() && credentials.getAccessToken()) {
-                request.headers.set('Authorization', `${credentials.getTokenType()} ${credentials.getAccessToken()}`)
-            }
-
-            return request
-        })
-    }
-
-    async getCampaignApplications(): Promise<Edges<CampaignApplication>> {
-        try {
-            const response = await this.httpClient.get<Edges<CampaignApplication>>('/api/campaignApplications', {})
-            return await response.json()
-        } catch (err) {
-            console.error(err)
-        }
-    }
-
-    // async postCampaignApplications(campaignApplication: CampaignApplication): Promise<CampaignApplication> {
-    //     try {
-    //         const response = await this.httpClient.post<CampaignApplication>('/api/campaignApplications', campaignApplication)
-    //         return await response.json()
-    //     } catch (err) {
-    //         console.error(err)
-    //     }
-    // }
-}
+export {
+    type Edges,
+} from './types'
+export {
+    type ApiClientOptions,
+    ApiClient,
+} from './client'

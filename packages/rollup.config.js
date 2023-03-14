@@ -12,7 +12,7 @@ const { listPackages } = require('../scripts/listPackages')
 module.exports = {
     /**
      * @param {string} packageJson Path to a package.json file of the package being bundled
-     * @returns {import('rollup').RollupOptions}
+     * @returns {Array<import('rollup').RollupOptions>}
      */
     getBaseConfigs(packageJson = null) {
         const packages = listPackages()
@@ -35,9 +35,9 @@ module.exports = {
                 entries: [{
                     find: '@lib',
                     replacement: path.resolve(buildPath, 'lib'),
-                }, ...packages.map(package => ({
-                    find: package,
-                    replacement: path.resolve(buildPath, package, 'src'),
+                }, ...packages.map(pkg => ({
+                    find: pkg,
+                    replacement: path.resolve(buildPath, pkg, 'src'),
                 }))],
             }),
             resolve(),
@@ -89,9 +89,9 @@ module.exports = {
                     entries: [{
                         find: '@lib',
                         replacement: path.resolve(buildPath, 'typings/lib'),
-                    }, ...packages.map(package => ({
-                        find: package,
-                        replacement: path.resolve(buildPath, 'typings', package, 'src'),
+                    }, ...packages.map(pkg => ({
+                        find: pkg,
+                        replacement: path.resolve(buildPath, 'typings', pkg, 'src'),
                     }))],
                 }),
                 dts(),
