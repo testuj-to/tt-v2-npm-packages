@@ -13,10 +13,12 @@
     },
     "scripts": {},
     "devDependencies": {
+        "@babel/eslint-parser": "^7.19.1",
         "@rollup/plugin-alias": "^4.0.3",
         "@rollup/plugin-commonjs": "^24.0.1",
         "@rollup/plugin-node-resolve": "^15.0.1",
         "@types/node": "^18.13.0",
+        "@types/rollup": "^0.54.0",
         "minimist": "^1.2.8",
         "rollup": "^3.15.0",
         "rollup-plugin-dts": "^5.1.1",

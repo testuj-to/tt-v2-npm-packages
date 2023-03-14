@@ -6,9 +6,9 @@ exports.listPackages = () => {
     const basePath = path.resolve(__dirname, '../packages/@testuj.to')
     const packages = []
 
-    for (const package of fs.readdirSync(basePath)) {
+    for (const pkg of fs.readdirSync(basePath)) {
         try {
-            const packageJson = require(path.join(basePath, package, 'package.json'))
+            const packageJson = require(path.join(basePath, pkg, 'package.json'))
 
             if (!/^\@testuj\.to\//.test(packageJson.name)) {
                 continue
@@ -34,8 +34,8 @@ const main = () => {
         return
     }
 
-    for (const package of packages) {
-        console.log(package)
+    for (const pkg of packages) {
+        console.log(pkg)
     }
 }
 
