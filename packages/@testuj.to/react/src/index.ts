@@ -31,7 +31,6 @@ export {
     CampaignStatus,
     CampaignApplicationStatus,
 } from '@lib/types'
-
 export {
     type Credentials,
     type OAuth2AuthorizeRequest,
@@ -47,7 +46,10 @@ export {
     OAuth2Client,
 } from '@lib/oauth2'
 
-export { cssifyTheme } from './utils/cssifyTheme'
+export {
+    type Locale,
+    locales,
+} from './locales'
 
 export {
     type TTContextProviderProps,
@@ -62,7 +64,6 @@ export {
 export { usePagination } from './hooks/pagination'
 export { useApi } from './hooks/api'
 export { useAuth } from './hooks/auth'
-
 export {
     type CampaignApplicationsOptions,
     type CampaignApplicationOptions,
@@ -70,6 +71,8 @@ export {
     useCampaignApplication,
     useCreateCampaignApplication,
 } from './hooks/campaignApplications'
+
+export { cssifyTheme } from './utils/cssifyTheme'
 
 export {
     type BoxProps,
