@@ -1,26 +1,26 @@
 
-PATH_BUILD := build
-PATH_DIST := dist
+BUILD := build
+DIST := dist
 
-NPM_INCLUDE := .gitignore .npmignore README.md
+INCLUDE := README.md .npmignore .gitignore
 
 .PHONY: clean build publish
 
 clean:
-	rm -Rf $(PATH_BUILD) || true
-	rm -Rf $(PATH_DIST) || true
+	rm -Rf $(BUILD) || true
+	rm -Rf $(DIST) || true
 
 build: clean
 	npm i
 	npm run build:ts
 	npm run build:bundle
 
-	cp $(NPM_INCLUDE) $(PATH_DIST)
+	cp -r $(INCLUDE) $(DIST)
 
 	node ../../../scripts/preparePackageJson.js \
 		-i package.json \
-		-o $(PATH_DIST)/package.json
+		-o $(DIST)/package.json
 
 publish:
-	cd $(PATH_DIST) && \
+	cd $(DIST) && \
 		npm publish --access public
