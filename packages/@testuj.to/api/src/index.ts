@@ -1,5 +1,9 @@
 
 export {
+    type Edges,
+    type PaginationOptions,
+    type BarePagination,
+    type Pagination,
     type RichText,
     type File,
     type Address,
@@ -43,9 +47,14 @@ export {
 } from '@lib/oauth2'
 
 export {
-    type Edges,
+    type RequestOptions,
 } from './types'
 export {
     type ApiClientOptions,
-    ApiClient,
+    createApiClient,
 } from './client'
+export {
+    type GetCampaignApplicationAggregationOptions,
+    type GetCampaignApplicationsOptions,
+    type GetCampaignApplicationOptions,
+} from './client/campaignApplications'

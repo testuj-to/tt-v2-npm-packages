@@ -1,6 +1,6 @@
 {
     "name": "@testuj.to/api",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "",
     "license": "MIT",
     "author": {
@@ -18,6 +18,5 @@
     "scripts": {
         "build:ts": "tsc",
         "build:bundle": "rollup --config"
-    },
-    "devDependencies": {}
+    }
 }

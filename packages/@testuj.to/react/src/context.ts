@@ -5,35 +5,49 @@ import {
     useContext,
     createElement,
     createContext,
-    useEffect,
     useMemo,
     useState,
+    useCallback,
 } from 'react'
 import { Helmet } from 'react-helmet'
 import merge from 'lodash.merge'
-import { TenantTheme } from '@lib/types'
 import {
-    Credentials,
-    OAuth2ClientOptions,
+    type TenantTheme,
+} from '@lib/types'
+import {
+    type Credentials,
+    type OAuth2ClientOptions,
     OAuth2Client,
 } from '@lib/oauth2'
 import {
-    ApiClientOptions,
-    ApiClient,
+    type ApiClientOptions,
+    createApiClient,
 } from '@testuj.to/api'
 
+import {
+    type Locale,
+    locales,
+} from './locales'
 import { type Theme } from './hooks/theme'
 import { cssifyTheme } from './utils/cssifyTheme'
 import { ToastProvider } from './components/Toast'
 
 const ttContext = createContext<{
     auth: OAuth2Client
-    api: ApiClient
+    api: ReturnType<typeof createApiClient>
     theme: Theme
+    locale: Locale
+    setLocale(locale: Locale)
+    t(key: string): string
 }>({
     auth: null,
     api: null,
     theme: null,
+    locale: null,
+    setLocale() {},
+    t(): string {
+        return null
+    },
 })
 
 export const useTTContext = () =>
@@ -46,24 +60,56 @@ export interface TTContextProviderProps {
     theme?: TenantTheme
     injectRootVariablesCSS?: boolean
     injectFontsCSS?: boolean
+    locale?: Locale
+    fallbackLocale?: Locale
+    onLocaleChange?(locale: Locale)
+    t?(key: string): string
     children?: ReactNode
 }
 
 export const TTContextProvider = ({
-    credentials, injectRootVariablesCSS, injectFontsCSS, children,
+    credentials,
+    injectRootVariablesCSS,
+    injectFontsCSS,
+    fallbackLocale,
+    children,
     auth: authOptions,
     api: apiOptions,
     theme: themeOptions,
+    locale: currentLocale,
+    onLocaleChange,
+    t,
 }: TTContextProviderProps) => {
     const { current: auth } = useRef(new OAuth2Client({
         credentials,
         ...authOptions,
     }))
 
-    const { current: api } = useRef(new ApiClient({
+    const { current: api } = useRef(createApiClient({
         credentials,
         ...apiOptions,
     }))
+
+    const [ locale, setLocale ] = useState<Locale>(currentLocale || fallbackLocale || 'en')
+
+    const handleLocaleChange = useCallback((locale: Locale) => {
+        if (typeof onLocaleChange === 'function') {
+            onLocaleChange(locale)
+            return
+        }
+
+        setLocale(locale)
+    }, [ onLocaleChange ])
+
+    // yes, lack of useCallback is intentional
+    const translate = (key: string) => {
+        if (typeof t === 'function') {
+            return t(key)
+        }
+
+        const namespace = locales[locale] || locales[fallbackLocale] || locales.en
+        return namespace[key] ? namespace[key] : key
+    }
 
     const theme = useMemo<Theme>(() => {
         const preNullifiedTheme = merge({
@@ -112,12 +158,18 @@ export const TTContextProvider = ({
         return null
     }
 
+    const value = {
+        auth, api, theme, locale,
+        t: translate,
+        setLocale: handleLocaleChange,
+    }
+
     return createElement(
         'div',
         { style },
         createElement(
             ttContext.Provider,
-            { value: { auth, api, theme } },
+            { value },
             renderGlobalCSS(),
             createElement(ToastProvider, {}, children),
         ),

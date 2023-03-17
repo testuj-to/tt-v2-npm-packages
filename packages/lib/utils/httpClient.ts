@@ -19,15 +19,16 @@ export interface RequestWithObjectHeaders extends Omit<RequestInit, 'headers'> {
     headers?: Record<string, string>
 }
 
-export interface HttpClientOptions extends RequestWithObjectHeaders {
-    baseUrl: string
+export interface HttpClientMethodOptions extends RequestWithObjectHeaders {
     requestMiddlewares?: Middleware<HttpRequest>[]
     responseMiddlewares?: Middleware<HttpResponse<any>>[]
+}
+
+export interface HttpClientOptions extends HttpClientMethodOptions {
+    baseUrl: string
 
     urlResolver?: HttpClientURLResolver
 }
-
-export interface HttpClientMethodOptions extends RequestWithObjectHeaders {}
 
 const resolveRequestUrl: HttpClientURLResolver = (path: string, options: HttpClientOptions) => {
     let url = options?.urlResolver?.(path, options)
@@ -59,6 +60,16 @@ const resolveRequestUrl: HttpClientURLResolver = (path: string, options: HttpCli
 }
 
 const resolveRequestOptions = (httpClient: HttpClient, method: string, methodOptions?: HttpClientMethodOptions, body?: BodyInit): HttpClientOptions => {
+    const requestMiddlewares = [
+        ...(httpClient?.options?.requestMiddlewares || []),
+        ...(methodOptions?.requestMiddlewares || []),
+    ]
+
+    const responseMiddlewares = [
+        ...(httpClient?.options?.responseMiddlewares || []),
+        ...(methodOptions?.responseMiddlewares || []),
+    ]
+
     const headers = {
         ...(httpClient?.options?.headers || {}),
         ...(methodOptions?.headers || {}),
@@ -67,6 +78,8 @@ const resolveRequestOptions = (httpClient: HttpClient, method: string, methodOpt
     return {
         ...httpClient?.options,
         ...methodOptions,
+        requestMiddlewares,
+        responseMiddlewares,
         headers,
         method,
         body,

@@ -1,0 +1,40 @@
+{
+    "lang_change": "Change language",
+    "lang_cs": "Czech",
+    "lang_en": "English",
+    "lang_sk": "Slovakian",
+
+    "country_cz": "Czech republic",
+    "country_sk": "Slovakia",
+    "country_pl": "Poland",
+    "country_de": "Germany",
+    "country_at": "Austria",
+    "country_hu": "Hungary",
+    "country_ch": "Switzerland",
+    "country_it": "Italy",
+    "country_fr": "France",
+    "country_es": "Spain",
+    "country_gb": "Great Britain",
+
+    "day": "Day",
+    "month": "Month",
+    "year": "Year",
+
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December",
+
+    "campaignapplication_submitting": "Submitting campaign application",
+    "campaignapplication_submitting_failed": "Submitting campaign application failed",
+    "campaignapplication_load_failed": "Campaign application failed to load",
+    "campaignapplications_load_failed": "Campaign applications failed to load"
+}

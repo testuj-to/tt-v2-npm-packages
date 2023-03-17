@@ -1,0 +1,40 @@
+{
+    "lang_change": "Změnit jazyk",
+    "lang_cs": "Čeština",
+    "lang_en": "Angličtina",
+    "lang_sk": "Slovenština",
+
+    "country_cz": "Česká republika",
+    "country_sk": "Slovensko",
+    "country_pl": "Polsko",
+    "country_de": "Německo",
+    "country_at": "Rakousko",
+    "country_hu": "Maďarsko",
+    "country_ch": "Švýcarsko",
+    "country_it": "Itálie",
+    "country_fr": "Francie",
+    "country_es": "Španělsko",
+    "country_gb": "Velká Británie",
+
+    "day": "Den",
+    "month": "Měsíc",
+    "year": "Rok",
+
+    "january": "Leden",
+    "february": "Únor",
+    "march": "Březen",
+    "april": "Duben",
+    "may": "Květen",
+    "june": "Červen",
+    "july": "Červenec",
+    "august": "Srpen",
+    "september": "Září",
+    "october": "Říjen",
+    "november": "Listopad",
+    "december": "Prosinec",
+
+    "campaignapplication_submitting": "Přihláška ke kampani se odesílá",
+    "campaignapplication_submitting_failed": "Odeslání přihlášky ke kampani se nezdařilo",
+    "campaignapplication_load_failed": "Přihlášku ke kampani se nezdařilo načíst",
+    "campaignapplications_load_failed": "Přihlášky ke kampaním se nezdařilo načíst"
+}

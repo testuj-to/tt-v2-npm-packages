@@ -1,4 +1,29 @@
 
+export interface Edges<Edge> {
+    edges?: Edge[]
+    edgesTotal?: number
+}
+
+export interface PaginationOptions {
+    defaultOffset?: number
+    defaultLimit?: number
+}
+
+export interface BarePagination {
+    offset: number
+    limit: number
+}
+
+export interface Pagination extends BarePagination {
+    page: number
+    searchParams: Record<string, string|number|boolean>
+    setOffset(offset: number)
+    setLimit(limit: number)
+    setPage(page: number)
+    previousPage()
+    nextPage()
+}
+
 export interface RichText {
     json: string
 }

@@ -1,20 +1,18 @@
 
-# include ../scripts/scripts.mk
-# $(call run_script,listPackages,"--one-line",PACKAGES)
-PACKAGES := $(shell node ../scripts/listPackages.js --one-line)
+TARGETS := $(shell node ../scripts/listPackages.js --one-line)
 
 PUBLISH_PREFIX := publish--
-PUBLISH_PREFIXED_PACKAGES := $(foreach NAME,$(PACKAGES),"$(PUBLISH_PREFIX)$(NAME)")
+PUBLISH_TARGETS := $(foreach NAME,$(TARGETS),"$(PUBLISH_PREFIX)$(NAME)")
 
-.PHONY: build publish $(PACKAGES) $(PUBLISH_PREFIXED_PACKAGES)
+.PHONY: build publish $(TARGETS) $(PUBLISH_TARGETS)
 
-$(PACKAGES):
+$(TARGETS):
 	@echo "Building NPM package '$@'"
 
 	cd $@ && \
 		make build
 
-$(PUBLISH_PREFIXED_PACKAGES):
+$(PUBLISH_TARGETS):
 	$(eval PACKAGE := $(shell echo "$@" | sed 's/$(PUBLISH_PREFIX)//'))
 
 	@echo "Publishing NPM package '$(PACKAGE)'"
@@ -29,11 +27,11 @@ $(PUBLISH_PREFIXED_PACKAGES):
 			make publish; \
 	fi
 
-build: $(PACKAGES)
-	@echo "PACKAGES: $(PACKAGES)"
+build: $(TARGETS)
+	@echo "PACKAGES: $(TARGETS)"
 	@echo "🙌 🙌 🙌"
 	@echo "All NPM packages are built 🎉"
 
-publish: $(PUBLISH_PREFIXED_PACKAGES)
+publish: $(PUBLISH_TARGETS)
 	@echo "🙌 🙌 🙌"
 	@echo "All NPM packages are published 🎉"
