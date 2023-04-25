@@ -1,6 +1,6 @@
 {
     "name": "@testuj.to/react",
-    "version": "0.0.19",
+    "version": "0.0.20",
     "description": "",
     "license": "MIT",
     "author": {
@@ -19,7 +19,7 @@
         "build:ts": "tsc",
         "build:bundle": "rollup --config",
         "docs:build": "NODE_OPTIONS=--openssl-legacy-provider build-storybook",
-        "docs:start": "npm run build:ts && NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 4000 --ci"
+        "docs:start": "npm run build:ts && start-storybook -p 4000 --ci"
     },
     "dependencies": {
         "@radix-ui/react-checkbox": "^1.0.1",

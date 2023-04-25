@@ -147,6 +147,7 @@ export interface TenantTheme {
     logo: TenantThemeLogo
     colorScheme?: TenantThemeColorScheme
     fontFamily?: TenantThemeFontFamily
+    borderRadius?: string
 }
 
 export interface TenantThemeLogo {
