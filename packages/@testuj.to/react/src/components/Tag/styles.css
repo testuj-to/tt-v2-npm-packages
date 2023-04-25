@@ -1,0 +1,31 @@
+.tt-tag {
+  background-color: var(--color-primary);
+  border-radius: var(--border-radius);
+  color: var(--color-white);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.tt-tag-primary {
+  background-color: var(--color-primary);
+}
+
+.tt-tag-secondary {
+  background-color: var(--color-secondary);
+}
+
+.tt-tag-success {
+  background-color: var(--color-success);
+}
+
+.tt-tag-danger {
+  background-color: var(--color-danger);
+}
+
+.tt-tag-warning {
+  background-color: var(--color-warning);
+}
+
+.tt-tag-info {
+  background-color: var(--color-info);
+}
