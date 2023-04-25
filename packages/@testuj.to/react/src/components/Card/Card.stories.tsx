@@ -12,9 +12,9 @@ export default {
   decorators: [TTContextDecorator],
 } as ComponentMeta<typeof Card>;
 
-const buttonStoryTemplate: ComponentStory<typeof Card> = (args) => <Card {...args} />;
+const accordionStoryTemplate: ComponentStory<typeof Card> = (args) => <Card {...args} />;
 
-export const Basic = buttonStoryTemplate.bind({});
+export const Basic = accordionStoryTemplate.bind({});
 Basic.args = {
   children: <div>Hello from card</div>,
   onClick: () => alert("You clicked me!"),

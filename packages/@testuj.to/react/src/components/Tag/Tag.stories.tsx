@@ -12,9 +12,9 @@ export default {
   decorators: [TTContextDecorator],
 } as ComponentMeta<typeof Tag>;
 
-const buttonStoryTemplate: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
+const accordionStoryTemplate: ComponentStory<typeof Tag> = (args) => <Tag {...args} />;
 
-export const Basic = buttonStoryTemplate.bind({});
+export const Basic = accordionStoryTemplate.bind({});
 Basic.args = {
   children: <div>Hello from card</div>,
 };
