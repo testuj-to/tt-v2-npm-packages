@@ -12,7 +12,11 @@ export default {
   decorators: [TTContextDecorator],
 } as ComponentMeta<typeof Accordion>;
 
-const accordionStoryTemplate: ComponentStory<typeof Accordion> = (args) => <Accordion {...args} />;
+const accordionStoryTemplate: ComponentStory<typeof Accordion> = (args) => (
+  <div style={{width: "500px"}} >
+    <Accordion {...args} />
+  </div>
+);
 
 export const Basic = accordionStoryTemplate.bind({});
 Basic.args = {

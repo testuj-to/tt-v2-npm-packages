@@ -1,0 +1,89 @@
+.tt-accordion-root {
+  border-radius: 6px;
+  width: 100%;
+  background-color: var(--mauve6);
+  box-shadow: 0 2px 10px var(--blackA4);
+  box-sizing: border-box;
+}
+
+.tt-accordion-item {
+  overflow: hidden;
+  margin-top: 1px;
+  border: 1px solid var(--border-color);
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #dadee2;
+  border-radius: 16px;
+}
+
+.tt-accordion-item:focus-within {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 0 2px var(--mauve12);
+}
+
+.tt-accordion-header {
+  display: flex;
+}
+
+.tt-accordion-trigger {
+  border: none;
+  font-family: inherit;
+  background-color: transparent;
+  height: 45px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--text-primary);
+  padding: 0 20px;
+}
+
+.tt-accordion-trigger:hover {
+  background-color: var(--mauve2);
+}
+
+.tt-accordion-content {
+  overflow: hidden;
+  font-size: 15px;
+  color: var(--mauve11);
+  background-color: var(--mauve2);
+}
+
+.tt-accordion-inner-content {
+  padding: 0 20px 20px 20px;
+}
+
+.tt-accordion-content[data-state="open"] {
+  animation: slideDown 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.tt-accordion-content[data-state="closed"] {
+  animation: slideUp 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+.AccordionChevron {
+  color: var(--violet10);
+  transition: transform 300ms cubic-bezier(0.87, 0, 0.13, 1);
+}
+.AccordionTrigger[data-state="open"] > .AccordionChevron {
+  transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

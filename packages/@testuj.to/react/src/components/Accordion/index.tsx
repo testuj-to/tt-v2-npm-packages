@@ -51,7 +51,7 @@ const AccordionTrigger = React.forwardRef(
   ) => (
     <RadixAccordion.Header className="tt-accordion-header">
       <RadixAccordion.Trigger
-        className={cx("AccordionTrigger", className)}
+        className={cx("tt-accordion-trigger", className)}
         {...props}
         ref={forwardedRef}
       >
@@ -72,7 +72,7 @@ const AccordionContent = React.forwardRef(
       {...props}
       ref={forwardedRef}
     >
-      {children}
+      <div className="tt-accordion-inner-content">{children}</div>
     </RadixAccordion.Content>
   )
 );
