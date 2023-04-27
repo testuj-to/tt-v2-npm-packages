@@ -8,11 +8,14 @@
 
 .tt-accordion-item {
   overflow: hidden;
-  margin-top: 1px;
   border: 1px solid var(--border-color);
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #dadee2;
   border-radius: 16px;
+  margin-bottom: 0.5rem;
+}
+.tt-accordion-item:last-child {
+  margin-bottom: 0;
 }
 
 .tt-accordion-item:focus-within {
@@ -23,6 +26,7 @@
 
 .tt-accordion-header {
   display: flex;
+  margin: 0;
 }
 
 .tt-accordion-trigger {
@@ -34,11 +38,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 15px;
+  font-size: 1rem;
+  font-weight: 500;
   line-height: 1;
   color: var(--text-primary);
   padding: 0 20px;
 }
+
 
 .tt-accordion-trigger:hover {
   background-color: var(--mauve2);
