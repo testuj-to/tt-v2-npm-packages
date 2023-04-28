@@ -1,0 +1,40 @@
+.tt-slider-root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  width: 200px;
+  height: 20px;
+}
+
+.tt-slider-track {
+  background-color: black;
+  position: relative;
+  flex-grow: 1;
+  border-radius: 9999px;
+  height: 3px;
+}
+
+.tt-slider-range {
+  position: absolute;
+  background-color: white;
+  border-radius: 9999px;
+  height: 100%;
+}
+
+.tt-slider-thumb {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  box-shadow: 0 2px 10px black;
+  border-radius: 10px;
+}
+.tt-slider-thumb:hover {
+  background-color: violet;
+}
+.tt-slider-thumb:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px black;
+}
