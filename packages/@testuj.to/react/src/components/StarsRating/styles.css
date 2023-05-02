@@ -2,8 +2,7 @@
   fill: url(#starGradient);
 }
 
-.tt-star-icon-full,
-.tt-star-icon:hover {
+.tt-star-icon-full {
   fill: #ff7804;
 }
 

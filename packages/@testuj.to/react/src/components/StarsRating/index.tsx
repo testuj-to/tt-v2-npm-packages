@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { StarIcon } from "./StarIcon";
 import "./styles.css";
 
 export interface StarsRatingProps {
   rating: number;
   onChange: (rating: number) => void;
+  readOnly?: boolean;
 }
 
-export const StarsRating = ({ rating, onChange }: StarsRatingProps) => {
-  const ratingInt = Math.floor(rating);
-  const ratingDecimal = rating - ratingInt;
+export const StarsRating = ({ rating, onChange, readOnly }: StarsRatingProps) => {
+  const [ratingHover, setRatingHover] = useState<number | null>(null);
+  const ratingInt = ratingHover || Math.floor(rating);
+  const ratingDecimal = (ratingHover || rating) - ratingInt;
 
   return (
     <div>
@@ -20,8 +23,10 @@ export const StarsRating = ({ rating, onChange }: StarsRatingProps) => {
           <StarIcon
             key={filled}
             filled={filledPercent}
-            onClick={() => onChange(filled)}
+            onClick={() => !readOnly && onChange(filled)}
             setGradient={filled > ratingInt}
+            onMouseEnter={() => !readOnly && setRatingHover(filled)}
+            onMouseLeave={() => !readOnly && setRatingHover(null)}
           />
         );
       })}

@@ -1,12 +1,12 @@
 import classNames from "classnames";
 
-export interface StarIconProps {
+export interface StarIconProps extends React.SVGProps<SVGSVGElement> {
   filled: number;
   onClick?: () => void;
   setGradient?: boolean;
 }
 
-export const StarIcon = ({ filled, onClick, setGradient }: StarIconProps) => {
+export const StarIcon = ({ filled, onClick, setGradient, ...props }: StarIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +14,7 @@ export const StarIcon = ({ filled, onClick, setGradient }: StarIconProps) => {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      {...{ onClick }}
+      {...{ onClick, ...props }}
     >
       <rect id="Rectangle_3766" data-name="Rectangle 3766" width="24" height="24" fill="none" />
       <path
