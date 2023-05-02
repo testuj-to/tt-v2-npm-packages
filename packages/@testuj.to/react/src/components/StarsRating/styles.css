@@ -1,0 +1,12 @@
+.tt-star-icon-half {
+  fill: url(#starGradient);
+}
+
+.tt-star-icon-full,
+.tt-star-icon:hover {
+  fill: #ff7804;
+}
+
+.tt-star-icon-empty {
+  fill: #eeeff2;
+}
