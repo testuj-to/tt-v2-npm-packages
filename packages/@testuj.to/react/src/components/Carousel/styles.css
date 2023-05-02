@@ -1,0 +1,10 @@
+.tt-carousel-item {
+  margin: 0 1rem;
+}
+
+.tt-carousel-wrapper-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+}
