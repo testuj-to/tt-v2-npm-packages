@@ -74,7 +74,7 @@
   display: flex;
   align-items: center;
   height: 25px;
-  padding: 0 35px 0 25px;
+  padding: 0 15px 0 15px;
   position: relative;
   user-select: none;
 }
@@ -87,6 +87,7 @@
   > .tt-select-content-group
   > .tt-select-content-option[data-highlighted] {
   outline: none;
+  font-weight: bold;
   /* background-color: var(--violet9);
     color: var(--violet1); */
 }
@@ -98,7 +99,7 @@
   > .tt-select-content-option-indicator {
   position: absolute;
   left: 0;
-  width: 25px;
+  /* width: 25px; */
   display: inline-flex;
   align-items: center;
   justify-content: center;

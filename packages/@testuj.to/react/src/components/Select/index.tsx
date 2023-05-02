@@ -25,7 +25,7 @@ const SelectOption = forwardRef<any, any>(({ className, children, ...props }, fo
     <Item className={cx("tt-select-content-option", className)} ref={forwardedRef} {...props}>
       <ItemText>{children}</ItemText>
       <ItemIndicator className={cx("tt-select-content-option-indicator")}>
-        <CheckIcon />
+        {/* <CheckIcon /> */}
       </ItemIndicator>
     </Item>
   );
@@ -46,17 +46,17 @@ export interface SelectProps {
 export const Select = ({ value, placeholder, label, options, onChange, multiple }: SelectProps) => {
   return (
     <Root value={value} onValueChange={onChange}>
-      <Trigger className={cx("tt-select-trigger")} aria-label={label}>
+      <Trigger className={cx("tt-select-trigger")} aria-label={label} id="tt-select">
         <Value placeholder={placeholder} />
         <Icon className={cx("tt-select-trigger-icon")}>
           <ChevronDownIcon />
         </Icon>
       </Trigger>
       <Portal>
-        <Content className={cx("tt-select-content")}>
-          {/* <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
+        <Content className={cx("tt-select-content")} position="popper">
+          <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
             <ChevronUpIcon />
-          </ScrollUpButton> */}
+          </ScrollUpButton>
           <Viewport className={cx("tt-select-content-viewport")}>
             <Group className={cx("tt-select-content-group")}>
               <Label className={cx("tt-select-content-label")}>{label}</Label>
