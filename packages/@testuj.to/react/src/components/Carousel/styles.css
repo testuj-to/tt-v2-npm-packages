@@ -8,3 +8,7 @@
   justify-content: center;
   cursor: grab;
 }
+
+.tt-carousel-wrapper-inner:active {
+  cursor: grabbing;
+}
