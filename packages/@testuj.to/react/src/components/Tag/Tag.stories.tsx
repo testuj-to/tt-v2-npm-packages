@@ -16,5 +16,5 @@ const accordionStoryTemplate: ComponentStory<typeof Tag> = (args) => <Tag {...ar
 
 export const Basic = accordionStoryTemplate.bind({});
 Basic.args = {
-  children: <div>Hello from card</div>,
+  children: <div>Hello from tag!</div>,
 };

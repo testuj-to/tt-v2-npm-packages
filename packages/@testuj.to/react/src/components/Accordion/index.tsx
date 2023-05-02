@@ -28,8 +28,8 @@ export interface AccordionContentProps {
 export const Accordion = ({ items, rootProps }: AccordionProps) => {
   return (
     <RadixAccordion.Root className="tt-accordion-root" {...rootProps}>
-      {items.map((item) => (
-        <AccordionItem {...item} />
+      {items.map((item, index) => (
+        <AccordionItem {...item} key={index} />
       ))}
     </RadixAccordion.Root>
   );

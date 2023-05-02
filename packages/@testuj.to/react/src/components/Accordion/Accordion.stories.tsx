@@ -27,9 +27,7 @@ Basic.args = {
         <div>
           <div>
             Rozmysleli jste si z jakéhokoli důvodu svoji účast v testování? Není problém, napište
-            nám email na testovani@testuj.to a uveďte, o jaké testování se jedná. Jestliže email
-            píšete z jiného emailu, než pod kterým jste se do testování hlásili, uveďte prosím i
-            daný email.
+            nám email na testovani@testuj.to a uveďte, o jaké testování se jedná. 
           </div>
           <div>
             Jestliže chcete odstoupit z testování, na které jste již byli vybráni, dejte nám prosím
