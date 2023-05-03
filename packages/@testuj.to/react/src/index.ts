@@ -83,6 +83,10 @@ export {
     Button,
 } from './components/Button'
 export {
+    type CardProps,
+    Card,
+} from './components/Card'
+export {
     type CheckboxProps,
     Checkbox,
 } from './components/Checkbox'
@@ -122,6 +126,10 @@ export {
     type TabsProps,
     Tabs,
 } from './components/Tabs'
+export {
+    type TagProps,
+    Tag,
+} from './components/Tag'
 export {
     type TextProps,
     Text,

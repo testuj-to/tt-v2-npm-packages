@@ -4,7 +4,9 @@ DIST := dist
 
 INCLUDE := README.md .npmignore .gitignore src/locales
 
-.PHONY: clean build build-storybook publish
+.PHONY: default clean build build-storybook publish
+
+default:
 
 clean:
 	rm -Rf $(BUILD) || true

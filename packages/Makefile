@@ -4,7 +4,9 @@ TARGETS := $(shell node ../scripts/listPackages.js --one-line)
 PUBLISH_PREFIX := publish--
 PUBLISH_TARGETS := $(foreach NAME,$(TARGETS),"$(PUBLISH_PREFIX)$(NAME)")
 
-.PHONY: build publish $(TARGETS) $(PUBLISH_TARGETS)
+.PHONY: default build publish $(TARGETS) $(PUBLISH_TARGETS)
+
+default:
 
 $(TARGETS):
 	@echo "Building NPM package '$@'"
@@ -20,7 +22,7 @@ $(PUBLISH_TARGETS):
 	$(eval CURRENT_VERSION := $(shell cd $(PACKAGE) && npm pkg get version | sed 's/"//g'))
 	$(eval LATEST_VERSION := $(shell npm show $(PACKAGE) version))
 
-	@if [ "$(CURRENT_VERSION)" = "$(LATEST_VERSION)" ]; then \
+	@if [[ "$(CURRENT_VERSION)" = "$(LATEST_VERSION)" ]]; then \
 		echo "A version '$(CURRENT_VERSION)' of NPM package '$(PACKAGE)' is already published. Skipping..."; \
 	else \
 		cd $(PACKAGE) && \
