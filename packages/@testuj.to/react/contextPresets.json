@@ -1,112 +1,129 @@
-[{
+[
+  {
     "name": "[Local] Default",
     "auth": {
-        "baseUrl": "http://localhost:8081"
+      "baseUrl": "http://localhost:8081"
     },
     "api": {
-        "baseUrl": "http://localhost:8080"
+      "baseUrl": "http://localhost:8080"
     },
     "theme": {
-        "logo": {},
-        "colorScheme": {
-            "primary": "#30A9D4",
-            "secondary": "#FF7A04",
-            "text": "#000000",
-            "link": "#30A9D4",
-            "button": "#ffffff",
-            "buttonBg": "#30A9D4",
-            "error": "#e84118",
-            "categoriesBg": "#000000"
-        },
-        "fontFamily": {
-            "text": "Bitter, sans-serif",
-            "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
-            "imports": [{
-                "name": "Bitter [Google Fonts]",
-                "statement": "@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');"
-            }, {
-                "name": "Montserrat [Google Fonts]",
-                "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
-            }],
-            "fontFaces": []
-        }
+      "logo": {},
+      "colorScheme": {
+        "primary": "#30A9D4",
+        "secondary": "#FF7A04",
+        "text": "#000000",
+        "link": "#30A9D4",
+        "button": "#ffffff",
+        "buttonBg": "#30A9D4",
+        "error": "#e84118",
+        "categoriesBg": "#000000"
+      },
+      "fontFamily": {
+        "text": "Bitter, sans-serif",
+        "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
+        "imports": [
+          {
+            "name": "Bitter [Google Fonts]",
+            "statement": "@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');"
+          },
+          {
+            "name": "Montserrat [Google Fonts]",
+            "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
+          }
+        ],
+        "fontFaces": [],
+        "borderRadius": "10px"
+      }
     }
-}, {
+  },
+  {
     "name": "[Local] Bright purple",
     "auth": {
-        "baseUrl": "http://localhost:8081"
+      "baseUrl": "http://localhost:8081"
     },
     "api": {
-        "baseUrl": "http://localhost:8080"
+      "baseUrl": "http://localhost:8080"
     },
     "theme": {
-        "logo": {},
-        "colorScheme": {
-            "primary": "#b519ff",
-            "secondary": "#FF7A04",
-            "text": "#000000",
-            "link": "#b519ff",
-            "button": "#ffffff",
-            "buttonBg": "#b519ff",
-            "error": "#e84118",
-            "categoriesBg": "#000000"
-        },
-        "fontFamily": {
-            "text": "Graphite, sans-serif",
-            "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
-            "imports": [{
-                "name": "Montserrat [Google Fonts]",
-                "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
-            }],
-            "fontFaces": [{
-                "family": "Graphite",
-                "style": "normal",
-                "weight": "400",
-                "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.woff\") format(\"woff\")"
-            }, {
-                "family": "Graphite",
-                "style": "normal",
-                "weight": "bold",
-                "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.woff\") format(\"woff\")"
-            }, {
-                "family": "Graphite",
-                "style": "normal",
-                "weight": "900",
-                "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.woff\") format(\"woff\")"
-            }]
-        }
+      "logo": {},
+      "colorScheme": {
+        "primary": "#b519ff",
+        "secondary": "#FF7A04",
+        "text": "#000000",
+        "link": "#b519ff",
+        "button": "#ffffff",
+        "buttonBg": "#b519ff",
+        "error": "#e84118",
+        "categoriesBg": "#000000"
+      },
+      "fontFamily": {
+        "text": "Graphite, sans-serif",
+        "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
+        "imports": [
+          {
+            "name": "Montserrat [Google Fonts]",
+            "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
+          }
+        ],
+        "fontFaces": [
+          {
+            "family": "Graphite",
+            "style": "normal",
+            "weight": "400",
+            "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Regular.woff\") format(\"woff\")"
+          },
+          {
+            "family": "Graphite",
+            "style": "normal",
+            "weight": "bold",
+            "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Bold.woff\") format(\"woff\")"
+          },
+          {
+            "family": "Graphite",
+            "style": "normal",
+            "weight": "900",
+            "src": "local(OpenSans),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.eot\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.ttf\") format(\"truetype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://testovani.testfluenceri.cz/static/fonts/services/testfluenceri/Graphit-Black.woff\") format(\"woff\")"
+          }
+        ]
+      }
     }
-}, {
+  },
+  {
     "name": "[Local] Purple",
     "auth": {
-        "baseUrl": "http://localhost:8081"
+      "baseUrl": "http://localhost:8081"
     },
     "api": {
-        "baseUrl": "http://localhost:8080"
+      "baseUrl": "http://localhost:8080"
     },
     "theme": {
-        "logo": {},
-        "colorScheme": {
-            "primary": "#a5668e",
-            "secondary": "#323332",
-            "text": "#525252",
-            "link": "#a5668e",
-            "button": "#ffffff",
-            "buttonBg": "#a5668e",
-            "error": "#e84118",
-            "categoriesBg": "#e49ef1"
-        },
-        "fontFamily": {
-            "text": "Bitter, sans-serif",
-            "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
-            "imports": [{
-                "name": "Bitter [Google Fonts]",
-                "statement": "@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');"
-            }, {
-                "name": "Montserrat [Google Fonts]",
-                "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
-            }],
-            "fontFaces": []
-        }
+      "logo": {},
+      "colorScheme": {
+        "primary": "#a5668e",
+        "secondary": "#323332",
+        "text": "#525252",
+        "link": "#a5668e",
+        "button": "#ffffff",
+        "buttonBg": "#a5668e",
+        "error": "#e84118",
+        "categoriesBg": "#e49ef1"
+      },
+      "fontFamily": {
+        "text": "Bitter, sans-serif",
+        "heading": "Montserrat, \"Open Sans\", Verdana, sans-serif",
+        "imports": [
+          {
+            "name": "Bitter [Google Fonts]",
+            "statement": "@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;700&display=swap');"
+          },
+          {
+            "name": "Montserrat [Google Fonts]",
+            "statement": "@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;700&display=swap');"
+          }
+        ],
+        "fontFaces": []
+      }
     }
-}]
+  }
+]

@@ -47,6 +47,8 @@ export const cssifyTheme = (theme: TenantTheme): ThemeCSS => {
             addVariable('--color-categories-bg', theme?.colorScheme?.categoriesBg)
             addVariable('--font-text',           theme?.fontFamily?.text)
             addVariable('--font-heading',        theme?.fontFamily?.heading)
+            addVariable('--border-radius',       theme?.borderRadius)
+
 
             return {
                 variables,
