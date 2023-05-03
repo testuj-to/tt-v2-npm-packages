@@ -4,7 +4,9 @@ DIST := dist
 
 INCLUDE := README.md .npmignore .gitignore
 
-.PHONY: clean build publish
+.PHONY: default clean build publish
+
+default:
 
 clean:
 	rm -Rf $(BUILD) || true
