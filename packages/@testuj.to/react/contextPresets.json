@@ -17,7 +17,11 @@
         "button": "#ffffff",
         "buttonBg": "#30A9D4",
         "error": "#e84118",
-        "categoriesBg": "#000000"
+        "categoriesBg": "#000000",
+        "buttonSecBg": "#ffffff",
+        "buttonSecText": "#000000",
+        "buttonSecBorder": "#DADEE2",
+        "buttonSecBorderHov": "#5f6163"
       },
       "fontFamily": {
         "text": "Bitter, sans-serif",
