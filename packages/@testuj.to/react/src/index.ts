@@ -75,6 +75,22 @@ export {
 export { cssifyTheme } from './utils/cssifyTheme'
 
 export {
+    type AccordionProps,
+    Accordion,
+} from './components/Accordion'
+export {
+    type AlertProps,
+    Alert,
+} from './components/Alert'
+export {
+    type SliderProps,
+    Slider,
+} from './components/Slider'
+export {
+    type StarsRatingProps,
+    StarsRating,
+} from './components/StarsRating'
+export {
     type BoxProps,
     Box,
 } from './components/Box'
