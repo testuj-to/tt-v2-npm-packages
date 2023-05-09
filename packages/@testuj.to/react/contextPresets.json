@@ -21,7 +21,8 @@
         "buttonSecBg": "#ffffff",
         "buttonSecText": "#000000",
         "buttonSecBorder": "#DADEE2",
-        "buttonSecBorderHov": "#5f6163"
+        "buttonSecBorderHov": "#5f6163",
+        "border": "#DADEE2"
       },
       "fontFamily": {
         "text": "Bitter, sans-serif",

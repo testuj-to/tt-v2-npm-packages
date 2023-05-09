@@ -46,6 +46,7 @@ export const cssifyTheme = (theme: TenantTheme): ThemeCSS => {
       addVariable("--color-button-secondary-text", theme?.colorScheme?.buttonSecText);
       addVariable("--color-button-secondary-border", theme?.colorScheme?.buttonSecBorder);
       addVariable("--color-button-secondary-border-hover", theme?.colorScheme?.buttonSecBorderHov);
+      addVariable("--color-border", theme?.colorScheme?.border);
       addVariable("--color-error", theme?.colorScheme?.error);
       addVariable("--color-categories-bg", theme?.colorScheme?.categoriesBg);
       addVariable("--font-text", theme?.fontFamily?.text);
