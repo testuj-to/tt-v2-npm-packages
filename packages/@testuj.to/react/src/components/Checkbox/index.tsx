@@ -6,7 +6,7 @@ import "./styles.css";
 
 export interface CheckboxProps {
   value: boolean;
-  label?: string;
+  label?: React.ReactNode;
   onChange?(value: boolean);
 }
 
