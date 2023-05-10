@@ -1,5 +1,5 @@
 
-import { type ReactNode, type ButtonHTMLAttributes } from 'react'
+import React, { type ReactNode, type ButtonHTMLAttributes } from 'react'
 // import PropTypes from 'prop-types'
 import cx from 'classnames'
 
@@ -10,14 +10,15 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children?: ReactNode
 }
 
-export const Button = ({ variant, ...rest }: ButtonProps) => {
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps >(({ variant, ...rest }, ref) => {
     return (
         <button
+            ref={ref}
             {...rest}
             className={cx('tt-button', variant, rest?.className)}
         />
     )
-}
+})
 
 // Button.propTypes = {
 //     variant: PropTypes.oneOf([ 'primary', 'secondary' ]),
