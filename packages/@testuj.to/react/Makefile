@@ -10,7 +10,7 @@ clean:
 	rm -Rf $(BUILD) || true
 	rm -Rf $(DIST) || true
 
-build: 
+build: clean
 	npm i
 
 	npm run build:ts
