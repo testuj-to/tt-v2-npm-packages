@@ -1,22 +1,33 @@
-
 .tt-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: 4px;
-    padding: 0 15px;
-    font-size: 15px;
-    line-height: 1;
-    font-weight: 500;
-    height: 35px;
-    cursor: pointer;
-    color: var(--color-button);
-    background-color: var(--color-button-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  padding: 0 15px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 600;
+  height: 40px;
+  cursor: pointer;
+  color: var(--color-button);
+  background-color: var(--color-button-bg);
+  transition: all 0.2s;
 }
 
 .tt-button.primary {
 }
 
+.tt-button.primary:hover {
+  filter: brightness(1.1);
+}
+
 .tt-button.secondary {
+  background-color: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+  border: 1px solid var(--color-button-secondary-border);
+}
+
+.tt-button.secondary:hover {
+  border: 1px solid var(--color-button-secondary-border-hover);
 }

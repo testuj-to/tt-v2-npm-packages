@@ -1,17 +1,21 @@
-
 .tt-input {
-    width: 100%;
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
-    padding: 0 10px;
-    font-size: 15px;
-    line-height: 1;
-    height: 35px;
-    color: var(--color-text);
-    box-shadow: 0 0 0 1px var(--color-primary);
+  width: 100%;
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  padding: 0 1rem;
+  font-size: 15px;
+  line-height: 1;
+  height: 2.6rem;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  outline: none;
+}
+
+.tt-input:focus {
+  border: 2px solid var(--color-border);
 }
 
 /* .Input {
