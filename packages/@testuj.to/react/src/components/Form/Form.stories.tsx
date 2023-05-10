@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof Form>;
 
 const formStory: ComponentStory<typeof Form> = (args) => (
-  <Form {...args}>
+  <Form.Root >
     <Form.Field className="FormField" name="email">
       <div style={{ display: "flex", alignItems: "baseline", justifyContent: "space-between" }}>
         <Form.Label className="FormLabel">Email</Form.Label>
@@ -44,7 +44,7 @@ const formStory: ComponentStory<typeof Form> = (args) => (
         Post question
       </button>
     </Form.Submit>
-  </Form>
+  </Form.Root>
 );
 
 export const FormStory = formStory.bind({});

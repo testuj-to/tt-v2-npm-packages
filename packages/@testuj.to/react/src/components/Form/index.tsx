@@ -2,14 +2,23 @@ import * as RadixForm from "@radix-ui/react-form";
 import cx from "classnames";
 
 import "./styles.css";
+import React from "react";
 
 export interface FormProps extends RadixForm.FormProps {
   children: React.ReactNode;
 }
 
-export const Form = ({ children, ...rest }: FormProps) => {
-  return <RadixForm.Root {...rest}>{children}</RadixForm.Root>;
-};
+export const Form = () => null;
+
+Form.Root = React.forwardRef<HTMLFormElement, FormProps>(
+  ({ children, ...rest }: FormProps, ref) => {
+    return (
+      <RadixForm.Root ref={ref} {...rest}>
+        {children}
+      </RadixForm.Root>
+    );
+  }
+);
 
 Form.Field = RadixForm.Field;
 
