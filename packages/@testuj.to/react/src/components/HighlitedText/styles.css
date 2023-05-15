@@ -4,7 +4,6 @@
 
 .highlited::after {
   content: "";
-  width: 110%;
   height: 17px;
   background-color: var(--color-primary);
   opacity: 0.2;
@@ -12,5 +11,6 @@
   margin-top: 1rem;
   position: absolute;
   bottom: 0;
-  left: -5%;
+  left: -0.5rem;
+  right: -0.5rem;
 }
