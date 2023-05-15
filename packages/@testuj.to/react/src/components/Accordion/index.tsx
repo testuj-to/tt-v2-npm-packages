@@ -1,6 +1,7 @@
 import React from "react";
 import cx from "classnames";
 import * as RadixAccordion from "@radix-ui/react-accordion";
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 import "./styles.css";
 
@@ -56,7 +57,7 @@ const AccordionTrigger = React.forwardRef(
         ref={forwardedRef}
       >
         {children}
-        {/* <ChevronDownIcon className="AccordionChevron" aria-hidden /> */}
+        <ChevronDownIcon className="tt-accordion-chevron" aria-hidden />
       </RadixAccordion.Trigger>
     </RadixAccordion.Header>
   )
