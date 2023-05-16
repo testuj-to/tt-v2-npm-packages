@@ -1,15 +1,10 @@
 {
-    "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./build",
-        "declarationDir": "./build/typings",
-        "jsx": "react-jsx"
-    },
-    "include": [
-        "./src"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/__tests__/*"
-    ]
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "declarationDir": "./build/typings",
+    "jsx": "react-jsx"
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", "**/__tests__/*"]
 }

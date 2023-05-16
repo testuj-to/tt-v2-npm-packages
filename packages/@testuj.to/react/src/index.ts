@@ -119,6 +119,10 @@ export {
     FormItem,
 } from './components/FormItem'
 export {
+    type HighlitedTextProps,
+    HighlitedText,
+} from './components/HighlitedText'
+export {
     type InputProps,
     Input,
 } from './components/Input'
