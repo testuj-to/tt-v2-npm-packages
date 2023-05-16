@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useId, useState } from "react";
 import { Root, Indicator } from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 
@@ -11,8 +11,7 @@ export interface CheckboxProps {
 }
 
 export const Checkbox = ({ value, label, onChange }: CheckboxProps) => {
-  const [id] = useState(Math.random().toString(36).substring(2));
-
+  const id = useId();
   const handleChange = useCallback(
     (isChecked: boolean | string) => {
       if (typeof onChange === "function") {
