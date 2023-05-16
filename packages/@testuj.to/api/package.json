@@ -1,22 +1,22 @@
 {
-    "name": "@testuj.to/api",
-    "version": "0.0.19",
-    "description": "",
-    "license": "MIT",
-    "author": {
-        "name": "Testuj.to s.r.o.",
-        "email": "technology@testuj.to"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/testuj-to/tt-v2-npm-packages"
-    },
-    "types": "./index.d.ts",
-    "browser": "./umd/index.js",
-    "main": "./cjs/index.js",
-    "module": "./esm/index.js",
-    "scripts": {
-        "build:ts": "tsc",
-        "build:bundle": "rollup --config"
-    }
+  "name": "@testuj.to/api",
+  "version": "0.0.22",
+  "description": "",
+  "license": "MIT",
+  "author": {
+    "name": "Testuj.to s.r.o.",
+    "email": "technology@testuj.to"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/testuj-to/tt-v2-npm-packages"
+  },
+  "types": "./index.d.ts",
+  "browser": "./umd/index.js",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "scripts": {
+    "build:ts": "tsc",
+    "build:bundle": "rollup --config"
+  }
 }
