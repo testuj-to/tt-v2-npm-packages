@@ -18,6 +18,12 @@
   border: 2px solid var(--color-border);
 }
 
+.tt-input-dark {
+  background-color: #f0f2f4;
+  border-radius: 8px;
+  border: none;
+}
+
 /* .Input {
     width: 100%;
     flex: 1;
