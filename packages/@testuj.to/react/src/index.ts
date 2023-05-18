@@ -131,6 +131,10 @@ export {
     InputPassword,
 } from './components/InputPassword'
 export {
+    type ProductCardProps,
+    ProductCard,
+} from './components/ProductCard'
+export {
     type RadioGroupProps,
     RadioGroup,
 } from './components/RadioGroup'
