@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  max-width: 100%;
 }
 
 .tt-product-card-main {
@@ -15,6 +16,7 @@
   overflow: hidden;
   padding: 1rem;
   box-sizing: border-box;
+  max-width: 100%;
 }
 
 .tt-product-card-image {
