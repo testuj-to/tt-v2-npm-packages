@@ -2,7 +2,6 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import cx from "classnames";
 
 import "./styles.css";
-import { Checkbox } from "../Checkbox";
 
 export interface DropdownProps {
   trigger: React.ReactNode;
