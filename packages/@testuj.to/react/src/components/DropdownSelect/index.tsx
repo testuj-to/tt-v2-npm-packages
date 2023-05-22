@@ -5,7 +5,6 @@ import "./styles.css";
 import { useState } from "react";
 import {
   CheckIcon,
-  ChevronDownIcon,
   TriangleDownIcon,
   TriangleUpIcon,
 } from "@radix-ui/react-icons";
@@ -18,8 +17,6 @@ export interface SelectItem {
 export interface DropdownSelectProps {
   triggerLabel: string;
   items: SelectItem[];
-  onItemSelect?: (item: SelectItem) => void;
-  onItemDeselect?: (item: SelectItem) => void;
   onSelectionChange?: (items: SelectItem[]) => void;
 }
 

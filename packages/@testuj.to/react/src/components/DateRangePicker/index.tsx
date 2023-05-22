@@ -3,6 +3,7 @@ import DatePicker, { Locale } from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
+import { CalendarIcon } from "@radix-ui/react-icons";
 
 export interface DateRangePickerProps {
   onChange: (dateRange: [Date | null, Date | null]) => void;
@@ -72,7 +73,6 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
   return (
     <div className="tt-datePicker-wrapper" style={{ margin: margin }}>
-      {/* <img src={getIconPath("dashboard_active")} alt="" className={styles.icon} /> */}
       <DatePicker
         selectsRange
         startDate={startDate}
@@ -80,8 +80,9 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
         onChange={onChangeSelection}
         dateFormat="dd.MM.yyyy"
         todayButton={translationFunciton("time.today")}
-        // locale={locale}
+        locale={locale}
       />
+      <CalendarIcon className="tt-datePicker-icon" />
     </div>
   );
 };
