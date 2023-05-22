@@ -23,5 +23,6 @@ DropdownSelectStory.args = {
     { label: "Item 2", value: "item-2" },
     { label: "Item 3", value: "item-3" },
     { label: "Item 4", value: "item-4" },
-  ]
+  ],
+  triggerLabel: "Trigger",
 };
