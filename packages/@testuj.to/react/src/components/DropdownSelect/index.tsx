@@ -57,7 +57,9 @@ export const DropdownSelect = ({
       <DropdownMenu.Trigger asChild>
         <button className="tt-dropdownSelect-trigger" aria-label="Customise options">
           {triggerLabel}
-          <div className="tt-dropdownSelect-counter">{selectedItems.length}</div>
+          {selectedItems.length ? (
+            <div className="tt-dropdownSelect-counter">{selectedItems.length}</div>
+          ) : null}
           {isOpen ? (
             <TriangleUpIcon className="tt-dropdownSelect-trigger-icon" />
           ) : (
@@ -67,7 +69,12 @@ export const DropdownSelect = ({
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className="tt-dropdownSelect-content" sideOffset={5} loop>
+        <DropdownMenu.Content
+          className="tt-dropdownSelect-content"
+          align="start"
+          sideOffset={5}
+          loop
+        >
           {items?.map((item: SelectItem) => (
             <DropdownMenu.CheckboxItem
               key={item.value}

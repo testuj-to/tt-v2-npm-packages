@@ -111,6 +111,10 @@ export {
     Dropdown,
 } from './components/Dropdown'
 export {
+    type DropdownSelectProps,
+    DropdownSelect,
+} from './components/DropdownSelect'
+export {
     type FormProps,
     Form,
 } from './components/Form'

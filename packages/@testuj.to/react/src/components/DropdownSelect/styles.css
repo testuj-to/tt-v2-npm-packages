@@ -17,6 +17,7 @@ button {
   box-shadow: 0px 2px 8px #0000001f;
   border-radius: 8px;
   padding: 1.2rem;
+  background-color: #fff;
 }
 
 .tt-dropdownSelect-item {
@@ -60,14 +61,19 @@ button {
   background-color: var(--color-text);
   top: -2px;
   left: -2px;
-  width: 100%;
-  height: 100%;
+  right: -2px;
+  bottom: -2px;
   border: 2px solid var(--color-text);
   border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tt-dropdownSelect-checkbox-icon {
   color: white;
+  height: 1.2rem;
+  width: 1.2rem;
 }
 
 @keyframes slideUpAndFade {
