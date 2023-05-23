@@ -20,7 +20,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   translationFunciton,
 }) => {
   const [startDate, setStartDate] = useState(dateRange[0] || new Date());
-  const [endDate, setEndDate] = useState(dateRange[1] || new Date());
+  const [endDate, setEndDate] = useState(dateRange[1] || null);
   const onChangeSelection = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -72,18 +72,23 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
     };
   }, [translationFunciton]);
 
-  return (
-    <div className={cx("tt-datePicker-wrapper", className)}>
-      <DatePicker
-        selectsRange
-        startDate={startDate}
-        endDate={endDate}
-        onChange={onChangeSelection}
-        dateFormat="dd.MM.yyyy"
-        todayButton={translationFunciton("time.today")}
-        locale={locale}
-      />
+  const CustomInput = ({ value, onClick }) => (
+    <div className={cx("tt-datePicker-input", className)} onClick={onClick}>
+      {value}
       <CalendarIcon className="tt-datePicker-icon" />
     </div>
+  );
+
+  return (
+    <DatePicker
+      selectsRange
+      startDate={startDate}
+      endDate={endDate}
+      onChange={onChangeSelection}
+      dateFormat="dd.MM.yyyy"
+      todayButton={translationFunciton("time.today")}
+      locale={locale}
+      customInput={<CustomInput value={undefined} onClick={undefined} />}
+    />
   );
 };
