@@ -23,8 +23,6 @@ export interface DropdownSelectProps {
 export const DropdownSelect = ({
   triggerLabel,
   items,
-  onItemSelect,
-  onItemDeselect,
   onSelectionChange,
 }) => {
   const [selectedItems, setSelectedItems] = useState<SelectItem[]>([]);
@@ -39,10 +37,8 @@ export const DropdownSelect = ({
 
     if (itemIndex === -1) {
       newSelectedItems.push(item);
-      onItemSelect?.(item);
     } else {
       newSelectedItems.splice(itemIndex, 1);
-      onItemDeselect?.(item);
     }
 
     setSelectedItems(newSelectedItems);
