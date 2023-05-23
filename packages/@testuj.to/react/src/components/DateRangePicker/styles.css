@@ -1,5 +1,6 @@
 .react-datepicker-wrapper {
   position: relative;
+  width: auto;
 }
 
 .react-datepicker-wrapper input {
@@ -26,6 +27,10 @@
 }
 .react-datepicker__triangle {
   display: none;
+}
+
+.react-datepicker__input-container {
+  width: auto;
 }
 
 .react-datepicker__month-container {
