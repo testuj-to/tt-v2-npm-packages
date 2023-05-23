@@ -4,6 +4,16 @@
   color: #fff;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
+  width: auto;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tt-tag-white {
+  background-color: #fff;
+  color: var(--color-text);
 }
 
 .tt-tag-primary {
