@@ -3,11 +3,7 @@ import cx from "classnames";
 
 import "./styles.css";
 import { useState } from "react";
-import {
-  CheckIcon,
-  TriangleDownIcon,
-  TriangleUpIcon,
-} from "@radix-ui/react-icons";
+import { CheckIcon, TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons";
 
 export interface SelectItem {
   label: string;
@@ -18,13 +14,15 @@ export interface DropdownSelectProps {
   triggerLabel: string;
   items: SelectItem[];
   onSelectionChange?: (items: SelectItem[]) => void;
+  className?: string;
 }
 
 export const DropdownSelect = ({
   triggerLabel,
   items,
   onSelectionChange,
-}) => {
+  className,
+}: DropdownSelectProps) => {
   const [selectedItems, setSelectedItems] = useState<SelectItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,7 +45,7 @@ export const DropdownSelect = ({
 
   return (
     <DropdownMenu.Root onOpenChange={(e) => setIsOpen(e)}>
-      <DropdownMenu.Trigger asChild>
+      <DropdownMenu.Trigger asChild className={className}>
         <button className="tt-dropdownSelect-trigger" aria-label="Customise options">
           {triggerLabel}
           {selectedItems.length ? (
