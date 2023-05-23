@@ -159,12 +159,12 @@
 
 .react-datepicker__day--range-start {
   color: white;
+  z-index: 2;
 }
 
-.react-datepicker__day--range-start::after {
+.react-datepicker__day--range-start::before{
   content: "";
   background-color: black;
-  color: white;
   position: absolute;
   top: 0;
   left: 0;
@@ -176,6 +176,7 @@
 
 .react-datepicker__day--range-end {
   color: white;
+  z-index: 2;
 }
 
 .react-datepicker__day--range-end::after {
