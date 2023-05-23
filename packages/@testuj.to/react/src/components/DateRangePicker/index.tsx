@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from "react";
 import DatePicker, { Locale } from "react-datepicker";
+import cx from "classnames";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
@@ -8,18 +9,18 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 export interface DateRangePickerProps {
   onChange: (dateRange: [Date | null, Date | null]) => void;
   dateRange: [Date | null, Date | null];
-  margin?: string;
   translationFunciton: (key: string) => string;
+  className?: string;
 }
 
 export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   onChange,
   dateRange,
-  margin,
+  className,
   translationFunciton,
 }) => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(dateRange[0] || new Date());
+  const [endDate, setEndDate] = useState(dateRange[1] || new Date());
   const onChangeSelection = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -72,7 +73,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
   }, [translationFunciton]);
 
   return (
-    <div className="tt-datePicker-wrapper" style={{ margin: margin }}>
+    <div className={cx("tt-datePicker-wrapper", className)}>
       <DatePicker
         selectsRange
         startDate={startDate}
