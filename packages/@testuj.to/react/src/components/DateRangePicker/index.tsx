@@ -74,7 +74,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
 
   const CustomInput = React.forwardRef<HTMLDivElement, { value: string }>(
     ({ value, ...props }, ref) => (
-      <div className={cx("tt-datePicker-input", className)} {...props} ref={ref}>
+      <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
         {value}
         <CalendarIcon className="tt-datePicker-icon" />
       </div>
