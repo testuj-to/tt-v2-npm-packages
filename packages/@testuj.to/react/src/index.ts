@@ -107,6 +107,10 @@ export {
     Checkbox,
 } from './components/Checkbox'
 export {
+    type DateRangePickerProps,
+    DateRangePicker,
+} from "./components/DateRangePicker";
+export {
     type DropdownProps,
     Dropdown,
 } from './components/Dropdown'
