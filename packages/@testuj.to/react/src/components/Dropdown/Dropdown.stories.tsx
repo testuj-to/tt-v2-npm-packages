@@ -20,4 +20,9 @@ const dropdownStory: ComponentStory<typeof Dropdown> = args => (
 )
 
 export const DropdownStory = dropdownStory.bind({})
-DropdownStory.args = {}
+DropdownStory.args = {
+    trigger: <div>Trigger</div>,
+    items: ['Item 1', 'Item 2', 'Item 3'],
+    onItemSelect: (item: string) => console.log(item),
+    
+}
