@@ -72,11 +72,13 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
     };
   }, [translationFunciton]);
 
-  const CustomInput = ({ value, onClick }) => (
-    <div className={cx("tt-datePicker-input", className)} onClick={onClick}>
-      {value}
-      <CalendarIcon className="tt-datePicker-icon" />
-    </div>
+  const CustomInput = React.forwardRef<HTMLDivElement, { value: string }>(
+    ({ value, ...props }, ref) => (
+      <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
+        {value}
+        <CalendarIcon className="tt-datePicker-icon" />
+      </div>
+    )
   );
 
   return (
@@ -88,7 +90,7 @@ export const DateRangePicker: React.FC<DateRangePickerProps> = ({
       dateFormat="dd.MM.yyyy"
       todayButton={translationFunciton("time.today")}
       locale={locale}
-      customInput={<CustomInput value={undefined} onClick={undefined} />}
+      customInput={<CustomInput value={undefined} />}
     />
   );
 };

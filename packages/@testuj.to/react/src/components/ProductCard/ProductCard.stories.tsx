@@ -31,4 +31,5 @@ Basic.args = {
       color: "#FFC107",
     },
   ],
+  onClick: () => console.log("Product card clicked"),
 };

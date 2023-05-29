@@ -8,9 +8,10 @@ import { WarningIcon } from "./Icons/Warning";
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   variant?: "info" | "success" | "warning" | "error";
+  className?: string;
 }
 
-export const Alert = ({ children, variant }) => {
+export const Alert = ({ children, variant, className }: AlertProps) => {
   const chooseIcon = () => {
     switch (variant) {
       case "info":
@@ -27,7 +28,7 @@ export const Alert = ({ children, variant }) => {
   };
 
   return (
-    <div className={cx("tt-alert", `tt-alert-${variant}`)}>
+    <div className={cx("tt-alert", `tt-alert-${variant}`, className)}>
       {chooseIcon()}
       {children}
     </div>
