@@ -103,6 +103,10 @@ export {
     Card,
 } from './components/Card'
 export {
+    type CarouselProps,
+    Carousel,
+} from "./components/Carousel"
+export {
     type CheckboxProps,
     Checkbox,
 } from './components/Checkbox'
