@@ -151,9 +151,9 @@ export {
     RadioGroup,
 } from './components/RadioGroup'
 export {
-    type RichTextEditorProps,
-    RichTextEditor,
-} from "./components/RichTextEditor";
+    type RichTextReaderProps,
+    RichTextReader,
+} from "./components/RichTextReader";
 export {
     type SelectProps,
     Select,
