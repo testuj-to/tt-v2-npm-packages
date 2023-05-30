@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState } from "react";
 import cx from "classnames";
 import "./styles.css";
 
@@ -60,10 +60,12 @@ export interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> 
   className?: string;
 }
 
-const CarouselItem = ({ children, className, ...props }) => {
-  return (
-    <div className={cx("tt-carousel-item", className)} {...props}>
-      {children}
-    </div>
-  );
-};
+const CarouselItem = forwardRef<HTMLDivElement, { children: React.ReactNode; className: string }>(
+  ({ children, className }, ref) => {
+    return (
+      <div className={cx("tt-carousel-item", className)} {...ref}>
+        {children}
+      </div>
+    );
+  }
+);
