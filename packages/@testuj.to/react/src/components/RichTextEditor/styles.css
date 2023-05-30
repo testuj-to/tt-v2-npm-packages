@@ -1,0 +1,36 @@
+
+.richtext-block {}
+
+.richtext-block-unstyled {}
+
+.richtext-block-header-one {}
+.richtext-block-header-two {}
+.richtext-block-header-three {}
+.richtext-block-header-four {}
+.richtext-block-header-five {}
+.richtext-block-header-six {}
+
+.richtext-block-unordered-list-item {}
+.richtext-block-ordered-list-item {}
+.richtext-block-code-block {}
+.richtext-block-blockquote {}
+
+.richtext-block-align-left,
+.richtext-block-align-left > div {
+    text-align: left;
+}
+
+.richtext-block-align-center,
+.richtext-block-align-center > div {
+    text-align: center;
+}
+
+.richtext-block-align-right,
+.richtext-block-align-right > div {
+    text-align: right;
+}
+
+.richtext-block-align-justify,
+.richtext-block-align-justify > div {
+    text-align: justify;
+}

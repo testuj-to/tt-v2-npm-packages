@@ -2,6 +2,10 @@
   margin: 0 1rem;
 }
 
+.tt-carousel-item:first-child {
+  margin-left: 0;
+}
+
 .tt-carousel-wrapper-inner {
   display: flex;
   align-items: center;
