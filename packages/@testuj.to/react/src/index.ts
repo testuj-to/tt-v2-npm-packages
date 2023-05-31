@@ -99,6 +99,10 @@ export {
     Button,
 } from './components/Button'
 export {
+    type CampaignHeroSectionProps,
+    CampaignHeroSection,
+} from "./components/CampaignHeroSection";
+export {
     type CardProps,
     Card,
 } from './components/Card'
