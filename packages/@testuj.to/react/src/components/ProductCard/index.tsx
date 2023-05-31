@@ -8,11 +8,16 @@ export interface ProductCardProps {
   label: string;
   tags: ProductCardTagProps[];
   onClick?: () => void;
+  onDoubleClick?: () => void;
 }
 
-export const ProductCard = ({ image, label, tags, onClick }: ProductCardProps) => {
+export const ProductCard = ({ image, label, tags, onClick, onDoubleClick }: ProductCardProps) => {
   return (
-    <div className="tt-product-card-warpper" onClick={() => onClick?.()}>
+    <div
+      className="tt-product-card-warpper"
+      onClick={() => onClick?.()}
+      onDoubleClick={() => onDoubleClick?.()}
+    >
       <div className="tt-product-card-main">
         <div className="tt-product-card-image">{image}</div>
         <div className="tt-product-card-tags">

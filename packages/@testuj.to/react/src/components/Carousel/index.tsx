@@ -1,11 +1,14 @@
-import { useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState } from "react";
+import cx from "classnames";
 import "./styles.css";
 
 export interface CarouselProps {
   items: React.ReactNode[];
+  wrapperClassName?: string;
+  itemClassName?: string;
 }
 
-export const Carousel = ({ items }: CarouselProps) => {
+export const Carousel = ({ items, wrapperClassName, itemClassName }: CarouselProps) => {
   const [translateX, setTranslateX] = useState(0);
 
   const handleHorizontalGrab = useCallback(
@@ -34,14 +37,18 @@ export const Carousel = ({ items }: CarouselProps) => {
   const transform = `translateX(${translateX}px)`;
 
   return (
-    <div className="tt-carousel-wrapper">
+    <div className={cx("tt-carousel-wrapper", wrapperClassName)}>
       <div
         className="tt-carousel-wrapper-inner"
         onMouseDown={handleHorizontalGrab}
         style={{ transform }}
       >
         {items?.map((item, index) => {
-          return <CarouselItem key={index}>{item}</CarouselItem>;
+          return (
+            <CarouselItem key={index} className={itemClassName}>
+              {item}
+            </CarouselItem>
+          );
         })}
       </div>
     </div>
@@ -50,12 +57,15 @@ export const Carousel = ({ items }: CarouselProps) => {
 
 export interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
+  className?: string;
 }
 
-const CarouselItem = ({ children, ...props }) => {
-  return (
-    <div className="tt-carousel-item" {...props}>
-      {children}
-    </div>
-  );
-};
+const CarouselItem = forwardRef<HTMLDivElement, { children: React.ReactNode; className: string }>(
+  ({ children, className }, ref) => {
+    return (
+      <div className={cx("tt-carousel-item", className)} {...ref}>
+        {children}
+      </div>
+    );
+  }
+);
