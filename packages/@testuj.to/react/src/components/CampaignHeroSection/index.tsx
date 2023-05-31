@@ -12,6 +12,7 @@ export interface CampaignHeroSectionProps {
   image?: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
   className?: string;
   t: (key: string) => string;
+  onClickButton?: () => void;
 }
 
 export const CampaignHeroSection = ({
@@ -19,6 +20,7 @@ export const CampaignHeroSection = ({
   image,
   className,
   t,
+  onClickButton,
 }: CampaignHeroSectionProps) => {
   return (
     <section className={cx("tt-campaign-hero-section", className)}>
@@ -41,7 +43,11 @@ export const CampaignHeroSection = ({
         <Alert variant="error" hideIcon className="tt-campaign-hero-section-alert">
           Neváhejte s přihlášením! Končí 20. 4. 2023
         </Alert>
-        <Button variant="primary" className="tt-campaign-hero-section-button">
+        <Button
+          variant="primary"
+          className="tt-campaign-hero-section-button"
+          onClick={onClickButton}
+        >
           {t("Přihlásit se")}
         </Button>
       </div>
