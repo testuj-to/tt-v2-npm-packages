@@ -147,6 +147,10 @@ export {
     InputPassword,
 } from './components/InputPassword'
 export {
+    type LikeButtonProps,
+    LikeButton,
+} from './components/LikeButton'
+export {
     type ProductCardProps,
     ProductCard,
 } from './components/ProductCard'
