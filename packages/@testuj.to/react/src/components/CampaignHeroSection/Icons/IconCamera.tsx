@@ -1,6 +1,6 @@
 import { IconProps } from ".";
 
-export const IconsCamera = ({ ...props }: IconProps) => {
+export const IconCamera = ({ ...props }: IconProps) => {
   return (
     <svg
       id="icoCamera"

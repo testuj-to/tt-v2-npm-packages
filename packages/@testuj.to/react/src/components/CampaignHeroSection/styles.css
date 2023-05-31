@@ -1,14 +1,53 @@
 .tt-campaign-hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  min-width: 1200px;
+  max-height: 340px;
+}
+
+.tt-campaign-hero-section h5 {
+  margin: 1rem 0 0.2rem 0;
 }
 
 .tt-campaign-hero-section-image {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tt-campaign-hero-section-image img {
+  width: 560px;
+  max-width: 100%;
+  object-fit: cover;
+  min-height: 340px;
 }
 
 .tt-campaign-hero-section-content {
+  padding: 3rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .tt-campaign-hero-section-title {
 }
 
 .tt-campaign-hero-section-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tt-campaign-hero-section-alert {
+  height: 1rem;
+  box-sizing: border-box;
+  margin: 1rem 0;
 }
