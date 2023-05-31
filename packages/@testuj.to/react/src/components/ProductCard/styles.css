@@ -3,6 +3,7 @@
   flex-direction: column;
   max-width: 100%;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .tt-product-card-main {
@@ -11,25 +12,24 @@
   justify-content: flex-end;
   position: relative;
   width: 384px;
-  height: 264px;
-  border-radius: 20px;
   overflow: hidden;
-  padding: 1rem;
   box-sizing: border-box;
   max-width: 100%;
+  height: auto;
+  aspect-ratio: 384/264;
 }
 
 .tt-product-card-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  border-radius: 20px;
   object-fit: cover;
   z-index: 0;
+  overflow: hidden;
 }
 
 .tt-product-card-tags {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
   z-index: 1;
   display: flex;
   flex-direction: row;

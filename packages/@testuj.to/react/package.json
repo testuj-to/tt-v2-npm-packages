@@ -23,7 +23,6 @@
     "docs:start": "npm run build:ts && NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 4000 --ci"
   },
   "dependencies": {
-    "@mantine/core": "^6.0.13",
     "@radix-ui/react-accordion": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.0.1",
     "@radix-ui/react-dropdown-menu": "^2.0.2",
