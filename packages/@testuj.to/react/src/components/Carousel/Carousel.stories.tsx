@@ -17,10 +17,25 @@ const carouselStoryTemplate: ComponentStory<typeof Carousel> = (args) => <Carous
 export const Basic = carouselStoryTemplate.bind({});
 Basic.args = {
   items: [
-    <div style={{ width: 200, height: 200, backgroundColor: "red" }} />,
-    <div style={{ width: 200, height: 200, backgroundColor: "blue" }} />,
-    <div style={{ width: 200, height: 200, backgroundColor: "green" }} />,
-    <div style={{ width: 200, height: 200, backgroundColor: "yellow" }} />,
-    <div style={{ width: 200, height: 200, backgroundColor: "purple" }} />,
+    <div
+      style={{ width: 200, height: 200, backgroundColor: "red" }}
+      onClick={() => console.log("clicked")}
+    />,
+    <div
+      style={{ width: 200, height: 200, backgroundColor: "blue" }}
+      onClick={() => console.log("clicked")}
+    />,
+    <div
+      style={{ width: 200, height: 200, backgroundColor: "green" }}
+      onClick={() => console.log("clicked")}
+    />,
+    <div
+      style={{ width: 200, height: 200, backgroundColor: "yellow" }}
+      onClick={() => console.log("clicked")}
+    />,
+    <div
+      style={{ width: 200, height: 200, backgroundColor: "purple" }}
+      onClick={() => console.log("clicked")}
+    />,
   ],
 };
