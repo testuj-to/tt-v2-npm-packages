@@ -16,11 +16,14 @@ export interface TimelineProps {
 }
 
 const calculateProgress = (steps: Step[], activeItem: number) => {
+  if (!activeItem) {
+    return 0;
+  }
   const step = steps[activeItem - 1];
   const stepIndex = steps.indexOf(step);
   const stepProgress = (100 / steps.length) * stepIndex;
   const stepProgressWithSub = stepProgress + 100 / steps.length / 2;
-  return stepProgressWithSub + stepProgress / 2;
+  return stepProgressWithSub + 100 / steps.length / 2;
 };
 
 export const Timeline = ({ steps, activeItem }: TimelineProps) => {
@@ -31,14 +34,19 @@ export const Timeline = ({ steps, activeItem }: TimelineProps) => {
   }, [activeItem]);
 
   return (
-    <div>
+    <div className="tt-timeline__wrapper">
+      <div className="tt-timeline__popup-wrapper" style={{ width: `${progress}%` }}>
+        <div className="tt-timeline__popup-anchor">
+          <div className="tt-timeline__popup">{steps[activeItem - 1]?.popup}</div>
+        </div>
+      </div>
+
       <div className="tt-timeline">
         <div className="tt-timeline__progress" style={{ width: `${progress}%` }} />
       </div>
       <div className="tt-timeline__steps">
         {steps.map((step, index) => (
           <div className="tt-timeline__step" key={index}>
-            {/* <div className="tt-timeline__step-popup">{step.popup}</div> */}
             <div
               className={cx("tt-timeline__step_indicator", {
                 ["active"]: activeItem - 1 >= index,
