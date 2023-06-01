@@ -37,22 +37,20 @@ export const Timeline = ({ steps, activeItem }: TimelineProps) => {
       </div>
       <div className="tt-timeline__steps">
         {steps.map((step, index) => (
-          <>
+          <div className="tt-timeline__step" key={index}>
             {/* <div className="tt-timeline__step-popup">{step.popup}</div> */}
-            <div className="tt-timeline__step" key={index}>
-              <div
-                className={cx("tt-timeline__step_indicator", {
-                  ["active"]: activeItem - 1 >= index,
-                })}
-              >
-                {activeItem - 1 >= index ? (
-                  <IconCheck className="tt-timeline__step_indicator-check" />
-                ) : null}
-              </div>
-              <div className="tt-timeline__step-label">{step.label}</div>
-              <div className="tt-timeline__step-sublabel">{step.subLabel}</div>
+            <div
+              className={cx("tt-timeline__step_indicator", {
+                ["active"]: activeItem - 1 >= index,
+              })}
+            >
+              {activeItem - 1 >= index ? (
+                <IconCheck className="tt-timeline__step_indicator-check" />
+              ) : null}
             </div>
-          </>
+            <div className="tt-timeline__step-label">{step.label}</div>
+            <div className="tt-timeline__step-sublabel">{step.subLabel}</div>
+          </div>
         ))}
       </div>
     </div>

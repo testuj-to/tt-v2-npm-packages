@@ -43,7 +43,7 @@ export const IconCamera = ({ ...props }: IconProps) => {
         transform="translate(2.25 4.25)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
         strokeWidth="1.5"
       />
     </svg>
