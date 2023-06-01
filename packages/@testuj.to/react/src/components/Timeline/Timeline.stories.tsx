@@ -20,32 +20,37 @@ const timelineStory: ComponentStory<typeof Timeline> = (args) => (
 
 export const TimelineStory = timelineStory.bind({});
 TimelineStory.args = {
-  activeItem: 1,
+  activeItem: 2,
   steps: [
     {
       label: "Začátek přihlašování",
-      subLabel: "6. 4. 2023",
+      subLabel: "10.5.2023",
       popup: "Probíhá přihlašování",
+      date: "10.05.2023",
     },
     {
       label: "Konec přihlašování",
-      subLabel: "20. 4. 2023",
+      subLabel: "20. 5. 2023",
       popup: "Produkty odeslány",
+      date: "20.05.2023",
     },
     {
       label: "Doručení produktů",
-      subLabel: "24. 4. 2023",
+      subLabel: "30. 5. 2023",
       popup: "Produkty doručeny",
+      date: "28.05.2023",
     },
     {
       label: "Doručení produktů",
-      subLabel: "28. 4. 2023",
+      subLabel: "2.6.2023",
       popup: "Produkty odeslány",
+      date: "02.06.2023",
     },
     {
       label: "Doručení produktů",
-      subLabel: "28. 4. 2023",
+      subLabel: "1. 7. 2023",
       popup: "Produkty odeslány",
+      date: "01.07.2023",
     },
   ],
 };
