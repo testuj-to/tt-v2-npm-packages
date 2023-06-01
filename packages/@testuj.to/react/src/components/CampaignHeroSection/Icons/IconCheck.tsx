@@ -32,7 +32,7 @@ export const IconCheck = ({ ...props }: IconProps) => {
         stroke="#0d1a33"
         strokeLinecap="round"
         strokeLinejoin="round"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
     </svg>
   );
