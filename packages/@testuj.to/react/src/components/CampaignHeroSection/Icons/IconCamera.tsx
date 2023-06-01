@@ -27,7 +27,7 @@ export const IconCamera = ({ ...props }: IconProps) => {
         transform="translate(8.5 9.499)"
         fill="none"
         stroke="#0d1a33"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         id="Path_6679"
@@ -44,7 +44,7 @@ export const IconCamera = ({ ...props }: IconProps) => {
         fill="none"
         stroke="#0d1a33"
         stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
     </svg>
   );

@@ -19,8 +19,8 @@ export const IconCheck = ({ ...props }: IconProps) => {
         transform="translate(2 2)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
       />
       <rect id="Rectangle_5041" data-name="Rectangle 5041" width="24" height="24" fill="none" />
       <path
@@ -30,8 +30,8 @@ export const IconCheck = ({ ...props }: IconProps) => {
         transform="translate(-1020.281 -380.014)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
         stroke-width="1.5"
       />
     </svg>

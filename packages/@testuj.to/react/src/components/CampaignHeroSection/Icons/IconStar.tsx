@@ -25,9 +25,9 @@ export const IconStar = ({ ...props }: IconProps) => {
         transform="translate(2.961 4.729)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
       />
     </svg>
   );
