@@ -21,7 +21,7 @@ export const IconHeart = ({ fill, ...props }: IconHeartProps) => {
         fill={fill || "none"}
         stroke="currentColor"
         strokeLinejoin="round"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
     </svg>
   );
