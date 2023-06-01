@@ -1,0 +1,73 @@
+.tt-timeline {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  height: 4px;
+  background-color: var(--color-border);
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.tt-timeline__progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--color-text);
+  z-index: 1;
+}
+
+.tt-timeline__steps {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  text-align: center;
+  position: relative;
+}
+
+.tt-timeline__step {
+  position: relative;
+  width: 200px;
+}
+
+.tt-timeline__step-label {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.tt-timeline__step-sublabel {
+  font-size: 0.7rem;
+  color: var(--color-text);
+}
+
+.tt-timeline__step_indicator {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, 25%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 2px solid var(--color-border);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tt-timeline__step_indicator.active {
+  background-color: var(--color-text);
+  border: 2px solid var(--color-text);
+  outline: 2px solid #ffffff;
+}
+
+.tt-timeline__step-popup {
+  position: absolute;
+  top: -100%;
+}

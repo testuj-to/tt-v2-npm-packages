@@ -196,3 +196,7 @@ export {
     ToastProvider,
     Toast,
 } from './components/Toast'
+export {
+    type TimelineProps,
+    Timeline,
+} from "./components/Timeline"

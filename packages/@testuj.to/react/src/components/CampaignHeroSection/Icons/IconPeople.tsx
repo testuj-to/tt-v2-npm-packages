@@ -22,9 +22,9 @@ export const IconPeople = ({ ...props }: IconProps) => {
           transform="translate(858.058 432.156)"
           fill="none"
           stroke="#0d1a33"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
         <path
           id="Path_5496"
@@ -33,9 +33,9 @@ export const IconPeople = ({ ...props }: IconProps) => {
           transform="translate(847 421.237)"
           fill="none"
           stroke="#0d1a33"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
         <ellipse
           id="Ellipse_428"
@@ -47,9 +47,9 @@ export const IconPeople = ({ ...props }: IconProps) => {
           transform="translate(866.412 434.586)"
           fill="none"
           stroke="#0d1a33"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
         <path
           id="Path_5497"
@@ -58,9 +58,9 @@ export const IconPeople = ({ ...props }: IconProps) => {
           transform="translate(845.855 421.23)"
           fill="none"
           stroke="#0d1a33"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
       </g>
     </svg>
