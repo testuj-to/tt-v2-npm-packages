@@ -37,7 +37,9 @@ export const Timeline = ({ steps, activeItem }: TimelineProps) => {
     <div className="tt-timeline__wrapper">
       <div className="tt-timeline__popup-wrapper" style={{ width: `${progress}%` }}>
         <div className="tt-timeline__popup-anchor">
-          <div className="tt-timeline__popup">{steps[activeItem - 1]?.popup}</div>
+          {steps[activeItem - 1]?.popup ? (
+            <div className="tt-timeline__popup">{steps[activeItem - 1]?.popup}</div>
+          ) : null}
         </div>
       </div>
 
