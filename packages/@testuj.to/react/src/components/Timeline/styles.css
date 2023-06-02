@@ -1,3 +1,8 @@
+.tt-timeline__wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .tt-timeline {
   position: relative;
   padding: 0;
@@ -67,7 +72,52 @@
   outline: 2px solid #ffffff;
 }
 
-.tt-timeline__step-popup {
+.tt-timeline__popup {
   position: absolute;
-  top: -100%;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, 15%);
+  color: #fff;
+  background-color: var(--color-secondary);
+  padding: 2px 8px;
+  z-index: 11;
+  height: 25px;
+  border-radius: 4px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.9rem;
+}
+
+.tt-timeline__popup::after {
+  content: "";
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: var(--color-secondary) transparent transparent transparent;
+  z-index: 10;
+}
+
+.tt-timeline__popup-anchor {
+  position: relative;
+  height: 0px;
+  width: 0px;
+}
+
+.tt-timeline__popup-wrapper {
+  position: absolute;
+  top: -90%;
+  left: 0;
+  background-color: aqua;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  z-index: 10;
+  border-radius: 4px;
+  height: 0;
 }
