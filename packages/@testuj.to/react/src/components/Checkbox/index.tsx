@@ -1,4 +1,5 @@
-import { useCallback, useId, useState } from "react";
+import { useCallback, useId } from "react";
+import cx from "classnames";
 import { Root, Indicator } from "@radix-ui/react-checkbox";
 import { CheckIcon } from "@radix-ui/react-icons";
 
@@ -8,9 +9,11 @@ export interface CheckboxProps {
   value: boolean;
   label?: React.ReactNode;
   onChange?(value: boolean);
+  variant?: "default" | "outlined";
+  className?: string;
 }
 
-export const Checkbox = ({ value, label, onChange }: CheckboxProps) => {
+export const Checkbox = ({ value, label, onChange, variant, className }: CheckboxProps) => {
   const id = useId();
   const handleChange = useCallback(
     (isChecked: boolean | string) => {
@@ -22,14 +25,26 @@ export const Checkbox = ({ value, label, onChange }: CheckboxProps) => {
   );
 
   return (
-    <div className="tt-checkbox-container">
-      <Root id={id} className="tt-checkbox" checked={value} onCheckedChange={handleChange}>
-        <Indicator className="tt-checkbox-indicator">
-          <CheckIcon className="tt-checkbox-checkmark" />
+    <div
+      className={cx("tt-checkbox-container", variant, className)}
+      onClick={(e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        variant === "outlined" && handleChange(!value);
+      }}
+    >
+      <Root
+        id={id}
+        className={cx("tt-checkbox", variant)}
+        checked={value}
+        onCheckedChange={handleChange}
+      >
+        <Indicator className={cx("tt-checkbox-indicator", variant)}>
+          <CheckIcon className={cx("tt-checkbox-checkmark", variant)} />
         </Indicator>
       </Root>
       {label && (
-        <label htmlFor={id} className="tt-checkbox-label">
+        <label htmlFor={id} className={cx("tt-checkbox-label", variant)}>
           {label}
         </label>
       )}
