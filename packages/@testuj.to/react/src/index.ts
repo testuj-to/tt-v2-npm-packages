@@ -155,6 +155,10 @@ export {
     ProductCard,
 } from './components/ProductCard'
 export {
+    type ProgressBarProps,
+    ProgressBar,
+} from "./components/ProgressBar"
+export {
     type RadioGroupProps,
     RadioGroup,
 } from './components/RadioGroup'
