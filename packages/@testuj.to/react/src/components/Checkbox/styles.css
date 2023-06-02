@@ -56,6 +56,7 @@
   position: relative;
   border: 2px solid var(--color-primary);
   overflow: hidden;
+  z-index: 2;
 }
 
 .tt-checkbox-container.outlined:has(.tt-checkbox[aria-checked="true"])::after {
@@ -65,7 +66,7 @@
   bottom: 0;
   content: "";
   position: absolute;
-  z-index: -1;
+  z-index: 1;
   background-color: var(--color-primary);
   opacity: 0.2;
 }
