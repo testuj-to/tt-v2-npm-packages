@@ -27,6 +27,9 @@ const calculateProgressBetweenDates = (startDate: string, endDate: string, step:
   const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
   const start = new Date(startDate.replace(pattern, "$3-$2-$1")).getTime();
   const end = new Date(endDate.replace(pattern, "$3-$2-$1")).getTime();
+  if (current < start || current > end) {
+    return 0;
+  }
   const progress = (current - start) / (end - start);
   return lerp(0, step, progress);
 };
