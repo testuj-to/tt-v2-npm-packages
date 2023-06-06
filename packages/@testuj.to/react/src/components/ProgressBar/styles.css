@@ -16,3 +16,20 @@
   background-color: var(--color-primary);
   transition: width 0.2s ease-in-out;
 }
+
+.tt-progress-bar-breakpoint {
+  position: absolute;
+  top: 50%;
+  transform: translate(-4px, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.tt-progress-bar-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+}

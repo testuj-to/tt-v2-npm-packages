@@ -21,4 +21,5 @@ const progressBarStory: ComponentStory<typeof ProgressBar> = (args) => (
 export const ProgressBarStory = progressBarStory.bind({});
 ProgressBarStory.args = {
   value: 80,
+  breakpoints: [20, 40, 60, 80],
 };
