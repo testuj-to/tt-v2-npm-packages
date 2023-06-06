@@ -1,10 +1,17 @@
 .tt-progress-bar {
   position: relative;
   width: 100%;
-  height: 8px;
-  border-radius: 4px;
+  height: 100%;
+
   background-color: var(--color-border);
   overflow: hidden;
+}
+
+.tt-progress-bar-wrapper {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .tt-progress-bar-indicator {
@@ -30,6 +37,6 @@
 .tt-progress-bar-icon {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(50%, -50%);
   right: 0;
 }

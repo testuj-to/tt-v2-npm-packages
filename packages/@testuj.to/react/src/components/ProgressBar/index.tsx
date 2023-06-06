@@ -32,18 +32,20 @@ export const ProgressBar = ({
   }, [value]);
 
   return (
-    <div className={cx("tt-progress-bar", className)} style={{ backgroundColor: backgroundColor }}>
-      {breakpoints?.map((breakpoint) => (
+    <div className={cx("tt-progress-bar-wrapper", className)}>
+      <div className={cx("tt-progress-bar")} style={{ backgroundColor: backgroundColor }}>
+        {breakpoints?.map((breakpoint) => (
+          <div
+            className="tt-progress-bar-breakpoint"
+            style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
+            key={breakpoint}
+          />
+        ))}
         <div
-          className="tt-progress-bar-breakpoint"
-          style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
-          key={breakpoint}
+          className="tt-progress-bar-indicator"
+          style={{ width: `${progress}%`, backgroundColor: lineColor }}
         />
-      ))}
-      <div
-        className="tt-progress-bar-indicator"
-        style={{ width: `${progress}%`, backgroundColor: lineColor }}
-      />
+      </div>
       <div className="tt-progress-bar-icon">{finalIcon}</div>
     </div>
   );
