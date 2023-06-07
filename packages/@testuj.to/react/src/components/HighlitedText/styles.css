@@ -1,5 +1,6 @@
 .highlited {
   position: relative;
+  white-space: nowrap;
 }
 
 .highlited::after {
