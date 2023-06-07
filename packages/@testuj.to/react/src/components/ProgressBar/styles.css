@@ -1,10 +1,17 @@
 .tt-progress-bar {
   position: relative;
   width: 100%;
-  height: 8px;
+  height: 100%;
   border-radius: 4px;
   background-color: var(--color-border);
   overflow: hidden;
+}
+
+.tt-progress-bar-wrapper {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
 }
 
 .tt-progress-bar-indicator {
@@ -15,4 +22,24 @@
   border-radius: 4px;
   background-color: var(--color-primary);
   transition: width 0.2s ease-in-out;
+}
+
+.tt-progress-bar-breakpoint {
+  position: absolute;
+  top: 50%;
+  transform: translate(-4px, -50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.tt-progress-bar-icon {
+  position: absolute;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
