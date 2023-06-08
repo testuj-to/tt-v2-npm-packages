@@ -124,4 +124,7 @@
     display: flex;
   }
 
+  .tt-campaign-hero-section-button {
+    width: 100%;
+  }
 }
