@@ -25,8 +25,8 @@ const lerp = (a: number, b: number, n: number) => {
 const calculateProgressBetweenDates = (startDate: string, endDate: string, step: number) => {
   const current = new Date().getTime();
   const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-  const start = new Date(startDate.replace(pattern, "$3-$2-$1")).getTime();
-  const end = new Date(endDate.replace(pattern, "$3-$2-$1")).getTime();
+  const start = new Date(startDate?.replace(pattern, "$3-$2-$1")).getTime();
+  const end = new Date(endDate?.replace(pattern, "$3-$2-$1")).getTime();
   if (current < start || current > end) {
     return 0;
   }
@@ -64,7 +64,7 @@ const calculateProgress = (
   return (
     stepProgressWithSub +
     (calculateProgress
-      ? calculateProgressBetweenDates(step.date, steps[stepIndex + 1].date, 100 / steps.length)
+      ? calculateProgressBetweenDates(step.date, steps[stepIndex + 1]?.date, 100 / steps.length)
       : 0)
   );
 };
@@ -98,7 +98,7 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
 
   return (
     <div className="tt-timeline__wrapper" ref={warpperRef}>
-      {showPopup ? (
+      {showPopup && !isMobile ? (
         <div className="tt-timeline__popup-wrapper" style={style}>
           <div className="tt-timeline__popup-anchor">
             {steps[activeItem - 1]?.popup ? (
@@ -128,6 +128,9 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
             </div>
             <div className="tt-timeline__step-label">{step.label}</div>
             <div className="tt-timeline__step-sublabel">{step.subLabel}</div>
+            {index + 1 === activeItem && activeItem !== steps.length ? (
+              <div className="tt-timeline__popup">{step.popup}</div>
+            ) : null}
           </div>
         ))}
       </div>

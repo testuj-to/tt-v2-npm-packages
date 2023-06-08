@@ -164,18 +164,21 @@
   .tt-timeline__step_indicator {
     left: 0;
     top: 0;
-    transform: translate(-55%, 0);
-  }
-  /* 
-  .tt-timeline__step:first-child > .tt-timeline__step_indicator {
-    top: 0;
-    top: 0;
-    transform: translate(-55%, 0);
+    transform: translate(-60%, 0);
   }
 
-  .tt-timeline__step:last-child > .tt-timeline__step_indicator {
-    top: auto;
+  .tt-timeline__popup {
     bottom: 0;
-    transform: translate(-55%, 0);
-  } */
+    left: 0;
+    top: auto;
+    transform: translate(10%, -22.5%);
+  }
+
+  /* Show arrow from left */
+  .tt-timeline__popup::after {
+    top: 50%;
+    left: 2px;
+    transform: translate(-100%, -50%);
+    border-color: transparent var(--color-secondary) transparent transparent;
+  }
 }
