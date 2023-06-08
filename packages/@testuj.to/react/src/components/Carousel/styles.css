@@ -6,13 +6,25 @@
   margin-left: 0;
 }
 
+.tt-carousel-wrapper {
+  position: relative;
+}
+
 .tt-carousel-wrapper-inner {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   cursor: grab;
+  /* transition: transform 100ms; */
 }
 
 .tt-carousel-wrapper-inner:active {
   cursor: grabbing;
+}
+
+.tt-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
 }

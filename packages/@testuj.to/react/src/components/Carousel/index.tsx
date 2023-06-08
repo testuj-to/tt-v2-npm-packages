@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useState } from "react";
+import React, { forwardRef, useCallback, useState, useEffect } from "react";
 import cx from "classnames";
 import "./styles.css";
 
@@ -6,10 +6,20 @@ export interface CarouselProps {
   items: React.ReactNode[];
   wrapperClassName?: string;
   itemClassName?: string;
+  arrow?: React.ReactNode;
+  arrowClassName?: string;
 }
 
-export const Carousel = ({ items, wrapperClassName, itemClassName }: CarouselProps) => {
+export const Carousel = ({
+  items,
+  wrapperClassName,
+  itemClassName,
+  arrow,
+  arrowClassName,
+}: CarouselProps) => {
   const [translateX, setTranslateX] = useState(0);
+  const innerRef = React.useRef<HTMLDivElement>(null);
+  const [itemWidth, setItemWidth] = useState(0);
 
   const handleHorizontalGrab = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -34,14 +44,49 @@ export const Carousel = ({ items, wrapperClassName, itemClassName }: CarouselPro
     [translateX]
   );
 
+  const handleGrabonMobile = useCallback(
+    (e: React.TouchEvent<HTMLDivElement>) => {
+      const startX = e.touches[0].pageX;
+      const startTranslateX = translateX;
+
+      const handleHorizontalMove = (e) => {
+        const currentX = e.touches[0].pageX;
+        const diff = currentX - startX;
+
+        setTranslateX(startTranslateX + diff);
+      };
+
+      const handleHorizontalRelease = () => {
+        window.removeEventListener("touchmove", handleHorizontalMove);
+        window.removeEventListener("touchend", handleHorizontalRelease);
+      };
+
+      window.addEventListener("touchmove", handleHorizontalMove);
+      window.addEventListener("touchend", handleHorizontalRelease);
+    },
+    [translateX]
+  );
+
   const transform = `translateX(${translateX}px)`;
+
+  useEffect(() => {
+    if (innerRef.current) {
+      setItemWidth(innerRef.current?.clientWidth / items.length);
+    }
+  }, [innerRef]);
+
+  const handleArrowClick = useCallback(() => {
+    setTranslateX((prev) => prev - itemWidth);
+  }, [itemWidth]);
 
   return (
     <div className={cx("tt-carousel-wrapper", wrapperClassName)}>
       <div
         className="tt-carousel-wrapper-inner"
         onMouseDown={handleHorizontalGrab}
+        onTouchStart={handleGrabonMobile}
         style={{ transform }}
+        ref={innerRef}
       >
         {items?.map((item, index) => {
           return (
@@ -51,6 +96,11 @@ export const Carousel = ({ items, wrapperClassName, itemClassName }: CarouselPro
           );
         })}
       </div>
+      {arrow ? (
+        <div className={cx("tt-carousel-arrow", arrowClassName)} onClick={handleArrowClick}>
+          {arrow}
+        </div>
+      ) : null}
     </div>
   );
 };
