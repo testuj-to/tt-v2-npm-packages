@@ -9,6 +9,7 @@
   width: 100%;
   min-width: 1200px;
   max-height: 340px;
+  max-width: 100;
 }
 
 .tt-campaign-hero-section h5 {
@@ -19,6 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  position: relative;
 }
 
 .tt-campaign-hero-section-image img {
@@ -34,11 +36,12 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .tt-campaign-hero-section-title {
   font: var(--font-bold-24);
-  margin-bottom: .6rem;
+  margin-bottom: 0.6rem;
 }
 
 .tt-campaign-hero-section-row {
@@ -55,4 +58,70 @@
   color: #ff0000;
   font-size: 0.8rem;
   font-weight: 600;
+}
+
+.tt-campaign-hero-section-image-back {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  z-index: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+}
+
+.tt-campaign-hero-section-image-like {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 36px;
+  height: 36px;
+  z-index: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .tt-campaign-hero-section {
+    flex-direction: column;
+    max-height: 100%;
+    min-width: 100%;
+    border-radius: 0;
+  }
+  .tt-campaign-hero-section-image {
+    width: 100%;
+
+    max-width: 100%;
+    justify-content: center;
+  }
+  .tt-campaign-hero-section-image img {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 246px;
+  }
+  .tt-campaign-hero-section-content {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+  }
+  .tt-campaign-hero-section-alert {
+    font-size: 0.7rem;
+  }
+
+  .tt-campaign-hero-section-image-back {
+    display: flex;
+  }
+
+  .tt-campaign-hero-section-image-like {
+    display: flex;
+  }
+
 }

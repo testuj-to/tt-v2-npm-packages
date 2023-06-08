@@ -5,3 +5,4 @@ export * from "./IconCheck";
 export * from "./IconPeople";
 export * from "./IconStar";
 export * from "./IconTransport";
+export * from "./IconChevron";
