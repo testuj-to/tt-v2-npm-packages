@@ -1,7 +1,7 @@
 .tt-product-card-warpper {
   display: flex;
   flex-direction: column;
-  max-width: 90%;
+  max-width: 100%;
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -45,4 +45,10 @@
 
 .tt-product-card-label {
   margin-top: 0.6rem;
+}
+
+@media (max-width: 768px) {
+  .tt-product-card-warpper {
+    max-width: 90%;
+  }
 }
