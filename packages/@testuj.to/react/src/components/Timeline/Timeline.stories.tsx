@@ -20,7 +20,7 @@ const timelineStory: ComponentStory<typeof Timeline> = (args) => (
 
 export const TimelineStory = timelineStory.bind({});
 TimelineStory.args = {
-  activeItem: 2,
+  activeItem: 4,
   steps: [
     {
       label: "Začátek přihlašování",
