@@ -128,7 +128,7 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
             </div>
             <div className="tt-timeline__step-label">{step.label}</div>
             <div className="tt-timeline__step-sublabel">{step.subLabel}</div>
-            {index + 1 === activeItem && activeItem !== steps.length ? (
+            {isMobile && index + 1 === activeItem && activeItem !== steps.length ? (
               <div className="tt-timeline__popup">{step.popup}</div>
             ) : null}
           </div>
