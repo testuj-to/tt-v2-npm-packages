@@ -1,7 +1,7 @@
 .tt-product-card-warpper {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 90%;
   cursor: pointer;
   box-sizing: border-box;
 }
