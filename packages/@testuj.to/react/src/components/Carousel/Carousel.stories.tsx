@@ -38,4 +38,5 @@ Basic.args = {
       onClick={() => console.log("clicked")}
     />,
   ],
+  arrow: <div style={{ backgroundColor: "#fff", padding: "0.5rem" }}>arrow</div>,
 };
