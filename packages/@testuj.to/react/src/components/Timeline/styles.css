@@ -41,18 +41,18 @@
 }
 
 .tt-timeline__step-label {
-  font-size: 0.9rem;
+  font: var(--font-normal-14-600);
   color: var(--color-text);
 }
 
 .tt-timeline__step-sublabel {
-  font-size: 0.7rem;
+  font: var(--font-normal-14);
   color: var(--color-text);
 }
 
 .tt-timeline__step_indicator {
   position: absolute;
-  top: -100%;
+  top: -31px;
   left: 50%;
   transform: translate(-50%, 25%);
   width: 16px;
@@ -111,7 +111,7 @@
 
 .tt-timeline__popup-wrapper {
   position: absolute;
-  top: -90%;
+  top: -75%;
   left: 0;
   background-color: aqua;
   display: flex;
