@@ -25,16 +25,20 @@
   border: none;
   font-family: inherit;
   background-color: transparent;
-  height: 45px;
+  /* height: 45px; */
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: var(--text-primary);
   font: var(--text-normal-16-600);
-  padding: 0 20px;
+  padding: 20px 20px;
+  transition: all 300ms;
 }
 
+.tt-accordion-trigger[aria-expanded="true"] {
+  padding: 20px 20px 0 20px;
+}
 
 .tt-accordion-trigger:hover {
   background-color: var(--mauve2);
@@ -42,11 +46,11 @@
 
 .tt-accordion-content {
   overflow: hidden;
-  font: var(--text-normal-14)
+  font: var(--text-normal-14);
 }
 
 .tt-accordion-inner-content {
-  padding: 0 20px 20px 20px;
+  padding: 10px 20px 30px 20px;
 }
 
 .tt-accordion-content[data-state="open"] {
