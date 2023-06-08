@@ -37,6 +37,8 @@
 }
 
 .tt-campaign-hero-section-title {
+  font: var(--font-bold-24);
+  margin-bottom: .6rem;
 }
 
 .tt-campaign-hero-section-row {
