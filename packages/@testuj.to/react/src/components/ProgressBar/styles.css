@@ -4,6 +4,7 @@
   height: 100%;
   border-radius: 4px;
   background-color: var(--color-border);
+  background-color: #dadee2;
   overflow: hidden;
 }
 
@@ -21,6 +22,7 @@
   bottom: 0;
   border-radius: 4px;
   background-color: var(--color-primary);
+  background-color: aqua;
   transition: width 0.2s ease-in-out;
 }
 
