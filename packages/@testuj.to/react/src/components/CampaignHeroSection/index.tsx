@@ -2,10 +2,11 @@ import cx from "classnames";
 import { Campaign } from "@lib/types";
 
 import "./styles.css";
-import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera } from "./Icons";
+import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera, IconChevron } from "./Icons";
 import { LabeledIcon } from "./LabeledIcon";
 import { Alert } from "../Alert";
 import { Button } from "../Button";
+import { LikeButton } from "../LikeButton";
 
 export interface CampaignHeroSectionProps {
   campaign: Campaign;
@@ -13,6 +14,9 @@ export interface CampaignHeroSectionProps {
   className?: string;
   t: (key: string) => string;
   onClickButton?: () => void;
+  onBack?: () => void;
+  onLike?: () => void;
+  liked?: boolean;
 }
 
 export const CampaignHeroSection = ({
@@ -21,10 +25,21 @@ export const CampaignHeroSection = ({
   className,
   t,
   onClickButton,
+  onBack,
+  onLike,
+  liked,
 }: CampaignHeroSectionProps) => {
   return (
     <section className={cx("tt-campaign-hero-section", className)}>
-      <div className="tt-campaign-hero-section-image">{image}</div>
+      <div className="tt-campaign-hero-section-image">
+        <div className="tt-campaign-hero-section-image-back" onClick={onBack}>
+          <IconChevron direction="left" />
+        </div>
+        <div className="tt-campaign-hero-section-image-like">
+          <LikeButton variant="circle" onClick={onLike} {...{ liked }} />
+        </div>
+        {image}
+      </div>
       <div className="tt-campaign-hero-section-content">
         <h2 className="tt-campaign-hero-section-title">{campaign.name}</h2>
         <div className="tt-campaign-hero-section-row">

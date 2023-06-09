@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 
 import "./styles.css";
@@ -25,8 +25,8 @@ const lerp = (a: number, b: number, n: number) => {
 const calculateProgressBetweenDates = (startDate: string, endDate: string, step: number) => {
   const current = new Date().getTime();
   const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-  const start = new Date(startDate.replace(pattern, "$3-$2-$1")).getTime();
-  const end = new Date(endDate.replace(pattern, "$3-$2-$1")).getTime();
+  const start = new Date(startDate?.replace(pattern, "$3-$2-$1")).getTime();
+  const end = new Date(endDate?.replace(pattern, "$3-$2-$1")).getTime();
   if (current < start || current > end) {
     return 0;
   }
@@ -34,7 +34,12 @@ const calculateProgressBetweenDates = (startDate: string, endDate: string, step:
   return lerp(0, step, progress);
 };
 
-const calculateProgress = (steps: Step[], activeItem: number, calculateProgress: boolean) => {
+const calculateProgress = (
+  steps: Step[],
+  activeItem: number,
+  calculateProgress: boolean,
+  isMobile: boolean
+) => {
   if (!activeItem) {
     return 0;
   }
@@ -42,25 +47,59 @@ const calculateProgress = (steps: Step[], activeItem: number, calculateProgress:
   const stepIndex = steps.indexOf(step);
   const stepProgress = (100 / steps.length) * stepIndex;
   const stepProgressWithSub = stepProgress + 100 / steps.length / 2;
+
+  if (isMobile) {
+    const stepsLength = steps.length - 1;
+    const stepProgress = (100 / stepsLength) * stepIndex;
+    const stepProgressWithSub = stepProgress + 100 / stepsLength / 2;
+
+    const addition = 100 / stepsLength / 2;
+    if (activeItem === 1) {
+      return addition / 2 + addition;
+    }
+
+    return stepProgressWithSub - addition / 2 + addition;
+  }
+
   return (
     stepProgressWithSub +
     (calculateProgress
-      ? calculateProgressBetweenDates(step.date, steps[stepIndex + 1].date, 100 / steps.length)
+      ? calculateProgressBetweenDates(step.date, steps[stepIndex + 1]?.date, 100 / steps.length)
       : 0)
   );
 };
 
 export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
-  const [progress, setProgress] = useState(calculateProgress(steps, activeItem, showPopup));
+  const [isMobile, setIsMobile] = useState(false);
+  const [progress, setProgress] = useState(
+    calculateProgress(steps, activeItem, showPopup, isMobile)
+  );
+  const initialHeight = useRef<number>(0);
+  const warpperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setProgress(calculateProgress(steps, activeItem, showPopup));
-  }, [activeItem, showPopup]);
+    if (window?.innerWidth < 900) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+
+    setProgress(calculateProgress(steps, activeItem, showPopup, isMobile));
+  }, [activeItem, showPopup, isMobile]);
+
+  const style = {
+    width: isMobile ? undefined : `${progress}%`,
+    height: isMobile ? `${progress}%` : undefined,
+  };
+
+  if (!initialHeight.current) {
+    initialHeight.current = warpperRef.current?.clientHeight || 0;
+  }
 
   return (
-    <div className="tt-timeline__wrapper">
-      {showPopup ? (
-        <div className="tt-timeline__popup-wrapper" style={{ width: `${progress}%` }}>
+    <div className="tt-timeline__wrapper" ref={warpperRef}>
+      {showPopup && !isMobile ? (
+        <div className="tt-timeline__popup-wrapper" style={style}>
           <div className="tt-timeline__popup-anchor">
             {steps[activeItem - 1]?.popup ? (
               <div className="tt-timeline__popup">{steps[activeItem - 1]?.popup}</div>
@@ -69,8 +108,11 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
         </div>
       ) : null}
 
-      <div className="tt-timeline">
-        <div className="tt-timeline__progress" style={{ width: `${progress}%` }} />
+      <div
+        className="tt-timeline"
+        style={{ height: isMobile ? initialHeight.current - 80 : undefined }}
+      >
+        <div className="tt-timeline__progress" style={style} />
       </div>
       <div className="tt-timeline__steps">
         {steps.map((step, index) => (
@@ -86,6 +128,9 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
             </div>
             <div className="tt-timeline__step-label">{step.label}</div>
             <div className="tt-timeline__step-sublabel">{step.subLabel}</div>
+            {isMobile && index + 1 === activeItem && activeItem !== steps.length ? (
+              <div className="tt-timeline__popup">{step.popup}</div>
+            ) : null}
           </div>
         ))}
       </div>

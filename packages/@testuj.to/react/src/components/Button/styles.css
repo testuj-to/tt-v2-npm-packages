@@ -5,15 +5,13 @@
   border: none;
   border-radius: 8px;
   padding: 0 15px;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 600;
   height: 48px;
   cursor: pointer;
   color: var(--color-button);
   background-color: var(--color-button-bg);
   transition: all 0.2s;
   box-sizing: border-box;
+  font: var(--font-normal-14-600);
 }
 
 .tt-button:disabled {
