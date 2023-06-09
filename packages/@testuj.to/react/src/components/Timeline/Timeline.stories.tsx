@@ -20,7 +20,7 @@ const timelineStory: ComponentStory<typeof Timeline> = (args) => (
 
 export const TimelineStory = timelineStory.bind({});
 TimelineStory.args = {
-  activeItem: 2,
+  activeItem: 4,
   steps: [
     {
       label: "Začátek přihlašování",
@@ -49,7 +49,7 @@ TimelineStory.args = {
     {
       label: "Doručení produktů",
       subLabel: "1. 7. 2023",
-      popup: "Produkty odeslány",
+      popup: "",
       date: "01.07.2023",
     },
   ],

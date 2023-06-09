@@ -11,4 +11,5 @@
 }
 
 .tt-labeled-icon-label {
+  font: var(--font-normal-14);
 }

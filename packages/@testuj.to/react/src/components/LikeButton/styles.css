@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font: var(--font-normal-14-600);
 }
 
 .tt-like-button.circle {
