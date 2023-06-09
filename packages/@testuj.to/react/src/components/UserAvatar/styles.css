@@ -1,0 +1,56 @@
+.tt-user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.tt-user-avatar-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tt-user-avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tt-user-avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.tt-user-avatar-text {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 0.6rem;
+  flex-direction: column;
+}
+
+.tt-user-avatar-name {
+  font: var(--font-normal-14-600);
+  white-space: nowrap;
+  color: var(--color-text-primary);
+}
+
+.tt-user-avatar-title {
+  font: var(--font-normal-12);
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+}
