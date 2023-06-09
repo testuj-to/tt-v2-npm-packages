@@ -204,3 +204,11 @@ export {
     type TimelineProps,
     Timeline,
 } from "./components/Timeline"
+export {
+    type UserAvatarProps,
+    UserAvatar,
+} from './components/UserAvatar'
+export {
+    type UserMenuProps,
+    UserMenu,
+} from './components/UserMenu'

@@ -3,6 +3,8 @@
   border-radius: 8px;
   width: 240px;
   box-sizing: border-box;
+  background-color: #fff;
+  z-index: 9999;
 }
 
 .tt-user-menu_header {
@@ -12,13 +14,12 @@
   flex-direction: column;
   padding: 1rem;
   border-bottom: 2px solid var(--color-border);
-  border-bottom: 2px solid #dadee2;
   width: 100%;
   box-sizing: border-box;
 }
 
 .tt-user-menu_body {
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .tt-user-menu_progress-bar {
@@ -30,6 +31,13 @@
   font: var(--font-normal-14);
   color: var(--color-text);
   line-height: 36px;
-    display: flex;
+  display: flex;
   justify-content: flex-start;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 4px;
+  padding: 0 0.5rem;
+}
+
+.tt-user-menu_item:hover {
+  background-color: rgba(205, 205, 205, 0.402);
 }

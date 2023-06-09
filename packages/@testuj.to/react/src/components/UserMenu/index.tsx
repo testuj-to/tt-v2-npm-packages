@@ -45,6 +45,7 @@ export const UserMenu = ({ user, xpBar, menuItems, className }: UserMenuProps) =
               breakpoints={xpBar.breakpoints}
               delay={200}
               breakpointColor="var(--color-text-secondary)"
+              lineColor="#00C5FE"
             />
           )}
         </div>
