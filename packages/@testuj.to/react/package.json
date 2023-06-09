@@ -41,6 +41,7 @@
     "draftjs-utils": "^0.10.2",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.2",
+    "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react-datepicker": "^4.11.0",
     "react-helmet": "^6.1.0"
