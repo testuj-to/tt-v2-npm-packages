@@ -20,24 +20,28 @@ export const Basic = notificationsPopoverStoryTemplate.bind({});
 Basic.args = {
   notifications: [
     {
-      label: "Upravit osobní údaje",
-      onClick: () => console.log("Upravit osobní údaje"),
+      title: "New comment",
+      description: "Samsung Galaxy Buds 2",
+      dateTime: "2023-06-12T08:06:52.532Z",
+      type: "info",
     },
     {
-      label: "Změnit heslo",
-      onClick: () => console.log("Změnit heslo"),
+      title: "Na napsání recenze zbývá 1 den",
+      description: "Samsung Galaxy Buds 2",
+      dateTime: "2023-06-12T08:06:52.532Z",
+      type: "error",
     },
     {
-      label: "Změnit profilovou fotografii",
-      onClick: () => console.log("Změnit profilovou fotografii"),
+      title: "Recenze byla úspěšně odeslána",
+      description: "Samsung Galaxy Buds 2",
+      dateTime: "2023-06-12T08:06:52.532Z",
+      type: "success",
     },
     {
-      label: "Preference",
-      onClick: () => console.log("Preference"),
-    },
-    {
-      label: "Odhlásit se",
-      onClick: () => console.log("Odhlásit se"),
+      title: "New comment",
+      description: "Samsung Galaxy Buds 2",
+      dateTime: "2023-06-12T08:06:52.532Z",
+      type: "info",
     },
   ],
 };

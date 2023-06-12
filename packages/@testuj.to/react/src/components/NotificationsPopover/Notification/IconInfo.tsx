@@ -19,7 +19,7 @@ export const IconInfo = ({ ...props }: IconInfoProps) => {
         transform="translate(14 21.5) rotate(180)"
         fill="none"
         stroke="#fff"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect
         id="Rectangle_5407"
@@ -30,7 +30,7 @@ export const IconInfo = ({ ...props }: IconInfoProps) => {
         transform="translate(14 6.5) rotate(180)"
         fill="none"
         stroke="#fff"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect id="Rectangle_5414" data-name="Rectangle 5414" width="24" height="24" fill="none" />
     </svg>

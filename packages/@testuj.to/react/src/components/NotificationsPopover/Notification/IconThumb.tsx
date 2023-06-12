@@ -16,8 +16,8 @@ export const IconThumb = ({ ...props }: IconThumbProps) => {
         transform="translate(3.589 3.768)"
         fill="none"
         stroke="#fff"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
       <rect id="Rectangle_5412" data-name="Rectangle 5412" width="24" height="24" fill="none" />
     </svg>

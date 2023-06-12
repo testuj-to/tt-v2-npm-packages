@@ -17,7 +17,7 @@ export const IconExclamation = ({ ...props }: IconExclamationProps) => {
         transform="translate(8.972 4.17)"
         fill="none"
         stroke="#fff"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <rect id="Rectangle_5413" data-name="Rectangle 5413" width="24" height="24" fill="none" />
     </svg>

@@ -51,7 +51,7 @@ export const UserMenu = ({ user, xpBar, menuItems, className }: UserMenuProps) =
         </div>
         <div className="tt-user-menu_body">
           {menuItems?.map(({ label, onClick }, index) => (
-            <div key={label + index} {...onClick} className="tt-user-menu_item">
+            <div key={label + index} onClick={() => onClick()} className="tt-user-menu_item">
               {label}
             </div>
           ))}

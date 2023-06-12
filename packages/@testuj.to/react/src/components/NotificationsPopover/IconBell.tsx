@@ -19,7 +19,7 @@ export const IconBell = ({ ...props }: IconBellProps) => {
           transform="translate(-5.104 -10.137)"
           fill="none"
           stroke="#0d1a33"
-          stroke-width="1.5"
+          strokeWidth="1.5"
         />
         <path
           id="Path_6671"
@@ -28,8 +28,8 @@ export const IconBell = ({ ...props }: IconBellProps) => {
           transform="translate(4.249 3.449)"
           fill="none"
           stroke="#0d1a33"
-          stroke-linejoin="round"
-          stroke-width="1.5"
+          strokeLinejoin="round"
+          strokeWidth="1.5"
         />
       </g>
     </svg>
