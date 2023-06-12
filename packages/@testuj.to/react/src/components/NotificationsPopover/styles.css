@@ -5,3 +5,7 @@
   background-color: #fff;
   z-index: 9999;
 }
+
+.tt-notifications-menu_trigger {
+  cursor: pointer;
+}

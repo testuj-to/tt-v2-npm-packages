@@ -17,6 +17,7 @@ export interface CampaignHeroSectionProps {
   onBack?: () => void;
   onLike?: () => void;
   liked?: boolean;
+  small?: boolean;
 }
 
 export const CampaignHeroSection = ({
@@ -28,9 +29,16 @@ export const CampaignHeroSection = ({
   onBack,
   onLike,
   liked,
+  small,
 }: CampaignHeroSectionProps) => {
   return (
-    <section className={cx("tt-campaign-hero-section", className)}>
+    <section
+      className={cx(
+        "tt-campaign-hero-section",
+        { "tt-campaign-hero-section-small": small },
+        className
+      )}
+    >
       <div className="tt-campaign-hero-section-image">
         <div className="tt-campaign-hero-section-image-back" onClick={onBack}>
           <IconChevron direction="left" />
@@ -55,16 +63,20 @@ export const CampaignHeroSection = ({
           <LabeledIcon icon={<IconStar />} label={`4 ${t("rezenze")}`} />
           <LabeledIcon icon={<IconCamera />} label={t("Fotografie a video")} />
         </div>
-        <Alert variant="error" hideIcon className="tt-campaign-hero-section-alert">
-          Neváhejte s přihlášením! Končí 20. 4. 2023
-        </Alert>
-        <Button
-          variant="primary"
-          className="tt-campaign-hero-section-button"
-          onClick={onClickButton}
-        >
-          {t("Přihlásit se")}
-        </Button>
+        {small ? null : (
+          <>
+            <Alert variant="error" hideIcon className="tt-campaign-hero-section-alert">
+              Neváhejte s přihlášením! Končí 20. 4. 2023
+            </Alert>
+            <Button
+              variant="primary"
+              className="tt-campaign-hero-section-button"
+              onClick={onClickButton}
+            >
+              {t("Přihlásit se")}
+            </Button>
+          </>
+        )}
       </div>
     </section>
   );
