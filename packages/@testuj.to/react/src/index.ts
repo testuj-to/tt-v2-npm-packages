@@ -152,6 +152,7 @@ export {
 } from './components/LikeButton'
 export {
     type NotificationsPopoverProps,
+    type Notification,
     NotificationsPopover,
 }    from './components/NotificationsPopover'
 export {

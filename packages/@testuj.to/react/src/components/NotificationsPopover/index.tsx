@@ -25,3 +25,5 @@ export const NotificationsPopover = ({ notifications, className, ...props } : No
     </Popover.Root>
   );
 };
+
+export type Notification = NotificationProps;
