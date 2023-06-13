@@ -47,6 +47,13 @@
   margin-top: 0.6rem;
 }
 
+.tt-product-card-like-button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
 @media (max-width: 768px) {
   .tt-product-card-warpper {
     max-width: 90%;

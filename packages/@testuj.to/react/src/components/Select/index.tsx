@@ -1,9 +1,8 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import {
   Root,
   Trigger,
-  Portal,
   Content,
   Viewport,
   Group,
@@ -15,8 +14,9 @@ import {
   Icon,
   ScrollUpButton,
   ScrollDownButton,
+  SelectPortal,
 } from "@radix-ui/react-select";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { ChevronDownIcon, ChevronUpIcon, TriangleDownIcon } from "@radix-ui/react-icons";
 
 import "./styles.css";
 
@@ -44,16 +44,36 @@ export interface SelectProps {
 }
 
 export const Select = ({ value, placeholder, label, options, onChange, multiple }: SelectProps) => {
+  const [width, setWidth] = useState(0);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (triggerRef?.current) {
+      setWidth(triggerRef.current?.clientWidth);
+    }
+  }, [triggerRef?.current]);
+
+  console.log(width);
+
   return (
     <Root value={value} onValueChange={onChange}>
-      <Trigger className={cx("tt-select-trigger")} aria-label={label} id="tt-select">
+      <Trigger
+        className={cx("tt-select-trigger")}
+        aria-label={label}
+        id="tt-select"
+        ref={triggerRef}
+      >
         <Value placeholder={placeholder} />
         <Icon className={cx("tt-select-trigger-icon")}>
-          <ChevronDownIcon />
+          <TriangleDownIcon height={24} width={24} />
         </Icon>
       </Trigger>
-      <Portal>
-        <Content className={cx("tt-select-content")} position="popper">
+      <SelectPortal>
+        <Content
+          className={cx("tt-select-content")}
+          position="popper"
+          style={{ width: `${width}px` }}
+        >
           <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
             <ChevronUpIcon />
           </ScrollUpButton>
@@ -71,7 +91,7 @@ export const Select = ({ value, placeholder, label, options, onChange, multiple 
             <ChevronDownIcon />
           </ScrollDownButton>
         </Content>
-      </Portal>
+      </SelectPortal>
     </Root>
   );
 };

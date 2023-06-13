@@ -29,9 +29,10 @@ export interface RichTextReaderProps {
   value: RichText;
   placeholder?: string;
   readOnly?: boolean;
+  className?: string;
 }
 
-export const RichTextReader = ({ value, placeholder }: RichTextReaderProps) => {
+export const RichTextReader = ({ value, placeholder, className }: RichTextReaderProps) => {
   const editorRef = useRef<Editor>();
 
   const [isEdited, setIsEdited] = useState(false);
@@ -53,12 +54,14 @@ export const RichTextReader = ({ value, placeholder }: RichTextReaderProps) => {
   }, [isEdited, value]);
 
   return (
-    <Editor
-      ref={editorRef}
-      readOnly
-      placeholder={placeholder}
-      editorState={editorState}
-      blockStyleFn={blockStyleFn}
-    />
+    <div className={className}>
+      <Editor
+        ref={editorRef}
+        readOnly
+        placeholder={placeholder}
+        editorState={editorState}
+        blockStyleFn={blockStyleFn}
+      />
+    </div>
   );
 };
