@@ -1,9 +1,8 @@
-import { forwardRef, useRef } from "react";
+import { forwardRef, useEffect, useRef } from "react";
 import cx from "classnames";
 import {
   Root,
   Trigger,
-  Portal,
   Content,
   Viewport,
   Group,
@@ -15,8 +14,9 @@ import {
   Icon,
   ScrollUpButton,
   ScrollDownButton,
+  SelectPortal,
 } from "@radix-ui/react-select";
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons";
+import { ChevronDownIcon, ChevronUpIcon, TriangleDownIcon } from "@radix-ui/react-icons";
 
 import "./styles.css";
 
@@ -49,10 +49,10 @@ export const Select = ({ value, placeholder, label, options, onChange, multiple 
       <Trigger className={cx("tt-select-trigger")} aria-label={label} id="tt-select">
         <Value placeholder={placeholder} />
         <Icon className={cx("tt-select-trigger-icon")}>
-          <ChevronDownIcon />
+          <TriangleDownIcon height={24} width={24} />
         </Icon>
       </Trigger>
-      <Portal>
+      <SelectPortal>
         <Content className={cx("tt-select-content")} position="popper">
           <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
             <ChevronUpIcon />
@@ -71,7 +71,7 @@ export const Select = ({ value, placeholder, label, options, onChange, multiple 
             <ChevronDownIcon />
           </ScrollDownButton>
         </Content>
-      </Portal>
+      </SelectPortal>
     </Root>
   );
 };
