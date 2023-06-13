@@ -43,7 +43,10 @@ export const ProductCard = ({
             variant="circle"
             className="tt-product-card-like-button"
             liked={liked}
-            onClick={onLikeClick}
+            onClick={(e) => {
+              e.stopPropagation();
+              onLikeClick?.();
+            }}
           />
         ) : null}
       </div>
