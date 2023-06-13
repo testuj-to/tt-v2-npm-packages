@@ -12,6 +12,7 @@
   border: 1px solid var(--color-border);
   width: 100%;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .tt-select-trigger:focus {
