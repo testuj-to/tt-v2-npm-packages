@@ -1,0 +1,51 @@
+.tt-notification {
+  padding: 0.9rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+}
+
+.tt-notification:hover {
+  background-color: var(--light-gray);
+  background: #f0f2f4 0% 0% no-repeat padding-box;
+}
+
+.tt-notification-section-icon {
+  margin-right: 0.8rem;
+  background-color: aqua;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tt-notification-section-icon.success {
+  background-color: #6cca11;
+}
+
+.tt-notification-section-icon.error {
+  background-color: #ff001d;
+}
+
+.tt-notification-section-icon.info {
+  background-color: #30a9d4;
+}
+
+.tt-notification-title {
+  font: var(--font-normal-13-600);
+  color: var(--color-text);
+}
+
+.tt-notification-description {
+  font: var(--font-normal-13);
+  color: var(--color-text);
+}
+
+.tt-notification-time {
+  font: var(--font-normal-13);
+  color: var(--color-text-secondary);
+}

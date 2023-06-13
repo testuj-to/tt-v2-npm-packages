@@ -1,3 +1,4 @@
+import { LikeButton } from "../LikeButton";
 import { Tag, TagProps } from "../Tag";
 import "./styles.css";
 
@@ -9,9 +10,21 @@ export interface ProductCardProps {
   tags: ProductCardTagProps[];
   onClick?: () => void;
   onDoubleClick?: () => void;
+  onLikeClick?: () => void;
+  liked?: boolean;
+  showLikeButton?: boolean;
 }
 
-export const ProductCard = ({ image, label, tags, onClick, onDoubleClick }: ProductCardProps) => {
+export const ProductCard = ({
+  image,
+  label,
+  tags,
+  onClick,
+  onDoubleClick,
+  onLikeClick,
+  liked,
+  showLikeButton,
+}: ProductCardProps) => {
   return (
     <div
       className="tt-product-card-warpper"
@@ -25,6 +38,17 @@ export const ProductCard = ({ image, label, tags, onClick, onDoubleClick }: Prod
             <Tag {...tag} key={index} className="tt-product-card-tag" />
           ))}
         </div>
+        {showLikeButton ? (
+          <LikeButton
+            variant="circle"
+            className="tt-product-card-like-button"
+            liked={liked}
+            onClick={(e) => {
+              e.stopPropagation();
+              onLikeClick?.();
+            }}
+          />
+        ) : null}
       </div>
       <div className="tt-product-card-label">
         <label>{label}</label>

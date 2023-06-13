@@ -151,6 +151,11 @@ export {
     LikeButton,
 } from './components/LikeButton'
 export {
+    type NotificationsPopoverProps,
+    type Notification,
+    NotificationsPopover,
+}    from './components/NotificationsPopover'
+export {
     type ProductCardProps,
     ProductCard,
 } from './components/ProductCard'
@@ -204,3 +209,11 @@ export {
     type TimelineProps,
     Timeline,
 } from "./components/Timeline"
+export {
+    type UserAvatarProps,
+    UserAvatar,
+} from './components/UserAvatar'
+export {
+    type UserMenuProps,
+    UserMenu,
+} from './components/UserMenu'
