@@ -83,6 +83,11 @@
   background-color: #f0f2f4;
 }
 
+.tt-select-content-option.bold-text:hover {
+  background-color: #fff;
+  font-weight: bold;
+}
+
 /* .tt-select-content > .tt-select-content-viewport > .tt-select-content-group > .tt-select-content-option[data-disabled] {
 } */
 

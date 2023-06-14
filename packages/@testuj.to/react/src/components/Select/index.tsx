@@ -20,16 +20,22 @@ import { ChevronDownIcon, ChevronUpIcon, TriangleDownIcon } from "@radix-ui/reac
 
 import "./styles.css";
 
-const SelectOption = forwardRef<any, any>(({ className, children, ...props }, forwardedRef) => {
-  return (
-    <Item className={cx("tt-select-content-option", className)} ref={forwardedRef} {...props}>
-      <ItemText>{children}</ItemText>
-      <ItemIndicator className={cx("tt-select-content-option-indicator")}>
-        {/* <CheckIcon /> */}
-      </ItemIndicator>
-    </Item>
-  );
-});
+const SelectOption = forwardRef<any, any>(
+  ({ className, children, variant, ...props }, forwardedRef) => {
+    return (
+      <Item
+        className={cx("tt-select-content-option", variant, className)}
+        ref={forwardedRef}
+        {...props}
+      >
+        <ItemText>{children}</ItemText>
+        <ItemIndicator className={cx("tt-select-content-option-indicator", variant)}>
+          {/* <CheckIcon /> */}
+        </ItemIndicator>
+      </Item>
+    );
+  }
+);
 
 export interface SelectProps {
   value?: string;
@@ -40,10 +46,23 @@ export interface SelectProps {
     label: string;
   }[];
   onChange?(value: string);
-  multiple?: boolean;
+  widthAuto?: boolean;
+  variant?: "default" | "bold-text";
+  customIcon?: React.ReactNode;
+  className?: string;
 }
 
-export const Select = ({ value, placeholder, label, options, onChange, multiple }: SelectProps) => {
+export const Select = ({
+  value,
+  placeholder,
+  label,
+  options,
+  onChange,
+  widthAuto,
+  variant = "default",
+  customIcon,
+  className,
+}: SelectProps) => {
   const [width, setWidth] = useState(0);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -53,35 +72,37 @@ export const Select = ({ value, placeholder, label, options, onChange, multiple 
     }
   }, [triggerRef?.current]);
 
-  console.log(width);
-
   return (
     <Root value={value} onValueChange={onChange}>
       <Trigger
-        className={cx("tt-select-trigger")}
+        className={cx("tt-select-trigger", variant, className)}
         aria-label={label}
         id="tt-select"
         ref={triggerRef}
       >
         <Value placeholder={placeholder} />
         <Icon className={cx("tt-select-trigger-icon")}>
-          <TriangleDownIcon height={24} width={24} />
+          {customIcon || <TriangleDownIcon height={24} width={24} />}
         </Icon>
       </Trigger>
       <SelectPortal>
         <Content
-          className={cx("tt-select-content")}
+          className={cx("tt-select-content", variant)}
           position="popper"
-          style={{ width: `${width}px` }}
+          style={{ width: widthAuto ? undefined : `${width}px` }}
         >
           <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
             <ChevronUpIcon />
           </ScrollUpButton>
-          <Viewport className={cx("tt-select-content-viewport")}>
-            <Group className={cx("tt-select-content-group")}>
+          <Viewport className={cx("tt-select-content-viewport", variant)}>
+            <Group className={cx("tt-select-content-group", variant)}>
               <Label className={cx("tt-select-content-label")}>{label}</Label>
               {(options || []).map((option, index) => (
-                <SelectOption key={`${index}${option?.value}`} value={option?.value}>
+                <SelectOption
+                  key={`${index}${option?.value}`}
+                  value={option?.value}
+                  variant={variant}
+                >
                   {option?.label}
                 </SelectOption>
               ))}
