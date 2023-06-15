@@ -87,3 +87,26 @@
   margin-right: 1rem;
   padding-left: 0;
 }
+
+.tt-checkbox-container.framed {
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  height: 36px;
+  padding: 0 16px;
+}
+
+.tt-checkbox-label.framed {
+  color: var(--color-text);
+  margin-right: 1rem;
+  padding-left: 0;
+  font: var(--font-normal-14);
+}
+
+.tt-checkbox.framed {
+  margin-left: 1rem;
+  width: 20px;
+  height: 20px;
+}
