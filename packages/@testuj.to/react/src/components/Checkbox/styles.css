@@ -106,7 +106,10 @@
 }
 
 .tt-checkbox.framed {
-  margin-left: 1rem;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
+}
+
+.tt-checkbox.framed[aria-checked="false"] > .tt-checkbox-label.framed {
+  color: var(--color-text-secondary);
 }

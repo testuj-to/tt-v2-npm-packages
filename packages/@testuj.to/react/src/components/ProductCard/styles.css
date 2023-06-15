@@ -29,7 +29,6 @@
   position: absolute;
   bottom: 1rem;
   left: 1rem;
-  z-index: 1;
   display: flex;
   flex-direction: row;
 }
@@ -50,7 +49,6 @@
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  z-index: 1;
 }
 
 .tt-product-card-info {
