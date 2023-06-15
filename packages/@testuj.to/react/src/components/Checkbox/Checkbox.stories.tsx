@@ -17,5 +17,5 @@ const checkboxStory: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...a
 export const CheckboxStory = checkboxStory.bind({});
 CheckboxStory.args = {
   label: "I'm a label!",
-  variant: "default",
+  variant: "framed",
 };

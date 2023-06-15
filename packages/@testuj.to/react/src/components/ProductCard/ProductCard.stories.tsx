@@ -32,4 +32,14 @@ Basic.args = {
     },
   ],
   onClick: () => console.log("Product card clicked"),
+  info: {
+    rating: Math.random() * 5,
+    noOfReviews: Math.floor(Math.floor(Math.random() * 100)),
+    date: new Date().toISOString(),
+  },
+  showInfo: true,
+  translations: {
+    review: "recenze",
+    reviews: "recenzí",
+  },
 };
