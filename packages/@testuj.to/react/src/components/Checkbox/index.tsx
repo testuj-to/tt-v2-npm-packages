@@ -9,11 +9,17 @@ export interface CheckboxProps {
   value: boolean;
   label?: React.ReactNode;
   onChange?(value: boolean);
-  variant?: "default" | "outlined";
+  variant?: "default" | "outlined" | "framed";
   className?: string;
 }
 
-export const Checkbox = ({ value, label, onChange, variant, className }: CheckboxProps) => {
+export const Checkbox = ({
+  value,
+  label,
+  onChange,
+  variant = "default",
+  className,
+}: CheckboxProps) => {
   const id = useId();
   const handleChange = useCallback(
     (isChecked: boolean | string) => {
@@ -30,7 +36,7 @@ export const Checkbox = ({ value, label, onChange, variant, className }: Checkbo
       onClick={(e) => {
         e.stopPropagation();
         e.preventDefault();
-        variant === "outlined" && handleChange(!value);
+        variant !== "default" && handleChange(!value);
       }}
     >
       <Root
