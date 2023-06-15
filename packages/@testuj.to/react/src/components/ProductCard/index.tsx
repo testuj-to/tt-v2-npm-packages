@@ -10,6 +10,7 @@ export type ProductCardInfo = {
   rating: number;
   noOfReviews: number;
   date: string;
+  text: string;
 };
 
 export interface ProductCardProps {
@@ -23,6 +24,7 @@ export interface ProductCardProps {
   showLikeButton?: boolean;
   hideTags?: boolean;
   showInfo?: boolean;
+  textInfo?: boolean;
   info?: ProductCardInfo;
   translations?: {
     review: string;
@@ -41,6 +43,7 @@ export const ProductCard = ({
   showLikeButton,
   hideTags,
   showInfo,
+  textInfo,
   info,
   translations,
 }: ProductCardProps) => {
@@ -90,6 +93,11 @@ export const ProductCard = ({
               {moment(info.date).format("MM/YYYY")}
             </span>
           </div>
+        </div>
+      ) : null}
+      {textInfo ? (
+        <div className="tt-product-card-info">
+          <span className="tt-product-card-info-reviews-value">{info.text}</span>
         </div>
       ) : null}
     </div>
