@@ -12,10 +12,18 @@ export default {
   decorators: [TTContextDecorator],
 } as ComponentMeta<typeof Slider>;
 
-const sliderStoryTemplate: ComponentStory<typeof Slider> = (args) => <Slider {...args} />;
+const sliderStoryTemplate: ComponentStory<typeof Slider> = (args) => (
+  <div style={{ width: "300px" }}>
+    <Slider {...args} />
+  </div>
+);
 
 export const Basic = sliderStoryTemplate.bind({});
 Basic.args = {
   min: 0,
-  // onChange: () => alert('You changed me!'),
+  onChange: () => {},
+  max: 100,
+  step: 1,
+  defaultValue: 50,
+  // value: 50,
 };
