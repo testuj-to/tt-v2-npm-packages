@@ -14,6 +14,7 @@ export interface StateProgressListProps {
   items: StateProgressListItem[];
   currentIndex?: number;
   pastSuccess?: boolean;
+  onClick?: (index: number) => void;
 }
 
 export const StateProgressList = ({
@@ -21,6 +22,7 @@ export const StateProgressList = ({
   items,
   pastSuccess,
   currentIndex,
+  onClick,
 }: StateProgressListProps) => {
   return (
     <ol className={cx("tt-state-progress-list", className)}>
@@ -34,7 +36,7 @@ export const StateProgressList = ({
           currentState = "disabled";
         }
         return (
-          <StateProgressListItem key={index} state={currentState}>
+          <StateProgressListItem key={index} state={currentState} onClick={() => onClick?.(index)}>
             {index + 1}) {content}
           </StateProgressListItem>
         );
@@ -46,11 +48,12 @@ export const StateProgressList = ({
 interface StateProgressListItemProps {
   state: StateProgressListState;
   children?: React.ReactNode;
+  onClick?: () => void;
 }
 
-const StateProgressListItem = ({ state, children }: StateProgressListItemProps) => {
+const StateProgressListItem = ({ state, children, onClick }: StateProgressListItemProps) => {
   return (
-    <li className="tt-state-progress-list-item">
+    <li className="tt-state-progress-list-item" onClick={onClick}>
       <StateProgressIndicator {...{ state }} />
       <div className={cx("tt-state-progress-list-item_content", state)}>{children}</div>
     </li>
