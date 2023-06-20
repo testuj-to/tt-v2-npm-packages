@@ -10,9 +10,10 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: "info" | "success" | "warning" | "error";
   className?: string;
   hideIcon?: boolean;
+  size?: "small" | "medium" | "large";
 }
 
-export const Alert = ({ children, variant, className, hideIcon }: AlertProps) => {
+export const Alert = ({ children, variant, className, hideIcon, size = "medium" }: AlertProps) => {
   const chooseIcon = () => {
     switch (variant) {
       case "info":
@@ -29,7 +30,7 @@ export const Alert = ({ children, variant, className, hideIcon }: AlertProps) =>
   };
 
   return (
-    <div className={cx("tt-alert", `tt-alert-${variant}`, className)}>
+    <div className={cx("tt-alert", `tt-alert-${variant}`, size, className)}>
       {hideIcon ? null : chooseIcon()}
       {children}
     </div>

@@ -29,17 +29,29 @@
 }
 
 .tt-alert-icon-success {
-  color: #2e8540;
+  color: var(--color-success);
 }
 
 .tt-alert-icon-error {
-  color: #c53030;
+  color: var(--color-error);
 }
 
 .tt-alert-icon-warning {
-  color: #c53030;
+  color: var(--color-warning);
 }
 
 .tt-alert-icon-info {
-  color: #2b6cb0;
+  color: var(--color-info);
+}
+
+.tt-alert.small {
+  padding: 0.6rem;
+}
+
+.tt-alert.small .tt-alert-icon {
+  margin-right: 0.5rem;
+}
+
+.tt-alert.large {
+  padding: 1.5rem;
 }

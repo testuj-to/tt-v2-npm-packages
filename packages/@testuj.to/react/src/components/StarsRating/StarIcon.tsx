@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { useId } from "react";
 
 export interface StarIconProps extends React.SVGProps<SVGSVGElement> {
   filled: number;
@@ -7,6 +8,7 @@ export interface StarIconProps extends React.SVGProps<SVGSVGElement> {
 }
 
 export const StarIcon = ({ filled, onClick, setGradient, ...props }: StarIconProps) => {
+  const gradientId = useId();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +30,11 @@ export const StarIcon = ({ filled, onClick, setGradient, ...props }: StarIconPro
           "tt-star-icon-full": filled === 100,
           "tt-star-icon-half": filled > 0 && filled < 100,
         })}
+        fill={filled > 0 && filled < 100 ? `url(#${gradientId})` : "#FF7804"}
       />
       <defs>
         {setGradient && (
-          <linearGradient id={`starGradient`}>
+          <linearGradient id={gradientId}>
             <stop offset={`${filled}%`} stopColor="#FF7804" />
             <stop offset={`${filled}%`} stopColor="#F2F2F2" />
           </linearGradient>

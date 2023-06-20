@@ -23,17 +23,16 @@ export const StarsRating = ({
 
   return (
     <div className={className}>
-      {[1, 2, 3, 4, 5].map((filled) => {
-        const filledPercent =
-          filled <= ratingInt ? 100 : filled > ratingInt + 1 ? 0 : ratingDecimal * 100;
-
+      {[1, 2, 3, 4, 5].map((star) => {
+        const starPercent =
+          star <= ratingInt ? 100 : star > ratingInt + 1 ? 0 : ratingDecimal * 100;
         return (
           <StarIcon
-            key={filled}
-            filled={filledPercent}
-            onClick={() => !readOnly && onChange(filled)}
-            setGradient={filled > ratingInt}
-            onMouseEnter={() => !readOnly && setRatingHover(filled)}
+            key={star}
+            filled={starPercent}
+            onClick={() => !readOnly && onChange(star)}
+            setGradient={star > ratingInt}
+            onMouseEnter={() => !readOnly && setRatingHover(star)}
             onMouseLeave={() => !readOnly && setRatingHover(null)}
             height={starSize || 24}
             width={starSize || 24}
