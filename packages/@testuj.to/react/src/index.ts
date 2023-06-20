@@ -127,6 +127,10 @@ export {
     DropdownSelect,
 } from './components/DropdownSelect'
 export {
+    type FileUploadAreaProps,
+    FileUploadArea,
+} from './components/FileUploadArea'
+export {
     type FormProps,
     Form,
 } from './components/Form'

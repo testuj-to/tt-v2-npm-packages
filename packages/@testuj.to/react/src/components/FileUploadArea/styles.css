@@ -1,0 +1,57 @@
+.tt-file-upload-area {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.tt-file-upload-area-input {
+  display: none;
+}
+
+#tt-file-upload-area-label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px dashed var(--color-border);
+  border-radius: 4px;
+}
+
+#tt-file-upload-area-label.drag-active {
+  background-color: #00000007;
+}
+
+.tt-file-upload-area-label-button {
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1rem;
+  border: none;
+  background-color: transparent;
+}
+
+.tt-file-upload-area-label-button:hover {
+  text-decoration-line: underline;
+}
+
+.tt-file-upload-area-label-text {
+  font: var(--font-normal-14);
+  color: var(--color-text-secondary);
+}
+
+#drag-file-element {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.upload-button {
+  color: var(--color-text-secondary);
+}
