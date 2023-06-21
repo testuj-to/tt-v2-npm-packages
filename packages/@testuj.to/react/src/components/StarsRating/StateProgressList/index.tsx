@@ -30,7 +30,7 @@ export const StateProgressList = ({
   return (
     <ol className={cx("tt-state-progress-list", className)}>
       {items?.map(({ state, content }, index) => {
-        let currentState = structuredClone(state);
+        let currentState = state;
         if (pastSuccess && index === currentIndex) {
           currentState = "active";
         } else if (pastSuccess && index < currentIndex) {
