@@ -53,15 +53,15 @@ export const CampaignHeroSection = ({
         <div className="tt-campaign-hero-section-row">
           <LabeledIcon
             icon={<IconPeople />}
-            label={`${t("Hledame")} ${campaign.applications.slotsCount} ${t("testerů")}`}
+            label={`${t("looking")} ${campaign.applications.slotsCount} ${t("testers")}`}
           />
-          <LabeledIcon icon={<IconTransport />} label={t("Doprava až k vám")} />
-          <LabeledIcon icon={<IconCheck />} label={t("Zdarma")} />
+          <LabeledIcon icon={<IconTransport />} label={t("delivery")} />
+          <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
         </div>
-        <h5>Výstup z testování</h5>
+        <h5>{t("test_outcome")}</h5>
         <div className="tt-campaign-hero-section-row">
-          <LabeledIcon icon={<IconStar />} label={`4 ${t("rezenze")}`} />
-          <LabeledIcon icon={<IconCamera />} label={t("Fotografie a video")} />
+          <LabeledIcon icon={<IconStar />} label={`4 ${t("review")}`} />
+          <LabeledIcon icon={<IconCamera />} label={t("foto_video")} />
         </div>
         {small ? null : (
           <>
@@ -73,7 +73,7 @@ export const CampaignHeroSection = ({
               className="tt-campaign-hero-section-button"
               onClick={onClickButton}
             >
-              {t("Přihlásit se")}
+              {t("register")}
             </Button>
           </>
         )}

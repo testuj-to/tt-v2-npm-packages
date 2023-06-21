@@ -28,3 +28,26 @@
 
 .tt-state-progress-list-item_content.error {
 }
+
+.tt-state-progress-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+}
+
+.tt-state-progress-indicator.active {
+  color: var(--color-info);
+}
+
+.tt-state-progress-indicator.done {
+  color: var(--color-success);
+}
+
+.tt-state-progress-indicator.disabled {
+  color: var(--color-disabled);
+}
+
+.tt-state-progress-indicator.error {
+  color: var(--color-error);
+}

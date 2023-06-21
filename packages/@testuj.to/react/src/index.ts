@@ -187,7 +187,7 @@ export {
     type StateProgressListProps,
     type StateProgressListState,
     StateProgressList,
-} from "./components/StateProgressList";
+} from "./components/StarsRating/StateProgressList";
 export {
     type TableProps,
     Table,

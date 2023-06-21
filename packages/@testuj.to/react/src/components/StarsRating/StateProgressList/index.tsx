@@ -1,6 +1,9 @@
 import cx from "classnames";
 
 import "./styles.css";
+import { IconPending } from "./IconPending";
+import { IconCheck } from "./IconCheck";
+import { IconCancel } from "./IconCancel";
 
 export type StateProgressListState = "active" | "done" | "disabled" | "error";
 
@@ -65,9 +68,12 @@ interface StateProgressIndicatorProps {
 }
 
 const StateProgressIndicator = ({ state }: StateProgressIndicatorProps) => {
-  return (
-    <div className="tt-state-progress-indicator">
-      <div className="tt-state-progress-indicator__circle"></div>
-    </div>
-  );
+  const Icon = {
+    active: <IconPending />,
+    done: <IconCheck />,
+    disabled: <IconCancel />,
+    error: <IconCancel />,
+  }[state];
+
+  return <div className={cx("tt-state-progress-indicator", state)}>{Icon}</div>;
 };
