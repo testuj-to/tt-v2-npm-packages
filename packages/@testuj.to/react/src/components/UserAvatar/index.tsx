@@ -9,6 +9,7 @@ export interface UserAvatarProps {
   badge?: string;
   className?: string;
   hideUserText?: boolean;
+  onClick?: () => void;
 }
 
 export const UserAvatar = ({
@@ -18,9 +19,10 @@ export const UserAvatar = ({
   badge,
   className,
   hideUserText,
+  onClick,
 }: UserAvatarProps) => {
   return (
-    <div className={cx("tt-user-avatar", className)}>
+    <div className={cx("tt-user-avatar", className)} onClick={onClick}>
       <div className="tt-user-avatar-image-wrapper">
         <img src={image} alt={name} height={40} width={40} className="tt-user-avatar-image" />
         {badge ? (
