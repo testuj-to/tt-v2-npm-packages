@@ -1,9 +1,10 @@
 import cx from "classnames";
 
-import "./styles.css";
 import { IconPending } from "./IconPending";
 import { IconCheck } from "./IconCheck";
 import { IconCancel } from "./IconCancel";
+
+import "./styles.css";
 
 export type StateProgressListState = "active" | "done" | "disabled" | "error";
 
