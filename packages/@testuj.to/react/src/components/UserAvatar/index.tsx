@@ -10,6 +10,8 @@ export interface UserAvatarProps {
   className?: string;
   hideUserText?: boolean;
   onClick?: () => void;
+  size?: "small" | "medium" | "large";
+  imageWrapperClassName?: string;
 }
 
 export const UserAvatar = ({
@@ -20,14 +22,14 @@ export const UserAvatar = ({
   className,
   hideUserText,
   onClick,
+  size = "medium",
+  imageWrapperClassName,
 }: UserAvatarProps) => {
   return (
     <div className={cx("tt-user-avatar", className)} onClick={onClick}>
-      <div className="tt-user-avatar-image-wrapper">
-        <img src={image} alt={name} height={40} width={40} className="tt-user-avatar-image" />
-        {badge ? (
-          <img src={badge} alt={name} height={18} width={18} className="tt-user-avatar-badge" />
-        ) : null}
+      <div className={cx("tt-user-avatar-image-wrapper", size, imageWrapperClassName)}>
+        <img src={image} alt={name} className={cx("tt-user-avatar-image", size)} />
+        {badge ? <img src={badge} alt={name} className={cx("tt-user-avatar-badge", size)} /> : null}
       </div>
       {!hideUserText ? (
         <div className="tt-user-avatar-text">

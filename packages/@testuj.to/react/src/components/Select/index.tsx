@@ -20,7 +20,16 @@ import { ChevronDownIcon, ChevronUpIcon, TriangleDownIcon } from "@radix-ui/reac
 
 import "./styles.css";
 
-const SelectOption = forwardRef<any, any>(
+export interface SelectOptionProps {
+  className?: string;
+  variant?: "default" | "bold-text";
+  value: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  children?: React.ReactNode;
+}
+
+const SelectOption = forwardRef<HTMLDivElement, SelectOptionProps>(
   ({ className, children, variant, ...props }, forwardedRef) => {
     return (
       <Item

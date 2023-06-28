@@ -10,13 +10,31 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tt-user-avatar-image-wrapper.small {
+  width: 32px;
+  height: 32px;
+}
+
+.tt-user-avatar-image-wrapper.medium {
   width: 40px;
   height: 40px;
+}
+
+.tt-user-avatar-image-wrapper.large {
+  width: 56px;
+  height: 56px;
 }
 
 .tt-user-avatar-image {
   object-fit: cover;
   border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 0;
 }
 
@@ -31,6 +49,21 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
+}
+
+.tt-user-avatar-badge.small {
+  width: 12px;
+  height: 12px;
+}
+
+.tt-user-avatar-badge.medium {
+  width: 18px;
+  height: 18px;
+}
+
+.tt-user-avatar-badge.large {
+  width: 24px;
+  height: 24px;
 }
 
 .tt-user-avatar-text {
@@ -51,4 +84,19 @@
   font: var(--font-normal-12);
   white-space: nowrap;
   color: var(--color-text-secondary);
+}
+
+@media (max-width: 900px) {
+  .tt-user-avatar-image-wrapper.medium {
+    width: 56px;
+    height: 56px;
+  }
+
+  .tt-user-avatar-name {
+    font: var(--font-normal-16-600);
+  }
+
+  .tt-user-avatar-title {
+    font: var(--font-normal-14);
+  }
 }
