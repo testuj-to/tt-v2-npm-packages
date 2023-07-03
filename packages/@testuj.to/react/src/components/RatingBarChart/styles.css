@@ -18,7 +18,7 @@
 }
 
 .tt-rating-bar-chart__item:not(:last-child) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .tt-rating-bar-chart__item__label {
@@ -52,7 +52,7 @@
   position: absolute;
   z-index: 1;
   width: 2px;
-  height: 420%;
+  height: 500%;
   background-color: var(--color-border);
   z-index: 0;
   left: 6px;
