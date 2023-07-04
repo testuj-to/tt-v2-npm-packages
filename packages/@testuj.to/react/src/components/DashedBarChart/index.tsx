@@ -1,7 +1,7 @@
 import cx from "classnames";
 
 import "./styles.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export interface RatingBarChartItem {
   label: string;
@@ -12,9 +12,10 @@ export interface DashedBarChartProps {
   className?: string;
   items: RatingBarChartItem[];
   noOfDashes?: number;
+  delay?: boolean;
 }
 
-export const DashedBarChart = ({ items, className, noOfDashes }: DashedBarChartProps) => {
+export const DashedBarChart = ({ items, className, noOfDashes, delay }: DashedBarChartProps) => {
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--tt-dashed-bar-chart-dashes",
@@ -25,7 +26,7 @@ export const DashedBarChart = ({ items, className, noOfDashes }: DashedBarChartP
   return (
     <div className={cx("tt-dashed-bar-chart", className)}>
       {items.map(({ label, value }, index) => {
-        return <DashedBarChartItem key={index} {...{ label, value, noOfDashes }} />;
+        return <DashedBarChartItem key={index} {...{ label, value, noOfDashes, delay }} />;
       })}
     </div>
   );
@@ -35,9 +36,15 @@ export interface DashedBarChartItemProps {
   label: string;
   value: number;
   noOfDashes?: number;
+  delay?: boolean;
 }
 
-export const DashedBarChartItem = ({ label, value, noOfDashes }: DashedBarChartItemProps) => {
+export const DashedBarChartItem = ({
+  label,
+  value,
+  delay,
+  noOfDashes,
+}: DashedBarChartItemProps) => {
   const dashes = Array.from({ length: noOfDashes || 5 }, (_, index) => index);
 
   const calculateDashFill = (index: number) => {
@@ -57,15 +64,43 @@ export const DashedBarChartItem = ({ label, value, noOfDashes }: DashedBarChartI
       <div className="tt-dashed-bar-chart__item__label">{label}</div>
       <div className="tt-dashed-bar-chart__item__bar">
         {dashes.map((_, index) => (
-          <div className="tt-dashed-bar-chart__item__bar__dash" key={index}>
-            <div
-              className="tt-dashed-bar-chart__item__bar__dash_fill"
-              style={{ width: `${calculateDashFill(index)}%` }}
-            ></div>
-          </div>
+          <DashedBarChartDash
+            width={calculateDashFill(index)}
+            delay={delay}
+            index={index + 1}
+            key={index}
+          />
         ))}
         <div className="tt-dashed-bar-chart__item__value">{`${value}%`}</div>
       </div>
+    </div>
+  );
+};
+
+export interface DashedBarChartDashProps {
+  width: number;
+  delay?: boolean;
+  index: number;
+}
+
+export const DashedBarChartDash = ({ width, delay, index }) => {
+  const [dashWidth, setDashWidth] = useState(delay ? 0 : width);
+
+  useEffect(() => {
+    if (!delay) {
+      return;
+    }
+    setTimeout(() => {
+      setDashWidth(width);
+    }, 335 * index);
+  }, [width, delay]);
+
+  return (
+    <div className="tt-dashed-bar-chart__item__bar__dash">
+      <div
+        className="tt-dashed-bar-chart__item__bar__dash_fill"
+        style={{ width: `${dashWidth}%` }}
+      ></div>
     </div>
   );
 };
