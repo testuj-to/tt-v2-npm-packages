@@ -20,11 +20,17 @@
 
 .tt-dashed-bar-chart__item__label {
   white-space: nowrap;
+  font: var(--font-normal-14-600);
+}
+
+.tt-dashed-bar-chart__item__value {
+  white-space: nowrap;
+  font: var(--font-normal-14-600);
+  color: var(--color-text-secondary);
 }
 
 .tt-dashed-bar-chart__item__bar {
   display: grid;
-  /* auto repeat 1fr */
   grid-template-columns: repeat(var(--tt-dashed-bar-chart-dashes), 1fr);
   align-items: center;
   z-index: 2;

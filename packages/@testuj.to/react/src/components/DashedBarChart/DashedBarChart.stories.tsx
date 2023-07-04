@@ -27,7 +27,7 @@ DashedBarChartStory.args = {
     },
     {
       label: "Dobře se čistí",
-      value: 60,
+      value: 62,
     },
     {
       label: "Pokožka bez reakce",

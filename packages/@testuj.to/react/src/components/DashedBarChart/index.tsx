@@ -18,7 +18,7 @@ export const DashedBarChart = ({ items, className, noOfDashes }: DashedBarChartP
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--tt-dashed-bar-chart-dashes",
-      `${noOfDashes + 1 || 6}`
+      `${noOfDashes ? noOfDashes + 1 : 6}`
     );
   }, [noOfDashes]);
 
