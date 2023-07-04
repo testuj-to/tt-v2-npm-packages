@@ -1,9 +1,9 @@
+import { useEffect, useState } from "react";
 import cx from "classnames";
 
-import "./styles.css";
 import { StarIcon } from "./StarIcon";
-import { useState } from "react";
 
+import "./styles.css";
 export interface RatingBarChartItem {
   label: string;
   value: number;
@@ -55,19 +55,7 @@ const finalWidth = (width: number) => {
   return width;
 };
 
-export const RatingBarChartItem = ({
-  label,
-  width,
-  value,
-  icon,
-  delay,
-}: RatingBarChartItemProps) => {
-  const [lineWidth, setLineWidth] = useState(delay ? 0 : finalWidth(width));
-
-  setTimeout(() => {
-    setLineWidth(width);
-  }, 100);
-
+export const RatingBarChartItem = ({ label, width, value, icon }: RatingBarChartItemProps) => {
   return (
     <div className="tt-rating-bar-chart__item">
       <div className="tt-rating-bar-chart__item__label">{label}</div>
@@ -75,7 +63,7 @@ export const RatingBarChartItem = ({
       <div className="tt-rating-bar-chart__item__bar">
         <div
           className="tt-rating-bar-chart__item__bar__fill"
-          style={{ width: `${lineWidth}%` }}
+          style={{ width: `${finalWidth(width)}%` }}
         ></div>
         <div
           className="tt-rating-bar-chart__item__bar__label"
