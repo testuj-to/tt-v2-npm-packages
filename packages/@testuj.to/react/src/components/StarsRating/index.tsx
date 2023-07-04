@@ -4,7 +4,7 @@ import "./styles.css";
 
 export interface StarsRatingProps {
   rating: number;
-  onChange: (rating: number) => void;
+  onChange?: (rating: number) => void;
   readOnly?: boolean;
   className?: string;
   starSize?: number;
