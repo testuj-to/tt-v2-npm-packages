@@ -115,6 +115,11 @@ export {
     Checkbox,
 } from './components/Checkbox'
 export {
+    type DashedBarChartProps,
+    type DashedBarChartItem,
+    DashedBarChart,
+} from "./components/DashedBarChart";
+export {
     type DateRangePickerProps,
     DateRangePicker,
 } from "./components/DateRangePicker";
