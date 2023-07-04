@@ -115,6 +115,11 @@ export {
     Checkbox,
 } from './components/Checkbox'
 export {
+    type DashedBarChartProps,
+    type DashedBarChartItem,
+    DashedBarChart,
+} from "./components/DashedBarChart";
+export {
     type DateRangePickerProps,
     DateRangePicker,
 } from "./components/DateRangePicker";
@@ -171,6 +176,11 @@ export {
     type RadioGroupProps,
     RadioGroup,
 } from './components/RadioGroup'
+export {
+    type RatingBarChartProps,
+    type RatingBarChartItem,
+    RatingBarChart,
+} from "./components/RatingBarChart";
 export {
     type RichTextReaderProps,
     RichTextReader,
