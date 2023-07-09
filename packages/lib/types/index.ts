@@ -1,3 +1,6 @@
+
+export { productCategories } from './enums'
+
 export interface Edges<Edge> {
   edges?: Edge[];
   edgesTotal?: number;
