@@ -30,6 +30,7 @@ export {
     QuestionnaireQuestionType,
     CampaignStatus,
     CampaignApplicationStatus,
+    productCategories,
 } from '@lib/types'
 export {
     type Credentials,
