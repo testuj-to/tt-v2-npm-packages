@@ -1,0 +1,107 @@
+.tt-review {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.tt-review__header {
+  display: flex;
+  align-items: center;
+}
+
+.tt-review__rating_bar {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.tt-review__rating_wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.tt-review__recommended {
+  margin-left: 1rem;
+  font: var(--font-normal-14);
+  display: flex;
+  align-items: center;
+  background-color: var(--light-green);
+  background-color: #e3f1de;
+  color: var(--color-green);
+  color: #2e7d32;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+}
+
+.tt-review__recommended_icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 0.6rem;
+}
+
+.tt-review__content {
+  text-align: left;
+  margin-top: 1rem;
+  font: var(--font-normal-14);
+}
+
+.tt-review__pros_cons {
+  display: flex;
+  margin-top: 1rem;
+  min-width: 400px;
+  max-width: 600px;
+  justify-content: space-between;
+}
+
+.tt-review__pros_cons_col {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tt-review__pros_item {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.tt-review__pros_icon {
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-green);
+  background-color: green;
+  color: #fff;
+}
+
+.tt-review__cons_item {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.tt-review__cons_icon {
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-green);
+  background-color: rgb(255, 7, 7);
+  color: #fff;
+}
+
+.tt-review__images {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.tt-review__image {
+  margin-right: 1rem;
+  border-radius: 4px;
+  height: 48px;
+  width: 72px;
+}
