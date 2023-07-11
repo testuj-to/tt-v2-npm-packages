@@ -42,4 +42,5 @@ RatingBarChartStory.args = {
       value: 0,
     },
   ],
+  delay: true,
 };

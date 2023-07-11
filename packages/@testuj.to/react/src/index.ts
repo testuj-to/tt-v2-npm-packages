@@ -183,6 +183,10 @@ export {
     RatingBarChart,
 } from "./components/RatingBarChart";
 export {
+    type ReviewProps,
+    Review,
+} from "./components/Review";
+export {
     type RichTextReaderProps,
     RichTextReader,
 } from "./components/RichTextReader";
