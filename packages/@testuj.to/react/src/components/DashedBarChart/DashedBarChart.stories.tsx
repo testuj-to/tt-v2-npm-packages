@@ -42,4 +42,5 @@ DashedBarChartStory.args = {
       value: 100,
     },
   ],
+  delay: true,
 };

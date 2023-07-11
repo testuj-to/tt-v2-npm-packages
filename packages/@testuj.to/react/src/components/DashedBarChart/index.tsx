@@ -1,7 +1,7 @@
+import { useEffect, useState } from "react";
 import cx from "classnames";
 
 import "./styles.css";
-import { useEffect } from "react";
 
 export interface RatingBarChartItem {
   label: string;
@@ -57,15 +57,25 @@ export const DashedBarChartItem = ({ label, value, noOfDashes }: DashedBarChartI
       <div className="tt-dashed-bar-chart__item__label">{label}</div>
       <div className="tt-dashed-bar-chart__item__bar">
         {dashes.map((_, index) => (
-          <div className="tt-dashed-bar-chart__item__bar__dash" key={index}>
-            <div
-              className="tt-dashed-bar-chart__item__bar__dash_fill"
-              style={{ width: `${calculateDashFill(index)}%` }}
-            ></div>
-          </div>
+          <DashedBarChartDash width={calculateDashFill(index)} key={index} />
         ))}
         <div className="tt-dashed-bar-chart__item__value">{`${value}%`}</div>
       </div>
+    </div>
+  );
+};
+
+export interface DashedBarChartDashProps {
+  width: number;
+}
+
+export const DashedBarChartDash = ({ width }) => {
+  return (
+    <div className="tt-dashed-bar-chart__item__bar__dash">
+      <div
+        className="tt-dashed-bar-chart__item__bar__dash_fill"
+        style={{ width: `${width}%` }}
+      ></div>
     </div>
   );
 };
