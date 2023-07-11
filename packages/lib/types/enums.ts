@@ -1,0 +1,85 @@
+export const productCategories = [{
+  key: "children",
+  parent: null,
+}, {
+  key: "children_care-and-hygiene",
+  parent: "children",
+}, {
+  key: "children_toys",
+  parent: "children",
+}, {
+  key: "children_school",
+  parent: "children",
+}, {
+  key: "children_kidsroom",
+  parent: "children",
+}, {
+  key: "children_health",
+  parent: "children",
+}, {
+  key: "children_other",
+  parent: "children",
+}, {
+  key: "house-and-garden",
+  parent: null,
+}, {
+  key: "house-and-garden_garden",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_home-accessories",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_household-appliances",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_pets",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_cleaning-supplies",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_detergents",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_kitchen-appliances",
+  parent: "house-and-garden",
+}, {
+  key: "house-and-garden_other",
+  parent: "house-and-garden",
+}, {
+  key: "health-and-beauty",
+  parent: null,
+}, {
+  key: "health-and-beauty_dietary-supplements",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_feminine-hygiene",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_dental-hygiene",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_perfumes-and-deodorants",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_",
+  parent: "health-and-beauty",
+}, {
+  key: "health-and-beauty_",
+  parent: "health-and-beauty",
+}, {
+  key: "sport",
+  parent: null,
+}, {
+  key: "auto-moto",
+  parent: null,
+}]
