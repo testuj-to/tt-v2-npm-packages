@@ -46,14 +46,14 @@ export const Review = ({
             image={user.avatar}
             name={`${user.firstName} ${user.lastName}`}
             title={user.title}
-            size="large"
+            size="medium"
           />
         }
       </div>
       <div className="tt-review__rating_bar">
         <div className="tt-review__rating_wrapper">
           <span className="tt-review__rating">{rating}/5</span>
-          <StarsRating rating={rating} readOnly />
+          <StarsRating rating={rating} readOnly starSize={16} />
         </div>
         {recommend ? (
           <div className="tt-review__recommended">

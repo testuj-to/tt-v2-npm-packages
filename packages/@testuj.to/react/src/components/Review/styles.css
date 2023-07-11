@@ -19,11 +19,19 @@
 .tt-review__rating_wrapper {
   display: flex;
   align-items: center;
+  background-color: #f7f8fa;
+  border-radius: 15px;
+  padding: 0.2rem 1rem;
+}
+
+.tt-review__rating {
+  font: var(--font-normal-13);
+  margin-right: 0.6rem;
 }
 
 .tt-review__recommended {
   margin-left: 1rem;
-  font: var(--font-normal-14);
+  font: var(--font-normal-12);
   display: flex;
   align-items: center;
   background-color: var(--light-green);
@@ -64,6 +72,8 @@
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  font: var(--font-normal-14);
 }
 
 .tt-review__pros_icon {
@@ -81,6 +91,8 @@
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
+  white-space: nowrap;
+  font: var(--font-normal-14);
 }
 
 .tt-review__cons_icon {
@@ -104,4 +116,5 @@
   border-radius: 4px;
   height: 48px;
   width: 72px;
+  object-fit: cover;
 }
