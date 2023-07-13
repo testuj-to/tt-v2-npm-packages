@@ -12,6 +12,10 @@ export interface UserAvatarProps {
   onClick?: () => void;
   size?: "small" | "medium" | "large";
   imageWrapperClassName?: string;
+  customSizes?: {
+    avatar?: number;
+    badge?: number;
+  };
 }
 
 export const UserAvatar = ({
@@ -24,12 +28,28 @@ export const UserAvatar = ({
   onClick,
   size = "medium",
   imageWrapperClassName,
+  customSizes,
 }: UserAvatarProps) => {
   return (
     <div className={cx("tt-user-avatar", className)} onClick={onClick}>
-      <div className={cx("tt-user-avatar-image-wrapper", size, imageWrapperClassName)}>
-        <img src={image} alt={name} className={cx("tt-user-avatar-image", size)} />
-        {badge ? <img src={badge} alt={name} className={cx("tt-user-avatar-badge", size)} /> : null}
+      <div
+        className={cx("tt-user-avatar-image-wrapper", size, imageWrapperClassName)}
+        style={{ width: customSizes?.avatar, height: customSizes?.avatar }}
+      >
+        <img
+          src={image}
+          alt={name}
+          className={cx("tt-user-avatar-image", size)}
+          style={{ width: customSizes?.avatar, height: customSizes?.avatar }}
+        />
+        {badge ? (
+          <img
+            src={badge}
+            alt={name}
+            className={cx("tt-user-avatar-badge", size)}
+            style={{ width: customSizes?.badge, height: customSizes?.badge }}
+          />
+        ) : null}
       </div>
       {!hideUserText ? (
         <div className="tt-user-avatar-text">
