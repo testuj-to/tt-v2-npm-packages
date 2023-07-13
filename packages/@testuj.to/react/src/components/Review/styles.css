@@ -21,7 +21,8 @@
   align-items: center;
   background-color: #f7f8fa;
   border-radius: 15px;
-  padding: 0.2rem 1rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #f0f2f4;
 }
 
 .tt-review__rating {
@@ -38,7 +39,7 @@
   background-color: #e3f1de;
   color: var(--color-green);
   color: #2e7d32;
-  padding: 0.3rem 1rem;
+  padding: 0.36rem 0.6rem;
   border-radius: 20px;
 }
 

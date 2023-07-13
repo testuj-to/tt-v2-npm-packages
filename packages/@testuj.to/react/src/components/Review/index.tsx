@@ -9,6 +9,7 @@ import "./styles.css";
 export interface UserWithAvatar extends User {
   avatar: string;
   title: string;
+  badge?: string;
 }
 
 export interface ReviewProps {
@@ -47,6 +48,8 @@ export const Review = ({
             name={`${user.firstName} ${user.lastName}`}
             title={user.title}
             size="medium"
+            badge={user.badge}
+            customSizes={{ avatar: 48, badge: 24 }}
           />
         }
       </div>
