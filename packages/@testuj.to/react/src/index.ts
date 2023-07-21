@@ -166,9 +166,9 @@ export {
     NotificationsPopover,
 }    from './components/NotificationsPopover'
 export {
-    type ProductCardProps,
-    ProductCard,
-} from './components/ProductCard'
+    type CampaignCardProps,
+    CampaignCard,
+} from './components/CampaignCard'
 export {
     type ProgressBarProps,
     ProgressBar,

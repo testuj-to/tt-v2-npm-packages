@@ -1,22 +1,22 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { TTContextDecorator } from "../../context.stories";
-import { ProductCard } from ".";
+import { CampaignCard } from ".";
 
 export default {
-  component: ProductCard,
-  title: "Composites/ProductCard",
+  component: CampaignCard,
+  title: "Composites/CampaignCard",
   parameters: {
     layout: "centered",
   },
   decorators: [TTContextDecorator],
-} as ComponentMeta<typeof ProductCard>;
+} as ComponentMeta<typeof CampaignCard>;
 
-const productCardStoryTemplate: ComponentStory<typeof ProductCard> = (args) => (
-  <ProductCard {...args} />
+const campaignCardStoryTemplate: ComponentStory<typeof CampaignCard> = (args) => (
+  <CampaignCard {...args} />
 );
 
-export const Basic = productCardStoryTemplate.bind({});
+export const Basic = campaignCardStoryTemplate.bind({});
 Basic.args = {
   image: <img src="https://picsum.photos/384/264" alt="img" />,
   label: "Product title",
