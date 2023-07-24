@@ -42,4 +42,10 @@ Basic.args = {
     review: "recenze",
     reviews: "recenzí",
   },
+  campaign: {
+    settings: {
+      openAt: new Date().toISOString(),
+      registrationPeriodDays: 10,
+    },
+  },
 };

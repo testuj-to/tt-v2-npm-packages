@@ -29,7 +29,6 @@ export const CampaignCard = ({
   liked,
   showLikeButton,
   hideTags,
-  textInfo,
   bottom,
 }: CampaignCardProps) => {
   return (
