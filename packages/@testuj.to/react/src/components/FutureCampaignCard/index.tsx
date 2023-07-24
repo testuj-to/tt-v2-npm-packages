@@ -60,11 +60,11 @@ export const FutureCampaignCard = ({ campaign, onClick }: FutureCampaignCardProp
 
   const tags: CampaignCardTagProps[] = useMemo(() => {
     return [
-      {
-        children: "👌 40% SLEVA",
-        variant: "white",
-      },
       generatedTag,
+      ...(campaign.tags?.map((tag) => ({
+        children: tag.value,
+        variant: "white",
+      })) as CampaignCardTagProps[]),
     ];
   }, [campaign]);
 
