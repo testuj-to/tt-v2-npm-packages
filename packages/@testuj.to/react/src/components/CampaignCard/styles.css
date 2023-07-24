@@ -31,10 +31,15 @@
   left: 1rem;
   display: flex;
   flex-direction: row;
+  max-width: 80%;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .tt-campaign-card-tag {
   margin-right: 0.4rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
 }
 
 .tt-campaign-card-tag:last-child {

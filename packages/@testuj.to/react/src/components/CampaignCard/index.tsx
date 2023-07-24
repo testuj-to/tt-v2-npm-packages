@@ -30,6 +30,7 @@ export interface CampaignCardProps {
     review: string;
     reviews: string;
   };
+  bottom?: React.ReactNode;
 }
 
 export const CampaignCard = ({
@@ -46,6 +47,7 @@ export const CampaignCard = ({
   textInfo,
   info,
   translations,
+  bottom,
 }: CampaignCardProps) => {
   return (
     <div
@@ -77,6 +79,7 @@ export const CampaignCard = ({
       <div className="tt-campaign-card-label">
         <label>{label}</label>
       </div>
+      {bottom ? bottom : null}
       {showInfo ? (
         <div className="tt-campaign-card-info">
           <div className="tt-campaign-card-info-rating">
