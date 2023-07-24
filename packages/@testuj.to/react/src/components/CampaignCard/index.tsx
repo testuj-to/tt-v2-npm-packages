@@ -1,17 +1,8 @@
-import moment from "moment";
 import { LikeButton } from "../LikeButton";
-import { StarsRating } from "../StarsRating";
 import { Tag, TagProps } from "../Tag";
 import "./styles.css";
 
 export interface CampaignCardTagProps extends TagProps {}
-
-export type CampaignCardInfo = {
-  rating: number;
-  noOfReviews: number;
-  date: string;
-  text: string;
-};
 
 export interface CampaignCardProps {
   image: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
@@ -25,11 +16,6 @@ export interface CampaignCardProps {
   hideTags?: boolean;
   showInfo?: boolean;
   textInfo?: boolean;
-  info?: CampaignCardInfo;
-  translations?: {
-    review: string;
-    reviews: string;
-  };
   bottom?: React.ReactNode;
 }
 
@@ -43,10 +29,7 @@ export const CampaignCard = ({
   liked,
   showLikeButton,
   hideTags,
-  showInfo,
   textInfo,
-  info,
-  translations,
   bottom,
 }: CampaignCardProps) => {
   return (
@@ -80,29 +63,6 @@ export const CampaignCard = ({
         <label>{label}</label>
       </div>
       {bottom ? bottom : null}
-      {showInfo ? (
-        <div className="tt-campaign-card-info">
-          <div className="tt-campaign-card-info-rating">
-            <span className="tt-campaign-card-info-rating-value">{info.rating.toFixed(1)}/5</span>
-            <StarsRating rating={info.rating} onChange={() => null} readOnly starSize={16} />
-            <span className="tt-campaign-card-dot-divider"></span>
-            <span className="tt-campaign-card-info-reviews-value">{info.noOfReviews}</span>
-            <span className="tt-campaign-card-info-reviews-label">
-              {info.noOfReviews === 1 ? translations?.review : translations?.reviews}
-            </span>
-          </div>
-          <div className="tt-campaign-card-info-date">
-            <span className="tt-campaign-card-info-date-value">
-              {moment(info.date).format("MM/YYYY")}
-            </span>
-          </div>
-        </div>
-      ) : null}
-      {textInfo ? (
-        <div className="tt-campaign-card-info">
-          <span className="tt-campaign-card-info-reviews-value">{info.text}</span>
-        </div>
-      ) : null}
     </div>
   );
 };

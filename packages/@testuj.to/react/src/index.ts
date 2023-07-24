@@ -220,6 +220,10 @@ export {
     Tag,
 } from './components/Tag'
 export {
+    type TestedCampaignCardProps,
+    TestedCampaignCard,
+} from "./components/TestedCampaignCard";
+export {
     type TextProps,
     Text,
 } from './components/Text'
