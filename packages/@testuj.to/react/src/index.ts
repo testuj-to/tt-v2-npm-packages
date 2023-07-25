@@ -145,6 +145,10 @@ export {
     FormItem,
 } from './components/FormItem'
 export {
+    type FutureCampaignCardProps,
+    FutureCampaignCard,
+} from "./components/FutureCampaignCard";
+export {
     type HighlitedTextProps,
     HighlitedText,
 } from './components/HighlitedText'
@@ -166,9 +170,9 @@ export {
     NotificationsPopover,
 }    from './components/NotificationsPopover'
 export {
-    type ProductCardProps,
-    ProductCard,
-} from './components/ProductCard'
+    type CampaignCardProps,
+    CampaignCard,
+} from './components/CampaignCard'
 export {
     type ProgressBarProps,
     ProgressBar,
@@ -215,6 +219,10 @@ export {
     type TagProps,
     Tag,
 } from './components/Tag'
+export {
+    type TestedCampaignCardProps,
+    TestedCampaignCard,
+} from "./components/TestedCampaignCard";
 export {
     type TextProps,
     Text,

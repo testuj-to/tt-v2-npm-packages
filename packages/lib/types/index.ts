@@ -1,5 +1,4 @@
-
-export { productCategories } from './enums'
+export { productCategories } from "./enums";
 
 export interface Edges<Edge> {
   edges?: Edge[];
@@ -212,11 +211,24 @@ export interface Campaign {
   };
   images?: CampaignImage[];
   questionnaireId?: string;
+  settings?: CampaignSettings;
+  tags?: {
+    key: string;
+    value: string;
+  }[];
 
   // Aggregation
   tenants?: Tenant[];
   products?: Product[];
   questionnaire?: Questionnaire;
+}
+
+export interface CampaignSettings {
+  hasAutoOpen: boolean;
+  openAt: Date;
+  openSpots: number;
+  registrationPeriodDays: number;
+  submissionPeriodDays: number;
 }
 
 export interface CampaignImage {

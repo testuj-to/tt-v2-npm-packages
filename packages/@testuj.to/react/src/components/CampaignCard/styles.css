@@ -1,4 +1,4 @@
-.tt-product-card-warpper {
+.tt-campaign-card-warpper {
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.tt-product-card-main {
+.tt-campaign-card-main {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -18,59 +18,64 @@
   aspect-ratio: 384/264;
 }
 
-.tt-product-card-image {
+.tt-campaign-card-image {
   border-radius: 20px;
   object-fit: cover;
   z-index: 0;
   overflow: hidden;
 }
 
-.tt-product-card-tags {
+.tt-campaign-card-tags {
   position: absolute;
   bottom: 1rem;
   left: 1rem;
   display: flex;
   flex-direction: row;
+  max-width: 80%;
+  overflow: hidden;
+  flex-wrap: wrap;
 }
 
-.tt-product-card-tag {
+.tt-campaign-card-tag {
   margin-right: 0.4rem;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
 }
 
-.tt-product-card-tag:last-child {
+.tt-campaign-card-tag:last-child {
   margin-right: 0;
 }
 
-.tt-product-card-label {
+.tt-campaign-card-label {
   margin-top: 0.6rem;
 }
 
-.tt-product-card-like-button {
+.tt-campaign-card-like-button {
   position: absolute;
   bottom: 1rem;
   right: 1rem;
 }
 
-.tt-product-card-info {
+.tt-campaign-card-info {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   width: 100%;
 }
 
-.tt-product-card-info-rating {
+.tt-campaign-card-info-rating {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.tt-product-card-info-rating-value {
+.tt-campaign-card-info-rating-value {
   margin-right: 0.4rem;
   font: var(--font-normal-13);
   color: var(--color-text);
 }
 
-.tt-product-card-dot-divider {
+.tt-campaign-card-dot-divider {
   margin: 0 0.5rem;
   width: 4px;
   height: 4px;
@@ -78,24 +83,24 @@
   background-color: var(--color-text-secondary);
 }
 
-.tt-product-card-info-reviews-value {
+.tt-campaign-card-info-reviews-value {
   font: var(--font-normal-13);
   color: var(--color-text-secondary);
 }
 
-.tt-product-card-info-reviews-label {
+.tt-campaign-card-info-reviews-label {
   margin-left: 0.4rem;
   font: var(--font-normal-13);
   color: var(--color-text-secondary);
 }
 
-.tt-product-card-info-date-value {
+.tt-campaign-card-info-date-value {
   font: var(--font-normal-13);
   color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {
-  .tt-product-card-warpper {
+  .tt-campaign-card-warpper {
     max-width: 90%;
   }
 }
