@@ -85,7 +85,7 @@ export const FutureCampaignCard = ({
   return (
     <CampaignCard
       image={image}
-      label={campaign.name}
+      label={campaign?.web?.title}
       tags={tags}
       onClick={onClick}
       liked={liked}
