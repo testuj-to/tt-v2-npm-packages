@@ -30,8 +30,10 @@ export interface RichText {
 }
 
 export interface File {
-  id?: string;
-  blob: string;
+  id: string;
+  blob?: string;
+  key?: string;
+  src: string;
 }
 
 export interface Address {
@@ -233,10 +235,8 @@ export interface CampaignSettings {
 
 export interface CampaignImage {
   isThumbnail: boolean;
-  fileId: string;
-
-  // Aggregation
-  file?: File;
+  fileId?: string;
+  file: File;
 }
 
 export interface CampaignApplication {
