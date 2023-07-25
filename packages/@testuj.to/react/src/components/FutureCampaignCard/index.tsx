@@ -22,7 +22,7 @@ export const FutureCampaignCard = ({
   // TODO: generate tags based on campaign state
   const generatedTag: CampaignCardTagProps = useMemo(() => {
     // calculate time to start
-    const timeToStart = new Date(campaign.settings?.openAt).getTime() - Date.now();
+    const timeToStart = new Date(campaign?.settings?.openAt).getTime() - Date.now();
 
     if (timeToStart > 0) {
       const days = Math.floor(timeToStart / (1000 * 60 * 60 * 24));
@@ -35,8 +35,8 @@ export const FutureCampaignCard = ({
 
     // calculate time to end of registration by adding registration duration to start time
     const timeToEnd =
-      new Date(campaign.settings?.openAt).getTime() +
-      campaign.settings?.registrationPeriodDays * 24 * 60 * 60 * 1000 -
+      new Date(campaign?.settings?.openAt).getTime() +
+      campaign?.settings?.registrationPeriodDays * 24 * 60 * 60 * 1000 -
       Date.now();
 
     if (timeToEnd > 0) {
