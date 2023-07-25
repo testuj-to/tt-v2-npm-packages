@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { CampaignCard, CampaignCardTagProps } from "../CampaignCard";
+import { useMemo } from "react";
+import { CampaignCard } from "../CampaignCard";
 import { Campaign } from "@lib/types";
 import { StarsRating } from "../StarsRating";
 import moment from "moment";
@@ -20,6 +20,7 @@ export interface TestedCampaignCardProps {
     review: string;
     reviews: string;
   };
+  image?: React.ReactNode;
 }
 
 export const TestedCampaignCard = ({
@@ -28,8 +29,8 @@ export const TestedCampaignCard = ({
   onDoubleClick,
   info,
   translations,
+  image,
 }: TestedCampaignCardProps) => {
-  const [liked, setLiked] = useState(false);
   // TODO: generate tags based on campaign state
   const bottomSection = useMemo(() => {
     return (
@@ -61,8 +62,8 @@ export const TestedCampaignCard = ({
 
   return (
     <CampaignCard
-      image={<img src="https://picsum.photos/384/264" alt="img" />}
-      label="Product title"
+      image={image}
+      label={campaign?.web?.title}
       tags={[]}
       onClick={onClick}
       onDoubleClick={onDoubleClick}
