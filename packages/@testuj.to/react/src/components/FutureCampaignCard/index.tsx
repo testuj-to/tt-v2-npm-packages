@@ -5,10 +5,20 @@ import { Campaign } from "@lib/types";
 export interface FutureCampaignCardProps {
   campaign: Campaign;
   onClick?: () => void;
+  onDoubleClick?: () => void;
+  image?: React.ReactNode;
+  liked?: boolean;
+  onLikeClick?: () => void;
 }
 
-export const FutureCampaignCard = ({ campaign, onClick }: FutureCampaignCardProps) => {
-  const [liked, setLiked] = useState(false);
+export const FutureCampaignCard = ({
+  campaign,
+  onClick,
+  image,
+  onDoubleClick,
+  liked,
+  onLikeClick,
+}: FutureCampaignCardProps) => {
   // TODO: generate tags based on campaign state
   const generatedTag: CampaignCardTagProps = useMemo(() => {
     // calculate time to start
@@ -58,26 +68,30 @@ export const FutureCampaignCard = ({ campaign, onClick }: FutureCampaignCardProp
     };
   }, [campaign]);
 
+  const customTags: CampaignCardTagProps[] = useMemo(() => {
+    if (!campaign?.tags) {
+      return [];
+    }
+    return campaign.tags.map((tag) => ({
+      children: tag.value,
+      variant: "white",
+    }));
+  }, [campaign]);
+
   const tags: CampaignCardTagProps[] = useMemo(() => {
-    return [
-      generatedTag,
-      ...(campaign?.tags?.map?.((tag) => ({
-        children: tag.value,
-        variant: "white",
-      })) as CampaignCardTagProps[] || []),
-    ];
+    return [generatedTag, ...customTags];
   }, [campaign]);
 
   return (
     <CampaignCard
-      image={<img src="https://picsum.photos/384/264" alt="img" />}
-      label="Product title"
+      image={image}
+      label={campaign.name}
       tags={tags}
       onClick={onClick}
       liked={liked}
       showLikeButton={true}
-      onLikeClick={() => setLiked((prev) => !prev)}
-      onDoubleClick={() => console.log("Product card double clicked")}
+      onLikeClick={onLikeClick}
+      onDoubleClick={onDoubleClick}
     />
   );
 };
