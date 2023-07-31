@@ -7,13 +7,14 @@ import "./styles.css";
 
 export interface SaveButtonProps extends ButtonProps {
     finalChildren?: React.ReactNode;
+    errorChildren?: React.ReactNode;
     isLoading?: boolean;
     isSuccess?: boolean;
     isError?: boolean;
     saveTimeout?: number;
 }
 
-export const SaveButton = ({children, finalChildren, isLoading, isSuccess, isError, saveTimeout, className, ...props}: SaveButtonProps) => {
+export const SaveButton = ({children, finalChildren, errorChildren, isLoading, isSuccess, isError, saveTimeout, className, ...props}: SaveButtonProps) => {
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
     useEffect(() => {
@@ -25,10 +26,18 @@ export const SaveButton = ({children, finalChildren, isLoading, isSuccess, isErr
         return () => setIsSaved(false);
     }, [isSuccess, saveTimeout]);
 
-    const finalChildrenToRender = isSaved ? finalChildren : children;
+    const finalChildrenToRender = () =>  {
+        if (isSaved) {
+            return finalChildren || children;
+        }
+        if (isError) {
+            return errorChildren || children;
+        }
+        return children;
+    }
 
     const buttonState = () => {
-        if (isSuccess) {
+        if (isSaved) {
             return "success";
         }
 
@@ -40,8 +49,8 @@ export const SaveButton = ({children, finalChildren, isLoading, isSuccess, isErr
     }
 
     if (isLoading) {
-        return <Button {...props}  className="tt-save-button.info" ><Spinner /></Button>;
+        return <Button {...props} className="tt-save-button.info" ><Spinner /></Button>;
     }
     
-  return <Button {...props} className={cx("tt-save-button", buttonState(), className)}  >{finalChildrenToRender}</Button>;
+  return <Button {...props} className={cx("tt-save-button", buttonState(), className)}  >{finalChildrenToRender()}</Button>;
 };
