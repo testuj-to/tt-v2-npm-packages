@@ -1,0 +1,7 @@
+.tt-save-button.success {
+  background-color: var(--color-success);
+}
+
+.tt-save-button.error {
+  background-color: var(--color-danger);
+}
