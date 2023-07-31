@@ -31,7 +31,7 @@
 }
 
 .tt-button.primary:hover {
-  filter: brightness(1.1);
+  background-color: var(--color-button-bg-hover);
 }
 
 .tt-button.primary:disabled:hover {
