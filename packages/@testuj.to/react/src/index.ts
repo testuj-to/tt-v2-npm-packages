@@ -195,6 +195,10 @@ export {
     RichTextReader,
 } from "./components/RichTextReader";
 export {
+    type SaveButtonProps,
+    SaveButton,
+} from "./components/SaveButton"
+export {
     type SelectProps,
     Select,
 } from './components/Select'
