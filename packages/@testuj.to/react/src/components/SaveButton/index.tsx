@@ -40,7 +40,7 @@ export const SaveButton = ({children, finalChildren, isLoading, isSuccess, isErr
     }
 
     if (isLoading) {
-        return <Button {...props} disabled={true} className="tt-save-button.info" ><Spinner /></Button>;
+        return <Button {...props}  className="tt-save-button.info" ><Spinner /></Button>;
     }
     
   return <Button {...props} className={cx("tt-save-button", buttonState(), className)}  >{finalChildrenToRender}</Button>;
