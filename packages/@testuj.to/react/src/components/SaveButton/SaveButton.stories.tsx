@@ -21,6 +21,6 @@ const saveButtonStoryTemplate: ComponentStory<typeof SaveButton> = args => (
 export const Basic = saveButtonStoryTemplate.bind({})
 Basic.args = {
     children: 'Click me',
-    // onClick: () =>
-    //     alert('You clicked me!'),
+    finalChildren: 'Saved!',
+    
 }
