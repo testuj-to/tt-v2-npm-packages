@@ -1,20 +1,20 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { TTContextDecorator } from "../../context.stories";
-import { Modal } from ".";
+import { Dialog } from ".";
 
 export default {
-  component: Modal,
-  title: "Composites/Modal",
+  component: Dialog,
+  title: "Primitives/Dialog",
   parameters: {
     layout: "centered",
   },
   decorators: [TTContextDecorator],
-} as ComponentMeta<typeof Modal>;
+} as ComponentMeta<typeof Dialog>;
 
-const modalStoryTemplate: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
+const dialogStoryTemplate: ComponentStory<typeof Dialog> = (args) => <Dialog {...args} />;
 
-export const Basic = modalStoryTemplate.bind({});
+export const Basic = dialogStoryTemplate.bind({});
 Basic.args = {
   children: <button>Open me</button>,
   content: <div>Content</div>,
