@@ -125,6 +125,10 @@ export {
     DateRangePicker,
 } from "./components/DateRangePicker";
 export {
+    type DialogProps,
+    Dialog,
+} from './components/Dialog';
+export {
     type DropdownProps,
     Dropdown,
 } from './components/Dropdown'
