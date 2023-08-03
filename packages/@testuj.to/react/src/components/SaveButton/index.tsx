@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
 import { Button, type ButtonProps } from "../Button";
 import { Spinner } from "./Spinner";
@@ -14,7 +14,7 @@ export interface SaveButtonProps extends ButtonProps {
     saveTimeout?: number;
 }
 
-export const SaveButton = ({children, finalChildren, errorChildren, isLoading, isSuccess, isError, saveTimeout, className, ...props}: SaveButtonProps) => {
+export const SaveButton = forwardRef(({children, finalChildren, errorChildren, isLoading, isSuccess, isError, saveTimeout, className, ...props}: SaveButtonProps, ref:React.ForwardedRef<HTMLButtonElement> ) => {
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
     useEffect(() => {
@@ -49,8 +49,8 @@ export const SaveButton = ({children, finalChildren, errorChildren, isLoading, i
     }
 
     if (isLoading) {
-        return <Button {...props} className={cx("tt-save-button", className)} ><Spinner /></Button>;
+        return <Button  {...{...props, ref}} className={cx("tt-save-button", className)} ><Spinner /></Button>;
     }
     
-  return <Button {...props} className={cx("tt-save-button", buttonState(), className)} >{finalChildrenToRender()}</Button>;
-};
+  return <Button {...{...props, ref}} className={cx("tt-save-button", buttonState(), className)} >{finalChildrenToRender()}</Button>;
+});
