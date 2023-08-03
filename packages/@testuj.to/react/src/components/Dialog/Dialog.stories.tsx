@@ -18,4 +18,5 @@ export const Basic = dialogStoryTemplate.bind({});
 Basic.args = {
   children: <button>Open me</button>,
   content: <div>Content</div>,
+  onOpenChnage: (open) => console.log(open),
 };
