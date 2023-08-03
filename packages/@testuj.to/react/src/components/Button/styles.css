@@ -35,7 +35,7 @@
 }
 
 .tt-button.primary:disabled:hover {
-  filter: none;
+  background-color: #eeeff2;
 }
 
 .tt-button.secondary {
@@ -52,4 +52,8 @@
 
 .tt-button.secondary:hover {
   border: 1px solid var(--color-button-secondary-border-hover);
+}
+
+.tt-button.secondary:disabled:hover {
+  border: 1px solid #eeeff2;
 }
