@@ -53,7 +53,7 @@ export const CampaignHeroSection = ({
         <div className="tt-campaign-hero-section-row">
           <LabeledIcon
             icon={<IconPeople />}
-            label={`${t("looking")} ${campaign.applications.slotsCount} ${t("testers")}`}
+            label={`${t("looking")} ${campaign?.settings?.openSpots} ${t("testers")}`}
           />
           <LabeledIcon icon={<IconTransport />} label={t("delivery")} />
           <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
