@@ -7,11 +7,12 @@ export interface DialogProps {
   children: React.ReactNode;
   content: React.ReactNode;
   hideCloseButton?: boolean;
+  open?: boolean;
 }
 
-export const Dialog = ({ children, content, hideCloseButton }: DialogProps) => {
+export const Dialog = ({ children, content, hideCloseButton, open }: DialogProps) => {
   return (
-    <RadixDialog.Root>
+    <RadixDialog.Root {...{ open }}>
       <RadixDialog.Trigger asChild>{children}</RadixDialog.Trigger>
       <RadixDialog.Portal>
         <RadixDialog.Overlay className="tt-dialog-overlay" />
