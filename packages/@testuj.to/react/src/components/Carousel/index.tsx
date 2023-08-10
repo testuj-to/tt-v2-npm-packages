@@ -73,10 +73,15 @@ export const Carousel = ({
     if (innerRef.current) {
       setItemWidth(innerRef.current?.clientWidth / items.length);
     }
-  }, [innerRef]);
+  }, [innerRef.current?.clientWidth]);
 
   const handleArrowClick = useCallback(() => {
-    setTranslateX((prev) => prev - itemWidth);
+    setTranslateX((prev) => {
+      if (prev > 2000) {
+        return prev - 300;
+      }
+      return prev - itemWidth;
+    });
   }, [itemWidth]);
 
   return (
