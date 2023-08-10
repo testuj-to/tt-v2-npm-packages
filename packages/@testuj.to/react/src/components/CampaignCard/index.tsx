@@ -58,9 +58,7 @@ export const CampaignCard = ({
           />
         ) : null}
       </div>
-      <div className="tt-campaign-card-label">
-        <label>{label}</label>
-      </div>
+      <div className="tt-campaign-card-label">{label}</div>
       {bottom ? bottom : null}
     </div>
   );
