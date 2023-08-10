@@ -4,6 +4,8 @@ import { Campaign } from "@lib/types";
 import { StarsRating } from "../StarsRating";
 import moment from "moment";
 
+import "./styles.css";
+
 export type CampaignCardInfo = {
   rating: number;
   noOfReviews: number;

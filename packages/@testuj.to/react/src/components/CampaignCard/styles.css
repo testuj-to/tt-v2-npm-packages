@@ -56,47 +56,12 @@
   right: 1rem;
 }
 
-.tt-campaign-card-info {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.tt-campaign-card-info-rating {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.tt-campaign-card-info-rating-value {
-  margin-right: 0.4rem;
-  font: var(--font-normal-13);
-  color: var(--color-text);
-}
-
 .tt-campaign-card-dot-divider {
   margin: 0 0.5rem;
   width: 4px;
   height: 4px;
   border-radius: 50%;
   background-color: var(--color-text-secondary);
-}
-
-.tt-campaign-card-info-reviews-value {
-  font: var(--font-normal-13);
-  color: var(--color-text-secondary);
-}
-
-.tt-campaign-card-info-reviews-label {
-  margin-left: 0.4rem;
-  font: var(--font-normal-13);
-  color: var(--color-text-secondary);
-}
-
-.tt-campaign-card-info-date-value {
-  font: var(--font-normal-13);
-  color: var(--color-text-secondary);
 }
 
 @media (max-width: 768px) {
