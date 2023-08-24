@@ -10,13 +10,13 @@ import { DeliveryType } from "@lib/types";
 
 export interface Campaign {
   name: string;
-  openSpots: number;
+  openSpots?: number;
   alert?: {
-    text: string;
-    type: "error" | "success" | "warning";
+    text?: string;
+    type?: "error" | "success" | "warning";
   };
-  deliveryType: DeliveryType;
-  deliveryDiscount: number;
+  deliveryType?: DeliveryType;
+  freeDelivery?: boolean;
 }
 export interface CampaignHeroSectionProps {
   campaign: Campaign;
@@ -65,13 +65,10 @@ export const CampaignHeroSection = ({
             icon={<IconPeople />}
             label={`${t("looking")} ${campaign?.openSpots} ${t("testers")}`}
           />
-          <LabeledIcon icon={<IconTransport />} label={t("delivery.deliveryType")} />
-          <LabeledIcon
-            icon={<IconCheck />}
-            label={
-              campaign.deliveryDiscount === 100 ? t("for_free") : `${campaign.deliveryDiscount}%`
-            }
-          />
+          <LabeledIcon icon={<IconTransport />} label={t(`delivery.${campaign.deliveryType}`)} />
+          {campaign.freeDelivery ? (
+            <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
+          ) : null}
         </div>
         <h5>{t("test_outcome")}</h5>
         <div className="tt-campaign-hero-section-row">
