@@ -223,6 +223,38 @@ export interface Campaign {
   tenants?: Tenant[];
   products?: Product[];
   questionnaire?: Questionnaire;
+
+  // V2
+  pricing?: {
+    discount?: number;
+    discountCoupons?: string[];
+  };
+
+  general?: {
+    description?: RichText;
+    descriptionImages?: File[];
+    tags?: Tag[];
+    capacity?: number;
+  };
+
+  delivery?: {
+    freeOfCharge?: boolean;
+    type?: DeliveryType;
+    notes?: string;
+    company?: string;
+  };
+}
+
+export enum DeliveryType {
+  deliverByUs = "deliverByUs",
+  deliveryByClient = "deliveryByClient",
+  deliveryByEshop = "deliveryByEshop",
+  personalPickup = "personalPickup",
+}
+
+export interface Tag {
+  key: string;
+  color: string;
 }
 
 export interface CampaignSettings {
