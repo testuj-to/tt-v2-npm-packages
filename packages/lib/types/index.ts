@@ -215,6 +215,7 @@ export interface Campaign {
   productIds?: string[];
   status?: CampaignStatus;
   name?: string;
+  slug?: string;
   openAt?: Date;
   hasAutoOpen?: boolean;
   applications?: {
