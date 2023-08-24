@@ -1,5 +1,4 @@
 import cx from "classnames";
-import { Campaign } from "@lib/types";
 
 import "./styles.css";
 import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera, IconChevron } from "./Icons";
@@ -7,7 +6,18 @@ import { LabeledIcon } from "./LabeledIcon";
 import { Alert } from "../Alert";
 import { Button } from "../Button";
 import { LikeButton } from "../LikeButton";
+import { DeliveryType } from "@lib/types";
 
+export interface Campaign {
+  name: string;
+  openSpots: number;
+  alert?: {
+    text: string;
+    type: "error" | "success" | "warning";
+  };
+  deliveryType: DeliveryType;
+  deliveryDiscount: number;
+}
 export interface CampaignHeroSectionProps {
   campaign: Campaign;
   image?: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
@@ -53,10 +63,15 @@ export const CampaignHeroSection = ({
         <div className="tt-campaign-hero-section-row">
           <LabeledIcon
             icon={<IconPeople />}
-            label={`${t("looking")} ${campaign?.settings?.openSpots} ${t("testers")}`}
+            label={`${t("looking")} ${campaign?.openSpots} ${t("testers")}`}
           />
-          <LabeledIcon icon={<IconTransport />} label={t("delivery")} />
-          <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
+          <LabeledIcon icon={<IconTransport />} label={t("delivery.deliveryType")} />
+          <LabeledIcon
+            icon={<IconCheck />}
+            label={
+              campaign.deliveryDiscount === 100 ? t("for_free") : `${campaign.deliveryDiscount}%`
+            }
+          />
         </div>
         <h5>{t("test_outcome")}</h5>
         <div className="tt-campaign-hero-section-row">
@@ -65,9 +80,15 @@ export const CampaignHeroSection = ({
         </div>
         {small ? null : (
           <>
-            <Alert variant="error" hideIcon className="tt-campaign-hero-section-alert">
-              Neváhejte s přihlášením! Končí 20. 4. 2023
-            </Alert>
+            {campaign.alert ? (
+              <Alert
+                variant={campaign.alert.type}
+                hideIcon
+                className="tt-campaign-hero-section-alert"
+              >
+                {campaign.alert?.text}
+              </Alert>
+            ) : null}
             <Button
               variant="primary"
               className="tt-campaign-hero-section-button"
