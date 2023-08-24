@@ -120,9 +120,7 @@ export interface ProductCategory {
 }
 
 export interface Product {
-  id?: string;
   categoryId?: string;
-  name?: string;
   manufacturer?: string;
   model?: string;
   imageId?: string;
@@ -130,6 +128,26 @@ export interface Product {
   // Aggregation
   category?: ProductCategory;
   image?: File;
+
+  // V2
+  id?: string;
+  name?: string;
+  slug?: string;
+  general?: {
+    productCategory?: string;
+    description?: RichText;
+    brand?: string;
+  };
+  ratings?: {
+    ratingCategory?: string;
+    ratingType: ProductRatingType;
+  };
+}
+
+export enum ProductRatingType {
+  main = "main",
+  category = "category",
+  client = "client",
 }
 
 export interface Tenant {
