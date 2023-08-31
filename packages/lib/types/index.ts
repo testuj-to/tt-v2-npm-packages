@@ -216,7 +216,6 @@ export interface Campaign {
   status?: CampaignStatus;
   slug?: string;
   name?: string;
-  slug?: string;
   openAt?: Date;
   hasAutoOpen?: boolean;
   applications?: {
