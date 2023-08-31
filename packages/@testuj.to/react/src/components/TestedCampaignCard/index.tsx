@@ -39,21 +39,21 @@ export const TestedCampaignCard = ({
       <>
         <div className="tt-campaign-card-info">
           <div className="tt-campaign-card-info-rating">
-            <span className="tt-campaign-card-info-rating-value">{info.rating.toFixed(1)}/5</span>
-            <StarsRating rating={info.rating} onChange={() => null} readOnly starSize={16} />
+            <span className="tt-campaign-card-info-rating-value">{info?.rating?.toFixed?.(1)}/5</span>
+            <StarsRating rating={info?.rating} onChange={() => null} readOnly starSize={16} />
             <span className="tt-campaign-card-dot-divider"></span>
-            <span className="tt-campaign-card-info-reviews-value">{info.noOfReviews}</span>
+            <span className="tt-campaign-card-info-reviews-value">{info?.noOfReviews}</span>
             <span className="tt-campaign-card-info-reviews-label">
-              {info.noOfReviews === 1 ? translations?.review : translations?.reviews}
+              {info?.noOfReviews === 1 ? translations?.review : translations?.reviews}
             </span>
           </div>
           <div className="tt-campaign-card-info-date">
             <span className="tt-campaign-card-info-date-value">
-              {moment(info.date).format("MM/YYYY")}
+              {info?.date && moment(info?.date).format("MM/YYYY")}
             </span>
           </div>
         </div>
-        {info.text ? (
+        {info?.text ? (
           <div className="tt-campaign-card-info">
             <span className="tt-campaign-card-info-reviews-value">{info.text}</span>
           </div>
