@@ -214,6 +214,7 @@ export interface Campaign {
   tenantIds?: string[];
   productIds?: string[];
   status?: CampaignStatus;
+  slug?: string;
   name?: string;
   slug?: string;
   openAt?: Date;
