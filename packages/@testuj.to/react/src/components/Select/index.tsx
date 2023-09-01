@@ -98,7 +98,7 @@ export const Select = ({
         <Content
           className={cx("tt-select-content", variant)}
           position="popper"
-          style={{ width: widthAuto ? undefined : `${width}px` }}
+          style={{ width: widthAuto ? undefined : `${width}px`, zIndex: 10000 }}
         >
           <ScrollUpButton className={cx("tt-select-content-scrollbutton")}>
             <ChevronUpIcon />
