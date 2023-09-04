@@ -64,8 +64,8 @@
   background-color: var(--color-text-secondary);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .tt-campaign-card-warpper {
     max-width: 90%;
   }
-}
+} */
