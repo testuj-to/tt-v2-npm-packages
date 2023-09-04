@@ -71,9 +71,9 @@ export const Carousel = ({
 
   useEffect(() => {
     if (innerRef.current) {
-      setItemWidth(innerRef.current?.clientWidth / items.length);
+      setItemWidth(innerRef.current?.clientWidth / items.length || 1);
     }
-  }, [innerRef.current?.clientWidth]);
+  }, [innerRef.current?.clientWidth, items]);
 
   const handleArrowClick = useCallback(() => {
     setTranslateX((prev) => {
