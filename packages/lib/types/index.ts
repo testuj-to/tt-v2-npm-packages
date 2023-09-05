@@ -33,6 +33,7 @@ export interface File {
   id: string;
   blob?: string;
   key?: string;
+  objectKey?: string;
   src: string;
 }
 
@@ -230,6 +231,7 @@ export interface Campaign {
     description?: RichText;
     criteria?: RichText;
   };
+  thumbnailImage?: File;
   images?: CampaignImage[];
   questionnaireId?: string;
   settings?: CampaignSettings;
