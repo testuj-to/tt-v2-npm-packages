@@ -76,7 +76,7 @@ export const Carousel = ({
   }, [innerRef.current?.clientWidth, items]);
 
   const handleArrowClick = useCallback(() => {
-    setTranslateX((prev) => prev - itemWidth);
+    setTranslateX((prev) => prev - itemWidth * 2);
   }, [itemWidth]);
 
   return (
