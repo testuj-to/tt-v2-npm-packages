@@ -29,7 +29,7 @@ export interface CampaignHeroSectionProps {
   liked?: boolean;
   small?: boolean;
   button?: {
-    text?: string;
+    text?: React.ReactNode;
     onClick?: () => void;
     variant?: ButtonProps["variant"];
     disabled?: boolean;
