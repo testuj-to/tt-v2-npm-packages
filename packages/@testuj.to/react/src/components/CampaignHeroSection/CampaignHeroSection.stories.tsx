@@ -115,4 +115,9 @@ Basic.args = {
     },
     images: [],
   },
+  button: {
+    text: "Register",
+    variant: "success",
+    onClick: () => {},
+  },
 };

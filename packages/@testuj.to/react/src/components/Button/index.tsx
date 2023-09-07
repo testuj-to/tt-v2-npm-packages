@@ -6,7 +6,7 @@ import cx from 'classnames'
 import './styles.css'
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: 'primary'|'secondary'
+    variant?: 'primary'|'secondary' | "success" | "danger" | "warning" | "info"
     children?: ReactNode
 }
 

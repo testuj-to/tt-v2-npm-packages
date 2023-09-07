@@ -1,6 +1,7 @@
-import React, { forwardRef, useCallback, useState, useEffect } from "react";
+import React, { forwardRef, useCallback, useState, useEffect, useMemo } from "react";
 import cx from "classnames";
 import "./styles.css";
+import { debounce } from "lodash";
 
 export interface CarouselProps {
   items: React.ReactNode[];
@@ -8,6 +9,7 @@ export interface CarouselProps {
   itemClassName?: string;
   arrow?: React.ReactNode;
   arrowClassName?: string;
+  infinite?: boolean;
 }
 
 export const Carousel = ({
@@ -16,10 +18,12 @@ export const Carousel = ({
   itemClassName,
   arrow,
   arrowClassName,
+  infinite,
 }: CarouselProps) => {
   const [translateX, setTranslateX] = useState(0);
   const innerRef = React.useRef<HTMLDivElement>(null);
   const [itemWidth, setItemWidth] = useState(0);
+  const [itemsLocal, setItemsLocal] = useState([...items, ...items, ...items]);
 
   const handleHorizontalGrab = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -73,11 +77,24 @@ export const Carousel = ({
     if (innerRef.current) {
       setItemWidth(innerRef.current?.clientWidth / items.length || 1);
     }
+    setItemsLocal([...items, ...items, ...items]);
   }, [innerRef.current?.clientWidth, items]);
 
   const handleArrowClick = useCallback(() => {
     setTranslateX((prev) => prev - itemWidth * 2);
   }, [itemWidth]);
+
+  useEffect(() => {
+    if (infinite) {
+      const handleResize = debounce(() => {
+        setTranslateX(0);
+      }, 100);
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [infinite]);
 
   return (
     <div className={cx("tt-carousel-wrapper", wrapperClassName)}>
@@ -88,7 +105,7 @@ export const Carousel = ({
         style={{ transform }}
         ref={innerRef}
       >
-        {items?.map((item, index) => {
+        {itemsLocal?.map((item, index) => {
           return (
             <CarouselItem key={index} className={itemClassName}>
               {item}
