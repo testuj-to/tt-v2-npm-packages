@@ -29,7 +29,7 @@ export interface CampaignHeroSectionProps {
   liked?: boolean;
   small?: boolean;
   button?: {
-    text?: string;
+    text?: React.ReactNode;
     onClick?: () => void;
     variant?: ButtonProps["variant"];
     disabled?: boolean;
@@ -56,7 +56,11 @@ export const CampaignHeroSection = ({
         className
       )}
     >
-      <div className="tt-campaign-hero-section-image">
+      <div
+        className={cx("tt-campaign-hero-section-image", {
+          "tt-campaign-hero-section-image-small": small,
+        })}
+      >
         <div className="tt-campaign-hero-section-image-back" onClick={onBack}>
           <IconChevron direction="left" />
         </div>

@@ -22,6 +22,12 @@
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  min-width: 560px;
+}
+
+.tt-campaign-hero-section-image-small {
+  min-width: 320px;
+  height: 200px;
 }
 
 .tt-campaign-hero-section-image img {
@@ -117,6 +123,10 @@
   bottom: 24px;
 }
 
+.tt-campaign-hero-section-button {
+  margin-top: 2rem;
+}
+
 @media (max-width: 900px) {
   .tt-campaign-hero-section {
     flex-direction: column;
@@ -127,15 +137,25 @@
   }
   .tt-campaign-hero-section-image {
     width: 100%;
-
     max-width: 100%;
     justify-content: center;
+    min-width: 0;
   }
   .tt-campaign-hero-section-image img {
     width: 100%;
     max-width: 100%;
     min-height: 100%;
     max-height: 246px;
+  }
+  .tt-campaign-hero-section-row-space-between {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .tt-campaign-hero-section-small {
+    min-width: 100%;
+    height: auto;
   }
   .tt-campaign-hero-section-content {
     width: 100%;
@@ -157,5 +177,8 @@
   .tt-campaign-hero-section-button {
     width: 100%;
     margin-top: 2rem;
+  }
+  .tt-campaign-hero-section-button-small {
+    width: 100%;
   }
 }
