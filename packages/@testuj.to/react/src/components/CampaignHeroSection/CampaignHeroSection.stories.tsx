@@ -16,7 +16,9 @@ export default {
 } as ComponentMeta<typeof CampaignHeroSection>;
 
 const campaignHeroSectionStoryTemplate: ComponentStory<typeof CampaignHeroSection> = (args) => (
-  <CampaignHeroSection {...args} />
+  <div>
+    <CampaignHeroSection {...args} />
+  </div>
 );
 
 export const Basic = campaignHeroSectionStoryTemplate.bind({});

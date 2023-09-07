@@ -23,7 +23,7 @@ export const Carousel = ({
   const [translateX, setTranslateX] = useState(0);
   const innerRef = React.useRef<HTMLDivElement>(null);
   const [itemWidth, setItemWidth] = useState(0);
-  const [itemsLocal, setItemsLocal] = useState([...items, ...items, ...items]);
+  const [itemsLocal, setItemsLocal] = useState([...items]);
 
   const handleHorizontalGrab = useCallback(
     (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -77,7 +77,7 @@ export const Carousel = ({
     if (innerRef.current) {
       setItemWidth(innerRef.current?.clientWidth / items.length || 1);
     }
-    setItemsLocal([...items, ...items, ...items]);
+    setItemsLocal([...items]);
   }, [innerRef.current?.clientWidth, items]);
 
   const handleArrowClick = useCallback(() => {
