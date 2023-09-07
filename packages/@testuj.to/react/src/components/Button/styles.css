@@ -57,3 +57,63 @@
 .tt-button.secondary:disabled:hover {
   border: 1px solid #eeeff2;
 }
+
+.tt-button.success {
+  background-color: var(--color-button-success-bg);
+  color: var(--color-button-success-text);
+  border: 1px solid var(--color-button-success-border);
+}
+
+.tt-button.success:disabled {
+  background-color: #eeeff2;
+  color: #888e98;
+  border: 1px solid #eeeff2;
+}
+
+.tt-button.success:hover {
+  border: 1px solid var(--color-button-success-border-hover);
+}
+
+.tt-button.success:disabled:hover {
+  border: 1px solid #eeeff2;
+}
+
+.tt-button.danger {
+  background-color: var(--color-button-danger-bg);
+  color: var(--color-button-danger-text);
+  border: 1px solid var(--color-button-danger-border);
+}
+
+.tt-button.danger:disabled {
+  background-color: #eeeff2;
+  color: #888e98;
+  border: 1px solid #eeeff2;
+}
+
+.tt-button.danger:hover {
+  border: 1px solid var(--color-button-danger-border-hover);
+}
+
+.tt-button.danger:disabled:hover {
+  border: 1px solid #eeeff2;
+}
+
+.tt-button.info {
+  background-color: var(--color-button-info-bg);
+  color: var(--color-button-info-text);
+  border: 1px solid var(--color-button-info-border);
+}
+
+.tt-button.info:disabled {
+  background-color: #eeeff2;
+  color: #888e98;
+  border: 1px solid #eeeff2;
+}
+
+.tt-button.info:hover {
+  border: 1px solid var(--color-button-info-border-hover);
+}
+
+.tt-button.info:disabled:hover {
+  border: 1px solid #eeeff2;
+}

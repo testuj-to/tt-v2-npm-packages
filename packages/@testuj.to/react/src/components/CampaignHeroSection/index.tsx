@@ -4,7 +4,7 @@ import "./styles.css";
 import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera, IconChevron } from "./Icons";
 import { LabeledIcon } from "./LabeledIcon";
 import { Alert } from "../Alert";
-import { Button } from "../Button";
+import { Button, ButtonProps } from "../Button";
 import { LikeButton } from "../LikeButton";
 import { DeliveryType } from "@lib/types";
 
@@ -28,6 +28,12 @@ export interface CampaignHeroSectionProps {
   onLike?: () => void;
   liked?: boolean;
   small?: boolean;
+  button?: {
+    text?: string;
+    onClick?: () => void;
+    variant?: ButtonProps["variant"];
+    disabled?: boolean;
+  };
 }
 
 export const CampaignHeroSection = ({
@@ -40,6 +46,7 @@ export const CampaignHeroSection = ({
   onLike,
   liked,
   small,
+  button,
 }: CampaignHeroSectionProps) => {
   return (
     <section
@@ -70,30 +77,42 @@ export const CampaignHeroSection = ({
             <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
           ) : null}
         </div>
-        <h5>{t("test_outcome")}</h5>
-        <div className="tt-campaign-hero-section-row">
-          <LabeledIcon icon={<IconStar />} label={`4 ${t("review")}`} />
-          <LabeledIcon icon={<IconCamera />} label={t("foto_video")} />
-        </div>
-        {small ? null : (
-          <>
-            {campaign.alert ? (
-              <Alert
-                variant={campaign.alert.type}
-                hideIcon
-                className="tt-campaign-hero-section-alert"
-              >
-                {campaign.alert?.text}
-              </Alert>
-            ) : null}
+        <div className="tt-campaign-hero-section-row-space-between">
+          <div>
+            <h5>{t("test_outcome")}</h5>
+            <div className="tt-campaign-hero-section-row">
+              <LabeledIcon icon={<IconStar />} label={`4 ${t("review")}`} />
+              <LabeledIcon icon={<IconCamera />} label={t("foto_video")} />
+            </div>
+          </div>
+          {button ? (
             <Button
-              variant="primary"
-              className="tt-campaign-hero-section-button"
-              onClick={onClickButton}
+              variant={button?.variant || "primary"}
+              className={cx("tt-campaign-hero-section-button", {
+                "tt-campaign-hero-section-button-small": small,
+              })}
+              onClick={button?.onClick || onClickButton}
+              disabled={button?.disabled}
             >
-              {t("register")}
+              {button?.text || t("register")}
             </Button>
-          </>
+          ) : null}
+        </div>
+
+        {campaign.alert ? (
+          <Alert variant={campaign.alert.type} hideIcon className="tt-campaign-hero-section-alert">
+            {campaign.alert?.text}
+          </Alert>
+        ) : null}
+
+        {small ? null : (
+          <Button
+            variant="primary"
+            className={cx("tt-campaign-hero-section-button")}
+            onClick={onClickButton}
+          >
+            {t("register")}
+          </Button>
         )}
       </div>
     </section>

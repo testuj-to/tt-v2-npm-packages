@@ -15,7 +15,7 @@
   align-items: center;
   justify-content: flex-start;
   cursor: grab;
-  transition: transform 200ms;
+  transition: transform 100ms;
 }
 
 .tt-carousel-wrapper-inner:active {

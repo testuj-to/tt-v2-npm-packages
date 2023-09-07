@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { TTContextDecorator } from "../../../context.stories";
+import { TTContextDecorator } from "../../context.stories";
 import { StateProgressList } from ".";
 
 export default {
