@@ -53,6 +53,7 @@ export const CampaignCard = ({
             liked={liked}
             onClick={(e) => {
               e.stopPropagation();
+              e.nativeEvent.stopImmediatePropagation();
               onLikeClick?.();
             }}
           />
