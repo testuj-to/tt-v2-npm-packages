@@ -10,7 +10,7 @@ export interface CampaignCardProps {
   tags: CampaignCardTagProps[];
   onClick?: () => void;
   onDoubleClick?: () => void;
-  onLikeClick?: () => void;
+  onLikeClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   liked?: boolean;
   showLikeButton?: boolean;
   hideTags?: boolean;
@@ -51,11 +51,7 @@ export const CampaignCard = ({
             variant="circle"
             className="tt-campaign-card-like-button"
             liked={liked}
-            onClick={(e) => {
-              e.stopPropagation();
-              e.nativeEvent.stopImmediatePropagation();
-              onLikeClick?.();
-            }}
+            onClick={onLikeClick}
           />
         ) : null}
       </div>
