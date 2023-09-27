@@ -12,12 +12,13 @@ export interface RadioGroupProps<Value> {
     }[]
     value: Value
     onChange?(value: Value)
+    orientation?: 'horizontal' | 'vertical'
 }
 
-export const RadioGroup = <Value extends string = string>({ options, value, ariaLabel, onChange }: RadioGroupProps<Value>) => {
+export const RadioGroup = <Value extends string = string>({ options, value, ariaLabel, onChange, orientation }: RadioGroupProps<Value>) => {
     return (
         <Root
-            className={cx('tt-radio-group')}
+            className={cx('tt-radio-group', orientation)}
             value={value}
             aria-label={ariaLabel}
             onValueChange={onChange}
