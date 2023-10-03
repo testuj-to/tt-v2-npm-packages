@@ -43,8 +43,8 @@
 .tt-radio-group > .tt-radio > .tt-radio-item > .tt-radio-indicator::after {
   content: "";
   display: block;
-  width: 11px;
-  height: 11px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background-color: var(--color-text);
 }
