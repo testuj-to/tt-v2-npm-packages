@@ -41,6 +41,9 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
           onLoad={handleImageLoad}
           style={{ display: isLoaded ? "block" : "none" }}
         />
+        <button className="tt-image-viewer-controls__button tt-image-viewer__close-button" onClick={onClose}>
+          <div className="tt-image-viewer__close-button__icon">✕</div>
+        </button>
         {controls ? (
           <div className="tt-image-viewer-controls">
             <button className="tt-image-viewer-controls__button" onClick={onClickPrevious}>

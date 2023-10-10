@@ -48,3 +48,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.tt-image-viewer__close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.tt-image-viewer__close-button__icon {
+  text-align: center;
+  height: 16px;
+}
