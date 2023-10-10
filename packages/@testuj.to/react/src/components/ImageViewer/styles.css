@@ -1,6 +1,6 @@
 .tt-image-viewer {
   position: relative;
-  max-width: 80ww;
+  max-width: 80vw;
   max-width: 90vh;
 }
 
@@ -9,6 +9,7 @@
   max-height: 100%;
   object-fit: contain;
   border-radius: 20px;
+  animation: open 0.3s ease-in-out;
 }
 
 .tt-image-viewer-background {
@@ -58,4 +59,13 @@
 .tt-image-viewer__close-button__icon {
   text-align: center;
   height: 16px;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
