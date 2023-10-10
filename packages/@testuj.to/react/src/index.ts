@@ -157,6 +157,10 @@ export {
     HighlitedText,
 } from './components/HighlitedText'
 export {
+    type ImageViewerProps,
+    ImageViewer,
+} from "./components/ImageViewer"
+export {
     type InputProps,
     Input,
 } from './components/Input'
