@@ -10,6 +10,6 @@ const Template: Story<ImageViewerProps> = (args) => <ImageViewer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  imageUrl: "https://picsum.photos/400",
+  imageUrl: "https://picsum.photos/1920",
   altText: "Placeholder image",
 };
