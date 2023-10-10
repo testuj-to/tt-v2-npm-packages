@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { Arrow } from "./Arrow";
 
 import "./styles.css";
-import { Arrow } from "./Arrow";
 
 export interface ImageViewerProps {
   imageUrl: string;
