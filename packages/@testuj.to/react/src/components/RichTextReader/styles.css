@@ -34,3 +34,7 @@
 .richtext-block-align-justify > div {
     text-align: justify;
 }
+
+.richtext-image {
+    width: 100%;
+}

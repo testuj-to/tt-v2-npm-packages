@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ContentBlock, Editor, EditorState, convertFromRaw } from "draft-js";
+import { ContentBlock, ContentState, Editor, EditorState, convertFromRaw } from "draft-js";
 
 import "draft-js/dist/Draft.css";
 import "./styles.css";
@@ -23,6 +23,41 @@ const blockStyleFn = (contentBlock: ContentBlock): string => {
   }
 
   return classNames.join(" ");
+};
+
+const blockRendererFn = (block: ContentBlock) => {
+  switch (block.getType()) {
+  case "atomic":
+      return {
+          component: Atomic,
+          editable: false,
+      };
+  }
+
+  return null;
+};
+
+interface AtomicProps {
+  contentState: ContentState;
+  block: ContentBlock;
+}
+
+const Atomic = ({ contentState, block }: AtomicProps) => {
+  const entity = contentState.getEntity(block.getEntityAt(0));
+
+  switch (entity.getType()) {
+  case "IMAGE":
+      const data = entity.getData();
+
+      return (
+          <img
+              className={`richtext-image ${data.className}`}
+              {...data}
+          />
+      );
+  }
+
+  return null;
 };
 
 export interface RichTextReaderProps {
@@ -61,6 +96,7 @@ export const RichTextReader = ({ value, placeholder, className }: RichTextReader
         placeholder={placeholder}
         editorState={editorState}
         blockStyleFn={blockStyleFn}
+        blockRendererFn={blockRendererFn}
       />
     </div>
   );
