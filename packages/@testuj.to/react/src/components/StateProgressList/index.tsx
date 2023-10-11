@@ -41,7 +41,7 @@ export const StateProgressList = ({
         }
         return (
           <StateProgressListItem key={index} state={currentState} onClick={() => onClick?.(index)}>
-            {index + 1}) {content}
+            {content}
           </StateProgressListItem>
         );
       })}
