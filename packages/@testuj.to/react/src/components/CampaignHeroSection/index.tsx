@@ -17,6 +17,12 @@ export interface Campaign {
   };
   deliveryType?: DeliveryType;
   freeDelivery?: boolean;
+  outcome?: {
+    includeImages?: boolean;
+    includeVideo?: boolean;
+    includeSocialPosts?: boolean;
+    noOfReviews?: number;
+  };
 }
 export interface CampaignHeroSectionProps {
   campaign: Campaign;
@@ -48,6 +54,18 @@ export const CampaignHeroSection = ({
   small,
   button,
 }: CampaignHeroSectionProps) => {
+  const mediaOutcome = () => {
+    if (campaign.outcome?.includeImages && campaign.outcome.includeVideo) {
+      return t("foto_video");
+    }
+    if (campaign.outcome?.includeImages) {
+      return t("foto");
+    }
+    if (campaign.outcome?.includeVideo) {
+      return t("video");
+    }
+  };
+
   return (
     <section
       className={cx(
@@ -85,8 +103,15 @@ export const CampaignHeroSection = ({
           <div>
             <h5>{t("test_outcome")}</h5>
             <div className="tt-campaign-hero-section-row">
-              <LabeledIcon icon={<IconStar />} label={`4 ${t("review")}`} />
-              <LabeledIcon icon={<IconCamera />} label={t("foto_video")} />
+              <LabeledIcon
+                icon={<IconStar />}
+                label={`${campaign.outcome?.noOfReviews || 0} ${
+                  campaign.outcome.noOfReviews > 4 ? t("reviews") : t("review")
+                }`}
+              />
+              {campaign.outcome.includeImages || campaign.outcome.includeVideo ? (
+                <LabeledIcon icon={<IconCamera />} label={mediaOutcome()} />
+              ) : null}
             </div>
           </div>
           {button ? (
