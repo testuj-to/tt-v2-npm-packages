@@ -127,7 +127,9 @@ export interface Product {
   imageId?: string;
 
   // Aggregation
-  category?: ProductCategory;
+  category?: {
+    key?: string;
+  }
   image?: File;
 
   // V2
@@ -143,6 +145,29 @@ export interface Product {
     ratingCategory?: string;
     ratingType: ProductRatingType;
   };
+  attributes?: {
+    key: string;
+  }[];
+  codes?: {
+    ean?: string;
+  }[];
+  info?: {
+    manufacturer?: {
+      id?: string;
+      name?: string;
+      logo?: File;
+    };
+    model?: string;
+  };
+  detailPageLinks?: {
+    label?: string;
+    src?: string;
+  };
+  description?: RichText;
+
+  reviewFocusInstructions?: RichText;
+
+  useManualLink?: string;
 }
 
 export enum ProductRatingType {
@@ -251,6 +276,12 @@ export interface Campaign {
     discountCoupons?: string[];
   };
 
+  outcome?: {
+    includeImages?: boolean;
+    includeVideo?: boolean;
+    includeSocialPosts?: boolean;
+  };
+
   general?: {
     description?: RichText;
     descriptionImages?: File[];
@@ -281,7 +312,7 @@ export interface Tag {
 export interface CampaignSettings {
   hasAutoOpen: boolean;
   openAt: Date;
-  openSpots: number;
+  capacity: number;
   registrationPeriodDays: number;
   submissionPeriodDays: number;
 }

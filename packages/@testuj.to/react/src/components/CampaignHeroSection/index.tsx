@@ -55,7 +55,7 @@ export const CampaignHeroSection = ({
   button,
 }: CampaignHeroSectionProps) => {
   const mediaOutcome = () => {
-    if (campaign.outcome?.includeImages && campaign.outcome.includeVideo) {
+    if (campaign.outcome?.includeImages && campaign.outcome?.includeVideo) {
       return t("foto_video");
     }
     if (campaign.outcome?.includeImages) {
@@ -106,10 +106,10 @@ export const CampaignHeroSection = ({
               <LabeledIcon
                 icon={<IconStar />}
                 label={`${campaign.outcome?.noOfReviews || 0} ${
-                  campaign.outcome.noOfReviews > 4 ? t("reviews") : t("review")
+                  campaign?.outcome?.noOfReviews > 4 ? t("reviews") : t("review")
                 }`}
               />
-              {campaign.outcome.includeImages || campaign.outcome.includeVideo ? (
+              {campaign.outcome?.includeImages || campaign.outcome?.includeVideo ? (
                 <LabeledIcon icon={<IconCamera />} label={mediaOutcome()} />
               ) : null}
             </div>
