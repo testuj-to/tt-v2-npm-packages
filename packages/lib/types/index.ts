@@ -272,7 +272,7 @@ export interface Campaign {
 
   // V2
   pricing?: {
-    discount?: number;
+    discountPercent?: number;
     discountCoupons?: string[];
   };
 
