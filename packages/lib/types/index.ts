@@ -167,7 +167,7 @@ export interface Product {
 
   reviewFocusInstructions?: RichText;
 
-  useManualLink?: string;
+  userManualLink?: string;
 }
 
 export enum ProductRatingType {
