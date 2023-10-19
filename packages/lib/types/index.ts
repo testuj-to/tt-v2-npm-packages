@@ -129,7 +129,7 @@ export interface Product {
   // Aggregation
   category?: {
     key?: string;
-  }
+  };
   image?: File;
 
   // V2
@@ -167,7 +167,7 @@ export interface Product {
 
   reviewFocusInstructions?: RichText;
 
-  useManualLink?: string;
+  userManualLink?: string;
 }
 
 export enum ProductRatingType {
@@ -272,7 +272,7 @@ export interface Campaign {
 
   // V2
   pricing?: {
-    discount?: number;
+    discountPercent?: number;
     discountCoupons?: string[];
   };
 
@@ -280,6 +280,9 @@ export interface Campaign {
     includeImages?: boolean;
     includeVideo?: boolean;
     includeSocialPosts?: boolean;
+    fbMentions?: string[];
+    hashtags?: string[];
+    igMentions?: string[];
   };
 
   general?: {
