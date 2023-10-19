@@ -129,7 +129,7 @@ export interface Product {
   // Aggregation
   category?: {
     key?: string;
-  }
+  };
   image?: File;
 
   // V2
@@ -280,6 +280,9 @@ export interface Campaign {
     includeImages?: boolean;
     includeVideo?: boolean;
     includeSocialPosts?: boolean;
+    fbMentions?: string[];
+    hashtags?: string[];
+    igMentions?: string[];
   };
 
   general?: {
