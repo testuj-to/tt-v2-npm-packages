@@ -276,6 +276,10 @@ export interface Campaign {
     discountCoupons?: string[];
   };
 
+  campaignApplication?: CampaignApplication;
+
+  reviews?: Review[];
+
   outcome?: {
     includeImages?: boolean;
     includeVideo?: boolean;
@@ -339,8 +343,23 @@ export interface CampaignApplication {
   questionnaireResponse: QuestionnaireResponse;
   deliveryAddress: Address;
 
+  latestResolution?: CampaignApplicationResolution;
+  state?: CampaignApplicationStatus;
+
   // Aggregation
   campaign?: Campaign;
+}
+
+export interface CampaignApplicationResolution {
+  message?: string;
+  resolvedAt?: Date;
+  status?: CampaignApplicationResolutionStatus;
+}
+
+export enum CampaignApplicationResolutionStatus {
+  selected = "selected",
+  alternate = "alternate",
+  rejected = "rejected",
 }
 
 export enum Gender {
@@ -369,8 +388,50 @@ export enum CampaignStatus {
 }
 
 export enum CampaignApplicationStatus {
-  applied = "applied",
-  enrolled = "enrolled",
-  alternate = "alternate",
-  rejected = "rejected",
+  draft = "draft",
+  submitted = "submitted",
+  pending = "pending",
+  resolved = "resolved",
 }
+
+export interface Review {
+  id: String;
+  campaign: Campaign;
+  product: Product;
+  state: ReviewState;
+  contents: ReviewContent[];
+  submittedContents: string[];
+  pros: string[];
+  cons: string[];
+  images: File[];
+  videos: File[];
+  wouldRecommend: Boolean;
+  wouldRecommendPercent: number;
+  totalRating: number;
+  attributeRatings: ProductAttributeRating[];
+  rejectionMessage: String;
+  censureMessage: String;
+}
+
+export enum ReviewState {
+  draft = "draft",
+  submitted = "submitted",
+  approved = "approved",
+  rejected = "rejected",
+  censured = "censured",
+}
+
+export type ProductAttributeRating = {
+  key: string;
+  rating: number;
+};
+
+export type ReviewContent = {
+  destination: ReviewDestination;
+  content: string;
+};
+
+export type ReviewDestination = {
+  type: string;
+  name: string;
+};
