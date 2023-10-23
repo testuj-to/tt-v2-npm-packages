@@ -76,7 +76,7 @@ export const RegistredCampaignCard = ({
           if (dateToReviewsEnd < now) {
             const daysPastReviewsEnd = Math.floor((now - dateToReviewsEnd) / (1000 * 60 * 60 * 24));
             return {
-              children: t("cardStatus.misingReview", { days: daysPastReviewsEnd }),
+              children: t("cardStatus.missingReview", { days: daysPastReviewsEnd }),
               variant: "danger",
             };
           }
@@ -96,6 +96,12 @@ export const RegistredCampaignCard = ({
             variant: "warning",
           };
       }
+    }
+    if (campaignApplication?.state === CampaignApplicationStatus.submitted) {
+      return {
+        children: t("cardStatus.submitted"),
+        variant: "success",
+      };
     }
   }, [campaign]);
 
