@@ -9,6 +9,7 @@ export interface FutureCampaignCardProps {
   image?: React.ReactNode;
   liked?: boolean;
   onLikeClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  t: (key: string, args?: any) => string;
 }
 
 export const FutureCampaignCard = ({
@@ -18,6 +19,7 @@ export const FutureCampaignCard = ({
   onDoubleClick,
   liked,
   onLikeClick,
+  t,
 }: FutureCampaignCardProps) => {
   // TODO: generate tags based on campaign state
   const generatedTag: CampaignCardTagProps = useMemo(() => {
@@ -44,26 +46,26 @@ export const FutureCampaignCard = ({
 
       if (days <= 1) {
         return {
-          children: `Zbývá ${days} den na registraci`,
+          children: t("cardStatus.lastDayToRegister"),
           variant: "warning",
         };
       }
 
-      if (days <= 3) {
+      if (days <= 4) {
         return {
-          children: `Zbývá ${days} dnů na registraci`,
+          children: t("cardStatus.daysToRegisterLow", { days }),
           variant: "info",
         };
       }
 
       return {
-        children: `Zbývá ${days} dnů na registraci`,
+        children: t("cardStatus.daysToRegister", { days }),
         variant: "success",
       };
     }
 
     return {
-      children: "Přihlašování ukončeno",
+      children: t("cardStatus.registrationClosed"),
       variant: "danger",
     };
   }, [campaign]);
