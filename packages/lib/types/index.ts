@@ -411,7 +411,7 @@ export interface Review {
   cons: string[];
   images: File[];
   videos: File[];
-  wouldRecommend: Boolean;
+  wouldRecommend: boolean;
   wouldRecommendPercent: number;
   totalRating: number;
   attributeRatings: ProductAttributeRating[];
