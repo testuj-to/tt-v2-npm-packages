@@ -58,7 +58,7 @@ export const RegistredCampaignCard = ({
             const daysToReviewsEnd = Math.floor((dateToReviewsEnd - now) / (1000 * 60 * 60 * 24));
             return {
               children: t("cardStatus.review", {
-                days: daysToReviewsEnd,
+                count: daysToReviewsEnd,
               }),
               variant: "white",
             };
@@ -76,7 +76,7 @@ export const RegistredCampaignCard = ({
           if (dateToReviewsEnd < now) {
             const daysPastReviewsEnd = Math.floor((now - dateToReviewsEnd) / (1000 * 60 * 60 * 24));
             return {
-              children: t("cardStatus.missingReview", { days: daysPastReviewsEnd }),
+              children: t("cardStatus.missingReview", { count: daysPastReviewsEnd }),
               variant: "danger",
             };
           }
