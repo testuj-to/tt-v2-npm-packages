@@ -346,6 +346,12 @@ export interface CampaignApplication {
   latestResolution?: CampaignApplicationResolution;
   state?: CampaignApplicationStatus;
 
+  // V2 
+  isDelivered?: boolean;
+  deliveryConfirmedAt?: number;
+  submitedAt?: number;
+  discountCode?: string;
+
   // Aggregation
   campaign?: Campaign;
 }
