@@ -1,20 +1,22 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import { TTContextDecorator } from "../../context.stories";
-import { Review } from ".";
+import { ReviewComponent } from ".";
 
 export default {
-  component: Review,
-  title: "Composites/Review",
+  component: ReviewComponent,
+  title: "Composites/ReviewComponent",
   parameters: {
     layout: "centered",
   },
   decorators: [TTContextDecorator],
-} as ComponentMeta<typeof Review>;
+} as ComponentMeta<typeof ReviewComponent>;
 
-const reviewStoryTemplate: ComponentStory<typeof Review> = (args) => <Review {...args} />;
+const reviewComponentStoryTemplate: ComponentStory<typeof ReviewComponent> = (args) => (
+  <ReviewComponent {...args} />
+);
 
-export const Basic = reviewStoryTemplate.bind({});
+export const Basic = reviewComponentStoryTemplate.bind({});
 Basic.args = {
   user: {
     id: "1",
