@@ -25,6 +25,7 @@ export {
     type Campaign,
     type CampaignImage,
     type CampaignApplication,
+    type Review,
     Gender,
     QuestionnaireType,
     QuestionnaireQuestionType,
@@ -200,8 +201,8 @@ export {
 } from "./components/RegistredCampaignCard"
 export {
     type ReviewProps,
-    Review,
-} from "./components/Review";
+    ReviewComponent,
+} from "./components/ReviewComponent";
 export {
     type RichTextReaderProps,
     RichTextReader,

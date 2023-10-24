@@ -26,7 +26,7 @@ export interface ReviewProps {
   recommendedText?: string;
 }
 
-export const Review = ({
+export const ReviewComponent = ({
   user,
   rating,
   content,
