@@ -346,7 +346,7 @@ export interface CampaignApplication {
   latestResolution?: CampaignApplicationResolution;
   state?: CampaignApplicationStatus;
 
-  // V2 
+  // V2
   isDelivered?: boolean;
   deliveryConfirmedAt?: number;
   submitedAt?: number;
@@ -401,7 +401,7 @@ export enum CampaignApplicationStatus {
 }
 
 export interface Review {
-  id: String;
+  id: string;
   campaign: Campaign;
   product: Product;
   state: ReviewState;
@@ -411,12 +411,12 @@ export interface Review {
   cons: string[];
   images: File[];
   videos: File[];
-  wouldRecommend: Boolean;
+  wouldRecommend: boolean;
   wouldRecommendPercent: number;
   totalRating: number;
   attributeRatings: ProductAttributeRating[];
-  rejectionMessage: String;
-  censureMessage: String;
+  rejectionMessage: string;
+  censureMessage: string;
 }
 
 export enum ReviewState {
