@@ -94,7 +94,7 @@ export const RegistredCampaignCard = ({
         default:
           return {
             children: t("cardStatus.pending"),
-            variant: "warning",
+            variant: "info",
           };
       }
     }
