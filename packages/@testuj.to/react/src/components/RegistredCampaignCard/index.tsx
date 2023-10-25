@@ -78,6 +78,7 @@ export const RegistredCampaignCard = ({
             return {
               children: t("cardStatus.missingReview", { count: daysPastReviewsEnd }),
               variant: "danger",
+              color: "#000000",
             };
           }
 
