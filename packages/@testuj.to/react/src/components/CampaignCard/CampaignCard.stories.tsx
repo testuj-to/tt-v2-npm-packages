@@ -42,4 +42,5 @@ Basic.args = {
     review: "recenze",
     reviews: "recenzí",
   },
+  communityLogo: "https://cdn.brandtesting.club/t/cz/d7ebd163-981a-43a7-a849-45caa0273de8.png",
 };

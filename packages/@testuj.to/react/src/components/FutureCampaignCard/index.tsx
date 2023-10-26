@@ -80,8 +80,28 @@ export const FutureCampaignCard = ({
     }));
   }, [campaign]);
 
+  const discountTag: CampaignCardTagProps = useMemo(() => {
+    const discount = campaign?.pricing.discountPercent;
+
+    if (discount === 100) {
+      return {
+        children: t("cardStatus.free"),
+        variant: "white",
+      };
+    }
+
+    if (discount > 0) {
+      return {
+        children: t("cardStatus.discount", { discount }),
+        variant: "white",
+      };
+    }
+
+    return null;
+  }, [campaign]);
+
   const tags: CampaignCardTagProps[] = useMemo(() => {
-    return [generatedTag, ...customTags];
+    return [discountTag, generatedTag, ...customTags];
   }, [campaign]);
 
   return (
@@ -94,6 +114,7 @@ export const FutureCampaignCard = ({
       showLikeButton={true}
       onLikeClick={onLikeClick}
       onDoubleClick={onDoubleClick}
+      communityLogo={campaign?.mainTenant?.logo?.src}
     />
   );
 };

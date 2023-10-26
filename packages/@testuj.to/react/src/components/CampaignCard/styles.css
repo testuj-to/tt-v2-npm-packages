@@ -27,6 +27,28 @@
   width: 100%;
 }
 
+.tt-campaign-card-community-logo-wrapper {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  background-color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 40px;
+  max-width: 88px;
+  max-height: 24px;
+}
+
+.tt-campaign-card-community-logo {
+  max-width: 60px;
+  max-height: 18px;
+  object-fit: contain;
+}
+
 .tt-campaign-card-tags {
   position: absolute;
   bottom: 1rem;

@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+.tt-tag-rounded {
+  padding: 0.2rem 0.6rem;
+  border-radius: 40px;
+}
+
 .tt-tag-white {
   background-color: #fff;
   color: var(--color-text);
