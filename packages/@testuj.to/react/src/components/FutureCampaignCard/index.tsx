@@ -53,7 +53,7 @@ export const FutureCampaignCard = ({
 
       if (days <= 4) {
         return {
-          children: t("cardStatus.daysToRegister", { conut: days }),
+          children: t("cardStatus.daysToRegister", { count: days }),
           variant: "info",
         };
       }
