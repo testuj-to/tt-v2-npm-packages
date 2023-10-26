@@ -6,11 +6,17 @@ import { IconCancel } from "./IconCancel";
 
 import "./styles.css";
 
-export type StateProgressListState = "active" | "done" | "disabled" | "error";
+export enum ProgressState {
+  active = "active",
+  done = "done",
+  disabled = "disabled",
+  error = "error",
+}
 
 export type StateProgressListItem = {
-  state?: StateProgressListState;
+  state?: ProgressState;
   content?: React.ReactNode;
+  note?: React.ReactNode;
 };
 
 export interface StateProgressListProps {
@@ -30,17 +36,22 @@ export const StateProgressList = ({
 }: StateProgressListProps) => {
   return (
     <ol className={cx("tt-state-progress-list", className)}>
-      {items?.map(({ state, content }, index) => {
+      {items?.map(({ state, content, note }, index) => {
         let currentState = state;
         if (pastSuccess && index === currentIndex) {
-          currentState = "active";
+          currentState = ProgressState.active;
         } else if (pastSuccess && index < currentIndex) {
-          currentState = "done";
+          currentState = ProgressState.done;
         } else {
-          currentState = "disabled";
+          currentState = ProgressState.disabled;
         }
         return (
-          <StateProgressListItem key={index} state={currentState} onClick={() => onClick?.(index)}>
+          <StateProgressListItem
+            key={index}
+            state={state || currentState}
+            onClick={() => onClick?.(index)}
+            note={note}
+          >
             {content}
           </StateProgressListItem>
         );
@@ -50,22 +61,26 @@ export const StateProgressList = ({
 };
 
 interface StateProgressListItemProps {
-  state: StateProgressListState;
+  state: ProgressState;
   children?: React.ReactNode;
   onClick?: () => void;
+  note?: React.ReactNode;
 }
 
-const StateProgressListItem = ({ state, children, onClick }: StateProgressListItemProps) => {
+const StateProgressListItem = ({ state, children, onClick, note }: StateProgressListItemProps) => {
   return (
-    <li className="tt-state-progress-list-item" onClick={onClick}>
-      <StateProgressIndicator {...{ state }} />
-      <div className={cx("tt-state-progress-list-item_content", state)}>{children}</div>
-    </li>
+    <>
+      <li className="tt-state-progress-list-item" onClick={onClick}>
+        <StateProgressIndicator {...{ state }} />
+        <div className={cx("tt-state-progress-list-item_content", state)}>{children}</div>
+      </li>
+      {note}
+    </>
   );
 };
 
 interface StateProgressIndicatorProps {
-  state: StateProgressListState;
+  state: ProgressState;
 }
 
 const StateProgressIndicator = ({ state }: StateProgressIndicatorProps) => {
