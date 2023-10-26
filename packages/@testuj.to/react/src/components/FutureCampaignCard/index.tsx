@@ -51,16 +51,16 @@ export const FutureCampaignCard = ({
         };
       }
 
-      if (days <= 4) {
+      if (days <= 4 && days > 1) {
         return {
-          children: t("cardStatus.daysToRegister", { conut: days }),
-          variant: "info",
+          children: t("cardStatus.daysToRegisterLow", { count: days }),
+          variant: "warning",
         };
       }
 
       return {
         children: t("cardStatus.daysToRegister", { count: days }),
-        variant: "success",
+        variant: "white",
       };
     }
 

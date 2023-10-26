@@ -31,6 +31,7 @@ export {
     QuestionnaireQuestionType,
     CampaignStatus,
     CampaignApplicationStatus,
+    ReviewState,
     productCategories,
 } from '@lib/types'
 export {
@@ -221,7 +222,7 @@ export {
 } from './components/SelectDate'
 export {
     type StateProgressListProps,
-    type StateProgressListState,
+    ProgressState,
     StateProgressList,
 } from "./components/StateProgressList";
 export {
