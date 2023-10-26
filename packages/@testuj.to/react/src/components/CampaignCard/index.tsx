@@ -17,6 +17,7 @@ export interface CampaignCardProps {
   showInfo?: boolean;
   textInfo?: boolean;
   bottom?: React.ReactNode;
+  communityLogo?: string;
 }
 
 export const CampaignCard = ({
@@ -30,6 +31,7 @@ export const CampaignCard = ({
   showLikeButton,
   hideTags,
   bottom,
+  communityLogo,
 }: CampaignCardProps) => {
   return (
     <div
@@ -39,10 +41,15 @@ export const CampaignCard = ({
     >
       <div className="tt-campaign-card-main">
         <div className="tt-campaign-card-image">{image}</div>
+        {communityLogo ? (
+          <div className="tt-campaign-card-community-logo-wrapper">
+            <img src={communityLogo} className="tt-campaign-card-community-logo" />
+          </div>
+        ) : null}
         {hideTags ? null : (
           <div className="tt-campaign-card-tags">
             {tags?.map((tag, index) => (
-              <Tag {...tag} key={index} className="tt-campaign-card-tag" />
+              <Tag {...tag} key={index} className="tt-campaign-card-tag" rounded />
             ))}
           </div>
         )}

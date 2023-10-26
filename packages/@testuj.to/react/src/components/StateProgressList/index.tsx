@@ -17,6 +17,7 @@ export type StateProgressListItem = {
   state?: ProgressState;
   content?: React.ReactNode;
   note?: React.ReactNode;
+  active?: boolean;
 };
 
 export interface StateProgressListProps {
@@ -36,7 +37,7 @@ export const StateProgressList = ({
 }: StateProgressListProps) => {
   return (
     <ol className={cx("tt-state-progress-list", className)}>
-      {items?.map(({ state, content, note }, index) => {
+      {items?.map(({ state, content, note, active }, index) => {
         let currentState = state;
         if (pastSuccess && index === currentIndex) {
           currentState = ProgressState.active;
