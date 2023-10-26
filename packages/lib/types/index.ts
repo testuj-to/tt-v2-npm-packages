@@ -182,6 +182,11 @@ export interface Tenant {
   name: string;
   domains?: TenantDomain[];
   theme?: TenantTheme;
+
+  // V2
+  domainName?: string;
+  locale?: string;
+  logo?: File;
 }
 
 export interface TenantDomain {
@@ -279,6 +284,8 @@ export interface Campaign {
   campaignApplication?: CampaignApplication;
 
   reviews?: Review[];
+
+  mainTenant: Tenant;
 
   outcome?: {
     includeImages?: boolean;
