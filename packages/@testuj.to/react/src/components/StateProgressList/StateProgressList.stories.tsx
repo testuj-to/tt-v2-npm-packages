@@ -19,7 +19,7 @@ const stateProgressListStory: ComponentStory<typeof StateProgressList> = (args) 
 export const StateProgressListStory = stateProgressListStory.bind({});
 StateProgressListStory.args = {
   items: [
-    { state: "active", content: "First step" },
+    { state: "active", content: "First step", note: <div>note</div> },
     { state: "done", content: "Second step" },
     { state: "disabled", content: "Third step" },
     { state: "error", content: "Fourth step" },

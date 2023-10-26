@@ -8,7 +8,10 @@
 .tt-state-progress-list-item {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+}
+
+.tt-state-progress-list-item:not(:first-child) {
+  margin-top: 16px;
 }
 
 .tt-state-progress-list-item_content {

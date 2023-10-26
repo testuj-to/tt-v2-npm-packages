@@ -222,7 +222,7 @@ export {
 } from './components/SelectDate'
 export {
     type StateProgressListProps,
-    type StateProgressListState,
+    ProgressState,
     StateProgressList,
 } from "./components/StateProgressList";
 export {
