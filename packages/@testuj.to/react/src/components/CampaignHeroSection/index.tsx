@@ -8,7 +8,7 @@ import { Button, ButtonProps } from "../Button";
 import { LikeButton } from "../LikeButton";
 import { DeliveryType } from "@lib/types";
 
-export interface Campaign {
+export interface DataProps {
   name: string;
   openSpots?: number;
   alert?: {
@@ -23,9 +23,10 @@ export interface Campaign {
     includeSocialPosts?: boolean;
     noOfReviews?: number;
   };
+  discount?: number;
 }
 export interface CampaignHeroSectionProps {
-  campaign: Campaign;
+  data: DataProps;
   image?: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
   className?: string;
   t: (key: string) => string;
@@ -40,10 +41,11 @@ export interface CampaignHeroSectionProps {
     variant?: ButtonProps["variant"];
     disabled?: boolean;
   };
+  customContent?: React.ReactNode;
 }
 
 export const CampaignHeroSection = ({
-  campaign,
+  data,
   image,
   className,
   t,
@@ -53,15 +55,16 @@ export const CampaignHeroSection = ({
   liked,
   small,
   button,
+  customContent,
 }: CampaignHeroSectionProps) => {
   const mediaOutcome = () => {
-    if (campaign.outcome?.includeImages && campaign.outcome?.includeVideo) {
+    if (data.outcome?.includeImages && data.outcome?.includeVideo) {
       return t("foto_video");
     }
-    if (campaign.outcome?.includeImages) {
+    if (data.outcome?.includeImages) {
       return t("foto");
     }
-    if (campaign.outcome?.includeVideo) {
+    if (data.outcome?.includeVideo) {
       return t("video");
     }
   };
@@ -88,60 +91,68 @@ export const CampaignHeroSection = ({
         {image}
       </div>
       <div className="tt-campaign-hero-section-content">
-        <h2 className="tt-campaign-hero-section-title">{campaign.name}</h2>
-        <div className="tt-campaign-hero-section-row">
-          <LabeledIcon
-            icon={<IconPeople />}
-            label={`${t("looking")} ${campaign?.openSpots} ${t("testers")}`}
-          />
-          <LabeledIcon icon={<IconTransport />} label={t(`delivery.${campaign.deliveryType}`)} />
-          {campaign.freeDelivery ? (
-            <LabeledIcon icon={<IconCheck />} label={t("for_free")} />
-          ) : null}
-        </div>
-        <div className="tt-campaign-hero-section-row-space-between">
-          <div>
-            <h5>{t("test_outcome")}</h5>
+        {customContent ? (
+          customContent
+        ) : (
+          <>
+            <h2 className="tt-campaign-hero-section-title">{data?.name}</h2>
             <div className="tt-campaign-hero-section-row">
               <LabeledIcon
-                icon={<IconStar />}
-                label={`${campaign.outcome?.noOfReviews || 0} ${
-                  campaign?.outcome?.noOfReviews > 4 ? t("reviews") : t("review")
-                }`}
+                icon={<IconPeople />}
+                label={`${t("looking")} ${data?.openSpots} ${t("testers")}`}
               />
-              {campaign.outcome?.includeImages || campaign.outcome?.includeVideo ? (
-                <LabeledIcon icon={<IconCamera />} label={mediaOutcome()} />
+              <LabeledIcon icon={<IconTransport />} label={t(`delivery.${data.deliveryType}`)} />
+              {data.discount === 100 ? (
+                <LabeledIcon icon={<IconCheck />} label={t("forFree")} />
+              ) : (
+                `${data.discount}% ${t("discount")}`
+              )}
+            </div>
+            <div className="tt-campaign-hero-section-row-space-between">
+              <div>
+                <h5>{t("test_outcome")}</h5>
+                <div className="tt-campaign-hero-section-row">
+                  <LabeledIcon
+                    icon={<IconStar />}
+                    label={`${data.outcome?.noOfReviews || 0} ${
+                      data?.outcome?.noOfReviews > 4 ? t("reviews") : t("review")
+                    }`}
+                  />
+                  {data.outcome?.includeImages || data.outcome?.includeVideo ? (
+                    <LabeledIcon icon={<IconCamera />} label={mediaOutcome()} />
+                  ) : null}
+                </div>
+              </div>
+              {button ? (
+                <Button
+                  variant={button?.variant || "primary"}
+                  className={cx("tt-campaign-hero-section-button", {
+                    "tt-campaign-hero-section-button-small": small,
+                  })}
+                  onClick={button?.onClick || onClickButton}
+                  disabled={button?.disabled}
+                >
+                  {button?.text || t("register")}
+                </Button>
               ) : null}
             </div>
-          </div>
-          {button ? (
-            <Button
-              variant={button?.variant || "primary"}
-              className={cx("tt-campaign-hero-section-button", {
-                "tt-campaign-hero-section-button-small": small,
-              })}
-              onClick={button?.onClick || onClickButton}
-              disabled={button?.disabled}
-            >
-              {button?.text || t("register")}
-            </Button>
-          ) : null}
-        </div>
 
-        {campaign.alert ? (
-          <Alert variant={campaign.alert.type} hideIcon className="tt-campaign-hero-section-alert">
-            {campaign.alert?.text}
-          </Alert>
-        ) : null}
+            {data.alert ? (
+              <Alert variant={data.alert.type} hideIcon className="tt-campaign-hero-section-alert">
+                {data.alert?.text}
+              </Alert>
+            ) : null}
 
-        {small ? null : (
-          <Button
-            variant="primary"
-            className={cx("tt-campaign-hero-section-button")}
-            onClick={onClickButton}
-          >
-            {t("register")}
-          </Button>
+            {small ? null : (
+              <Button
+                variant="primary"
+                className={cx("tt-campaign-hero-section-button")}
+                onClick={onClickButton}
+              >
+                {t("register")}
+              </Button>
+            )}
+          </>
         )}
       </div>
     </section>

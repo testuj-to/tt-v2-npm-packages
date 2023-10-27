@@ -25,7 +25,7 @@ export const Basic = campaignHeroSectionStoryTemplate.bind({});
 Basic.args = {
   t: (key: string) => key,
   image: <img src="https://picsum.photos/1920/1080" alt="img" />,
-  campaign: {
+  data: {
     id: "63a4f1674c5d625e5e3f3011",
     createdBy: {
       id: "63732cb4919eee473ec5cec7",
@@ -116,6 +116,7 @@ Basic.args = {
       },
     },
     images: [],
+    discount: 50,
   },
   button: {
     text: "Register",
