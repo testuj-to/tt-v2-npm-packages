@@ -105,7 +105,7 @@ export const CampaignHeroSection = ({
               {data.discount === 100 ? (
                 <LabeledIcon icon={<IconCheck />} label={t("forFree")} />
               ) : (
-                `${data.discount}% ${t("discount")}`
+                <LabeledIcon icon={<></>} label={`${data.discount}% ${t("discount")}`} />
               )}
             </div>
             <div className="tt-campaign-hero-section-row-space-between">

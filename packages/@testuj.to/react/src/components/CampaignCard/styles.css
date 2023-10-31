@@ -64,6 +64,7 @@
   margin-right: 0.4rem;
   margin-bottom: 0.2rem;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .tt-campaign-card-tag:last-child {
