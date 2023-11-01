@@ -65,7 +65,7 @@ Basic.args = {
     },
     reviews: [
       {
-        state: "selected",
+        state: "draft",
         id: "2X9yAmK0ffaw2HxhCULVssFoCAT",
       },
     ],
