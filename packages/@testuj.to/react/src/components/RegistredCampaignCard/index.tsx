@@ -90,8 +90,6 @@ export const RegistredCampaignCard = ({
           if (dateToReviewsEnd < now) {
             const daysPastReviewsEnd = Math.ceil((now - dateToReviewsEnd) / (1000 * 60 * 60 * 24));
 
-            console.log(daysPastReviewsEnd);
-
             if (daysPastReviewsEnd >= 2 && daysPastReviewsEnd < 5) {
               return {
                 children: t("cardStatus.missingReviewLow", { count: daysPastReviewsEnd }),
