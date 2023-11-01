@@ -45,8 +45,9 @@ Basic.args = {
   campaign: {
     settings: {
       // openAt: today - 1 week as iso string
-      openAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
-      registrationPeriodDays: 2,
+      // openAt: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString(),
+      openAt: 1697320800000,
+      registrationPeriodDays: 14,
       submissionPeriodDays: 3,
     },
     campaignApplication: {
