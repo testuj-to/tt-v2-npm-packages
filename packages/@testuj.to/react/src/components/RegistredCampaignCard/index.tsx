@@ -40,7 +40,11 @@ export const RegistredCampaignCard = ({
           const dateToReviewsEnd =
             dateToRegistrationEnd + campaign?.settings?.submissionPeriodDays * 24 * 60 * 60 * 1000;
 
-          const now = new Date().getTime();
+          // set now to today at 00:00:00
+
+          const todayMidnight = new Date();
+          todayMidnight.setHours(0, 0, 0, 0);
+          const now = todayMidnight.getTime();
 
           const reviews =
             campaign.reviews?.filter((review) => review.state !== ReviewState.draft) || [];
