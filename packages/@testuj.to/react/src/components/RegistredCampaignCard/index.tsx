@@ -38,9 +38,9 @@ export const RegistredCampaignCard = ({
             campaign?.settings?.registrationPeriodDays * 24 * 60 * 60 * 1000;
 
           const dateToReviewsEnd =
-            dateToRegistrationEnd + campaign?.settings?.submissionPeriodDays * 24 * 60 * 60 * 1000;
-
-          // set now to today at 00:00:00
+            dateToRegistrationEnd +
+            campaign?.settings?.submissionPeriodDays * 24 * 60 * 60 * 1000 +
+            3600000;
 
           const todayMidnight = new Date();
           todayMidnight.setHours(0, 0, 0, 0);
@@ -58,8 +58,8 @@ export const RegistredCampaignCard = ({
           }
 
           // Window for reviews is open
-          if (dateToRegistrationEnd < now && dateToReviewsEnd > now && reviews.length === 0) {
-            const daysToReviewsEnd = Math.floor((dateToReviewsEnd - now) / (1000 * 60 * 60 * 24));
+          if (dateToRegistrationEnd <= now && dateToReviewsEnd >= now && reviews.length === 0) {
+            const daysToReviewsEnd = Math.ceil((dateToReviewsEnd - now) / (1000 * 60 * 60 * 24));
 
             if (daysToReviewsEnd >= 2 && daysToReviewsEnd < 5) {
               return {
@@ -88,7 +88,7 @@ export const RegistredCampaignCard = ({
 
           // Its past the time window for entering reviews
           if (dateToReviewsEnd < now) {
-            const daysPastReviewsEnd = Math.floor((now - dateToReviewsEnd) / (1000 * 60 * 60 * 24));
+            const daysPastReviewsEnd = Math.ceil((now - dateToReviewsEnd) / (1000 * 60 * 60 * 24));
 
             if (daysPastReviewsEnd >= 2 && daysPastReviewsEnd < 5) {
               return {
