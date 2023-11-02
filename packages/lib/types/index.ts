@@ -162,7 +162,7 @@ export interface Product {
   detailPageLinks?: {
     label?: string;
     src?: string;
-  };
+  }[];
   description?: RichText;
 
   reviewFocusInstructions?: RichText;

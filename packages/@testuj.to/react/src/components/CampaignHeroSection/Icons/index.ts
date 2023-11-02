@@ -6,3 +6,5 @@ export * from "./IconPeople";
 export * from "./IconStar";
 export * from "./IconTransport";
 export * from "./IconChevron";
+export * from "./IconSocial";
+export * from "./IconVideo";

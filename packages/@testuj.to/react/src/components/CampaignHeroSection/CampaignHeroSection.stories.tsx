@@ -35,6 +35,12 @@ Basic.args = {
         cognitoId: "",
       },
     },
+    outcome: {
+      includeImages: true,
+      includeVideo: true,
+      includeSocialPosts: true,
+      noOfReviews: 10,
+    },
     createdAt: "2022-12-23T00:08:07.639Z",
     tenants: [
       {

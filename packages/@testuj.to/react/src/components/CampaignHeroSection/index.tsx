@@ -7,6 +7,7 @@ import { Alert } from "../Alert";
 import { Button, ButtonProps } from "../Button";
 import { LikeButton } from "../LikeButton";
 import { DeliveryType } from "@lib/types";
+import { Outcome } from "./Outcome";
 
 export interface DataProps {
   name: string;
@@ -57,18 +58,6 @@ export const CampaignHeroSection = ({
   button,
   customContent,
 }: CampaignHeroSectionProps) => {
-  const mediaOutcome = () => {
-    if (data.outcome?.includeImages && data.outcome?.includeVideo) {
-      return t("foto_video");
-    }
-    if (data.outcome?.includeImages) {
-      return t("foto");
-    }
-    if (data.outcome?.includeVideo) {
-      return t("video");
-    }
-  };
-
   return (
     <section
       className={cx(
@@ -118,9 +107,7 @@ export const CampaignHeroSection = ({
                       data?.outcome?.noOfReviews > 4 ? t("reviews") : t("review")
                     }`}
                   />
-                  {data.outcome?.includeImages || data.outcome?.includeVideo ? (
-                    <LabeledIcon icon={<IconCamera />} label={mediaOutcome()} />
-                  ) : null}
+                  <Outcome {...data.outcome} t={t} />
                 </div>
               </div>
               {button ? (
