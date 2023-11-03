@@ -14,7 +14,7 @@ button {
 }
 
 div[data-radix-popper-content-wrapper] {
-  z-index: 999 !important;
+  z-index: 10001 !important;
 }
 
 .tt-dropdownSelect-content {
