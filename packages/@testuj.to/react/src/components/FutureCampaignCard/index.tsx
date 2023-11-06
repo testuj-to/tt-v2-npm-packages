@@ -10,6 +10,7 @@ export interface FutureCampaignCardProps {
   liked?: boolean;
   onLikeClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   t: (key: string, args?: any) => string;
+  hideLikeButton?: boolean;
 }
 
 export const FutureCampaignCard = ({
@@ -20,6 +21,7 @@ export const FutureCampaignCard = ({
   liked,
   onLikeClick,
   t,
+  hideLikeButton
 }: FutureCampaignCardProps) => {
   // TODO: generate tags based on campaign state
   const generatedTag: CampaignCardTagProps = useMemo(() => {
@@ -111,7 +113,7 @@ export const FutureCampaignCard = ({
       tags={tags}
       onClick={onClick}
       liked={liked}
-      showLikeButton={true}
+      showLikeButton={!hideLikeButton}
       onLikeClick={onLikeClick}
       onDoubleClick={onDoubleClick}
       communityLogo={campaign?.mainTenant?.logo?.src}
