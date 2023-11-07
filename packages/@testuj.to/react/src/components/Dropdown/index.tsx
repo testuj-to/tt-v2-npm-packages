@@ -32,7 +32,10 @@ export const Dropdown = ({
           sideOffset={5}
         >
           {items?.map((item) => (
-            <DropdownMenu.Item className={cx("tt-dropdown-item", itemClassName)}>
+            <DropdownMenu.Item
+              className={cx("tt-dropdown-item", itemClassName)}
+              onClick={onItemSelect ? () => onItemSelect(item) : undefined}
+            >
               {item}
             </DropdownMenu.Item>
           ))}
