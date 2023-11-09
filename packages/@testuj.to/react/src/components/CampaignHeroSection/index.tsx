@@ -1,6 +1,5 @@
 import cx from "classnames";
 
-import "./styles.css";
 import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera, IconChevron } from "./Icons";
 import { LabeledIcon } from "./LabeledIcon";
 import { Alert } from "../Alert";
@@ -8,6 +7,8 @@ import { Button, ButtonProps } from "../Button";
 import { LikeButton } from "../LikeButton";
 import { DeliveryType } from "@lib/types";
 import { Outcome } from "./Outcome";
+
+import "./styles.css";
 
 export interface DataProps {
   name: string;
@@ -110,6 +111,7 @@ export const CampaignHeroSection = ({
                   <Outcome {...data.outcome} t={t} />
                 </div>
               </div>
+
               {button ? (
                 <Button
                   variant={button?.variant || "primary"}
@@ -122,21 +124,20 @@ export const CampaignHeroSection = ({
                   {button?.text || t("register")}
                 </Button>
               ) : null}
-            </div>
-
+            </div>{" "}
             {data.alert ? (
               <Alert variant={data.alert.type} hideIcon className="tt-campaign-hero-section-alert">
                 {data.alert?.text}
               </Alert>
             ) : null}
-
             {small ? null : (
               <Button
-                variant="primary"
+                variant={button?.variant || "primary"}
                 className={cx("tt-campaign-hero-section-button")}
-                onClick={onClickButton}
+                onClick={button?.onClick || onClickButton}
+                disabled={button?.disabled}
               >
-                {t("register")}
+                {button?.text || t("register")}
               </Button>
             )}
           </>

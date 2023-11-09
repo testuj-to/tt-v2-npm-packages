@@ -7,18 +7,22 @@
 }
 
 .tt-alert-info {
+  color: var(--color-info);
   background-color: #e5f6fd;
 }
 
 .tt-alert-warning {
+  color: var(--color-warning);
   background-color: #fff4e5;
 }
 
 .tt-alert-error {
+  color: var(--color-error);
   background-color: #fdeded;
 }
 
 .tt-alert-success {
+  color: var(--color-success);
   background-color: #edf7ed;
 }
 
