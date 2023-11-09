@@ -276,6 +276,8 @@ export interface Campaign {
   questionnaire?: Questionnaire;
 
   // V2
+  state: CampaignState;
+
   pricing?: {
     discountPercent?: number;
     discountCoupons?: string[];
@@ -309,6 +311,24 @@ export interface Campaign {
     notes?: string;
     company?: string;
   };
+
+  notificationSubscription: CampaignNotificationSubscription;
+}
+
+export enum CampaignState {
+  draft = "draft",
+  publishable = "publishable",
+  approved = "approved",
+  published = "published",
+  opened = "opened",
+  closed = "closed",
+  finished = "finished",
+}
+
+export interface CampaignNotificationSubscription {
+  campaign: Campaign;
+  reviewer: Reviewer;
+  enableEmailNotifications: boolean;
 }
 
 export enum DeliveryType {
@@ -448,3 +468,33 @@ export type ReviewDestination = {
   type: string;
   name: string;
 };
+
+export interface Reviewer {
+  id: string;
+  email: string;
+  profile: ReviewerProfile;
+  profileImage: File;
+  socials: ReviewerSocials;
+  isBlacklisted: boolean;
+
+  favoriteCampaigns: Campaign[];
+}
+
+export interface ReviewerProfile {
+  firstName: string;
+  lastName: string;
+  gender: Gender;
+  birthDate: number;
+  phoneNumber: string;
+  address: Address;
+}
+
+export interface ReviewerSocials {
+  hasFb: boolean;
+  fbFollowers: number;
+  fbUrl: string;
+
+  hasIg: boolean;
+  igFollowers: number;
+  igUrl: string;
+}
