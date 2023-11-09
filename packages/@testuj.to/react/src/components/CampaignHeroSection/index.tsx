@@ -43,6 +43,12 @@ export interface CampaignHeroSectionProps {
     variant?: ButtonProps["variant"];
     disabled?: boolean;
   };
+  mainButton?: {
+    text?: React.ReactNode;
+    onClick?: () => void;
+    variant?: ButtonProps["variant"];
+    disabled?: boolean;
+  };
   customContent?: React.ReactNode;
 }
 
@@ -57,6 +63,7 @@ export const CampaignHeroSection = ({
   liked,
   small,
   button,
+  mainButton,
   customContent,
 }: CampaignHeroSectionProps) => {
   return (
@@ -132,12 +139,12 @@ export const CampaignHeroSection = ({
             ) : null}
             {small ? null : (
               <Button
-                variant={button?.variant || "primary"}
+                variant={mainButton?.variant || "primary"}
                 className={cx("tt-campaign-hero-section-button")}
-                onClick={button?.onClick || onClickButton}
-                disabled={button?.disabled}
+                onClick={mainButton?.onClick || onClickButton}
+                disabled={mainButton?.disabled}
               >
-                {button?.text || t("register")}
+                {mainButton?.text || t("register")}
               </Button>
             )}
           </>

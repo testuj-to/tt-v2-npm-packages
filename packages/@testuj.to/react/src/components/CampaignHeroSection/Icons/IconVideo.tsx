@@ -27,7 +27,7 @@ export const IconVideo = ({ ...props }: IconProps) => {
         transform="translate(4.224 8.198)"
         fill="none"
         stroke="#0d1a33"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         id="Path_7582"
@@ -36,8 +36,8 @@ export const IconVideo = ({ ...props }: IconProps) => {
         transform="translate(3.474 3.789)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
       <path
         id="Path_7583"
@@ -46,8 +46,8 @@ export const IconVideo = ({ ...props }: IconProps) => {
         transform="translate(3.474 3.789)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
       <path
         id="Path_7584"
