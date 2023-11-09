@@ -25,8 +25,8 @@ export const IconSocial = ({ ...props }: IconProps) => {
         transform="translate(3.251 3.05)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
       <path
         id="Path_7591"
@@ -42,8 +42,8 @@ export const IconSocial = ({ ...props }: IconProps) => {
         transform="translate(3.251 3.05)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
       <line
         id="Line_115"
@@ -52,8 +52,8 @@ export const IconSocial = ({ ...props }: IconProps) => {
         transform="translate(10.106 6.964)"
         fill="none"
         stroke="#0d1a33"
-        stroke-linecap="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeWidth="1.5"
       />
     </svg>
   );
