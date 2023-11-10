@@ -2,7 +2,7 @@ import cx from "classnames";
 
 import { IconCheck, IconPeople, IconStar, IconTransport, IconCamera, IconChevron } from "./Icons";
 import { LabeledIcon } from "./LabeledIcon";
-import { Alert } from "../Alert";
+import { Alert, AlertProps } from "../Alert";
 import { Button, ButtonProps } from "../Button";
 import { LikeButton } from "../LikeButton";
 import { DeliveryType } from "@lib/types";
@@ -15,7 +15,7 @@ export interface DataProps {
   openSpots?: number;
   alert?: {
     text?: string;
-    type?: "error" | "success" | "warning";
+    type?: AlertProps["variant"];
   };
   deliveryType?: DeliveryType;
   freeDelivery?: boolean;
