@@ -85,7 +85,7 @@
 .tt-campaign-hero-section-alert {
   height: 1rem;
   box-sizing: border-box;
-  margin: 1rem 0;
+  margin-top: 0.5rem;
   font-size: 0.8rem;
   font-weight: 600;
 }
