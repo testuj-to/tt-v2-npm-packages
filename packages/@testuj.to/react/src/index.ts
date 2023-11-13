@@ -204,9 +204,10 @@ export {
     Tag,
 } from './components/Tag'
 export {
-    type TestedCampaignCardProps,
-    TestedCampaignCard,
-} from "./components/TestedCampaignCard";
+    type TestedProductCardProps,
+    type TestedProductCardInfo,
+    TestedProductCard,
+} from "./components/TestedProductCard";
 export {
     type TextProps,
     Text,
