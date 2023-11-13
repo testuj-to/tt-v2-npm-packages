@@ -498,3 +498,32 @@ export interface ReviewerSocials {
   igFollowers: number;
   igUrl: string;
 }
+
+export interface TestedProduct {
+  id: string;
+  image?: File;
+  name?: string;
+  slug?: string;
+  userManualLink?: string;
+  urlAddress?: string;
+  info?: {
+    manufacturer?: {
+      id: string;
+      name: string;
+      logo: File;
+    };
+    model?: string;
+  };
+  attributes?: {
+    key: string;
+    value: string;
+  }[];
+  category?: {
+    key?: string;
+  }[];
+  description?: RichText;
+  detailPageLinks?: {
+    label?: string;
+    src?: string;
+  }[];
+}

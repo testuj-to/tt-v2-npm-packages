@@ -1,23 +1,23 @@
 import { useMemo } from "react";
 import { CampaignCard } from "../CampaignCard";
-import { Campaign } from "@lib/types";
+import { Campaign, TestedProduct } from "@lib/types";
 import { StarsRating } from "../StarsRating";
 import moment from "moment";
 
 import "./styles.css";
 
-export type CampaignCardInfo = {
+export type TestedProductCardInfo = {
   rating: number;
   noOfReviews: number;
   date: string;
   text: string;
 };
 
-export interface TestedCampaignCardProps {
-  campaign: Campaign;
+export interface TestedProductCardProps {
+  product?: TestedProduct;
   onClick?: () => void;
   onDoubleClick?: () => void;
-  info?: CampaignCardInfo;
+  info?: TestedProductCardInfo;
   translations?: {
     review: string;
     reviews: string;
@@ -25,21 +25,23 @@ export interface TestedCampaignCardProps {
   image?: React.ReactNode;
 }
 
-export const TestedCampaignCard = ({
-  campaign,
+export const TestedProductCard = ({
+  product,
   onClick,
   onDoubleClick,
   info,
   translations,
   image,
-}: TestedCampaignCardProps) => {
+}: TestedProductCardProps) => {
   // TODO: generate tags based on campaign state
   const bottomSection = useMemo(() => {
     return (
       <>
         <div className="tt-campaign-card-info">
           <div className="tt-campaign-card-info-rating">
-            <span className="tt-campaign-card-info-rating-value">{info?.rating?.toFixed?.(1)}/5</span>
+            <span className="tt-campaign-card-info-rating-value">
+              {info?.rating?.toFixed?.(1)}/5
+            </span>
             <StarsRating rating={info?.rating} onChange={() => null} readOnly starSize={16} />
             <span className="tt-campaign-card-dot-divider"></span>
             <span className="tt-campaign-card-info-reviews-value">{info?.noOfReviews}</span>
@@ -65,7 +67,7 @@ export const TestedCampaignCard = ({
   return (
     <CampaignCard
       image={image}
-      label={campaign?.web?.title}
+      label={product?.name}
       tags={[]}
       onClick={onClick}
       onDoubleClick={onDoubleClick}
