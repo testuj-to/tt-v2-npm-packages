@@ -146,7 +146,8 @@ export interface Product {
     ratingType: ProductRatingType;
   };
   attributes?: {
-    key: string;
+    id: string;
+    name: string;
   }[];
   codes?: {
     ean?: string;
@@ -455,7 +456,6 @@ export enum ReviewState {
 }
 
 export type ProductAttributeRating = {
-  key: string;
   id: string;
   name: string;
   rating: number;
