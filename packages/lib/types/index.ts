@@ -456,6 +456,8 @@ export enum ReviewState {
 
 export type ProductAttributeRating = {
   key: string;
+  id: string;
+  name: string;
   rating: number;
 };
 
