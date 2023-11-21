@@ -13,7 +13,7 @@ export default {
 } as ComponentMeta<typeof DashedBarChart>;
 
 const dashedBarChartStory: ComponentStory<typeof DashedBarChart> = (args) => (
-  <div style={{ width: "590px", border: "1px solid black", padding: "1rem" }}>
+  <div style={{ width: "470px", border: "1px solid black", padding: "1rem" }}>
     <DashedBarChart {...args} />
   </div>
 );
