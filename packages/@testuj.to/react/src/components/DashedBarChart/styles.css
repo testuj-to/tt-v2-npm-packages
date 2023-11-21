@@ -4,6 +4,7 @@
   align-items: space-between;
   justify-content: space-between;
   width: 100%;
+  container: dashed-chart / inline-size;
 }
 
 .tt-dashed-bar-chart__item {
@@ -61,4 +62,19 @@
   top: 0;
   bottom: 0;
   transition: width 0.5s ease-in-out;
+}
+
+@container dashed-chart (max-width: 430px) {
+  .tt-dashed-bar-chart__item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tt-dashed-bar-chart__item__label {
+    margin-bottom: 0.4rem;
+  }
+
+  .tt-dashed-bar-chart__item:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
