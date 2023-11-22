@@ -70,3 +70,10 @@ input {
     transform: translate(-50%, -50%) scale(1);
   }
 }
+
+@media (max-width: 900px) {
+  .tt-dialog-content {
+    max-width: 98vw;
+    max-height: 90vh;
+  }
+}

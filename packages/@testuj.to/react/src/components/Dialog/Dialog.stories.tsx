@@ -17,6 +17,6 @@ const dialogStoryTemplate: ComponentStory<typeof Dialog> = (args) => <Dialog {..
 export const Basic = dialogStoryTemplate.bind({});
 Basic.args = {
   children: <button>Open me</button>,
-  content: <div>Content</div>,
+  content: <div style={{ width: "200px", height: "200px", backgroundColor: "red" }}>Content</div>,
   onOpenChnage: (open) => console.log(open),
 };
