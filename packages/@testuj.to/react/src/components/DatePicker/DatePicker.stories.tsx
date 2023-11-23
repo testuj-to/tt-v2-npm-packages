@@ -18,10 +18,8 @@ const datePickerStoryTemplate: ComponentStory<typeof DatePicker> = (args) => (
 
 export const Basic = datePickerStoryTemplate.bind({});
 Basic.args = {
-  onChange: (date) => console.log(date),
-  value: new Date(),
   translationFunciton: (key: string) => key,
-  className: "test",
-  dateTime: true,
-  dateFormat: "dd.MM.yyyy HH:mm",
+  dateRange: [new Date(), new Date()],
+  onChange: (dateRange: [Date | null, Date | null]) => console.log(dateRange),
+  type: "range",
 };

@@ -1,34 +1,45 @@
-import { CalendarIcon } from "@radix-ui/react-icons";
-import { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import DatePickerComponent, { Locale } from "react-datepicker";
 import cx from "classnames";
-import moment from "moment";
 
-import "../DateRangePicker/styles.css";
+import "react-datepicker/dist/react-datepicker.css";
+import "./styles.css";
+import { CalendarIcon } from "@radix-ui/react-icons";
+
+type DateRange = [Date | null, Date | null];
 
 export interface DatePickerProps {
-  onChange: (date: Date | null) => void;
-  value: Date | null;
+  onChange: (dateRange: Date | null | DateRange) => void;
+  dateRange: DateRange;
   translationFunciton: (key: string) => string;
   className?: string;
   dateFormat?: string;
-  todayButton?: string;
   showYearDropdown?: boolean;
   showMonthDropdown?: boolean;
   dateTime?: boolean;
+  type: "single" | "range";
 }
 
-export const DatePicker = ({
+export const DatePicker: React.FC<DatePickerProps> = ({
   onChange,
-  value,
+  dateRange,
   className,
   translationFunciton,
   dateFormat = "dd.MM.yyyy",
-  todayButton,
   showYearDropdown,
   showMonthDropdown,
   dateTime,
-}: DatePickerProps) => {
+  type,
+}) => {
+  const [startDate, setStartDate] = useState(dateRange[0] || new Date());
+  const [endDate, setEndDate] = useState(dateRange[1] || null);
+  const onChangeSelection = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    onChange([start, end]);
+  };
+
   const locale: Locale = useMemo(() => {
     return {
       localize: {
@@ -73,15 +84,26 @@ export const DatePicker = ({
     };
   }, [translationFunciton]);
 
+  const CustomInput = React.forwardRef<HTMLDivElement, { value?: string }>(
+    ({ value, ...props }, ref) => (
+      <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
+        {value}
+        <CalendarIcon className="tt-datePicker-icon" />
+      </div>
+    )
+  );
+
   return (
     <DatePickerComponent
-      showIcon
-      selected={value}
-      onChange={onChange}
+      selectsRange={type === "range"}
+      startDate={startDate}
+      endDate={endDate}
+      onChange={onChangeSelection}
       dateFormat={dateFormat}
       todayButton={translationFunciton("time.today")}
       locale={locale}
-      className={cx("tt-datePicker", className)}
+      customInput={type === "range" ? <CustomInput /> : undefined}
+      showIcon={type === "single"}
       showYearDropdown={showYearDropdown}
       showMonthDropdown={showMonthDropdown}
       showTimeSelect={dateTime}
