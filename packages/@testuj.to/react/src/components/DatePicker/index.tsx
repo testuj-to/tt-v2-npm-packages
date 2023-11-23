@@ -1,29 +1,33 @@
 import { CalendarIcon } from "@radix-ui/react-icons";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import DatePickerComponent, { Locale } from "react-datepicker";
 import cx from "classnames";
-import { Input, InputProps } from "../Input";
 import moment from "moment";
 
-import "./styles.css";
+import "../DateRangePicker/styles.css";
 
 export interface DatePickerProps {
   onChange: (date: Date | null) => void;
-  date: Date | null;
+  value: Date | null;
   translationFunciton: (key: string) => string;
   className?: string;
   dateFormat?: string;
   todayButton?: string;
-  customInput?: React.ReactNode;
+  showYearDropdown?: boolean;
+  showMonthDropdown?: boolean;
+  dateTime?: boolean;
 }
 
 export const DatePicker = ({
   onChange,
-  date,
+  value,
   className,
   translationFunciton,
   dateFormat = "dd.MM.yyyy",
   todayButton,
+  showYearDropdown,
+  showMonthDropdown,
+  dateTime,
 }: DatePickerProps) => {
   const locale: Locale = useMemo(() => {
     return {
@@ -59,9 +63,9 @@ export const DatePicker = ({
         dayPeriod: (n: number) => ["AM", "PM"][n],
       },
       formatLong: {
-        date: () => "x",
-        time: () => `1`,
-        dateTime: () => `1`,
+        date: () => "dd.MM.yyyy",
+        time: () => "HH:mm",
+        dateTime: () => "dd.MM.yyyy HH:mm",
       },
       options: {
         weekStartsOn: 1,
@@ -71,29 +75,16 @@ export const DatePicker = ({
 
   return (
     <DatePickerComponent
-      selected={date}
+      showIcon
+      selected={value}
       onChange={onChange}
       dateFormat={dateFormat}
       todayButton={translationFunciton("time.today")}
       locale={locale}
-      customInput={
-        <CustomInput
-          className={className}
-          value={moment(date).format(dateFormat)}
-          onBlur={(e) => onChange(moment(e.target.value).toDate())}
-        />
-      }
+      className={cx("tt-datePicker", className)}
+      showYearDropdown={showYearDropdown}
+      showMonthDropdown={showMonthDropdown}
+      showTimeSelect={dateTime}
     />
   );
 };
-
-interface CustomInputProps extends InputProps {}
-
-const CustomInput = React.forwardRef<HTMLInputElement, CustomInputProps>(
-  ({ value, className, ...props }, ref) => (
-    <div className={cx("tt-datePicker-input-wrapper", className)}>
-      <Input {...props} className="tt-datePicker-input" ref={ref} />
-      <CalendarIcon className="tt-datePicker-icon" />
-    </div>
-  )
-);
