@@ -75,12 +75,12 @@ export const DatePicker = ({
 
   return (
     <DatePickerComponent
+      showIcon
       selected={value}
       onChange={onChange}
       dateFormat={dateFormat}
       todayButton={translationFunciton("time.today")}
       locale={locale}
-      icon={<CalendarIcon />}
       className={cx("tt-datePicker", className)}
       showYearDropdown={showYearDropdown}
       showMonthDropdown={showMonthDropdown}

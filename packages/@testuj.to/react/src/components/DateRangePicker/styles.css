@@ -4,11 +4,13 @@
 }
 
 .react-datepicker-wrapper input {
+  box-sizing: border-box;
   font-size: 1rem;
   padding: 0.5rem;
   padding-right: 1.5rem;
   width: 100%;
   border-radius: 4px;
+  height: 48px;
   border: 1px solid var(--color-border);
 }
 
@@ -226,7 +228,15 @@
 }
 
 .tt-dateRangePicker-icon {
+  margin-left: 0.5rem;
+}
+
+.react-datepicker__calendar-icon {
   margin-left: 1rem;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: gray;
 }
 
 .react-datepicker__year-dropdown {
