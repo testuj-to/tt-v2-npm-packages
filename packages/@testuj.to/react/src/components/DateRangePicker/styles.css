@@ -216,7 +216,7 @@
   background-color: rgba(13, 26, 51, 0.05);
 }
 
-.tt-datePicker-input {
+.tt-dateRangePicker-input {
   position: relative;
   border-radius: 4px;
   border: 1px solid var(--color-border);
@@ -226,6 +226,6 @@
   cursor: pointer;
 }
 
-.tt-datePicker-icon {
+.tt-dateRangePicker-icon {
   margin-left: 1rem;
 }
