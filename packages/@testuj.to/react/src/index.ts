@@ -89,13 +89,13 @@ export {
     DashedBarChart,
 } from "./components/DashedBarChart";
 export {
-    type DatePickerProps,
-    DatePicker,
-} from './components/DatePicker'
-export {
     type DateRangePickerProps,
     DateRangePicker,
 } from "./components/DateRangePicker";
+export {
+    type DatePickerProps,
+    DatePicker,
+} from './components/DatePicker'
 export {
     type DialogProps,
     Dialog,
