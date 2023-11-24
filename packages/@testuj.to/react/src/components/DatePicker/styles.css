@@ -30,10 +30,6 @@
   display: none;
 }
 
-.react-datepicker__input-container {
-  width: auto;
-}
-
 .react-datepicker__month-container {
   width: 100%;
 }
