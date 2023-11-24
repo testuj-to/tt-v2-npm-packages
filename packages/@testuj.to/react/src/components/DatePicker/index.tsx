@@ -33,8 +33,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   dateTime,
   type,
 }) => {
-  const [startDate, setStartDate] = useState(dateRange[0] || new Date());
-  const [endDate, setEndDate] = useState(dateRange[1] || null);
+  const [startDate, setStartDate] = useState(dateRange?.[0] || null);
+  const [endDate, setEndDate] = useState(dateRange?.[1] || null);
   const onChangeSelection = (dates) => {
     const [start, end] = dates;
     setStartDate(start);
@@ -101,7 +101,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       selected={selected}
       startDate={startDate}
       endDate={endDate}
-      onChange={onChangeSelection}
+      onChange={type === "range" ? onChangeSelection : onChange}
       dateFormat={dateFormat}
       todayButton={translationFunciton("time.today")}
       locale={locale}
