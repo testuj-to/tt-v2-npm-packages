@@ -10,7 +10,8 @@ type DateRange = [Date | null, Date | null];
 
 export interface DatePickerProps {
   onChange: (dateRange: Date | null | DateRange) => void;
-  dateRange: DateRange;
+  dateRange?: DateRange;
+  selected?: Date;
   translationFunciton: (key: string) => string;
   className?: string;
   dateFormat?: string;
@@ -23,6 +24,7 @@ export interface DatePickerProps {
 export const DatePicker: React.FC<DatePickerProps> = ({
   onChange,
   dateRange,
+  selected,
   className,
   translationFunciton,
   dateFormat = "dd.MM.yyyy",
@@ -96,6 +98,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   return (
     <DatePickerComponent
       selectsRange={type === "range"}
+      selected={selected}
       startDate={startDate}
       endDate={endDate}
       onChange={onChangeSelection}
