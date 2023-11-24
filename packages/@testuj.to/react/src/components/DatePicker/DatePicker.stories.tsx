@@ -21,4 +21,5 @@ Basic.args = {
   translationFunciton: (key: string) => key,
   onChange: (dateRange: [Date | null, Date | null]) => console.log(dateRange),
   type: "single",
+  selected: new Date(),
 };
