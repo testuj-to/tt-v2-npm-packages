@@ -56,6 +56,10 @@ export {
     Slider,
 } from './components/Slider'
 export {
+    type SpinnerProps,
+    Spinner,
+} from "./components/Spinner"
+export {
     type StarsRatingProps,
     StarsRating,
 } from './components/StarsRating'
