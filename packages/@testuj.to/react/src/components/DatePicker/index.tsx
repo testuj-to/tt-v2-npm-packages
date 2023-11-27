@@ -86,6 +86,14 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     };
   }, [translationFunciton]);
 
+  const handlerChangeRaw = (event) => {
+    const { value } = event.target;
+    const date = new Date(value);
+    if (date instanceof Date && !isNaN(date.getTime())) {
+      onChange(date);
+    }
+  };
+
   const CustomInput = React.forwardRef<HTMLDivElement, { value?: string }>(
     ({ value, ...props }, ref) => (
       <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
@@ -110,6 +118,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       showYearDropdown={showYearDropdown}
       showMonthDropdown={showMonthDropdown}
       showTimeSelect={dateTime}
+      placeholderText={dateFormat}
+      onChangeRaw={handlerChangeRaw}
     />
   );
 };
