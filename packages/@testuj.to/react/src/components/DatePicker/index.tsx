@@ -1,10 +1,12 @@
 import React, { useMemo, useState } from "react";
 import DatePickerComponent, { Locale } from "react-datepicker";
 import cx from "classnames";
+import moment from "moment";
+
+import { CalendarIcon } from "@radix-ui/react-icons";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
-import { CalendarIcon } from "@radix-ui/react-icons";
 
 type DateRange = [Date | null, Date | null];
 
@@ -76,9 +78,23 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         dayPeriod: (n: number) => ["AM", "PM"][n],
       },
       formatLong: {
-        date: () => "dd.MM.yyyy",
+        date: () => moment().format("DD.MM.YYYY"),
         time: () => "HH:mm",
-        dateTime: () => "dd.MM.yyyy HH:mm",
+        dateTime: () => moment().format("DD.MM.YYYY HH:mm"),
+      },
+      match: {
+        ordinalNumber: () => {
+          throw new Error("Not implemented");
+        },
+        era: () => {
+          throw new Error("Not implemented");
+        },
+        quarter: () => {
+          throw new Error("Not implemented");
+        },
+        dayPeriod: () => {
+          throw new Error("Not implemented");
+        },
       },
       options: {
         weekStartsOn: 1,
