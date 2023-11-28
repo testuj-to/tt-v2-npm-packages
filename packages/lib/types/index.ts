@@ -313,6 +313,8 @@ export interface Campaign {
     company?: string;
   };
 
+  milestones?: CampaignMilestone[];
+
   notificationSubscription: CampaignNotificationSubscription;
 }
 
@@ -347,9 +349,15 @@ export interface Tag {
 export interface CampaignSettings {
   hasAutoOpen: boolean;
   openAt: Date;
+  closeAt: Date;
   capacity: number;
   registrationPeriodDays: number;
   submissionPeriodDays: number;
+}
+
+export interface CampaignMilestone {
+  type: string;
+  timestamp: number;
 }
 
 export interface CampaignImage {
