@@ -309,6 +309,7 @@ export interface Campaign {
   delivery?: {
     freeOfCharge?: boolean;
     type?: DeliveryType;
+    expectedDeliveryDays?: number;
     notes?: string;
     company?: string;
   };
