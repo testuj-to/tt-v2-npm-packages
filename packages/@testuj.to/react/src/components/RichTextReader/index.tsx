@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { ContentBlock, ContentState, Editor, EditorState, convertFromRaw } from "draft-js";
+import {
+  CompositeDecorator,
+  ContentBlock,
+  ContentState,
+  convertFromRaw,
+  Editor,
+  EditorState,
+} from "draft-js";
 
 import "draft-js/dist/Draft.css";
 import "./styles.css";
@@ -51,14 +58,42 @@ const Atomic = ({ contentState, block }: AtomicProps) => {
 
       return (
           <img
-              className={`richtext-image ${data.className}`}
-              {...data}
+            {...data}
+            className={`richtext-image ${data.className}`}
           />
       );
   }
 
   return null;
 };
+
+const Link = (props) => {
+  const { contentState, entityKey } = props;
+  const data = contentState.getEntity(entityKey).getData();
+
+  return (
+    <a
+      // rel="noopener noreferrer"
+      target="_blank"
+      className={`richtext-link ${data.className || ""}`}
+      href={data.href}
+      aria-label={data.text || data.href}
+    >
+      {props?.children || data.text}
+    </a>
+  );
+};
+
+const decorator = new CompositeDecorator([{
+  component: Link,
+  strategy: (contentBlock, callback, contentState) => {
+      contentBlock.findEntityRanges((character) => {
+          const entityKey = character.getEntity();
+
+          return entityKey && contentState.getEntity(entityKey).getType() === "LINK";
+      }, callback);
+  },
+}]);
 
 export interface RichTextReaderProps {
   value: RichText;
@@ -74,16 +109,16 @@ export const RichTextReader = ({ value, placeholder, className }: RichTextReader
 
   const [editorState, setEditorState] = useState(
     /^\{.*\}$/.test(value?.json)
-      ? EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)))
-      : EditorState.createEmpty()
+      ? EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)), decorator)
+      : EditorState.createEmpty(decorator),
   );
 
   useEffect(() => {
     if (!isEdited) {
       setEditorState(
         /^\{.*\}$/.test(value?.json)
-          ? EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)))
-          : EditorState.createEmpty()
+          ? EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)), decorator)
+          : EditorState.createEmpty(decorator),
       );
     }
   }, [isEdited, value]);
