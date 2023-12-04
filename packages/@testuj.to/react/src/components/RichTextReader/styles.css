@@ -38,3 +38,7 @@
 .richtext-image {
     width: 100%;
 }
+
+.richtext-link {
+    color: var(--color-primary);
+}
