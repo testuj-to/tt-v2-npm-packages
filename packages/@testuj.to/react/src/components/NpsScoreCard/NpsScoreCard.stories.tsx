@@ -26,4 +26,5 @@ Basic.args = {
   promoters: 58,
   passives: 48,
   detractors: 31,
+  t: (key: string, args?: any) => key,
 };

@@ -8,9 +8,10 @@ export interface GaugeChartProps {
     haters: number
     greenThreshold: number
     orangeThreshold: number
+    t: (key: string, args?: any) => string;
 }
 
-export const GaugeChart = ({haters: x, neutrals: y, promoters: z,orangeThreshold, greenThreshold}: GaugeChartProps) => {
+export const GaugeChart = ({haters: x, neutrals: y, promoters: z,orangeThreshold, greenThreshold, t}: GaugeChartProps) => {
     const [gradient, setGradient] = useState("conic-gradient(from 180deg at 50% 60%, #FF001D, #FF001D 0%, #FAB553 0%, #FAB553 0%, #029218 0%, #029218 100%)")
     const [left, setLeft] = useState("")
     const [bottom, setBottom] = useState("")
@@ -75,7 +76,7 @@ export const GaugeChart = ({haters: x, neutrals: y, promoters: z,orangeThreshold
                 <span className={cx("tt-gauge-chart-max")}>100</span>
                 <span className={cx("tt-gauge-chart-total-container")}>
                     <p className={cx("tt-gauge-chart-total")}>{totalScore.toFixed(1)}</p>
-                    <p className={cx("tt-gauge-chart-total-desc")}>Celkové <br></br> skóre</p>
+                    <p className={cx("tt-gauge-chart-total-desc")}>{t('npsScoreCard.totalScore')}</p>
                 </span>
             </div>
         </>
