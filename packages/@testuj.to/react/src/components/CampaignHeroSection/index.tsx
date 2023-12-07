@@ -27,6 +27,7 @@ export interface DataProps {
   };
   discount?: number;
 }
+
 export interface CampaignHeroSectionProps {
   data: DataProps;
   image?: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
@@ -99,7 +100,7 @@ export const CampaignHeroSection = ({
                 label={`${t("looking")} ${data?.openSpots} ${t("testers")}`}
               />
               <LabeledIcon icon={<IconTransport />} label={t(`delivery.${data.deliveryType}`)} />
-              {data.discount === 100 ? (
+              {data.discount === 100 || !data.discount ? (
                 <LabeledIcon icon={<IconCheck />} label={t("forFree")} />
               ) : (
                 <LabeledIcon icon={<></>} label={`${data.discount}% ${t("discount")}`} />

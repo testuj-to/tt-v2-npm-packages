@@ -1,8 +1,8 @@
 import * as Popover from "@radix-ui/react-popover";
 import cx from "classnames";
-import "./styles.css";
 import { UserAvatar } from "../UserAvatar";
 import { ProgressBar } from "../ProgressBar";
+import "./styles.css";
 
 export interface User {
   name: string;

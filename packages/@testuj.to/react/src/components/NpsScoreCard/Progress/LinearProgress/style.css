@@ -1,0 +1,22 @@
+.tt-gauge-chart-linear-progress {
+    height: 8px;
+    min-width: 276px;
+    width: 100%;
+    border-radius: 25px;
+    position: relative;
+    background-color: #F0F2F4;
+}
+
+.tt-gauge-chart-linear-progress-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 25px;
+    transition: right 0.5s ease;
+}
+.tt-gauge-chart-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
