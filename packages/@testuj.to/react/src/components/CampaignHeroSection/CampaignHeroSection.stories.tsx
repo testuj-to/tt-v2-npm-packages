@@ -122,7 +122,7 @@ Basic.args = {
       },
     },
     images: [],
-    discount: 50,
+    discount: 60,
   },
   button: {
     text: "Register",
