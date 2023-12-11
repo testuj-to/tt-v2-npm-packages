@@ -4,7 +4,7 @@ import {useMemo} from "react";
 import {Progress} from "./Progress";
 import {GaugeChart} from "./GaugeChart";
 
-export interface NpsScoreProps {
+export interface NpsScoreCardProps {
     promoters: number
     passives: number
     detractors: number
@@ -13,7 +13,7 @@ export interface NpsScoreProps {
     t: (key: string, args?: any) => string;
 }
 
-export const NpsScoreCard = ({promoters, passives, detractors, orangeThreshold = -50, greenThreshold = 0, t}: NpsScoreProps) => {
+export const NpsScoreCard = ({promoters, passives, detractors, orangeThreshold = -50, greenThreshold = 0, t}: NpsScoreCardProps) => {
     const maxVal = useMemo(()=>{
         return promoters + passives + detractors
     }, [promoters, passives, detractors])
