@@ -150,6 +150,10 @@ export {
     NotificationsPopover,
 }    from './components/NotificationsPopover'
 export {
+    type NpsScoreCardProps,
+    NpsScoreCard,
+} from "./components/NpsScoreCard"
+export {
     type CampaignCardProps,
     CampaignCard,
 } from './components/CampaignCard'
