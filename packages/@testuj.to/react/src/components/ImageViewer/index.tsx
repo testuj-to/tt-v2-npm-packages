@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Arrow } from "./Arrow";
 
 import "./styles.css";
@@ -26,6 +26,24 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
     setIsLoaded(true);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") {
+        onClickNext?.();
+      } else if (e.key === "ArrowLeft") {
+        onClickPrevious?.();
+      } else if (e.key === "Escape") {
+        onClose?.();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClickNext, onClickPrevious, onClose]);
+
   return (
     <div className="tt-image-viewer-background" onClick={onClose}>
       <div
@@ -41,7 +59,10 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
           onLoad={handleImageLoad}
           style={{ display: isLoaded ? "block" : "none" }}
         />
-        <button className="tt-image-viewer-controls__button tt-image-viewer__close-button" onClick={onClose}>
+        <button
+          className="tt-image-viewer-controls__button tt-image-viewer__close-button"
+          onClick={onClose}
+        >
           <div className="tt-image-viewer__close-button__icon">✕</div>
         </button>
         {controls ? (
