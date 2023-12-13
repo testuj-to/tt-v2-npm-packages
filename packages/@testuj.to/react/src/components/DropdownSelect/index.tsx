@@ -14,6 +14,7 @@ export interface DropdownSelectProps {
   triggerLabel: string;
   items: SelectItem[];
   onSelectionChange?: (items: SelectItem[]) => void;
+  selectedItemsProps?: SelectItem[];
   className?: string;
 }
 
@@ -21,10 +22,13 @@ export const DropdownSelect = ({
   triggerLabel,
   items,
   onSelectionChange,
+  selectedItemsProps,
   className,
 }: DropdownSelectProps) => {
-  const [selectedItems, setSelectedItems] = useState<SelectItem[]>([]);
+  const [selectedItemsLocal, setSelectedItemsLocal] = useState<SelectItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const selectedItems = selectedItemsProps || selectedItemsLocal;
 
   const isChecked = (item: SelectItem) =>
     selectedItems.some((selectedItem) => selectedItem.value === item.value);
@@ -39,7 +43,7 @@ export const DropdownSelect = ({
       newSelectedItems.splice(itemIndex, 1);
     }
 
-    setSelectedItems(newSelectedItems);
+    setSelectedItemsLocal(newSelectedItems);
     onSelectionChange?.(newSelectedItems);
   };
 

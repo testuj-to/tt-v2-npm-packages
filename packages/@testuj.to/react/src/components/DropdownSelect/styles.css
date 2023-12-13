@@ -43,7 +43,7 @@ div[data-radix-popper-content-wrapper] {
   border-radius: 50%;
   width: 1.2rem;
   height: 1.2rem;
-  margin: 0 0.8rem 0 0.4rem;
+  margin: 0 0 0 0.8rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +72,11 @@ div[data-radix-popper-content-wrapper] {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.tt-dropdownSelect-trigger-icon {
+  margin-left: 0.8rem;
+  transition: transform 0.2s ease-in-out;
 }
 
 .tt-dropdownSelect-checkbox-icon {

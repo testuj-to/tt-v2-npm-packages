@@ -16,7 +16,7 @@
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "scripts": {
-    "build:ts": "tsc",  
+    "build:ts": "tsc",
     "build:bundle": "rollup --config"
   }
 }
