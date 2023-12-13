@@ -1,6 +1,6 @@
 {
   "name": "@testuj.to/api",
-  "version": "0.0.117",
+  "version": "0.0.118",
   "description": "",
   "license": "MIT",
   "author": {
@@ -16,7 +16,7 @@
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
   "scripts": {
-    "build:ts": "tsc",  
+    "build:ts": "tsc",
     "build:bundle": "rollup --config"
   }
 }
