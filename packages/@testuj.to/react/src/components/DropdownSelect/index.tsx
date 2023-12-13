@@ -1,6 +1,4 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import cx from "classnames";
-
 import "./styles.css";
 import { useState } from "react";
 import { CheckIcon, TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons";
