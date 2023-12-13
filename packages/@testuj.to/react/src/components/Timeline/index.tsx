@@ -8,13 +8,15 @@ export interface Step {
   label: string;
   subLabel?: string;
   popup?: string;
-  date?: string;
+  date?: number;
 }
 
 export interface TimelineProps {
   steps: Step[];
   activeItem?: number;
   showPopup?: boolean;
+  lockToActiveItem?: boolean;
+  dateZero?: number;
 }
 
 const lerp = (a: number, b: number, n: number) => {
@@ -22,11 +24,8 @@ const lerp = (a: number, b: number, n: number) => {
 };
 
 // calculate proggres in between two dates
-const calculateProgressBetweenDates = (startDate: string, endDate: string, step: number) => {
+const calculateProgressBetweenDates = (start: number, end: number, step: number) => {
   const current = new Date().getTime();
-  const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
-  const start = new Date(startDate?.replace(pattern, "$3-$2-$1")).getTime();
-  const end = new Date(endDate?.replace(pattern, "$3-$2-$1")).getTime();
   if (current < start || current > end) {
     return 0;
   }
@@ -38,15 +37,25 @@ const calculateProgress = (
   steps: Step[],
   activeItem: number,
   calculateProgress: boolean,
-  isMobile: boolean
+  isMobile: boolean,
+  dateZero?: number
 ) => {
-  if (!activeItem) {
+  if (!activeItem === undefined) {
     return 0;
   }
+
+  if (activeItem > steps.length) {
+    return 100;
+  }
+
   const step = steps[activeItem - 1];
   const stepIndex = steps.indexOf(step);
   const stepProgress = (100 / steps.length) * stepIndex;
   const stepProgressWithSub = stepProgress + 100 / steps.length / 2;
+
+  if (activeItem === 0) {
+    return calculateProgressBetweenDates(dateZero || 0, steps[0].date, 100 / steps.length) / 2;
+  }
 
   if (isMobile) {
     const stepsLength = steps.length - 1;
@@ -69,10 +78,16 @@ const calculateProgress = (
   );
 };
 
-export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
+export const Timeline = ({
+  steps,
+  activeItem,
+  showPopup,
+  dateZero,
+  lockToActiveItem = false,
+}: TimelineProps) => {
   const [isMobile, setIsMobile] = useState(false);
   const [progress, setProgress] = useState(
-    calculateProgress(steps, activeItem, showPopup, isMobile)
+    calculateProgress(steps, activeItem, showPopup, isMobile, dateZero)
   );
   const initialHeight = useRef<number>(0);
   const warpperRef = useRef<HTMLDivElement>(null);
@@ -84,7 +99,7 @@ export const Timeline = ({ steps, activeItem, showPopup }: TimelineProps) => {
       setIsMobile(false);
     }
 
-    setProgress(calculateProgress(steps, activeItem, showPopup, isMobile));
+    setProgress(calculateProgress(steps, activeItem, !lockToActiveItem, isMobile, dateZero));
   }, [activeItem, showPopup, isMobile]);
 
   const style = {
