@@ -12,6 +12,8 @@ export default {
   decorators: [TTContextDecorator],
 } as ComponentMeta<typeof Timeline>;
 
+const oneDay = 24 * 60 * 60 * 1000;
+
 const timelineStory: ComponentStory<typeof Timeline> = (args) => (
   <div style={{ width: "800px" }}>
     <Timeline {...args} />
@@ -20,37 +22,38 @@ const timelineStory: ComponentStory<typeof Timeline> = (args) => (
 
 export const TimelineStory = timelineStory.bind({});
 TimelineStory.args = {
-  activeItem: 4,
+  activeItem: 0,
+  dateZero: new Date(new Date().getTime() - oneDay * 3).getTime(),
   steps: [
     {
       label: "Začátek přihlašování",
-      subLabel: "10.5.2023",
+      subLabel: new Date(new Date().getTime() + oneDay * 3).toLocaleDateString("cs"),
       popup: "Probíhá přihlašování",
-      date: "10.05.2023",
+      date: new Date(new Date().getTime() + oneDay * 3).getTime(),
     },
     {
       label: "Konec přihlašování",
-      subLabel: "20. 5. 2023",
+      subLabel: new Date(new Date().getTime() + oneDay * 5).toLocaleDateString("cs"),
       popup: "Produkty odeslány",
-      date: "20.05.2023",
+      date: new Date(new Date().getTime() + oneDay * 5).getTime(),
     },
     {
       label: "Doručení produktů",
-      subLabel: "30. 5. 2023",
+      subLabel: new Date(new Date().getTime() + oneDay * 7).toLocaleDateString("cs"),
       popup: "Produkty doručeny",
-      date: "28.05.2023",
+      date: new Date(new Date().getTime() + oneDay * 7).getTime(),
     },
     {
       label: "Doručení produktů",
-      subLabel: "2.6.2023",
+      subLabel: new Date(new Date().getTime() + oneDay * 9).toLocaleDateString("cs"),
       popup: "Produkty odeslány",
-      date: "02.06.2023",
+      date: new Date(new Date().getTime() + oneDay * 9).getTime(),
     },
     {
       label: "Doručení produktů",
-      subLabel: "1. 7. 2023",
+      subLabel: new Date(new Date().getTime() + oneDay * 20).toLocaleDateString("cs"),
       popup: "",
-      date: "01.07.2023",
+      date: new Date(new Date().getTime() + oneDay * 20).getTime(),
     },
   ],
 };
