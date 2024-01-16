@@ -22,38 +22,26 @@ const timelineStory: ComponentStory<typeof Timeline> = (args) => (
 
 export const TimelineStory = timelineStory.bind({});
 TimelineStory.args = {
-  activeItem: 0,
+  activeItem: 1,
   dateZero: new Date(new Date().getTime() - oneDay * 3).getTime(),
   steps: [
     {
+      date: 1702563876393 - oneDay / 2,
+      subLabel: "14. 12. 2023",
       label: "Začátek přihlašování",
-      subLabel: new Date(new Date().getTime() + oneDay * 3).toLocaleDateString("cs"),
       popup: "Probíhá přihlašování",
-      date: new Date(new Date().getTime() + oneDay * 3).getTime(),
     },
     {
+      date: 1702940400000,
+      subLabel: "19. 12. 2023",
       label: "Konec přihlašování",
-      subLabel: new Date(new Date().getTime() + oneDay * 5).toLocaleDateString("cs"),
-      popup: "Produkty odeslány",
-      date: new Date(new Date().getTime() + oneDay * 5).getTime(),
+      popup: "detail.delivery_inProgress",
     },
     {
-      label: "Doručení produktů",
-      subLabel: new Date(new Date().getTime() + oneDay * 7).toLocaleDateString("cs"),
-      popup: "Produkty doručeny",
-      date: new Date(new Date().getTime() + oneDay * 7).getTime(),
-    },
-    {
-      label: "Doručení produktů",
-      subLabel: new Date(new Date().getTime() + oneDay * 9).toLocaleDateString("cs"),
-      popup: "Produkty odeslány",
-      date: new Date(new Date().getTime() + oneDay * 9).getTime(),
-    },
-    {
-      label: "Doručení produktů",
-      subLabel: new Date(new Date().getTime() + oneDay * 20).toLocaleDateString("cs"),
-      popup: "",
-      date: new Date(new Date().getTime() + oneDay * 20).getTime(),
+      date: 1705532400000,
+      subLabel: "18. 01. 2024",
+      label: "30 dní na odeslání recenzí",
+      popup: "Čas na odeslání recenzí",
     },
   ],
 };
