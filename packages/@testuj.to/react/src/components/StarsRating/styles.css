@@ -1,11 +1,35 @@
 .tt-star-icon-half {
-  /* fill: url(#starGradient); */
+    /* fill: url(#starGradient); */
 }
 
 .tt-star-icon-full {
-  fill: #ff7804;
+    fill: #ff7804;
 }
 
 .tt-star-icon-empty {
-  fill: #eeeff2;
+    fill: #eeeff2;
+}
+
+.tt-stars-rating-item {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.tt-stars-rating-item__overlay_left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 1;
+}
+
+.tt-stars-rating-item__overlay_right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    z-index: 1;
 }
