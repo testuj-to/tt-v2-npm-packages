@@ -23,9 +23,8 @@ export const StarsRating = ({ rating, onChange, readOnly, className, starSize, n
             {stars.map((star) => {
                 const starPercent = star <= ratingInt ? 100 : star > ratingInt + 1 ? 0 : ratingDecimal * 100;
                 return (
-                    <div className="tt-stars-rating-item">
+                    <div className="tt-stars-rating-item" key={star}>
                         <StarIcon
-                            key={star}
                             filled={starPercent}
                             setGradient={star > ratingInt}
                             height={starSize || 24}
