@@ -6,27 +6,27 @@
 
 .richtext-block-header-one {
     font-size: 2em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 .richtext-block-header-two {
     font-size: 1.5em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 .richtext-block-header-three {
     font-size: 1.17em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 .richtext-block-header-four {
     font-size: 1em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 .richtext-block-header-five {
     font-size: 0.83em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 .richtext-block-header-six {
     font-size: 0.67em;
-    margin-bottom: 0.5em;
+    margin: 0.83em 0;
 }
 
 .richtext-block-unordered-list-item {
