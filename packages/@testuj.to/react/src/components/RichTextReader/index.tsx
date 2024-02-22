@@ -35,10 +35,10 @@ const blockStyleFn = (contentBlock: ContentBlock): string => {
 const blockRendererFn = (block: ContentBlock) => {
   switch (block.getType()) {
   case "atomic":
-      return {
-          component: Atomic,
-          editable: false,
-      };
+    return {
+      component: Atomic,
+      editable: false,
+    };
   }
 
   return null;
@@ -54,14 +54,14 @@ const Atomic = ({ contentState, block }: AtomicProps) => {
 
   switch (entity.getType()) {
   case "IMAGE":
-      const data = entity.getData();
+    const data = entity.getData();
 
-      return (
-          <img
-            {...data}
-            className={`richtext-image ${data.className}`}
-          />
-      );
+    return (
+      <img
+        {...data}
+        className={`richtext-image ${data.className}`}
+      />
+    );
   }
 
   return null;
@@ -87,11 +87,11 @@ const Link = (props) => {
 const decorator = new CompositeDecorator([{
   component: Link,
   strategy: (contentBlock, callback, contentState) => {
-      contentBlock.findEntityRanges((character) => {
-          const entityKey = character.getEntity();
+    contentBlock.findEntityRanges((character) => {
+      const entityKey = character.getEntity();
 
-          return entityKey && contentState.getEntity(entityKey).getType() === "LINK";
-      }, callback);
+      return entityKey && contentState.getEntity(entityKey).getType() === "LINK";
+    }, callback);
   },
 }]);
 
