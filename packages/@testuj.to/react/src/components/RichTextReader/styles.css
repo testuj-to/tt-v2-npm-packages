@@ -5,28 +5,35 @@
 }
 
 .richtext-block-header-one {
-    font-size: 2em;
-    margin: 0.83em 0;
+  font-size: 2em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 .richtext-block-header-two {
-    font-size: 1.5em;
-    margin: 0.83em 0;
+  font-size: 1.5em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 .richtext-block-header-three {
-    font-size: 1.17em;
-    margin: 0.83em 0;
+  font-size: 1.17em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
+
 .richtext-block-header-four {
-    font-size: 1em;
-    margin: 0.83em 0;
+  font-size: 1em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 .richtext-block-header-five {
-    font-size: 0.83em;
-    margin: 0.83em 0;
+  font-size: 0.83em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 .richtext-block-header-six {
-    font-size: 0.67em;
-    margin: 0.83em 0;
+  font-size: 0.67em;
+  margin: 0.83em 0;
+  font-weight: bold;
 }
 
 .richtext-block-unordered-list-item {
@@ -40,28 +47,28 @@
 
 .richtext-block-align-left,
 .richtext-block-align-left > div {
-    text-align: left;
+  text-align: left;
 }
 
 .richtext-block-align-center,
 .richtext-block-align-center > div {
-    text-align: center;
+  text-align: center;
 }
 
 .richtext-block-align-right,
 .richtext-block-align-right > div {
-    text-align: right;
+  text-align: right;
 }
 
 .richtext-block-align-justify,
 .richtext-block-align-justify > div {
-    text-align: justify;
+  text-align: justify;
 }
 
 .richtext-image {
-    width: 100%;
+  width: 100%;
 }
 
 .richtext-link {
-    color: var(--color-primary);
+  color: var(--color-primary);
 }
