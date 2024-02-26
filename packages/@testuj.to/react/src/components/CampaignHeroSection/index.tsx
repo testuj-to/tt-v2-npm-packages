@@ -32,7 +32,7 @@ export interface CampaignHeroSectionProps {
   data: DataProps;
   image?: React.ReactNode; // image is passed as react node to allow usage of optimized Image from next.js
   className?: string;
-  t: (key: string) => string;
+  t: (key: string, options?: any) => string;
   onClickButton?: () => void;
   onBack?: () => void;
   onLike?: () => void;
@@ -97,13 +97,13 @@ export const CampaignHeroSection = ({
             <div className="tt-campaign-hero-section-row">
               <LabeledIcon
                 icon={<IconPeople />}
-                label={`${t("looking")} ${data?.openSpots} ${t("testers")}`}
+                label={`${t("open-spots", { count: data.openSpots })}`}
               />
               <LabeledIcon icon={<IconTransport />} label={t(`delivery.${data.deliveryType}`)} />
               {data.discount === 100 || !data.discount ? (
                 <LabeledIcon icon={<IconCheck />} label={t("forFree")} />
               ) : (
-                <LabeledIcon icon={<></>} label={`${data.discount}% ${t("discount")}`} />
+                <LabeledIcon icon={<></>} label={t("discount", { discount: data.discount })} />
               )}
             </div>
             <div className="tt-campaign-hero-section-row-space-between">
@@ -112,9 +112,7 @@ export const CampaignHeroSection = ({
                 <div className="tt-campaign-hero-section-row">
                   <LabeledIcon
                     icon={<IconStar />}
-                    label={`${data.outcome?.noOfReviews || 0} ${
-                      data?.outcome?.noOfReviews > 4 ? t("reviews") : t("review")
-                    }`}
+                    label={t("reviews", { count: data?.outcome?.noOfReviews })}
                   />
                   <Outcome {...data.outcome} t={t} />
                 </div>
