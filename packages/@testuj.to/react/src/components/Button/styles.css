@@ -12,6 +12,7 @@
   transition: all 0.2s;
   box-sizing: border-box;
   font: var(--font-normal-14-600);
+  text-align: center;
 }
 
 .tt-button:disabled {

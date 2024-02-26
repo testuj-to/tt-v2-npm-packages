@@ -71,7 +71,6 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                                 color: "#000000",
                             };
                         }
-                        console.log("daysPastReviewsEnd", daysPastReviewsEnd);
 
                         return {
                             children: t("cardStatus.missingReview", { count: daysPastReviewsEnd }),
