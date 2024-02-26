@@ -1,4 +1,8 @@
+
 .richtext-block {
+  margin-bottom: 0.8rem;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .richtext-block-unstyled {

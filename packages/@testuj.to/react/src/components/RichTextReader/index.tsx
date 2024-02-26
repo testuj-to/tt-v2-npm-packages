@@ -15,6 +15,37 @@ export interface RichText {
   json: string;
 }
 
+const customStyleMap = {
+  FONT_SIZE_10: {
+    fontSize: "10px",
+    lineHeight: "22px",
+  },
+  FONT_SIZE_12: {
+    fontSize: "12px",
+    lineHeight: "22px",
+  },
+  FONT_SIZE_14: {
+    fontSize: "14px",
+    lineHeight: "28px",
+  },
+  FONT_SIZE_16: {
+    fontSize: "16px",
+    lineHeight: "28px",
+  },
+  FONT_SIZE_18: {
+    fontSize: "18px",
+    lineHeight: "28px",
+  },
+  FONT_SIZE_20: {
+    fontSize: "20px",
+    lineHeight: "32px",
+  },
+  FONT_SIZE_22: {
+    fontSize: "22px",
+    lineHeight: "32px",
+  },
+};
+
 const blockStyleFn = (contentBlock: ContentBlock): string => {
   const prefix = "richtext-block";
   const classNames = [prefix];
@@ -132,6 +163,7 @@ export const RichTextReader = ({ value, placeholder, className }: RichTextReader
         editorState={editorState}
         blockStyleFn={blockStyleFn}
         blockRendererFn={blockRendererFn}
+        customStyleMap={customStyleMap}
       />
     </div>
   );
