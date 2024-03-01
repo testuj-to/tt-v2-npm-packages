@@ -108,7 +108,7 @@ export const CampaignHeroSection = ({
             </div>
             <div className="tt-campaign-hero-section-row-space-between">
               <div>
-                <h5>{t("test_outcome")}</h5>
+                <h5>{t("test-outcome")}</h5>
                 <div className="tt-campaign-hero-section-row">
                   <LabeledIcon
                     icon={<IconStar />}

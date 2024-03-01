@@ -26,7 +26,7 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                     // Include rejected reviews
                     if (reviews.filter((review) => review.state === ReviewState.rejected).length > 0) {
                         return {
-                            children: t("cardStatus.rejected"),
+                            children: t("card-status.rejected"),
                             variant: "danger",
                         };
                     }
@@ -37,7 +37,7 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
 
                         if (daysToReviewsEnd >= 2 && daysToReviewsEnd < 5) {
                             return {
-                                children: t("cardStatus.lastDayToReviewLow", {
+                                children: t("card-status.lastDayToReviewLow", {
                                     count: daysToReviewsEnd,
                                 }),
                                 variant: "danger",
@@ -45,7 +45,7 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                         }
 
                         return {
-                            children: t("cardStatus.review", {
+                            children: t("card-status.review", {
                                 count: daysToReviewsEnd,
                             }),
                             variant: daysToReviewsEnd <= 5 ? "danger" : "white",
@@ -55,7 +55,7 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                     // Reviews are submitted
                     if (reviews.length > 0) {
                         return {
-                            children: t("cardStatus.reviewed"),
+                            children: t("card-status.reviewed"),
                             variant: "success",
                         };
                     }
@@ -66,38 +66,38 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
 
                         if (daysPastReviewsEnd >= 2 && daysPastReviewsEnd < 5) {
                             return {
-                                children: t("cardStatus.missingReviewLow", { count: daysPastReviewsEnd }),
+                                children: t("card-status.missingReviewLow", { count: daysPastReviewsEnd }),
                                 variant: "warning",
                                 color: "#000000",
                             };
                         }
 
                         return {
-                            children: t("cardStatus.missingReview", { count: daysPastReviewsEnd }),
+                            children: t("card-status.missingReview", { count: daysPastReviewsEnd }),
                             variant: "danger",
                             color: "#000000",
                         };
                     }
 
                     return {
-                        children: t("cardStatus.selected"),
+                        children: t("card-status.selected"),
                         variant: "success",
                     };
                 case CampaignApplicationResolutionStatus.rejected:
                     return {
-                        children: t("cardStatus.rejected"),
+                        children: t("card-status.rejected"),
                         variant: "danger",
                     };
                 default:
                     return {
-                        children: t("cardStatus.pending"),
+                        children: t("card-status.pending"),
                         variant: "info",
                     };
             }
         }
         if (campaignApplication?.state === CampaignApplicationStatus.submitted) {
             return {
-                children: t("cardStatus.submitted"),
+                children: t("card-status.submitted"),
                 variant: "success",
             };
         }

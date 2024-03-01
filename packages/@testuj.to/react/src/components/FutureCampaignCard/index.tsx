@@ -21,7 +21,7 @@ export const FutureCampaignCard = ({
   liked,
   onLikeClick,
   t,
-  hideLikeButton
+  hideLikeButton,
 }: FutureCampaignCardProps) => {
   // TODO: generate tags based on campaign state
   const generatedTag: CampaignCardTagProps = useMemo(() => {
@@ -31,7 +31,7 @@ export const FutureCampaignCard = ({
     if (timeToStart > 0) {
       const days = Math.floor(timeToStart / (1000 * 60 * 60 * 24));
       return {
-        children: `Začíná za ${days} dny`,
+        children: t("card-status.days-to-start", { count: days }),
         variant: "warning",
         color: "#FFC107",
       };
@@ -48,26 +48,26 @@ export const FutureCampaignCard = ({
 
       if (days <= 1) {
         return {
-          children: t("cardStatus.lastDayToRegister"),
+          children: t("card-status.last-day-to-register"),
           variant: "warning",
         };
       }
 
       if (days <= 4 && days > 1) {
         return {
-          children: t("cardStatus.daysToRegisterLow", { count: days }),
+          children: t("card-status.days-to-register-low", { count: days }),
           variant: "warning",
         };
       }
 
       return {
-        children: t("cardStatus.daysToRegister", { count: days }),
+        children: t("card-status.days-to-register", { count: days }),
         variant: "white",
       };
     }
 
     return {
-      children: t("cardStatus.registrationClosed"),
+      children: t("card-status.registration-closed"),
       variant: "danger",
     };
   }, [campaign]);
@@ -87,14 +87,14 @@ export const FutureCampaignCard = ({
 
     if (discount === 100) {
       return {
-        children: t("cardStatus.free"),
+        children: t("card-status.free"),
         variant: "white",
       };
     }
 
     if (discount > 0) {
       return {
-        children: t("cardStatus.discount", { discount }),
+        children: t("card-status.discount", { discount }),
         variant: "white",
       };
     }
