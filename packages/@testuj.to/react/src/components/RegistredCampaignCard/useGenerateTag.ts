@@ -37,7 +37,7 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
 
                         if (daysToReviewsEnd >= 2 && daysToReviewsEnd < 5) {
                             return {
-                                children: t("card-status.lastDayToReviewLow", {
+                                children: t("card-status.last-day-to-review-low", {
                                     count: daysToReviewsEnd,
                                 }),
                                 variant: "danger",
@@ -66,14 +66,14 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
 
                         if (daysPastReviewsEnd >= 2 && daysPastReviewsEnd < 5) {
                             return {
-                                children: t("card-status.missingReviewLow", { count: daysPastReviewsEnd }),
+                                children: t("card-status.missing-review-low", { count: daysPastReviewsEnd }),
                                 variant: "warning",
                                 color: "#000000",
                             };
                         }
 
                         return {
-                            children: t("card-status.missingReview", { count: daysPastReviewsEnd }),
+                            children: t("card-status.missing-review", { count: daysPastReviewsEnd }),
                             variant: "danger",
                             color: "#000000",
                         };
