@@ -48,6 +48,7 @@ export const RegistredCampaignCard = ({
             showLikeButton={true}
             onLikeClick={onLikeClick}
             onDoubleClick={onDoubleClick}
+            communityLogo={campaign?.mainTenant?.logo?.src}
         />
     );
 };
