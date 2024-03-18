@@ -256,6 +256,8 @@ export interface Campaign {
     submissionPeriodDays?: number;
     hasAutoProlongRegistration?: boolean;
   };
+  privacyConsentText?: string;
+  marketingConsentText?: string;
   web?: {
     slug?: string;
     title?: string;
