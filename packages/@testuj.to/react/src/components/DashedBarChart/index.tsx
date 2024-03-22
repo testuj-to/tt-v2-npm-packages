@@ -59,7 +59,7 @@ export const DashedBarChartItem = ({ label, value, noOfDashes }: DashedBarChartI
         {dashes.map((_, index) => (
           <DashedBarChartDash width={calculateDashFill(index)} key={index} />
         ))}
-        <div className="tt-dashed-bar-chart__item__value">{`${value}%`}</div>
+        <div className="tt-dashed-bar-chart__item__value">{`${value.toFixed(0)}%`}</div>
       </div>
     </div>
   );
