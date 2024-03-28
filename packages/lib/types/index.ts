@@ -450,8 +450,8 @@ export interface Review {
   cons: string[];
   images: File[];
   videos: File[];
-  wouldRecommend: boolean;
-  wouldRecommendPercent: number;
+  wouldRecommend?: boolean;
+  wouldRecommendPercent: number | null;
   totalRating: number;
   attributeRatings: ProductAttributeRating[];
   rejectionMessage: string;
