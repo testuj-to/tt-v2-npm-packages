@@ -480,6 +480,8 @@ export type ReviewContent = {
 export type ReviewDestination = {
   type: string;
   name: string;
+  config?: string;
+  key?: string;
 };
 
 export interface Reviewer {
