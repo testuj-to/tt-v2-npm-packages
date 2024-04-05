@@ -390,6 +390,7 @@ export interface CampaignApplication {
   deliveryConfirmedAt?: number;
   submitedAt?: number;
   discountCode?: string;
+  deadlineAt?: number;
 
   // Aggregation
   campaign?: Campaign;
