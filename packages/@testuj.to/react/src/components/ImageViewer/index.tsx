@@ -72,7 +72,12 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
                 <div className="tt-image-viewer__close-button__icon">✕</div>
             </button>
             {controls ? (
-                <div className="tt-image-viewer-controls">
+                <div
+                    className="tt-image-viewer-controls"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
+                >
                     <button className="tt-image-viewer-controls__button" onClick={onClickPrevious}>
                         <Arrow direction="left" />
                     </button>
