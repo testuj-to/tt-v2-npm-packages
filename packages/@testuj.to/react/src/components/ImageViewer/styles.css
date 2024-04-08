@@ -1,71 +1,75 @@
 .tt-image-viewer {
-  position: relative;
-  max-width: 80vw;
-  max-width: 90vh;
+    position: relative;
+    margin: 0 auto;
 }
 
 .tt-image-viewer img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  border-radius: 20px;
-  animation: open 0.3s ease-in-out;
+    width: 100%;
+    height: 100%;
+    max-height: 80vh;
+    max-width: 80vw;
+    object-fit: contain;
+    border-radius: 20px;
+    animation: open 0.3s ease-in-out;
 }
 
 .tt-image-viewer-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 50000;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .tt-image-viewer-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 98%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: auto;
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+    gap: 20px;
 }
 
 .tt-image-viewer-controls__button {
-  cursor: pointer;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    cursor: pointer;
+    color: black;
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tt-image-viewer__close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #fff;
+    color: var(--color-primary);
 }
 
 .tt-image-viewer__close-button__icon {
-  text-align: center;
-  height: 16px;
+    text-align: center;
+    height: 16px;
 }
 
 @keyframes open {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
