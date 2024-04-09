@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import { CampaignCardTagProps } from "../CampaignCard";
-import { Campaign, CampaignApplicationResolutionStatus, CampaignApplicationStatus, ReviewState } from "@lib/types";
+import {
+    Campaign,
+    CampaignApplicationResolutionStatus,
+    CampaignApplicationStatus,
+    ReviewState,
+} from "@lib/types";
 import moment from "moment";
 
 export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any) => string) => {
@@ -15,16 +20,18 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                         .add(campaign?.settings?.registrationPeriodDays, "days")
                         .valueOf();
 
-                    const dateToReviewsEnd = moment(campaign?.settings?.closeAt)
-                        .add(campaign?.settings?.submissionPeriodDays, "days")
-                        .valueOf();
+                    const dateToReviewsEnd = moment(campaignApplication.deadlineAt).valueOf();
 
                     const now = moment().valueOf();
 
-                    const reviews = campaign.reviews?.filter((review) => review.state !== ReviewState.draft) || [];
+                    const reviews =
+                        campaign.reviews?.filter((review) => review.state !== ReviewState.draft) ||
+                        [];
 
                     // Include rejected reviews
-                    if (reviews.filter((review) => review.state === ReviewState.rejected).length > 0) {
+                    if (
+                        reviews.filter((review) => review.state === ReviewState.rejected).length > 0
+                    ) {
                         return {
                             children: t("card-status.rejected"),
                             variant: "danger",
@@ -32,7 +39,11 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
                     }
 
                     // Window for reviews is open
-                    if (dateToRegistrationEnd <= now && dateToReviewsEnd >= now && reviews.length === 0) {
+                    if (
+                        dateToRegistrationEnd <= now &&
+                        dateToReviewsEnd >= now &&
+                        reviews.length === 0
+                    ) {
                         const daysToReviewsEnd = moment(dateToReviewsEnd).diff(moment(now), "days");
 
                         if (daysToReviewsEnd >= 2 && daysToReviewsEnd < 5) {
@@ -66,14 +77,18 @@ export const useGenerateTag = (campaign: Campaign, t: (t: string, options?: any)
 
                         if (daysPastReviewsEnd >= 2 && daysPastReviewsEnd < 5) {
                             return {
-                                children: t("card-status.missing-review-low", { count: daysPastReviewsEnd }),
+                                children: t("card-status.missing-review-low", {
+                                    count: daysPastReviewsEnd,
+                                }),
                                 variant: "warning",
                                 color: "#000000",
                             };
                         }
 
                         return {
-                            children: t("card-status.missing-review", { count: daysPastReviewsEnd }),
+                            children: t("card-status.missing-review", {
+                                count: daysPastReviewsEnd,
+                            }),
                             variant: "danger",
                             color: "#000000",
                         };
