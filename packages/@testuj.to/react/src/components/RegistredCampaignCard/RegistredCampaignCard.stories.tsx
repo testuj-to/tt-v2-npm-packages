@@ -4,148 +4,140 @@ import { TTContextDecorator } from "../../context.stories";
 import { RegistredCampaignCard } from ".";
 
 export default {
-  component: RegistredCampaignCard,
-  title: "Composites/RegistredCampaignCard",
-  parameters: {
-    layout: "centered",
-  },
-  decorators: [TTContextDecorator],
+    component: RegistredCampaignCard,
+    title: "Composites/RegistredCampaignCard",
+    parameters: {
+        layout: "centered",
+    },
+    decorators: [TTContextDecorator],
 } as ComponentMeta<typeof RegistredCampaignCard>;
 
 const registredcampaignCardStoryTemplate: ComponentStory<typeof RegistredCampaignCard> = (args) => (
-  <RegistredCampaignCard {...args} />
+    <RegistredCampaignCard {...args} />
 );
 
 export const Basic = registredcampaignCardStoryTemplate.bind({});
 Basic.args = {
-  image: <img src="https://test.btcdn.org/img/38875a29b811476d980eaba3d64b3a9e.png" alt="img" />,
-  label: "Product title",
-  tags: [
-    {
-      children: "👌 40% SLEVA",
-      variant: "white",
-    },
-    {
-      children: "Probíhá přihlašování",
-      variant: "warning",
-      color: "#FFC107",
-    },
-  ],
-  onClick: () => console.log("Product card clicked"),
-  info: {
-    rating: Math.random() * 5,
-    noOfReviews: Math.floor(Math.floor(Math.random() * 100)),
-    date: new Date().toISOString(),
-  },
-  showInfo: true,
-  translations: {
-    review: "recenze",
-    reviews: "recenzí",
-  },
-  campaign: {
-    id: "2c28gUzlfkPkZKpO8xW75uHSp5t",
-    state: "closed",
-    slug: "timeline",
-    name: "Timeline",
-    thumbnailImage: {
-      src: "https://test.btcdn.org/img/38875a29b811476d980eaba3d64b3a9e.png",
-    },
-    images: [
-      {
-        file: {
-          id: "38875a29b811476d980eaba3d64b3a9e",
-          src: "https://test.btcdn.org/img/38875a29b811476d980eaba3d64b3a9e.png",
+    image: <img src="https://test.btcdn.org/img/14282961ed144a01802f1c0bf60e0824.png" alt="img" />,
+    label: "Product title",
+    tags: [
+        {
+            children: "👌 40% SLEVA",
+            variant: "white",
         },
-        isThumbnail: null,
-      },
+        {
+            children: "Probíhá přihlašování",
+            variant: "warning",
+            color: "#FFC107",
+        },
     ],
-    campaignApplication: {
-      id: "2c2FnisbWzmqwuvxsbxXO2G8rbU",
-      state: "resolved",
-      submittedAt: null,
-      isDelivered: null,
-      latestResolution: {
-        status: "selected",
-        resolvedAt: 1707305067017,
-        message: null,
-      },
+    onClick: () => console.log("Product card clicked"),
+    info: {
+        rating: Math.random() * 5,
+        noOfReviews: Math.floor(Math.floor(Math.random() * 100)),
+        date: new Date().toISOString(),
     },
-    reviews: [],
-    products: [
-      {
-        category: {
-          key: "health-and-beauty",
-        },
-        id: "2ZMok7mHmh9u8eFrj6ZVawWZzl7",
-        image: {
-          src: "https://test.btcdn.org/img/b080ae2fee6744a89f85d0ff17911464.png",
-          id: "b080ae2fee6744a89f85d0ff17911464",
-        },
-        info: {
-          manufacturer: null,
-          model: null,
-        },
-        name: "Aplikace KucKuc",
-        urlAddress: null,
-      },
-      {
-        category: {
-          key: "health-and-beauty",
-        },
-        id: "2Vz3hbcnhyLAVxtjUjeN7mswYcn",
-        image: {
-          src: "https://test.btcdn.org/p/2Vz3hbcnhyLAVxtjUjeN7mswYcn/354dcd9e-3e26-47b8-aeed-6a6cdca006eb.jpg",
-          id: "354dcd9e-3e26-47b8-aeed-6a6cdca006eb",
-        },
-        info: {
-          manufacturer: {
-            logo: null,
-            id: "2WVfX439q7PcISeL13Ui0E8iey6",
-            name: "Krémy.cz",
-          },
-          model: null,
-        },
-        name: "Opalovací krém",
-        urlAddress: null,
-      },
-      {
-        category: {
-          key: "health-and-beauty",
-        },
-        id: "2Wic0Wq7ZoVJMewfpkyr2LYNKSl",
-        image: {
-          src: "https://test.btcdn.org/p/2Wic0Wq7ZoVJMewfpkyr2LYNKSl/e12485bb-0b8f-41a8-886c-f379e2c07ade.jpeg",
-          id: "e12485bb-0b8f-41a8-886c-f379e2c07ade",
-        },
-        info: {
-          manufacturer: {
-            logo: null,
-            id: "2WVfX2jWIvdn2VCKMdfECdPtgfO",
-            name: "Orel",
-          },
-          model: "Jedlý",
-        },
-        name: "Vincentka",
-        urlAddress: null,
-      },
-    ],
-    settings: {
-      capacity: 4,
-      openAt: 1707300000000,
-      registrationPeriodDays: 2,
-      submissionPeriodDays: 1,
-      closeAt: 1707523200000,
+    showInfo: true,
+    translations: {
+        review: "recenze",
+        reviews: "recenzí",
     },
-    tags: [],
-    tenantLogo: null,
-    mainTenant: {
-      logo: {
-        src: "https://test.btcdn.org/t/cz/d7ebd163-981a-43a7-a849-45caa0273de8.png",
-        id: "38875a29b811476d980eaba3d64b3a9e",
-      },
-      name: "Timeline",
-      slug: "timeline",
+    campaign: {
+        id: "2bWUq9aR6EOkTu9wutGOWViN8Sh",
+        state: "opened",
+        slug: "test-due-5",
+        name: "Test due 5",
+        thumbnailImage: {
+            src: "https://test.btcdn.org/img/63866325d3964592b4d8c418fce7478b.png",
+        },
+        images: [
+            {
+                file: {
+                    id: "63866325d3964592b4d8c418fce7478b",
+                    src: "https://test.btcdn.org/img/63866325d3964592b4d8c418fce7478b.png",
+                },
+                isThumbnail: null,
+            },
+        ],
+        mainTenant: {
+            domainName: "test.testuj.to",
+            id: "cz",
+            locale: "cs",
+            logo: {
+                id: "5d08457478c04f1ea2ec2993f16717f2",
+                presignedUploadUrl: null,
+                src: "https://test.btcdn.org/img/5d08457478c04f1ea2ec2993f16717f2.png",
+            },
+            name: "Testuj.to",
+        },
+        campaignApplication: {
+            id: "2dx3t745DvMJpzc0L9IN5HUX4LT",
+            state: "resolved",
+            submittedAt: null,
+            isDelivered: true,
+            latestResolution: {
+                status: "selected",
+                resolvedAt: 1712373362852,
+                message: null,
+            },
+        },
+        reviews: [],
+        products: [
+            {
+                category: {
+                    key: "sport",
+                },
+                id: "2Wbqo69lmbUAepa6vJofAIeP0re",
+                image: {
+                    src: "https://test.btcdn.org/p/2Wbqo69lmbUAepa6vJofAIeP0re/97d67eab-e5ff-495f-8474-d4e1f0383110.jpg",
+                    id: "97d67eab-e5ff-495f-8474-d4e1f0383110",
+                },
+                info: {
+                    manufacturer: {
+                        logo: null,
+                        id: "0q7B7nvq4SjX4oqGbH0BtnKvaks",
+                        name: "Novy vyrobc",
+                    },
+                    model: "KS900",
+                },
+                name: "Běžecké boty Kiprun KS900",
+                urlAddress: null,
+            },
+            {
+                category: {
+                    key: "house-and-garden-cleaning-supplies",
+                },
+                id: "2edRksO44wj6LSq4w6HZ67JegvV",
+                image: {
+                    src: "https://test.btcdn.org/img/cefbee881ba943149d168365dc1150aa.png",
+                    id: "cefbee881ba943149d168365dc1150aa",
+                },
+                info: {
+                    manufacturer: {
+                        logo: null,
+                        id: "2WVfX439q7PcISeL13Ui0E8iey6",
+                        name: "Krémy.cz",
+                    },
+                    model: "SX6",
+                },
+                name: "Dettol",
+                urlAddress: null,
+            },
+        ],
+        settings: {
+            capacity: 10,
+            openAt: 1706310000000,
+            registrationPeriodDays: 3,
+            submissionPeriodDays: 1,
+            closeAt: 1706569200000,
+        },
+        tags: [
+            {
+                key: "87gczp9u6ty",
+                value: "Lidi",
+            },
+        ],
+        tenantLogo: null,
     },
-  },
-  t: (key: string, args?: any) => key,
+    t: (key: string, args?: any) => key,
 };

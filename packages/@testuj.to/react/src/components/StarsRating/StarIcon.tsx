@@ -36,7 +36,7 @@ export const StarIcon = ({ filled, onClick, setGradient, ...props }: StarIconPro
         {setGradient && (
           <linearGradient id={gradientId}>
             <stop offset={`${filled}%`} stopColor="#FF7804" />
-            <stop offset={`${filled}%`} stopColor="#F2F2F2" />
+            <stop offset={`${filled}%`} stopColor="#d8d8d8" />
           </linearGradient>
         )}
       </defs>

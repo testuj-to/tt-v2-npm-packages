@@ -41,8 +41,10 @@
 }
 
 .richtext-block-unordered-list-item {
+  margin-bottom: 0;
 }
 .richtext-block-ordered-list-item {
+  margin-bottom: 0;
 }
 .richtext-block-code-block {
 }
