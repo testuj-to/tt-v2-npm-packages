@@ -235,6 +235,10 @@ export {
     Timeline,
 } from "./components/Timeline"
 export {
+    type TooltipProps,
+    Tooltip,
+} from './components/Tooltip'
+export {
     type UserAvatarProps,
     UserAvatar,
 } from './components/UserAvatar'
