@@ -43,32 +43,33 @@ export const ProgressBar = ({
     return (
         <div className={cx("tt-progress-bar-wrapper", className)}>
             <div className={cx("tt-progress-bar")} style={{ backgroundColor: backgroundColor }}>
-                {breakpoints?.map((breakpoint: number | Breakpoint, index) => (
-                    <>
-                        {typeof breakpoint === "number" ? (
+                {breakpoints?.map((breakpoint: number | Breakpoint, index) => {
+                    if (typeof breakpoint === "number") {
+                        return (
                             <div
                                 className="tt-progress-bar-breakpoint"
                                 style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
                                 key={index}
                             ></div>
-                        ) : (
-                            <div
-                                className="tt-progress-bar-breakpoint-component"
-                                style={{
-                                    left: `${breakpoint.value}%`,
-                                    backgroundColor: breakpoint.color,
-                                }}
-                                key={index}
-                            >
-                                <Tooltip content={breakpoint.tooltip}>
-                                    {progress >= breakpoint.value
-                                        ? breakpoint.componentSuccess || breakpoint.component
-                                        : breakpoint.component}
-                                </Tooltip>
-                            </div>
-                        )}
-                    </>
-                ))}
+                        );
+                    }
+                    return (
+                        <div
+                            className="tt-progress-bar-breakpoint-component"
+                            style={{
+                                left: `${breakpoint.value}%`,
+                                backgroundColor: breakpoint.color,
+                            }}
+                            key={index}
+                        >
+                            <Tooltip content={breakpoint.tooltip}>
+                                {progress >= breakpoint.value
+                                    ? breakpoint.componentSuccess || breakpoint.component
+                                    : breakpoint.component}
+                            </Tooltip>
+                        </div>
+                    );
+                })}
                 <div
                     className="tt-progress-bar-indicator"
                     style={{
