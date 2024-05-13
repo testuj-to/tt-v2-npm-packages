@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import cx from "classnames";
+import { Tooltip } from "../Tooltip";
 
 import "./styles.css";
-import { Tooltip } from "../Tooltip";
 
 export interface ProgressBarProps {
     value: number;
@@ -49,7 +49,7 @@ export const ProgressBar = ({
                             <div
                                 className="tt-progress-bar-breakpoint"
                                 style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
-                                key={breakpoint + index}
+                                key={index}
                             ></div>
                         ) : (
                             <div
@@ -58,7 +58,7 @@ export const ProgressBar = ({
                                     left: `${breakpoint.value}%`,
                                     backgroundColor: breakpoint.color,
                                 }}
-                                key={breakpoint.value + index}
+                                key={index}
                             >
                                 <Tooltip content={breakpoint.tooltip}>
                                     {progress >= breakpoint.value
