@@ -130,7 +130,7 @@ export interface Product {
   category?: {
     key?: string;
   };
-  image?: File;
+  thumbnailImage?: File;
 
   // V2
   id?: string;
