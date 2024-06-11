@@ -90,6 +90,11 @@
     background-color: var(--color-text-secondary);
 }
 
+.tt-campaign-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* @media (max-width: 768px) {
   .tt-campaign-card-warpper {
     max-width: 90%;
