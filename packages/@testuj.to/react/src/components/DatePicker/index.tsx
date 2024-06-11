@@ -17,8 +17,7 @@ export interface DatePickerProps {
   translationFunciton: (key: string) => string;
   className?: string;
   dateFormat?: string;
-  showYearDropdown?: boolean;
-  showMonthDropdown?: boolean;
+  dropdownPickers?: boolean;
   dateTime?: boolean;
   type: "single" | "range";
 }
@@ -30,8 +29,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   className,
   translationFunciton,
   dateFormat = "dd.MM.yyyy",
-  showYearDropdown,
-  showMonthDropdown,
+  dropdownPickers,
   dateTime,
   type,
 }) => {
@@ -131,8 +129,8 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       locale={locale}
       customInput={type === "range" ? <CustomInput /> : undefined}
       showIcon={type === "single"}
-      showYearDropdown={showYearDropdown}
-      showMonthDropdown={showMonthDropdown}
+      showYearDropdown={dropdownPickers}
+      showMonthDropdown={dropdownPickers}
       showTimeSelect={dateTime}
       placeholderText={dateFormat}
       onChangeRaw={handlerChangeRaw}
