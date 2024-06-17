@@ -141,6 +141,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                     type={dateTime ? "datetime-local" : "date"}
                     onChange={(event) => handlerChangeRaw(event, { type: "start" })}
                     value={type === "range" ? formatDate(startDate) : formatDate(selected)}
+                    className="tt-datePicker-input-input"
                 />
                 {type === "range" && (
                     <>
@@ -149,6 +150,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                             type={dateTime ? "datetime-local" : "date"}
                             onChange={(event) => handlerChangeRaw(event, { type: "end" })}
                             value={formatDate(endDate)}
+                               className="tt-datePicker-input-input"
                         />
                     </>
                 )}

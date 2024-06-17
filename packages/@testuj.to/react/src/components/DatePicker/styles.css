@@ -229,6 +229,26 @@
     align-items: center;
     padding: 0.5rem;
     cursor: pointer;
+    position: relative;
+}
+
+.tt-datePicker-input-input {
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.tt-datePicker-input-input::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
 }
 
 .tt-datePicker-icon {
