@@ -235,6 +235,10 @@
     margin-left: 0.5rem;
 }
 
+.tt-datePicker-separator {
+    margin: 0 0.5rem;
+}
+
 .react-datepicker__calendar-icon {
     margin-left: 1rem;
     right: 0;
