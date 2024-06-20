@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import DatePickerComponent, { Locale } from "react-datepicker";
 import cx from "classnames";
 import moment from "moment";
@@ -10,7 +10,7 @@ import "./styles.css";
 
 type DateRange = [Date | null, Date | null];
 
-export interface DatePickerProps {
+export interface DatePickerProps extends React.ComponentProps<typeof DatePickerComponent> {
     onChange: (dateRange: Date | null | DateRange) => void;
     dateRange?: DateRange;
     selected?: Date;
@@ -32,10 +32,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     dropdownPickers,
     dateTime,
     type,
+    ...rest
 }) => {
     const [startDate, setStartDate] = useState(dateRange?.[0] || null);
     const [endDate, setEndDate] = useState(dateRange?.[1] || null);
-    const [isMobile, setIsMobile] = useState(false);
 
     const onChangeSelection = (dates) => {
         const [start, end] = dates;
@@ -43,11 +43,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         setEndDate(end);
         onChange([start, end]);
     };
-
-    useEffect(() => {
-        const isMobile = window.innerWidth < 768;
-        setIsMobile(isMobile);
-    }, []);
 
     const locale: Locale = useMemo(() => {
         return {
@@ -130,35 +125,6 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         }
     };
 
-    const formatDate = (date: Date) => {
-        return dateTime ? date.toISOString().slice(0, 16) : moment(date).format("YYYY-MM-DD");
-    };
-
-    if (isMobile) {
-        return (
-            <div className={cx("tt-datePicker-input", className)}>
-                <input
-                    type={dateTime ? "datetime-local" : "date"}
-                    onChange={(event) => handlerChangeRaw(event, { type: "start" })}
-                    value={type === "range" ? formatDate(startDate) : formatDate(selected)}
-                    className="tt-datePicker-input-input"
-                />
-                {type === "range" && (
-                    <>
-                        <span className="tt-datePicker-separator">-</span>
-                        <input
-                            type={dateTime ? "datetime-local" : "date"}
-                            onChange={(event) => handlerChangeRaw(event, { type: "end" })}
-                            value={formatDate(endDate)}
-                               className="tt-datePicker-input-input"
-                        />
-                    </>
-                )}
-                <CalendarIcon className="tt-datePicker-icon" />
-            </div>
-        );
-    }
-
     const CustomInput = React.forwardRef<HTMLDivElement, { value?: string }>(
         ({ value, ...props }, ref) => (
             <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
@@ -185,6 +151,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             showTimeSelect={dateTime}
             placeholderText={dateFormat}
             onChangeRaw={handlerChangeRaw}
+            {...rest}
         />
     );
 };
