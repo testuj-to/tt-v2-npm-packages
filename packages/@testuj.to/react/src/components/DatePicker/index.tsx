@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import DatePickerComponent, { Locale } from "react-datepicker";
+import DatePickerComponent, { type ReactDatePickerProps } from "react-datepicker";
 import cx from "classnames";
 import moment from "moment";
 
@@ -10,7 +10,9 @@ import "./styles.css";
 
 type DateRange = [Date | null, Date | null];
 
-export interface DatePickerProps extends React.ComponentProps<typeof DatePickerComponent> {
+type Locale = ReactDatePickerProps["locale"];
+
+export interface DatePickerProps extends ReactDatePickerProps {
     onChange: (dateRange: Date | null | DateRange) => void;
     dateRange?: DateRange;
     selected?: Date;
@@ -44,7 +46,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onChange([start, end]);
     };
 
-    const locale: Locale = useMemo(() => {
+    const locale  = useMemo(() => {
         return {
             localize: {
                 month: (n: number) =>
@@ -83,24 +85,10 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 time: () => "HH:mm",
                 dateTime: () => moment().format("DD.MM.YYYY HH:mm"),
             },
-            match: {
-                ordinalNumber: () => {
-                    throw new Error("Not implemented");
-                },
-                era: () => {
-                    throw new Error("Not implemented");
-                },
-                quarter: () => {
-                    throw new Error("Not implemented");
-                },
-                dayPeriod: () => {
-                    throw new Error("Not implemented");
-                },
-            },
             options: {
                 weekStartsOn: 1,
             },
-        };
+        }
     }, [translationFunciton]);
 
     const handlerChangeRaw = (event, options?: { type: string }) => {
@@ -143,7 +131,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onChange={type === "range" ? onChangeSelection : onChange}
             dateFormat={dateFormat}
             todayButton={translationFunciton("time.today")}
-            locale={locale}
+            locale={locale as unknown as Locale}
             customInput={type === "range" ? <CustomInput /> : undefined}
             showIcon={type === "single"}
             showYearDropdown={dropdownPickers}

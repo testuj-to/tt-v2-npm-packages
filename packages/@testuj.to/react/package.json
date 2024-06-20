@@ -1,6 +1,6 @@
 {
   "name": "@testuj.to/react",
-  "version": "0.0.156",
+  "version": "0.0.157",
   "description": "",
   "license": "MIT",
   "author": {
@@ -70,6 +70,7 @@
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.merge": "^4.6.7",
     "@types/react": "^18.0.28",
+    "@types/react-datepicker": "^6.2.0",
     "@types/react-helmet": "^6.1.6",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.17.0",
