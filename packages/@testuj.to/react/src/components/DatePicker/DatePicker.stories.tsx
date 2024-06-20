@@ -29,4 +29,8 @@ Basic.args = {
     // dateRange: [new Date(new Date().getTime() - 1000000000), new Date()],
     dateFormat: "dd.MM.yyyy HH:mm",
     // dateTime: true,
+    dropdownPickers: true,
+    maxDate: new Date(),
+    yearDropdownItemNumber: 60,
+    scrollableYearDropdown: true,
 };
