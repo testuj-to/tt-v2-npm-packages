@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import DatePickerComponent, { type ReactDatePickerProps } from "react-datepicker";
+import DatePickerComponent from "react-datepicker";
 import cx from "classnames";
 import moment from "moment";
 
@@ -7,10 +7,9 @@ import { CalendarIcon } from "@radix-ui/react-icons";
 
 import "react-datepicker/dist/react-datepicker.css";
 import "./styles.css";
+import { ReactDatePickerProps } from "./types";
 
 type DateRange = [Date | null, Date | null];
-
-type Locale = ReactDatePickerProps["locale"];
 
 export interface DatePickerProps extends ReactDatePickerProps {
     onChange: (dateRange: Date | null | DateRange) => void;
@@ -46,7 +45,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         onChange([start, end]);
     };
 
-    const locale  = useMemo(() => {
+    const locale = useMemo(() => {
         return {
             localize: {
                 month: (n: number) =>
@@ -88,7 +87,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             options: {
                 weekStartsOn: 1,
             },
-        }
+        };
     }, [translationFunciton]);
 
     const handlerChangeRaw = (event, options?: { type: string }) => {
@@ -131,7 +130,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onChange={type === "range" ? onChangeSelection : onChange}
             dateFormat={dateFormat}
             todayButton={translationFunciton("time.today")}
-            locale={locale as unknown as Locale}
+            locale={locale as any}
             customInput={type === "range" ? <CustomInput /> : undefined}
             showIcon={type === "single"}
             showYearDropdown={dropdownPickers}
