@@ -10,7 +10,7 @@ import "./styles.css";
 
 type DateRange = [Date | null, Date | null];
 
-export interface DatePickerProps {
+export interface DatePickerProps extends React.ComponentProps<typeof DatePickerComponent> {
     onChange: (dateRange: Date | null | DateRange) => void;
     dateRange?: DateRange;
     selected?: Date;
@@ -32,6 +32,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     dropdownPickers,
     dateTime,
     type,
+    ...rest
 }) => {
     const [startDate, setStartDate] = useState(dateRange?.[0] || null);
     const [endDate, setEndDate] = useState(dateRange?.[1] || null);
@@ -179,6 +180,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             showTimeSelect={dateTime}
             placeholderText={dateFormat}
             onChangeRaw={handlerChangeRaw}
+            {...rest}
         />
     );
 };
