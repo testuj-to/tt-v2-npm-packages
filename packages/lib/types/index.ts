@@ -387,6 +387,7 @@ export interface CampaignApplication {
 
   // V2
   isDelivered?: boolean;
+  isOrdered?: boolean;
   deliveryConfirmedAt?: number;
   submitedAt?: number;
   discountCode?: string;
