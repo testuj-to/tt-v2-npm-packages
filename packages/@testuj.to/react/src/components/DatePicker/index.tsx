@@ -1,13 +1,13 @@
+import "react-datepicker/dist/react-datepicker.css";
+
 import React, { useMemo, useState } from "react";
 import DatePickerComponent from "react-datepicker";
 import cx from "classnames";
 import moment from "moment";
-
 import { CalendarIcon } from "@radix-ui/react-icons";
-
-import "react-datepicker/dist/react-datepicker.css";
-import "./styles.css";
 import { ReactDatePickerProps } from "./types";
+
+import "./styles.css";
 
 type DateRange = [Date | null, Date | null];
 
@@ -79,6 +79,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                     ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"][n],
                 dayPeriod: (n: number) => ["AM", "PM"][n],
             },
+            match: {},
             formatLong: {
                 date: () => moment().format("DD.MM.YYYY"),
                 time: () => "HH:mm",
@@ -130,7 +131,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
             onChange={type === "range" ? onChangeSelection : onChange}
             dateFormat={dateFormat}
             todayButton={translationFunciton("time.today")}
-            locale={locale as any}
+            locale={locale}
             customInput={type === "range" ? <CustomInput /> : undefined}
             showIcon={type === "single"}
             showYearDropdown={dropdownPickers}
