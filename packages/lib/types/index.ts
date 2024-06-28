@@ -280,6 +280,7 @@ export interface Campaign {
 
   // V2
   state: CampaignState;
+  isHidden?: boolean;
 
   pricing?: {
     discountPercent?: number;
@@ -315,6 +316,7 @@ export interface Campaign {
     confirmType?: string
     notes?: string;
     company?: string;
+    instructions?: RichText;
   };
 
   milestones?: CampaignMilestone[];
