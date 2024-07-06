@@ -1,9 +1,9 @@
 
-const { defaultPresets } = require('../contextPresets')
+const { defaultPresets } = require("../contextPresets");
 
 exports.parameters = {
     actions: {
-        argTypesRegex: '^on[A-Z].*',
+        argTypesRegex: "^on[A-Z].*",
     },
     controls: {
         matchers: {
@@ -14,4 +14,4 @@ exports.parameters = {
     ttContext: {
         presets: defaultPresets,
     },
-}
+};
