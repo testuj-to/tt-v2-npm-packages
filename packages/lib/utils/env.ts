@@ -5,7 +5,7 @@ try {
 } catch(err) {
     return false;
 }
-`)
+`);
 
 export const hasBuffer = new Function(`
 try {
@@ -13,4 +13,4 @@ try {
 } catch(err) {
     return false;
 }
-`)
+`);

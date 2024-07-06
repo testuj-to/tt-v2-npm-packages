@@ -9,56 +9,74 @@ export interface UserAvatarProps {
     badge?: string | React.ReactNode;
     className?: string;
     hideUserText?: boolean;
-    onClick?: () => void;
     size?: "small" | "medium" | "large";
     imageWrapperClassName?: string;
     customSizes?: {
         avatar?: number;
         badge?: number;
     };
+    onClick?: () => void;
 }
 
 export const UserAvatar = ({
     image,
     name,
     title,
-    badge,
+    badge: badgeProp,
     className,
     hideUserText,
-    onClick,
     size = "medium",
     imageWrapperClassName,
     customSizes,
+    onClick,
 }: UserAvatarProps) => {
+    let badge = null;
+    if (badgeProp && typeof badgeProp === "string") {
+        badge = (
+            <img
+                src={badgeProp}
+                alt={name}
+                className={cx("tt-user-avatar-badge", size)}
+                style={{ width: customSizes?.badge, height: customSizes?.badge }}
+            />
+        );
+    } else if (badgeProp) {
+        badge = (
+            <div className={cx("tt-user-avatar-badge", size)}>
+                {badgeProp}
+            </div>
+        );
+    }
+
     return (
-        <div className={cx("tt-user-avatar", className)} onClick={onClick}>
+        <div
+            className={cx("tt-user-avatar", className)}
+            onClick={onClick}
+        >
             <div
                 className={cx("tt-user-avatar-image-wrapper", size, imageWrapperClassName)}
-                style={{ width: customSizes?.avatar, height: customSizes?.avatar }}
+                style={{
+                    width: customSizes?.avatar,
+                    height: customSizes?.avatar,
+                }}
             >
                 <img
                     src={image}
                     alt={name}
                     className={cx("tt-user-avatar-image", size)}
-                    style={{ width: customSizes?.avatar, height: customSizes?.avatar }}
+                    style={{
+                        width: customSizes?.avatar,
+                        height: customSizes?.avatar,
+                    }}
                 />
-                {badge && typeof badge === "string" ? (
-                    <img
-                        src={badge}
-                        alt={name}
-                        className={cx("tt-user-avatar-badge", size)}
-                        style={{ width: customSizes?.badge, height: customSizes?.badge }}
-                    />
-                ) : badge ? (
-                    <div className={cx("tt-user-avatar-badge", size)}>{badge}</div>
-                ) : null}
+                {badge}
             </div>
-            {!hideUserText ? (
+            {!hideUserText && (
                 <div className="tt-user-avatar-text">
                     <div className="tt-user-avatar-name">{name}</div>
                     <div className="tt-user-avatar-title">{title}</div>
                 </div>
-            ) : null}
+            )}
         </div>
     );
 };

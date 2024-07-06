@@ -6,82 +6,92 @@ import "./styles.css";
 import { IconPlus } from "./IconPlus";
 
 export interface FileUploadAreaProps {
-  onChange?: (value: FileList) => void;
-  text?: string;
-  className?: string;
+    text?: string;
+    className?: string;
+    onChange?: (value: FileList) => void;
 }
 
 export const FileUploadArea = ({ onChange, text, className }: FileUploadAreaProps) => {
-  const [dragActive, setDragActive] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+    const [dragActive, setDragActive] = useState(false);
+    const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleFiles = (files: FileList) => {
-    onChange?.(files);
-  };
+    const handleFiles = (files: FileList) => {
+        onChange?.(files);
+    };
 
-  const handleDrag = (e: React.DragEvent<HTMLDivElement | HTMLFormElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (e.type === "dragenter" || e.type === "dragover") {
-      setDragActive(true);
-    } else if (e.type === "dragleave") {
-      setDragActive(false);
-    }
-  };
+    const handleDrag = (event: React.DragEvent<HTMLDivElement | HTMLFormElement>) => {
+        event?.preventDefault?.();
+        event?.stopPropagation?.();
 
-  const handleDrop = function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    setDragActive(false);
-    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      handleFiles(e.dataTransfer.files);
-    }
-  };
+        if (event?.type === "dragenter" || event?.type === "dragover") {
+            setDragActive(true);
+            return;
+        }
 
-  const handleChange = function (e) {
-    e.preventDefault();
-    if (e.target.files && e.target.files[0]) {
-      handleFiles(e.target.files);
-    }
-  };
+        if (event?.type === "dragleave") {
+            setDragActive(false);
+        }
+    };
 
-  const onButtonClick = () => {
-    inputRef.current.click();
-  };
+    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+        event?.preventDefault?.();
+        event?.stopPropagation?.();
+        setDragActive(false);
 
-  return (
-    <form
-      className={cx("tt-file-upload-area", className)}
-      onDragEnter={handleDrag}
-      onSubmit={(e) => e.preventDefault()}
-    >
-      <input
-        type="file"
-        className="tt-file-upload-area-input"
-        id="input-file-upload"
-        multiple={true}
-        onChange={handleChange}
-        ref={inputRef}
-      />
-      <label
-        htmlFor="input-file-upload"
-        id="tt-file-upload-area-label"
-        className={dragActive ? "drag-active" : ""}
-      >
-        <button className="upload-button" onClick={onButtonClick}>
-          <IconPlus />
-        </button>
-        <div className="tt-file-upload-area-label-text">{text}</div>
-        {dragActive && (
-          <div
-            id="drag-file-element"
+        if (event?.dataTransfer?.files && event?.dataTransfer?.files?.[0]) {
+            handleFiles(event?.dataTransfer?.files);
+        }
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event?.preventDefault?.();
+
+        if (event?.target?.files && event?.target?.files?.[0]) {
+            handleFiles(event?.target?.files);
+        }
+    };
+
+    const onButtonClick = () => {
+        inputRef.current?.click?.();
+    };
+
+    return (
+        <form
+            className={cx("tt-file-upload-area", className)}
             onDragEnter={handleDrag}
-            onDragLeave={handleDrag}
-            onDragOver={handleDrag}
-            onDrop={handleDrop}
-          ></div>
-        )}
-      </label>
-    </form>
-  );
+            onSubmit={event =>
+                event?.preventDefault?.()}
+        >
+            <input
+                ref={inputRef}
+                type="file"
+                className="tt-file-upload-area-input"
+                id="input-file-upload"
+                onChange={handleChange}
+                multiple
+            />
+            <label
+                htmlFor="input-file-upload"
+                id="tt-file-upload-area-label"
+                className={dragActive ? "drag-active" : ""}
+            >
+                <button
+                    className="upload-button"
+                    onClick={onButtonClick}
+                >
+                    <IconPlus/>
+                </button>
+                <div className="tt-file-upload-area-label-text">{text}</div>
+                {dragActive && (
+                    <div
+                        id="drag-file-element"
+                        onDragEnter={handleDrag}
+                        onDragLeave={handleDrag}
+                        onDragOver={handleDrag}
+                        onDrop={handleDrop}
+                    />
+                )}
+            </label>
+        </form>
+    );
 };

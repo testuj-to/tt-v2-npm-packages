@@ -1,17 +1,17 @@
 .tt-textarea {
-  width: 100%;
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  padding: 1rem;
-  line-height: 1;
-  color: var(--color-text);
-  border: 1px solid var(--color-border);
+    width: 100%;
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 1rem;
+    line-height: 1;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
 }
 
 .tt-textarea:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px var(--color-border);
+    outline: none;
+    box-shadow: 0 0 0 1px var(--color-border);
 }

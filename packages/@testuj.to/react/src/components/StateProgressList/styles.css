@@ -1,26 +1,26 @@
 /* hide numbers at ol component */
 .tt-state-progress-list {
-  list-style-type: none;
-  text-align: left;
-  padding-left: 0;
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0;
 }
 
 .tt-state-progress-list-item {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .tt-state-progress-list-item:not(:first-child) {
-  margin-top: 16px;
+    margin-top: 16px;
 }
 
 .tt-state-progress-list-item_content {
-  font: var(--font-normal-14-600);
-  color: var(--color-text);
+    font: var(--font-normal-14-600);
+    color: var(--color-text);
 }
 
 .tt-state-progress-list-item_content.active {
-  color: var(--color-info);
+    color: var(--color-info);
 }
 
 .tt-state-progress-list-item_content.done {
@@ -33,24 +33,24 @@
 }
 
 .tt-state-progress-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
 }
 
 .tt-state-progress-indicator.active {
-  color: var(--color-info);
+    color: var(--color-info);
 }
 
 .tt-state-progress-indicator.done {
-  color: var(--color-success);
+    color: var(--color-success);
 }
 
 .tt-state-progress-indicator.disabled {
-  color: var(--color-disabled);
+    color: var(--color-disabled);
 }
 
 .tt-state-progress-indicator.error {
-  color: var(--color-error);
+    color: var(--color-error);
 }

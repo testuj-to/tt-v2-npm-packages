@@ -1,47 +1,55 @@
-
-import { createContext, useState, ReactNode, useContext, useCallback } from 'react'
-import cx from 'classnames'
+import {
+    createContext,
+    useState,
+    ReactNode,
+    useContext,
+    useCallback,
+} from "react";
+import cx from "classnames";
 import {
     Provider,
     Root,
     Title,
     Description,
-    Action,
     Viewport,
-} from '@radix-ui/react-toast'
+} from "@radix-ui/react-toast";
 
-import './styles.css'
+import "./styles.css";
 
 const toastContext = createContext<{
     open(options: ToastProps): () => void
-}>({ open: () => () => {} })
+}>({
+    open() {
+        return () => {};
+    },
+});
 
 export const useToast = () =>
-    useContext(toastContext)
+    useContext(toastContext);
 
 export const ToastProvider = ({ children }: { children?: ReactNode }) => {
-    const [ toasts, setToasts ] = useState<ToastProps[]>([])
+    const [toasts, setToasts] = useState<ToastProps[]>([]);
 
     const handleClose = useCallback((key: string) => {
-        setToasts(toasts => toasts.filter(toast => toast?.key !== key))
-    }, [])
+        setToasts(toasts => toasts.filter(toast => toast?.key !== key));
+    }, []);
 
     const handleOpen = useCallback((props: ToastProps) => {
-        const key = Math.random().toString(36).substring(2)
+        const key = Math.random().toString(36).substring(2);
 
-        setToasts(toasts => [ ...toasts, {
+        setToasts(toasts => [...toasts, {
+            ...props,
             key,
             onClose: () =>
                 handleClose(key),
-            ...props,
-        } ])
+        }]);
 
         return () =>
-            handleClose(key)
-    }, [])
+            handleClose(key);
+    }, []);
 
     return (
-        <Provider swipeDirection='right'>
+        <Provider swipeDirection="right">
             <toastContext.Provider
                 value={{
                     open: handleOpen,
@@ -52,35 +60,35 @@ export const ToastProvider = ({ children }: { children?: ReactNode }) => {
                     <Toast {...toast} />)}
             </toastContext.Provider>
         </Provider>
-    )
-}
+    );
+};
 
 export interface ToastProps {
-    key?: string
-    title: string
-    description?: ReactNode
-    timeoutMs?: number
-    onClose?()
+    key?: string;
+    title: string;
+    description?: ReactNode;
+    timeoutMs?: number;
+    onClose?();
 }
 
 export const Toast = ({ title, description, timeoutMs, onClose }: ToastProps) => {
     return (
         <>
             <Root
-                className={cx('tt-toast-container')}
+                className={cx("tt-toast-container")}
                 duration={timeoutMs}
                 onOpenChange={isOpen => {
-                    if (typeof onClose === 'function' && !isOpen) {
-                        onClose()
+                    if (typeof onClose === "function" && !isOpen) {
+                        onClose();
                     }
                 }}
                 open
             >
-                <Title className={cx('tt-toast-title')}>
+                <Title className={cx("tt-toast-title")}>
                     {title}
                 </Title>
                 {description && (
-                    <Description className={cx('tt-toast-description')}>
+                    <Description className={cx("tt-toast-description")}>
                         {description}
                     </Description>
                 )}
@@ -88,7 +96,7 @@ export const Toast = ({ title, description, timeoutMs, onClose }: ToastProps) =>
                     <button className="Button small green">Undo</button>
                 </Action> */}
             </Root>
-            <Viewport className={cx('tt-toast-viewport')} />
+            <Viewport className={cx("tt-toast-viewport")} />
         </>
-    )
-}
+    );
+};

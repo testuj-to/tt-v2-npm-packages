@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import cx from "classnames";
-import { Tooltip } from "../Tooltip";
 
 import "./styles.css";
+
+import { Tooltip } from "../Tooltip";
 
 export interface ProgressBarProps {
     value: number;
@@ -37,35 +38,41 @@ export const ProgressBar = ({
 
     useEffect(() => {
         const timer = setTimeout(() => setProgress(value), delay || 0);
-        return () => clearTimeout(timer);
+
+        return () =>
+            clearTimeout(timer);
     }, [value]);
 
     return (
         <div className={cx("tt-progress-bar-wrapper", className)}>
-            <div className={cx("tt-progress-bar")} style={{ backgroundColor: backgroundColor }}>
+            <div
+                className={cx("tt-progress-bar")}
+                style={{ backgroundColor: backgroundColor }}
+            >
                 {breakpoints?.map((breakpoint: number | Breakpoint, index) => {
                     if (typeof breakpoint === "number") {
                         return (
                             <div
+                                key={index}
                                 className="tt-progress-bar-breakpoint"
                                 style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
-                                key={index}
-                            ></div>
+                            />
                         );
                     }
+
                     return (
                         <div
+                            key={index}
                             className="tt-progress-bar-breakpoint-component"
                             style={{
                                 left: `${breakpoint.value}%`,
                                 backgroundColor: breakpoint.color,
                             }}
-                            key={index}
                         >
                             <Tooltip content={breakpoint.tooltip}>
-                                {progress >= breakpoint.value
-                                    ? breakpoint.componentSuccess || breakpoint.component
-                                    : breakpoint.component}
+                                {progress >= breakpoint.value ?
+                                    (breakpoint.componentSuccess || breakpoint.component) :
+                                    breakpoint.component}
                             </Tooltip>
                         </div>
                     );
@@ -78,7 +85,11 @@ export const ProgressBar = ({
                     }}
                 />
             </div>
-            {finalIcon && <div className="tt-progress-bar-icon">{finalIcon}</div>}
+            {finalIcon && (
+                <div className="tt-progress-bar-icon">
+                    {finalIcon}
+                </div>
+            )}
         </div>
     );
 };

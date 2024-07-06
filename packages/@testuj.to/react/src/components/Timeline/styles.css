@@ -1,184 +1,184 @@
 .tt-timeline__wrapper {
-  position: relative;
-  width: 100%;
+    position: relative;
+    width: 100%;
 }
 
 .tt-timeline {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  height: 4px;
-  background-color: var(--color-border);
-  width: 100%;
-  margin-bottom: 16px;
-  border-radius: 2px;
-  overflow: hidden;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    height: 4px;
+    background-color: var(--color-border);
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 2px;
+    overflow: hidden;
 }
 
 .tt-timeline__progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: var(--color-text);
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--color-text);
+    z-index: 1;
 }
 
 .tt-timeline__steps {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  text-align: center;
-  position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    text-align: center;
+    position: relative;
 }
 
 .tt-timeline__step {
-  position: relative;
-  width: 200px;
+    position: relative;
+    width: 200px;
 }
 
 .tt-timeline__step-label {
-  font: var(--font-normal-14-600);
-  color: var(--color-text);
+    font: var(--font-normal-14-600);
+    color: var(--color-text);
 }
 
 .tt-timeline__step-sublabel {
-  font: var(--font-normal-14);
-  color: var(--color-text);
+    font: var(--font-normal-14);
+    color: var(--color-text);
 }
 
 .tt-timeline__step_indicator {
-  position: absolute;
-  top: -31px;
-  left: 50%;
-  transform: translate(-50%, 25%);
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: #fff;
-  border: 2px solid var(--color-border);
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: -31px;
+    left: 50%;
+    transform: translate(-50%, 25%);
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid var(--color-border);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tt-timeline__step_indicator.active {
-  background-color: var(--color-text);
-  border: 2px solid var(--color-text);
-  outline: 2px solid #ffffff;
+    background-color: var(--color-text);
+    border: 2px solid var(--color-text);
+    outline: 2px solid #ffffff;
 }
 
 .tt-timeline__popup {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(-50%, 15%);
-  color: #fff;
-  background-color: var(--color-secondary);
-  padding: 2px 8px;
-  z-index: 11;
-  height: 25px;
-  border-radius: 4px;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  font-size: 0.9rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, 15%);
+    color: #fff;
+    background-color: var(--color-secondary);
+    padding: 2px 8px;
+    z-index: 11;
+    height: 25px;
+    border-radius: 4px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    font-size: 0.9rem;
 }
 
 .tt-timeline__popup::after {
-  content: "";
-  position: absolute;
-  top: 99%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 8px;
-  border-style: solid;
-  border-color: var(--color-secondary) transparent transparent transparent;
-  z-index: 10;
+    content: "";
+    position: absolute;
+    top: 99%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px;
+    border-style: solid;
+    border-color: var(--color-secondary) transparent transparent transparent;
+    z-index: 10;
 }
 
 .tt-timeline__popup-anchor {
-  position: relative;
-  height: 0px;
-  width: 0px;
+    position: relative;
+    height: 0px;
+    width: 0px;
 }
 
 .tt-timeline__popup-wrapper {
-  position: absolute;
-  top: -75%;
-  left: 0;
-  background-color: aqua;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-  z-index: 10;
-  border-radius: 4px;
-  height: 0;
+    position: absolute;
+    top: -75%;
+    left: 0;
+    background-color: aqua;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    z-index: 10;
+    border-radius: 4px;
+    height: 0;
 }
 
 @media (max-width: 900px) {
-  .tt-timeline {
-    height: 100%;
-    width: 4px;
-    min-height: 100%;
-  }
+    .tt-timeline {
+        height: 100%;
+        width: 4px;
+        min-height: 100%;
+    }
 
-  .tt-timeline__wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
+    .tt-timeline__wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
 
-  .tt-timeline__steps {
-    flex-direction: column;
-    align-items: space-between;
-  }
+    .tt-timeline__steps {
+        flex-direction: column;
+        align-items: space-between;
+    }
 
-  .tt-timeline__progress {
-    height: 0;
-    width: 100%;
-  }
+    .tt-timeline__progress {
+        height: 0;
+        width: 100%;
+    }
 
-  .tt-timeline__steps {
-    height: 100%;
-    justify-content: space-between;
-  }
+    .tt-timeline__steps {
+        height: 100%;
+        justify-content: space-between;
+    }
 
-  .tt-timeline__step {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    height: 80px;
-  }
+    .tt-timeline__step {
+        display: flex;
+        justify-content: flex-start;
+        padding-left: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 80px;
+    }
 
-  .tt-timeline__step_indicator {
-    left: 0;
-    top: 0;
-    transform: translate(-60%, 0);
-  }
+    .tt-timeline__step_indicator {
+        left: 0;
+        top: 0;
+        transform: translate(-60%, 0);
+    }
 
-  .tt-timeline__popup {
-    bottom: 0;
-    left: 0;
-    top: auto;
-    transform: translate(10%, -22.5%);
-  }
+    .tt-timeline__popup {
+        bottom: 0;
+        left: 0;
+        top: auto;
+        transform: translate(10%, -22.5%);
+    }
 
-  /* Show arrow from left */
-  .tt-timeline__popup::after {
-    top: 50%;
-    left: 2px;
-    transform: translate(-100%, -50%);
-    border-color: transparent var(--color-secondary) transparent transparent;
-  }
+    /* Show arrow from left */
+    .tt-timeline__popup::after {
+        top: 50%;
+        left: 2px;
+        transform: translate(-100%, -50%);
+        border-color: transparent var(--color-secondary) transparent transparent;
+    }
 }

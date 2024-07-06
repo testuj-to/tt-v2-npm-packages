@@ -1,45 +1,41 @@
 import { useMemo, useState } from "react";
-import { CampaignCard, CampaignCardTagProps } from "../CampaignCard";
-import {
-  Campaign,
-  CampaignApplicationResolutionStatus,
-  CampaignApplicationStatus,
-  ReviewState,
-} from "@lib/types";
+
+import { Campaign } from "@lib/types";
+import { CampaignCard } from "../CampaignCard";
 import { useGenerateTag } from "./useGenerateTag";
 
 export interface RegistredCampaignCardProps {
-  campaign: Campaign;
-  onClick?: () => void;
-  onDoubleClick?: () => void;
-  image?: React.ReactNode;
-  liked?: boolean;
-  onLikeClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  t: (key: string, args?: any) => string;
+    campaign: Campaign;
+    image?: React.ReactNode;
+    liked?: boolean;
+    t(key: string, args?: any): string;
+    onClick?(): void;
+    onDoubleClick?(): void;
+    onLikeClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 export const RegistredCampaignCard = ({
-  campaign,
-  onClick,
-  image,
-  onDoubleClick,
-  liked,
-  onLikeClick,
-  t,
+    campaign,
+    image,
+    liked,
+    t,
+    onClick,
+    onDoubleClick,
+    onLikeClick,
 }: RegistredCampaignCardProps) => {
-  const generatedTag = useGenerateTag(campaign, t);
+    const generatedTag = useGenerateTag(campaign, t);
 
-  return (
-    <CampaignCard
-      image={image}
-      label={campaign?.name}
-      tags={[generatedTag]}
-      onClick={onClick}
-      liked={liked}
-      showLikeButton={true}
-      onLikeClick={onLikeClick}
-      onDoubleClick={onDoubleClick}
-      communityLogo={campaign?.mainTenant?.logo?.src}
-    />
-  );
+    return (
+        <CampaignCard
+            image={image}
+            label={campaign?.name}
+            tags={[generatedTag]}
+            onClick={onClick}
+            liked={liked}
+            showLikeButton={true}
+            onLikeClick={onLikeClick}
+            onDoubleClick={onDoubleClick}
+            communityLogo={campaign?.mainTenant?.logo?.src}
+        />
+    );
 };

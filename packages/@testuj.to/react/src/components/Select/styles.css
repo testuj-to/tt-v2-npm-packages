@@ -1,22 +1,22 @@
 .tt-select-trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 4px;
-  padding: 0 1rem;
-  height: 48px;
-  gap: 5px;
-  background-color: white;
-  color: var(--color-text);
-  font: var(--font-normal-14);
-  border: 1px solid var(--color-border);
-  width: 100%;
-  text-align: left;
-  box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 0 1rem;
+    height: 48px;
+    gap: 5px;
+    background-color: white;
+    color: var(--color-text);
+    font: var(--font-normal-14);
+    border: 1px solid var(--color-border);
+    width: 100%;
+    text-align: left;
+    box-sizing: border-box;
 }
 
 .tt-select-trigger:focus {
-  box-shadow: 0 0 0 1px var(--color-border);
+    box-shadow: 0 0 0 1px var(--color-border);
 }
 
 /* .tt-select-trigger:hover {
@@ -24,89 +24,79 @@
 } */
 
 .tt-select-trigger[data-placeholder] {
-  color: var(--color-text-secondary);
+    color: var(--color-text-secondary);
 }
 
 .tt-select-trigger > .tt-select-trigger-icon {
-  color: Var(--color-text-secondary);
+    color: Var(--color-text-secondary);
 }
 
 .tt-select-trigger[aria-expanded="true"] > .tt-select-trigger-icon {
-  transform: rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .tt-select-content {
-  overflow: hidden;
-  background-color: white;
-  box-shadow: 0px 2px 4px #0d1a3314;
-  border-radius: 4px;
-  min-width: 100%;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0px 2px 4px #0d1a3314;
+    border-radius: 4px;
+    min-width: 100%;
 }
 
 .tt-select-content > .tt-select-content-scrollbutton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 25px;
-  background-color: white;
-  color: var(--violet11);
-  cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    background-color: white;
+    color: var(--violet11);
+    cursor: default;
 }
 
 .tt-select-content > .tt-select-content-viewport > .tt-select-content-group {
 }
 
-.tt-select-content
-  > .tt-select-content-viewport
-  > .tt-select-content-group
-  > .tt-select-content-label {
-  padding: 0 25px;
-  font-size: 12px;
-  line-height: 25px;
-  /* color: var(--mauve11); */
+.tt-select-content > .tt-select-content-viewport > .tt-select-content-group > .tt-select-content-label {
+    padding: 0 25px;
+    font-size: 12px;
+    line-height: 25px;
+    /* color: var(--mauve11); */
 }
 
 .tt-select-content-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-  height: 36px;
-  font-size: 14px;
-  line-height: 25px;
-  color: var(--color-text);
-  font: var(--font-normal-14);
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 36px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--color-text);
+    font: var(--font-normal-14);
+    cursor: pointer;
 }
 
 .tt-select-content-option:hover {
-  background-color: #f0f2f4;
+    background-color: #f0f2f4;
 }
 
 .tt-select-content-option.bold-text:hover {
-  background-color: #fff;
-  font-weight: bold;
+    background-color: #fff;
+    font-weight: bold;
 }
 
 /* .tt-select-content > .tt-select-content-viewport > .tt-select-content-group > .tt-select-content-option[data-disabled] {
 } */
 
-.tt-select-content
-  > .tt-select-content-viewport
-  > .tt-select-content-group
-  > .tt-select-content-option[data-highlighted] {
-  outline: none;
+.tt-select-content > .tt-select-content-viewport > .tt-select-content-group > .tt-select-content-option[data-highlighted] {
+    outline: none;
 }
 
-.tt-select-content
-  > .tt-select-content-viewport
-  > .tt-select-content-group
-  > .tt-select-content-option
-  > .tt-select-content-option-indicator {
-  position: absolute;
-  left: 0;
-  /* width: 25px; */
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.tt-select-content > .tt-select-content-viewport > .tt-select-content-group > .tt-select-content-option > .tt-select-content-option-indicator {
+    position: absolute;
+    left: 0;
+    /* width: 25px; */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }

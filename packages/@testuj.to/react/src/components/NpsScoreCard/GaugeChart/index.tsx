@@ -1,6 +1,7 @@
-import {useEffect, useMemo, useState} from "react";
+import { useEffect, useMemo, useState } from "react";
 import cx from "classnames";
-import {useTick} from "./useTick";
+
+import { useTick } from "./useTick";
 
 export interface GaugeChartProps {
     promoters: number
@@ -8,53 +9,60 @@ export interface GaugeChartProps {
     haters: number
     greenThreshold: number
     orangeThreshold: number
-    t: (key: string, args?: any) => string;
+    t(key: string, args?: any): string;
 }
 
-export const GaugeChart = ({haters: x, neutrals: y, promoters: z,orangeThreshold, greenThreshold, t}: GaugeChartProps) => {
-    const [gradient, setGradient] = useState("conic-gradient(from 180deg at 50% 60%, #FF001D, #FF001D 0%, #FAB553 0%, #FAB553 0%, #029218 0%, #029218 100%)")
-    const [left, setLeft] = useState("")
-    const [bottom, setBottom] = useState("")
-    const [totalScore, setTotalScore] = useState(-100)
-    const {currentValue} = useTick(totalScore)
+export const GaugeChart = ({ haters: x, neutrals: y, promoters: z,orangeThreshold, greenThreshold, t }: GaugeChartProps) => {
+    const [gradient, setGradient] = useState("conic-gradient(from 180deg at 50% 60%, #FF001D, #FF001D 0%, #FAB553 0%, #FAB553 0%, #029218 0%, #029218 100%)");
+    const [left, setLeft] = useState("");
+    const [bottom, setBottom] = useState("");
+    const [totalScore, setTotalScore] = useState(-100);
+    const {currentValue} = useTick(totalScore);
 
     const bgColor = useMemo(()=>{
-        if(currentValue > greenThreshold) return "#029218"
-        if(currentValue > orangeThreshold) return "#FAB553"
-        return "#FF001D"
-    }, [currentValue])
+        if (currentValue > greenThreshold) {
+            return "#029218";
+        }
+
+        if (currentValue > orangeThreshold) {
+            return "#FAB553";
+        }
+
+        return "#FF001D";
+    }, [currentValue]);
 
     useEffect(() => {
         const total = x + y + z;
-        const onePercent = total / 100
-        const xPercent = (x / onePercent)
-        const yPercent = (y / onePercent)
-        const zPercent = (z / onePercent)
-        const xCalc = 76 * (xPercent / 100) + 12
-        const yCalc = 76 * (yPercent / 100)
-        const zCalc = 76 * (zPercent / 100)
-        const gradientLocal = `conic-gradient(from 180deg at 50% 50%, red, red ${xCalc}%, orange ${xCalc}%, orange ${xCalc + yCalc}%, green ${xCalc + yCalc}%, green ${xCalc + yCalc + zCalc}%)`
-        setGradient(gradientLocal)
+        const onePercent = total / 100;
+        const xPercent = (x / onePercent);
+        const yPercent = (y / onePercent);
+        const zPercent = (z / onePercent);
+        const xCalc = 76 * (xPercent / 100) + 12;
+        const yCalc = 76 * (yPercent / 100);
+        const zCalc = 76 * (zPercent / 100);
+        const gradientLocal = `conic-gradient(from 180deg at 50% 50%, red, red ${xCalc}%, orange ${xCalc}%, orange ${xCalc + yCalc}%, green ${xCalc + yCalc}%, green ${xCalc + yCalc + zCalc}%)`;
+        setGradient(gradientLocal);
     }, [x, y, z]);
 
     useEffect(() => {
         const total = x + y + z;
-        const onePercent = total / 100
-        const xPercent = (x / onePercent)
-        const zPercent = (z / onePercent)
-        const score = (zPercent - xPercent)
-        setTotalScore(score)
-    }, [x,y,z]);
+        const onePercent = total / 100;
+        const xPercent = (x / onePercent);
+        const zPercent = (z / onePercent);
+        const score = (zPercent - xPercent);
+        setTotalScore(score);
+    }, [x, y, z]);
 
     useEffect(() => {
-        const scorePercent = ((100 + currentValue) / 2) / 100
+        const scorePercent = ((100 + currentValue) / 2) / 100;
         let whole = 273.6;
-        let deg = Math.round(((whole - (whole * scorePercent)) - 46.8))
-        let leftN = Math.cos(deg * (Math.PI / 180))
-        let bottomN = Math.sin(deg * (Math.PI / 180))
-        setLeft(`calc(50% + ${leftN} * 50%)`)
-        setBottom(`calc(50% + ${bottomN} * 50%)`)
+        let deg = Math.round(((whole - (whole * scorePercent)) - 46.8));
+        let leftN = Math.cos(deg * (Math.PI / 180));
+        let bottomN = Math.sin(deg * (Math.PI / 180));
+        setLeft(`calc(50% + ${leftN} * 50%)`);
+        setBottom(`calc(50% + ${bottomN} * 50%)`);
     }, [currentValue]);
+
     return (
         <>
             <svg width="0" height="0" viewBox="0 0 186 154" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,10 +83,14 @@ export const GaugeChart = ({haters: x, neutrals: y, promoters: z,orangeThreshold
                 <span className={cx("tt-gauge-chart-min")}>-100</span>
                 <span className={cx("tt-gauge-chart-max")}>100</span>
                 <span className={cx("tt-gauge-chart-total-container")}>
-                    <p className={cx("tt-gauge-chart-total")}>{totalScore.toFixed(1)}</p>
-                    <p className={cx("tt-gauge-chart-total-desc")}>{t('npsScoreCard.totalScore')}</p>
+                    <p className={cx("tt-gauge-chart-total")}>
+                        {totalScore.toFixed(1)}
+                    </p>
+                    <p className={cx("tt-gauge-chart-total-desc")}>
+                        {t("npsScoreCard.totalScore")}
+                    </p>
                 </span>
             </div>
         </>
-    )
-}
+    );
+};

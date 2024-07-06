@@ -1,5 +1,6 @@
 import { LikeButton } from "../LikeButton";
 import { Tag, TagProps } from "../Tag";
+
 import "./styles.css";
 
 export interface CampaignCardTagProps extends TagProps {}

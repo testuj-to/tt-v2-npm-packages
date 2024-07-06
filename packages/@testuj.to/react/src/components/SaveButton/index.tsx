@@ -1,9 +1,10 @@
 import { forwardRef, useEffect, useState } from "react";
 import cx from "classnames";
-import { Button, type ButtonProps } from "../Button";
-import { Spinner } from "./Spinner";
 
 import "./styles.css";
+
+import { Button, type ButtonProps } from "../Button";
+import { Spinner } from "./Spinner";
 
 export interface SaveButtonProps extends ButtonProps {
     finalChildren?: React.ReactNode;
@@ -14,7 +15,17 @@ export interface SaveButtonProps extends ButtonProps {
     saveTimeout?: number;
 }
 
-export const SaveButton = forwardRef(({children, finalChildren, errorChildren, isLoading, isSuccess, isError, saveTimeout, className, ...props}: SaveButtonProps, ref:React.ForwardedRef<HTMLButtonElement> ) => {
+export const SaveButton = forwardRef<HTMLButtonElement>(({
+    children,
+    finalChildren,
+    errorChildren,
+    isLoading,
+    isSuccess,
+    isError,
+    saveTimeout,
+    className,
+    ...props
+}: SaveButtonProps, ref) => {
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
     useEffect(() => {
@@ -30,9 +41,11 @@ export const SaveButton = forwardRef(({children, finalChildren, errorChildren, i
         if (isSaved) {
             return finalChildren || children;
         }
+
         if (isError) {
             return errorChildren || children;
         }
+
         return children;
     }
 
@@ -49,8 +62,24 @@ export const SaveButton = forwardRef(({children, finalChildren, errorChildren, i
     }
 
     if (isLoading) {
-        return <Button  {...{...props, ref}} className={cx("tt-save-button", className)} ><Spinner /></Button>;
+        return (
+            <Button
+                {...props}
+                ref={ref}
+                className={cx("tt-save-button", className)}
+            >
+                <Spinner/>
+            </Button>
+        );
     }
-    
-  return <Button {...{...props, ref}} className={cx("tt-save-button", buttonState(), className)} >{finalChildrenToRender()}</Button>;
+
+    return (
+        <Button
+            {...props}
+            ref={ref}
+            className={cx("tt-save-button", buttonState(), className)}
+        >
+            {finalChildrenToRender()}
+        </Button>
+    );
 });
