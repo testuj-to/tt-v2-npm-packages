@@ -15,8 +15,7 @@ export interface SaveButtonProps extends ButtonProps {
     saveTimeout?: number;
 }
 
-export const SaveButton = forwardRef<HTMLButtonElement>(({
-    children,
+export const SaveButton = forwardRef<HTMLButtonElement, SaveButtonProps>(({
     finalChildren,
     errorChildren,
     isLoading,
@@ -24,8 +23,9 @@ export const SaveButton = forwardRef<HTMLButtonElement>(({
     isError,
     saveTimeout,
     className,
+    children,
     ...props
-}: SaveButtonProps, ref) => {
+}, ref) => {
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
     useEffect(() => {
