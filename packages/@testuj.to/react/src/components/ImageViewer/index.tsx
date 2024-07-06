@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Arrow } from "./Arrow";
 
 import "./styles.css";
+
+import { Arrow } from "./Arrow";
 import { Spinner } from "../Spinner";
 
 export interface ImageViewerProps {
     imageUrl: string;
     altText: string;
-    onClose?: () => void;
-    onClickNext?: () => void;
-    onClickPrevious?: () => void;
     controls?: boolean;
+    onClose?(): void;
+    onClickNext?(): void;
+    onClickPrevious?(): void;
 }
 
 export const ImageViewer: React.FC<ImageViewerProps> = ({
     imageUrl,
     altText,
+    controls,
     onClickNext,
     onClickPrevious,
     onClose,
-    controls,
 }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -31,10 +32,17 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === "ArrowRight") {
                 onClickNext?.();
-            } else if (e.key === "ArrowLeft") {
+                return;
+            }
+
+            if (e.key === "ArrowLeft") {
                 onClickPrevious?.();
-            } else if (e.key === "Escape") {
+                return;
+            }
+
+            if (e.key === "Escape") {
                 onClose?.();
+                return;
             }
         };
 
@@ -49,20 +57,19 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
         <div className="tt-image-viewer-background" onClick={onClose}>
             <div
                 className="tt-image-viewer"
-                onClick={(e) => {
-                    e.stopPropagation();
-                }}
+                onClick={event =>
+                    event?.stopPropagation?.()}
             >
                 {!isLoaded && (
                     <div className="tt-image-viewer__placeholder">
-                        <Spinner />
+                        <Spinner/>
                     </div>
                 )}
                 <img
                     src={imageUrl}
                     alt={altText}
-                    onLoad={handleImageLoad}
                     style={{ display: isLoaded ? "block" : "none" }}
+                    onLoad={handleImageLoad}
                 />
             </div>
             <button
@@ -71,21 +78,26 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
             >
                 <div className="tt-image-viewer__close-button__icon">✕</div>
             </button>
-            {controls ? (
+            {!!controls && (
                 <div
                     className="tt-image-viewer-controls"
-                    onClick={(e) => {
-                        e.stopPropagation();
-                    }}
+                    onClick={event =>
+                        event?.stopPropagation?.()}
                 >
-                    <button className="tt-image-viewer-controls__button" onClick={onClickPrevious}>
+                    <button
+                        className="tt-image-viewer-controls__button"
+                        onClick={onClickPrevious}
+                    >
                         <Arrow direction="left" />
                     </button>
-                    <button className="tt-image-viewer-controls__button" onClick={onClickNext}>
+                    <button
+                        className="tt-image-viewer-controls__button"
+                        onClick={onClickNext}
+                    >
                         <Arrow direction="right" />
                     </button>
                 </div>
-            ) : null}
+            )}
         </div>
     );
 };

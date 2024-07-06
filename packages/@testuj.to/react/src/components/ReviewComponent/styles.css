@@ -1,121 +1,121 @@
 .tt-review {
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
 }
 
 .tt-review__header {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .tt-review__rating_bar {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
 }
 
 .tt-review__rating_wrapper {
-  display: flex;
-  align-items: center;
-  background-color: #f7f8fa;
-  border-radius: 15px;
-  padding: 0.2rem 0.6rem;
-  border: 1px solid #f0f2f4;
+    display: flex;
+    align-items: center;
+    background-color: #f7f8fa;
+    border-radius: 15px;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid #f0f2f4;
 }
 
 .tt-review__rating {
-  font: var(--font-normal-13);
-  margin-right: 0.6rem;
+    font: var(--font-normal-13);
+    margin-right: 0.6rem;
 }
 
 .tt-review__recommended {
-  margin-left: 1rem;
-  font: var(--font-normal-12);
-  display: flex;
-  align-items: center;
-  background-color: var(--light-green);
-  background-color: #e3f1de;
-  color: var(--color-green);
-  color: #2e7d32;
-  padding: 0.36rem 0.6rem;
-  border-radius: 20px;
+    margin-left: 1rem;
+    font: var(--font-normal-12);
+    display: flex;
+    align-items: center;
+    background-color: var(--light-green);
+    background-color: #e3f1de;
+    color: var(--color-green);
+    color: #2e7d32;
+    padding: 0.36rem 0.6rem;
+    border-radius: 20px;
 }
 
 .tt-review__recommended_icon {
-  height: 16px;
-  width: 16px;
-  margin-right: 0.6rem;
+    height: 16px;
+    width: 16px;
+    margin-right: 0.6rem;
 }
 
 .tt-review__content {
-  text-align: left;
-  margin-top: 1rem;
-  font: var(--font-normal-14);
+    text-align: left;
+    margin-top: 1rem;
+    font: var(--font-normal-14);
 }
 
 .tt-review__pros_cons {
-  display: flex;
-  margin-top: 1rem;
-  min-width: 400px;
-  max-width: 600px;
-  justify-content: space-between;
+    display: flex;
+    margin-top: 1rem;
+    min-width: 400px;
+    max-width: 600px;
+    justify-content: space-between;
 }
 
 .tt-review__pros_cons_col {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .tt-review__pros_item {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  font: var(--font-normal-14);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font: var(--font-normal-14);
 }
 
 .tt-review__pros_icon {
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  text-align: center;
-  height: 20px;
-  width: 20px;
-  background-color: var(--color-green);
-  background-color: green;
-  color: #fff;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-green);
+    background-color: green;
+    color: #fff;
 }
 
 .tt-review__cons_item {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-  font: var(--font-normal-14);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    font: var(--font-normal-14);
 }
 
 .tt-review__cons_icon {
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  text-align: center;
-  height: 20px;
-  width: 20px;
-  background-color: var(--color-green);
-  background-color: rgb(255, 7, 7);
-  color: #fff;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    background-color: var(--color-green);
+    background-color: rgb(255, 7, 7);
+    color: #fff;
 }
 
 .tt-review__images {
-  display: flex;
-  margin-top: 1rem;
+    display: flex;
+    margin-top: 1rem;
 }
 
 .tt-review__image {
-  margin-right: 1rem;
-  border-radius: 4px;
-  height: 48px;
-  width: 72px;
-  object-fit: cover;
+    margin-right: 1rem;
+    border-radius: 4px;
+    height: 48px;
+    width: 72px;
+    object-fit: cover;
 }

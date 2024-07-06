@@ -12,15 +12,19 @@
     animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
 }
+
 .tt-tooltip-content[data-state="delayed-open"][data-side="top"] {
     animation-name: slideDownAndFade;
 }
+
 .tt-tooltip-content[data-state="delayed-open"][data-side="right"] {
     animation-name: slideLeftAndFade;
 }
+
 .tt-tooltip-content[data-state="delayed-open"][data-side="bottom"] {
     animation-name: slideUpAndFade;
 }
+
 .tt-tooltip-content[data-state="delayed-open"][data-side="left"] {
     animation-name: slideRightAndFade;
 }

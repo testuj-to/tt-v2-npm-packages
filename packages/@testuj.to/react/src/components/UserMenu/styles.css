@@ -1,43 +1,43 @@
 .tt-user-menu_content {
-  box-shadow: 0px 2px 12px #00000014;
-  border-radius: 8px;
-  width: 240px;
-  box-sizing: border-box;
-  background-color: #fff;
-  z-index: 9999;
+    box-shadow: 0px 2px 12px #00000014;
+    border-radius: 8px;
+    width: 240px;
+    box-sizing: border-box;
+    background-color: #fff;
+    z-index: 9999;
 }
 
 .tt-user-menu_header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column;
-  padding: 1rem;
-  border-bottom: 2px solid var(--color-border);
-  width: 100%;
-  box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 1rem;
+    border-bottom: 2px solid var(--color-border);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .tt-user-menu_body {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .tt-user-menu_progress-bar {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .tt-user-menu_item {
-  cursor: pointer;
-  font: var(--font-normal-14);
-  color: var(--color-text);
-  line-height: 36px;
-  display: flex;
-  justify-content: flex-start;
-  transition: background-color 0.2s ease-in-out;
-  border-radius: 8px;
-  padding: 0 0.5rem;
+    cursor: pointer;
+    font: var(--font-normal-14);
+    color: var(--color-text);
+    line-height: 36px;
+    display: flex;
+    justify-content: flex-start;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 8px;
+    padding: 0 0.5rem;
 }
 
 .tt-user-menu_item:hover {
-  background-color: #f0f2f4;
+    background-color: #f0f2f4;
 }

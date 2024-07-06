@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import cx from "classnames";
 
+import "./styles.css";
+
 import { StarIcon } from "./StarIcon";
 
-import "./styles.css";
 export interface RatingBarChartItem {
     label: string;
     value: number;
@@ -23,7 +24,14 @@ export const RatingBarChart = ({ items, className, delay }: RatingBarChartProps)
         <div className={cx("tt-rating-bar-chart", className)}>
             {items.map(({ label, value, icon }, index) => {
                 return (
-                    <RatingBarChartItem key={index} {...{ label, icon, value, delay }} width={(value / max) * 100} />
+                    <RatingBarChartItem
+                        key={index}
+                        width={(value / max) * 100}
+                        label={label}
+                        icon={icon}
+                        value={value}
+                        delay={delay}
+                    />
                 );
             })}
         </div>
@@ -42,12 +50,15 @@ const finalWidth = (width: number) => {
     if (width === 0) {
         return 0;
     }
+
     if (width < 5) {
         return 5;
     }
+
     if (width > 100) {
         return 100;
     }
+
     return width;
 };
 
@@ -62,10 +73,17 @@ export const RatingBarChartItem = ({ label, width, value, icon }: RatingBarChart
 
     return (
         <div className="tt-rating-bar-chart__item">
-            <div className="tt-rating-bar-chart__item__label">{label}</div>
-            <div className="tt-rating-bar-chart__item__icon">{icon || <StarIcon />}</div>
+            <div className="tt-rating-bar-chart__item__label">
+                {label}
+            </div>
+            <div className="tt-rating-bar-chart__item__icon">
+                {icon || <StarIcon/>}
+            </div>
             <div className="tt-rating-bar-chart__item__bar">
-                <div className="tt-rating-bar-chart__item__bar__fill" style={{ width: `${finalWidth(widthState)}%` }}></div>
+                <div
+                    className="tt-rating-bar-chart__item__bar__fill"
+                    style={{ width: `${finalWidth(widthState)}%` }}
+                />
                 <div
                     className="tt-rating-bar-chart__item__bar__label"
                     style={{ paddingLeft: `${width === 0 ? 8 : 0}px` }}

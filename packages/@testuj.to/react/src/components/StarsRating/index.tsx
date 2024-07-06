@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { StarIcon } from "./StarIcon";
+import { useCallback, useState } from "react";
+
 import "./styles.css";
+
+import { StarIcon } from "./StarIcon";
 
 export interface StarsRatingProps {
     rating: number;
-    onChange?: (rating: number) => void;
     readOnly?: boolean;
     className?: string;
     starSize?: number;
     noOfStars?: number;
+    onChange?(rating: number): void;
 }
 
 export const StarsRating = ({ rating, onChange, readOnly, className, starSize, noOfStars = 5 }: StarsRatingProps) => {
@@ -18,12 +20,32 @@ export const StarsRating = ({ rating, onChange, readOnly, className, starSize, n
 
     const stars = new Array(noOfStars).fill(0).map((_, i) => i + 1);
 
+    const handleChange = useCallback((value: number) => {
+        if (readOnly) {
+            return;
+        }
+
+        onChange?.(value);
+    }, []);
+
+    const handleHover = useCallback((value: number) => {
+        if (readOnly) {
+            return;
+        }
+
+        setRatingHover(value);
+    }, []);
+
     return (
         <div className={className}>
-            {stars.map((star) => {
+            {stars.map((star, index) => {
                 const starPercent = star <= ratingInt ? 100 : star > ratingInt + 1 ? 0 : ratingDecimal * 100;
+
                 return (
-                    <div className="tt-stars-rating-item" key={star}>
+                    <div
+                        key={`${index}${star}`}
+                        className="tt-stars-rating-item"
+                    >
                         <StarIcon
                             filled={starPercent}
                             setGradient={star > ratingInt}
@@ -32,15 +54,21 @@ export const StarsRating = ({ rating, onChange, readOnly, className, starSize, n
                         />
                         <div
                             className="tt-stars-rating-item__overlay_left"
-                            onClick={() => !readOnly && onChange(star - 0.5)}
-                            onMouseEnter={() => !readOnly && setRatingHover(star - 0.5)}
-                            onMouseLeave={() => !readOnly && setRatingHover(null)}
+                            onClick={() =>
+                                handleChange(star - 0.5)}
+                            onMouseEnter={() =>
+                                handleHover(star - 0.5)}
+                            onMouseLeave={() =>
+                                handleHover(null)}
                         />
                         <div
                             className="tt-stars-rating-item__overlay_right"
-                            onClick={() => !readOnly && onChange(star)}
-                            onMouseEnter={() => !readOnly && setRatingHover(star)}
-                            onMouseLeave={() => !readOnly && setRatingHover(null)}
+                            onClick={() =>
+                                handleChange(star)}
+                            onMouseEnter={() =>
+                                handleHover(star)}
+                            onMouseLeave={() =>
+                                handleHover(null)}
                         />
                     </div>
                 );

@@ -5,11 +5,28 @@ import DatePickerComponent from "react-datepicker";
 import cx from "classnames";
 import moment from "moment";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { ReactDatePickerProps } from "./types";
 
 import "./styles.css";
 
+import { ReactDatePickerProps } from "./types";
+
 type DateRange = [Date | null, Date | null];
+
+interface CustomInputProps {
+    value?: string;
+    className?: string;
+}
+
+const CustomInput = React.forwardRef<HTMLDivElement, CustomInputProps>(({ value, className, ...props }, ref) => (
+    <div
+        {...props}
+        ref={ref}
+        className={cx("tt-datePicker-input", className)}
+    >
+        {value}
+        <CalendarIcon className="tt-datePicker-icon" />
+    </div>
+));
 
 export interface DatePickerProps extends ReactDatePickerProps {
     onChange: (dateRange: Date | null | DateRange) => void;
@@ -24,15 +41,15 @@ export interface DatePickerProps extends ReactDatePickerProps {
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
-    onChange,
     dateRange,
     selected,
     className,
-    translationFunciton,
     dateFormat = "dd.MM.yyyy",
     dropdownPickers,
     dateTime,
     type,
+    onChange,
+    translationFunciton,
     ...rest
 }) => {
     const [startDate, setStartDate] = useState(dateRange?.[0] || null);
@@ -48,42 +65,50 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     const locale = useMemo(() => {
         return {
             localize: {
-                month: (n: number) =>
-                    [
-                        translationFunciton("time.january"),
-                        translationFunciton("time.february"),
-                        translationFunciton("time.march"),
-                        translationFunciton("time.april"),
-                        translationFunciton("time.may"),
-                        translationFunciton("time.june"),
-                        translationFunciton("time.july"),
-                        translationFunciton("time.august"),
-                        translationFunciton("time.september"),
-                        translationFunciton("time.october"),
-                        translationFunciton("time.november"),
-                        translationFunciton("time.december"),
-                    ][n],
-                day: (n: number) =>
-                    [
-                        translationFunciton("time.sun"),
-                        translationFunciton("time.mon"),
-                        translationFunciton("time.tue"),
-                        translationFunciton("time.wed"),
-                        translationFunciton("time.thu"),
-                        translationFunciton("time.fri"),
-                        translationFunciton("time.sat"),
-                    ][n],
-                ordinalNumber: (n: number) => `${n}.`,
-                era: (n: number) => ["BC", "AD"][n],
-                quarter: (n: number) =>
-                    ["1st quarter", "2nd quarter", "3rd quarter", "4th quarter"][n],
-                dayPeriod: (n: number) => ["AM", "PM"][n],
+                month: (month: number) => [
+                    translationFunciton("time.january"),
+                    translationFunciton("time.february"),
+                    translationFunciton("time.march"),
+                    translationFunciton("time.april"),
+                    translationFunciton("time.may"),
+                    translationFunciton("time.june"),
+                    translationFunciton("time.july"),
+                    translationFunciton("time.august"),
+                    translationFunciton("time.september"),
+                    translationFunciton("time.october"),
+                    translationFunciton("time.november"),
+                    translationFunciton("time.december"),
+                ][month],
+                day: (day: number) => [
+                    translationFunciton("time.sun"),
+                    translationFunciton("time.mon"),
+                    translationFunciton("time.tue"),
+                    translationFunciton("time.wed"),
+                    translationFunciton("time.thu"),
+                    translationFunciton("time.fri"),
+                    translationFunciton("time.sat"),
+                ][day],
+                ordinalNumber: (number: number) =>
+                    `${number}.`,
+                era: (era: number) =>
+                    ["BC", "AD"][era],
+                quarter: (quarter: number) => [
+                    "1st quarter",
+                    "2nd quarter",
+                    "3rd quarter",
+                    "4th quarter",
+                ][quarter],
+                dayPeriod: (dayPeriod: number) =>
+                    ["AM", "PM"][dayPeriod],
             },
             match: {},
             formatLong: {
-                date: () => moment().format("DD.MM.YYYY"),
-                time: () => "HH:mm",
-                dateTime: () => moment().format("DD.MM.YYYY HH:mm"),
+                date: () =>
+                    moment().format("DD.MM.YYYY"),
+                time: () =>
+                    "HH:mm",
+                dateTime: () =>
+                    moment().format("DD.MM.YYYY HH:mm"),
             },
             options: {
                 weekStartsOn: 1,
@@ -94,6 +119,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     const handlerChangeRaw = (event, options?: { type: string }) => {
         const { value } = event.target;
         const date = new Date(value);
+
         if (date instanceof Date && !isNaN(date.getTime())) {
             if (type === "single") {
                 onChange(date);
@@ -105,6 +131,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
                 onChange([date, endDate]);
                 return;
             }
+
             if (options?.type === "end") {
                 setEndDate(date);
                 onChange([startDate, date]);
@@ -113,33 +140,26 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         }
     };
 
-    const CustomInput = React.forwardRef<HTMLDivElement, { value?: string }>(
-        ({ value, ...props }, ref) => (
-            <div {...props} className={cx("tt-datePicker-input", className)} ref={ref}>
-                {value}
-                <CalendarIcon className="tt-datePicker-icon" />
-            </div>
-        )
-    );
-
     return (
         <DatePickerComponent
+            {...rest}
             selectsRange={type === "range"}
             selected={selected}
             startDate={startDate}
             endDate={endDate}
-            onChange={type === "range" ? onChangeSelection : onChange}
             dateFormat={dateFormat}
             todayButton={translationFunciton("time.today")}
             locale={locale}
-            customInput={type === "range" ? <CustomInput /> : undefined}
+            customInput={type === "range" ?
+                <CustomInput className={className} /> : undefined}
             showIcon={type === "single"}
             showYearDropdown={dropdownPickers}
             showMonthDropdown={dropdownPickers}
             showTimeSelect={dateTime}
             placeholderText={dateFormat}
+            onChange={type === "range" ?
+                onChangeSelection : onChange}
             onChangeRaw={handlerChangeRaw}
-            {...rest}
         />
     );
 };

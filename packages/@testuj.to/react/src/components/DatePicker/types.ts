@@ -1,7 +1,6 @@
 import { Locale } from "date-fns";
 import * as React from "react";
 
-
 export interface CalendarContainerProps {
     className?: string | undefined;
     children?: React.ReactNode | React.ReactNode[] | undefined;

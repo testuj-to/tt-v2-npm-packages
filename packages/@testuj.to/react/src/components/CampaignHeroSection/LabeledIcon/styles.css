@@ -1,16 +1,16 @@
 .tt-labeled-icon-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-right: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 1rem;
 }
 
 .tt-labeled-icon-icon {
-  margin-right: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .tt-labeled-icon-label {
-  font: var(--font-normal-14);
-  white-space: nowrap;
+    font: var(--font-normal-14);
+    white-space: nowrap;
 }

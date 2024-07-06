@@ -1,8 +1,7 @@
+import { CSSProperties, ReactNode } from "react";
+import cx from "classnames";
 
-import { CSSProperties, ReactNode } from 'react'
-import cx from 'classnames'
-
-import './styles.css'
+import "./styles.css";
 
 export interface FormItemProps {
     label?: ReactNode

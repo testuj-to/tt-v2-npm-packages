@@ -1,16 +1,25 @@
+import { useState, useEffect, useMemo, useCallback } from "react";
+import cx from "classnames";
+// import { useTranslation } from "next-i18next";
+// import moment from "moment";
 
-import { useState, useEffect, useMemo, useCallback } from 'react'
-import cx from 'classnames'
-// import { useTranslation } from 'next-i18next'
-// import moment from 'moment'
+import "./styles.css";
 
-import './styles.css'
-
-import { Select } from '../Select'
+import { Select } from "../Select";
 
 const daysInMonth = {
-    2: 29, 4: 30, 6: 30, 9: 30, 11: 30, 1: 31,
-    3: 31, 5: 31, 7: 31, 8: 31, 10: 31, 12: 31,
+    2: 29,
+    4: 30,
+    6: 30,
+    9: 30,
+    11: 30,
+    1: 31,
+    3: 31,
+    5: 31,
+    7: 31,
+    8: 31,
+    10: 31,
+    12: 31,
 }
 
 export interface SelectDateProps {
@@ -102,65 +111,68 @@ export const SelectDate = ({ value, onChange }: SelectDateProps) => {
     // // november   30 days
     // // december   31 days
 
-    const t = v => v
+    const t = v => v;
+
     return (
         <>
             <Select
-                placeholder={t('year')}
-                options={Array(130).map((_, index) => (new Date()).getFullYear() - index).map(year => ({
-                    value: String(year),
-                    label: String(year),
-                }))}
+                placeholder={t("year")}
+                options={Array(130)
+                    .map((_, index) => (new Date()).getFullYear() - index)
+                    .map(year => ({
+                        value: String(year),
+                        label: String(year),
+                    }))}
             />
             <Select
-                placeholder={t('month')}
+                placeholder={t("month")}
                 options={[{
                     value: String(0),
-                    label: t('january'),
+                    label: t("january"),
                 }, {
                     value: String(1),
-                    label: t('february'),
+                    label: t("february"),
                 }, {
                     value: String(2),
-                    label: t('march'),
+                    label: t("march"),
                 }, {
                     value: String(3),
-                    label: t('april'),
+                    label: t("april"),
                 }, {
                     value: String(4),
-                    label: t('may'),
+                    label: t("may"),
                 }, {
                     value: String(5),
-                    label: t('june'),
+                    label: t("june"),
                 }, {
                     value: String(6),
-                    label: t('july'),
+                    label: t("july"),
                 }, {
                     value: String(7),
-                    label: t('august'),
+                    label: t("august"),
                 }, {
                     value: String(8),
-                    label: t('september'),
+                    label: t("september"),
                 }, {
                     value: String(9),
-                    label: t('october'),
+                    label: t("october"),
                 }, {
                     value: String(10),
-                    label: t('november'),
+                    label: t("november"),
                 }, {
                     value: String(11),
-                    label: t('december'),
+                    label: t("december"),
                 }]}
             />
             <Select
-                placeholder={t('day')}
+                placeholder={t("day")}
                 options={[]}
             />
         </>
     )
 
     return (
-        <div className={cx('tt-selectdate-container')}>
+        <div className={cx("tt-selectdate-container")}>
             {/* <Select
                 label={t('year')}
                 placeholder={t('year')}
@@ -200,5 +212,5 @@ export const SelectDate = ({ value, onChange }: SelectDateProps) => {
                 // }))}
             /> */}
         </div>
-    )
-}
+    );
+};

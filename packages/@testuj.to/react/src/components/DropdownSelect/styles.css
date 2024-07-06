@@ -1,130 +1,130 @@
 /* reset */
 button {
-  all: unset;
+    all: unset;
 }
 
 .tt-dropdownSelect-trigger {
-  border: 1px solid #dadee2;
-  border-radius: 4px;
-  padding: 0.8rem 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
+    border: 1px solid #dadee2;
+    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
 }
 
 div[data-radix-popper-content-wrapper] {
-  z-index: 10001 !important;
+    z-index: 10001 !important;
 }
 
 .tt-dropdownSelect-content {
-  box-shadow: 0px 2px 8px #0000001f;
-  border-radius: 8px;
-  padding: 1.2rem;
-  background-color: #fff;
+    box-shadow: 0px 2px 8px #0000001f;
+    border-radius: 8px;
+    padding: 1.2rem;
+    background-color: #fff;
 }
 
 .tt-dropdownSelect-item {
-  display: flex;
-  align-items: center;
-  padding: 0.4rem 0;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0.4rem 0;
+    cursor: pointer;
 }
 
 .tt-dropdownSelect-item:hover {
-  outline: none;
+    outline: none;
 }
 
 .tt-dropdownSelect-counter {
-  margin-left: auto;
-  color: #fff;
-  font-size: 0.8rem;
-  background-color: var(--color-text);
-  border-radius: 50%;
-  width: 1.2rem;
-  height: 1.2rem;
-  margin: 0 0 0 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-left: auto;
+    color: #fff;
+    font-size: 0.8rem;
+    background-color: var(--color-text);
+    border-radius: 50%;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0 0 0 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tt-dropdownSelect-checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  margin-right: 0.8rem;
-  border: 2px solid #dadee2;
-  border-radius: 2px;
-  width: 1rem;
-  height: 1rem;
-  position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 0.8rem;
+    border: 2px solid #dadee2;
+    border-radius: 2px;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
 }
 
 .tt-dropdownSelect-checkbox-checked {
-  position: absolute;
-  background-color: var(--color-text);
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px solid var(--color-text);
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    background-color: var(--color-text);
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 2px solid var(--color-text);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .tt-dropdownSelect-trigger-icon {
-  margin-left: 0.8rem;
-  transition: transform 0.2s ease-in-out;
+    margin-left: 0.8rem;
+    transition: transform 0.2s ease-in-out;
 }
 
 .tt-dropdownSelect-checkbox-icon {
-  color: white;
-  height: 1.2rem;
-  width: 1.2rem;
+    color: white;
+    height: 1.2rem;
+    width: 1.2rem;
 }
 
 @keyframes slideUpAndFade {
-  from {
-    opacity: 0;
-    transform: translateY(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideRightAndFade {
-  from {
-    opacity: 0;
-    transform: translateX(-2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideDownAndFade {
-  from {
-    opacity: 0;
-    transform: translateY(-2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes slideLeftAndFade {
-  from {
-    opacity: 0;
-    transform: translateX(2px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateX(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }

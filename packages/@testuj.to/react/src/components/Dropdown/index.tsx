@@ -4,43 +4,49 @@ import cx from "classnames";
 import "./styles.css";
 
 export interface DropdownProps {
-  trigger: React.ReactNode;
-  className?: string;
-  items?: string[];
-  onItemSelect?: (item: string) => void;
-  itemsWrapperClassName?: string;
-  itemClassName?: string;
+    trigger: React.ReactNode;
+    className?: string;
+    items?: string[];
+    itemsWrapperClassName?: string;
+    itemClassName?: string;
+    onItemSelect?: (item: string) => void;
 }
 
 export const Dropdown = ({
-  trigger,
-  className,
-  items,
-  onItemSelect,
-  itemClassName,
-  itemsWrapperClassName,
+    trigger,
+    className,
+    items,
+    itemClassName,
+    itemsWrapperClassName,
+    onItemSelect,
 }: DropdownProps) => {
-  return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger asChild className={cx("tt-dropdown-trigger", className)}>
-        {trigger}
-      </DropdownMenu.Trigger>
+    return (
+        <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild className={cx("tt-dropdown-trigger", className)}>
+                {trigger}
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                    className={cx("tt-dropdown-content", itemsWrapperClassName)}
+                    sideOffset={5}
+                >
+                    {items?.map((item) => {
+                        let onClick;
+                        if (typeof onItemSelect === "function") {
+                            onClick = () => onItemSelect(item);
+                        }
 
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content
-          className={cx("tt-dropdown-content", itemsWrapperClassName)}
-          sideOffset={5}
-        >
-          {items?.map((item) => (
-            <DropdownMenu.Item
-              className={cx("tt-dropdown-item", itemClassName)}
-              onClick={onItemSelect ? () => onItemSelect(item) : undefined}
-            >
-              {item}
-            </DropdownMenu.Item>
-          ))}
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
-  );
+                        return (
+                            <DropdownMenu.Item
+                                className={cx("tt-dropdown-item", itemClassName)}
+                                onClick={onClick}
+                            >
+                                {item}
+                            </DropdownMenu.Item>
+                        );
+                    })}
+                </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+        </DropdownMenu.Root>
+    );
 };

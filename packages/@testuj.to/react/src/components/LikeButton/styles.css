@@ -1,21 +1,21 @@
 .tt-like-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font: var(--font-normal-14-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font: var(--font-normal-14-600);
 }
 
 .tt-like-button.circle {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #ffffff;
-  border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
 }
 
 .tt-like-button.square {
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
 }

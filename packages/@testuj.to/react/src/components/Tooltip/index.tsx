@@ -9,11 +9,11 @@ export interface TooltipProps {
     content?: React.ReactNode;
     open?: boolean;
     defaultOpen?: boolean;
-    onOpenChange?: (open: boolean) => void;
     delayDuration?: number;
     disableHoverableContent?: boolean;
     className?: string;
     contentClassName?: string;
+    onOpenChange?(open: boolean): void;
 }
 
 export const Tooltip = ({
@@ -28,9 +28,19 @@ export const Tooltip = ({
     contentClassName,
 }: TooltipProps) => {
     return (
-        <RadixTooltip.Provider {...{ disableHoverableContent, delayDuration }}>
-            <RadixTooltip.Root {...{ open, onOpenChange, defaultOpen }}>
-                <RadixTooltip.Trigger asChild className={cx(className)}>
+        <RadixTooltip.Provider
+            disableHoverableContent={disableHoverableContent}
+            delayDuration={delayDuration}
+        >
+            <RadixTooltip.Root
+                defaultOpen={defaultOpen}
+                open={open}
+                onOpenChange={onOpenChange}
+            >
+                <RadixTooltip.Trigger
+                    className={cx(className)}
+                    asChild
+                >
                     {children}
                 </RadixTooltip.Trigger>
                 <RadixTooltip.Portal>

@@ -1,38 +1,54 @@
 import cx from "classnames";
 
 import "./styles.css";
-import { ErrorIcon, InfoIcon } from "./Icons";
+
+import { ErrorIcon } from "./Icons/Error";
+import { InfoIcon } from "./Icons/Info";
 import { SuccessIcon } from "./Icons/Success";
 import { WarningIcon } from "./Icons/Warning";
 
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
-  variant?: "info" | "success" | "warning" | "error";
-  className?: string;
-  hideIcon?: boolean;
-  size?: "small" | "medium" | "large";
+    variant?: "info" | "success" | "warning" | "error";
+    className?: string;
+    hideIcon?: boolean;
+    size?: "small" | "medium" | "large";
+    children: React.ReactNode;
 }
 
 export const Alert = ({ children, variant, className, hideIcon, size = "medium" }: AlertProps) => {
-  const chooseIcon = () => {
+    let icon = null;
     switch (variant) {
-      case "info":
-        return <InfoIcon className={cx("tt-alert-icon", "tt-alert-icon-info")} />;
-      case "success":
-        return <SuccessIcon className={cx("tt-alert-icon", "tt-alert-icon-success")} />;
-      case "warning":
-        return <WarningIcon className={cx("tt-alert-icon", "tt-alert-icon-warning")} />;
-      case "error":
-        return <ErrorIcon className={cx("tt-alert-icon", "tt-alert-icon-error")} />;
-      default:
-        return <InfoIcon className={cx("tt-alert-icon", "tt-alert-icon-info")} />;
+    case "info":
+        icon = (
+            <InfoIcon className={cx("tt-alert-icon", "tt-alert-icon-info")} />
+        );
+        break;
+    case "success":
+        icon = (
+            <SuccessIcon className={cx("tt-alert-icon", "tt-alert-icon-success")} />
+        );
+        break;
+    case "warning":
+        icon = (
+            <WarningIcon className={cx("tt-alert-icon", "tt-alert-icon-warning")} />
+        );
+        break;
+    case "error":
+        icon = (
+            <ErrorIcon className={cx("tt-alert-icon", "tt-alert-icon-error")} />
+        );
+        break;
+    default:
+        icon = (
+            <InfoIcon className={cx("tt-alert-icon", "tt-alert-icon-info")} />
+        );
+        break;
     }
-  };
 
-  return (
-    <div className={cx("tt-alert", `tt-alert-${variant}`, size, className)}>
-      {hideIcon ? null : chooseIcon()}
-      {children}
-    </div>
-  );
+    return (
+        <div className={cx("tt-alert", `tt-alert-${variant}`, size, className)}>
+            {hideIcon ? null : icon}
+            {children}
+        </div>
+    );
 };

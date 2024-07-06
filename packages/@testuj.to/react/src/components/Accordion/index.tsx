@@ -48,21 +48,31 @@ export const AccordionItem = ({ title, content, value, variant }: AccordionItemP
     );
 };
 
-const AccordionTrigger = React.forwardRef(
-    ({ children, className, ...props }: AccordionTriggerProps, forwardedRef: React.ForwardedRef<HTMLButtonElement>) => (
+const AccordionTrigger = React.forwardRef(({ children, className, ...props }: AccordionTriggerProps, forwardedRef: React.ForwardedRef<HTMLButtonElement>) => {
+    return (
         <RadixAccordion.Header className="tt-accordion-header">
-            <RadixAccordion.Trigger className={cx("tt-accordion-trigger", className)} {...props} ref={forwardedRef}>
+            <RadixAccordion.Trigger
+                {...props}
+                ref={forwardedRef}
+                className={cx("tt-accordion-trigger", className)}
+            >
                 {children}
                 <ChevronDownIcon className="tt-accordion-chevron" aria-hidden />
             </RadixAccordion.Trigger>
         </RadixAccordion.Header>
-    )
-);
+    );
+});
 
-const AccordionContent = React.forwardRef(
-    ({ children, className, ...props }: AccordionContentProps, forwardedRef: React.ForwardedRef<HTMLDivElement>) => (
-        <RadixAccordion.Content className={cx("tt-accordion-content", className)} {...props} ref={forwardedRef}>
-            <div className="tt-accordion-inner-content">{children}</div>
+const AccordionContent = React.forwardRef(({ children, className, ...props }: AccordionContentProps, forwardedRef: React.ForwardedRef<HTMLDivElement>) => {
+    return (
+        <RadixAccordion.Content
+            {...props}
+            ref={forwardedRef}
+            className={cx("tt-accordion-content", className)}
+        >
+            <div className="tt-accordion-inner-content">
+                {children}
+            </div>
         </RadixAccordion.Content>
-    )
-);
+    );
+});

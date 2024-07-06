@@ -1,23 +1,22 @@
+import { ReactNode } from "react";
+import { Root, List, Trigger, Content } from "@radix-ui/react-tabs";
+import cx from "classnames";
 
-import { ReactNode } from 'react'
-import { Root, List, Trigger, Content } from '@radix-ui/react-tabs'
-import cx from 'classnames'
-
-import './styles.css'
+import "./styles.css";
 
 export interface TabsProps {
-    defaultKey?: string
-    ariaLabel?: string
+    defaultKey?: string;
+    ariaLabel?: string;
     tabs: {
-        key: string
-        label: ReactNode
-        content: ReactNode
-    }[]
-    onChange?(key: string)
+        key: string;
+        label: ReactNode;
+        content: ReactNode;
+    }[];
+    onChange?(key: string);
 }
 
 export const Tabs = ({ defaultKey, ariaLabel, tabs, onChange }: TabsProps) => {
-    const _defaultKey = defaultKey || (tabs?.length > 0 ? tabs[0].key : null)
+    const _defaultKey = defaultKey || (tabs?.length > 0 ? tabs[0].key : null);
 
     return (
         <Root
@@ -31,6 +30,7 @@ export const Tabs = ({ defaultKey, ariaLabel, tabs, onChange }: TabsProps) => {
             >
                 {(tabs || []).map((tab, index) => (
                     <Trigger
+                        key={`${index}${tab?.key}`}
                         className={cx('tt-tab')}
                         value={tab?.key}
                     >
@@ -40,6 +40,7 @@ export const Tabs = ({ defaultKey, ariaLabel, tabs, onChange }: TabsProps) => {
             </List>
             {(tabs || []).map((tab, index) => (
                 <Content
+                    key={`${index}${tab?.key}`}
                     className={cx('tt-tabs-content')}
                     value={tab?.key}
                 >
@@ -47,5 +48,5 @@ export const Tabs = ({ defaultKey, ariaLabel, tabs, onChange }: TabsProps) => {
                 </Content>
             ))}
         </Root>
-    )
-}
+    );
+};

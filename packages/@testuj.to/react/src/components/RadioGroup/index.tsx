@@ -1,24 +1,23 @@
+import { Root, Item, Indicator } from "@radix-ui/react-radio-group";
+import cx from "classnames";
 
-import { Root, Item, Indicator } from '@radix-ui/react-radio-group'
-import cx from 'classnames'
-
-import './styles.css'
+import "./styles.css";
 
 export interface RadioGroupProps<Value> {
-    ariaLabel?: string
+    ariaLabel?: string;
     options: {
-        label: string
-        value: Value
-    }[]
-    value: Value
-    onChange?(value: Value)
-    orientation?: 'horizontal' | 'vertical'
+        label: string;
+        value: Value;
+    }[];
+    orientation?: "horizontal" | "vertical";
+    value: Value;
+    onChange?(value: Value);
 }
 
-export const RadioGroup = <Value extends string = string>({ options, value, ariaLabel, onChange, orientation }: RadioGroupProps<Value>) => {
+export const RadioGroup = <Value extends string = string>({ options, value, ariaLabel, orientation, onChange }: RadioGroupProps<Value>) => {
     return (
         <Root
-            className={cx('tt-radio-group', orientation)}
+            className={cx("tt-radio-group", orientation)}
             value={value}
             aria-label={ariaLabel}
             onValueChange={onChange}
@@ -26,17 +25,17 @@ export const RadioGroup = <Value extends string = string>({ options, value, aria
             {options.map((option, index) => (
                 <div
                     key={`${index}${option?.value}`}
-                    className={cx('tt-radio')}
+                    className={cx("tt-radio")}
                 >
                     <Item
-                        className={cx('tt-radio-item')}
+                        className={cx("tt-radio-item")}
                         id={`${index}${option.value}`}
                         value={option.value}
                     >
-                        <Indicator className={cx('tt-radio-indicator')} />
+                        <Indicator className={cx("tt-radio-indicator")} />
                     </Item>
                     <label
-                        className={cx('tt-radio-label')}
+                        className={cx("tt-radio-label")}
                         htmlFor={`${index}${option.value}`}
                     >
                         {option.label}
@@ -44,5 +43,5 @@ export const RadioGroup = <Value extends string = string>({ options, value, aria
                 </div>
             ))}
         </Root>
-    )
-}
+    );
+};

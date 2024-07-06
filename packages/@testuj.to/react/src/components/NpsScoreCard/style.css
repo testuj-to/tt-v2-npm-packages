@@ -24,20 +24,22 @@
     justify-content: space-between;
     gap: 50px;
 }
+
 .tt-gauge-chart-progress-container {
     display: flex ;
     flex-direction: column;
     justify-content: flex-end;
     gap: 20px;
     width: 100%;
-
 }
+
 .tt-gauge-chart-container {
     width: 186px;
     height: 156px;
     position: relative;
     margin-right: 28px
 }
+
 .tt-gauge-chart-pointer-container {
     width: 161px;
     height: 161px;
@@ -45,11 +47,13 @@
     left: 12.5px;
     top: 12.5px;
 }
+
 .tt-gauge-chart-visualizer {
     width: 186px;
     height: 186px;
     clip-path: url(#clip-path);
 }
+
 .tt-gauge-chart-min {
     position: absolute;
     left: -17px;
@@ -57,6 +61,7 @@
     font-size: 12px;
     color: #888E98;
 }
+
 .tt-gauge-chart-max {
     position: absolute;
     right: -12px;
@@ -64,6 +69,7 @@
     font-size: 12px;
     color: #888E98;
 }
+
 .tt-gauge-chart-total-container {
     position: absolute;
     left: 50%;
@@ -73,12 +79,14 @@
     flex-direction: column;
     align-items: center;
 }
+
 .tt-gauge-chart-total {
     font-size: 36px;
     font-weight: 600;
     color: #0D1A33;
     margin: 0;
 }
+
 .tt-gauge-chart-total-desc {
     font-size: 12px;
     color: #888E98;
@@ -86,6 +94,7 @@
     text-align: center;
     width: min-content;
 }
+
 .tt-gauge-chart-pointer {
     width: 35px;
     height: 35px;
@@ -99,12 +108,14 @@
     align-items: center;
     box-shadow: -3px 1px 4px #00000029;
 }
+
 @container ttgaugechart (max-width: 589px) {
     .tt-gauge-chart-partition {
         flex-direction: column;
         align-items: center;
         gap: 20px;
     }
+
     .tt-gauge-chart-container {
         margin-right: unset;
     }
