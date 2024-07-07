@@ -9,7 +9,7 @@ export interface DropdownProps {
     items?: string[];
     itemsWrapperClassName?: string;
     itemClassName?: string;
-    onItemSelect?: (item: string) => void;
+    onItemSelect?(item: string): void;
 }
 
 export const Dropdown = ({
@@ -22,7 +22,10 @@ export const Dropdown = ({
 }: DropdownProps) => {
     return (
         <DropdownMenu.Root>
-            <DropdownMenu.Trigger asChild className={cx("tt-dropdown-trigger", className)}>
+            <DropdownMenu.Trigger
+                className={cx("tt-dropdown-trigger", className)}
+                asChild
+            >
                 {trigger}
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>

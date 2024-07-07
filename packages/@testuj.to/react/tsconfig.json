@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./build",
     "declarationDir": "./build/typings",
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "skipLibCheck": true
   },
   "include": ["./src"],
   "exclude": ["node_modules", "**/__tests__/*"],
