@@ -3,15 +3,28 @@ const path = require("path");
 const { listPackages } = require("../../../../scripts/listPackages");
 
 module.exports = {
-    framework: "@storybook/react",
-    stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+    framework: {
+        name: "@storybook/react-webpack5",
+        options: {}
+    },
+
+    stories: [
+        // "../src/**/*.mdx",
+        // "../src/**/*.stories.@(js|jsx|ts|tsx)"
+        "../src/components/VideoPlayer/VideoPlayer.stories.tsx"
+    ],
+
     addons: [
         "@storybook/addon-links",
         "@storybook/addon-essentials",
         "@storybook/addon-interactions",
+        "@storybook/addon-webpack5-compiler-swc"
     ],
-    managerEntries: ["./.storybook/ttContextAddon/register"],
-    webpackFinal: async (config, { configType }) => {
+
+    // managerEntries: [
+    //     "./.storybook/ttContextAddon/register",
+    // ],
+    webpackFinal: async(config, { configType }) => {
         const packages = listPackages();
 
         config.devServer = {
@@ -24,12 +37,18 @@ module.exports = {
             alias: {
                 ...(config.resolve || {}).alias,
                 "@lib": path.resolve(__dirname, "../build/lib"),
-                ...packages.reduce((aliases, package) => ({
+                ...packages.reduce((aliases, pkg) => ({
                     ...aliases,
-                    [package]: path.resolve(__dirname, "../build", package, "src"),
+                    [pkg]: path.resolve(__dirname, "../build", pkg, "src"),
                 }), {}),
             },
-            extensions: [...(config.resolve || {}).extensions, "*", ".mjs", ".js", ".json"],
+            extensions: [
+                ...(config.resolve || {}).extensions,
+                "*",
+                ".mjs",
+                ".js",
+                ".json",
+            ],
         };
 
         config.module.rules.push({
@@ -40,4 +59,10 @@ module.exports = {
 
         return config;
     },
+
+    docs: {},
+
+    typescript: {
+        reactDocgen: "react-docgen-typescript"
+    }
 };

@@ -223,3 +223,11 @@ export {
     type UserMenuProps,
     UserMenu,
 } from "./components/UserMenu";
+export {
+    type VideoFile,
+    type VideoFileDetails,
+    type VideoPlayerTranslations,
+    type VideoPlayerProps,
+    VideoPlayer,
+    PreviewedVideoPlayer,
+} from "./components/VideoPlayer";

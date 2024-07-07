@@ -1,6 +1,6 @@
 
-const { addons } = require("@storybook/addons");
+// const { addons } = require("@storybook/addons");
 
-const theme = require("./theme");
+// const theme = require("./theme");
 
-addons.setConfig({ theme });
+// addons.setConfig({ theme });

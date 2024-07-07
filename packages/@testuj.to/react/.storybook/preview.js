@@ -1,10 +1,10 @@
 
 const { defaultPresets } = require("../contextPresets");
 
-exports.parameters = {
-    actions: {
-        argTypesRegex: "^on[A-Z].*",
-    },
+export const parameters = {
+    // actions: {
+    //     argTypesRegex: "^on[A-Z].*",
+    // },
     controls: {
         matchers: {
             color: /(background|color)$/i,
@@ -15,3 +15,4 @@ exports.parameters = {
         presets: defaultPresets,
     },
 };
+export const tags = ["autodocs"];
