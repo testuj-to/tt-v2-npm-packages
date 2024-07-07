@@ -1,10 +1,10 @@
-import { MouseEventHandler } from "react";
+import React, { MouseEventHandler } from "react";
 
 export interface IconMaximizeProps {
     size?: string;
     color?: string;
     className?: string;
-    onClick?: MouseEventHandler<SVGElement>;
+    onClick?: MouseEventHandler<SVGSVGElement>;
 }
 
 export const IconMaximize = ({ size, color, className, onClick }: IconMaximizeProps) => {

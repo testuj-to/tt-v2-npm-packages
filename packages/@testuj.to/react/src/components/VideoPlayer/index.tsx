@@ -12,26 +12,32 @@ import Hls, { HlsConfig, Level, MediaPlaylist } from "hls.js";
 
 import "./styles.css";
 
-import { IconLoaderQuarter } from "./icons/IconLoaderQuarter";
-import { IconPlayerPauseFilled } from "./icons/IconPlayerPauseFilled";
-import { IconPlayerPlayFilled } from "./icons/IconPlayerPlayFilled";
-import { IconMinimize } from "./icons/IconMinimize";
-import { IconMaximize } from "./icons/IconMaximize";
-import { formatDuration } from "./utils";
-import { withVideoPreview } from "./preview";
-import { VolumeControl } from "./volumeControl";
+import { videoPlayerContext } from "./context";
+import { withVideoPreview, defaultTranslations } from "./preview";
+import { ProgressBar } from "./progressBar";
+import {
+    Controls,
+    PlayControl,
+    TimeControl,
+    VolumeControl,
+    FullscreenControl,
+} from "./controls";
 
 export interface VideoFile {
     src: string;
     isBeingProcessed?: boolean;
-    videoDetails?: VideoFileDetails;
+    videoDetails: VideoFileDetails;
 }
 
 export interface VideoFileDetails {
-    orientation: "landscape" | "portrait";
-    widthPx: number;
-    heightPx: number;
     durationMs: number;
+    widthPx?: number;
+    heightPx?: number;
+    orientation?: "landscape" | "portrait";
+}
+
+export interface VideoPlayerTranslations {
+    isBeingProcessed: string;
 }
 
 export interface VideoPlayerProps {
@@ -40,6 +46,8 @@ export interface VideoPlayerProps {
     hlsConfig?: HlsConfig;
     width?: number | string;
     height?: number | string;
+    translations?: VideoPlayerTranslations;
+    enableDebugLogs?: boolean;
 }
 
 export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>(({
@@ -48,11 +56,12 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
     hlsConfig,
     width,
     height,
+    translations = defaultTranslations,
+    enableDebugLogs,
     ...rest
 }, ref) => {
     const containerRef = useRef<HTMLDivElement>();
     const videoRef = useRef<HTMLVideoElement>();
-    const progressBarRef = useRef<HTMLDivElement>();
 
     const [audioTracks, setAudioTracks] = useState<MediaPlaylist[]>([]);
     const [subtitleTracks, setSubtitleTracks] = useState<MediaPlaylist[]>([]);
@@ -62,10 +71,8 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
     const [isWaiting, setIsWaiting] = useState(false);
     const [currentTimeSeconds, setCurrentTimeSeconds] = useState<number>();
     const [durationSeconds, setDurationSeconds] = useState<number>();
-    const [hoverTimeSeconds, setHoverTimeSeconds] = useState<number>(null);
-    const [hoverTimePercent, setHoverTimePercent] = useState<number>(null);
-    const [volume, setVolume] = useState<number>();
-    const [previousVolume, setPreviousVolume] = useState<number>();
+    const [volume, setVolume] = useState<number>(1);
+    const [previousVolume, setPreviousVolume] = useState<number>(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
     const [forceShowStrips, setForceShowStrips] = useState(false);
 
@@ -119,11 +126,6 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isPlaying]);
 
-    // const handleMouseMove = useCallback(() => {
-    //     const timeout = setTimeout(() => {
-    //     }, 2000);
-    // }, []);
-
     const handleEventLoadedMetadata = useCallback(() => {
         if (!videoRef?.current) {
             return;
@@ -153,17 +155,14 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
             return;
         }
 
+        setPreviousVolume(volume);
         setVolume(videoRef.current.volume);
-        setPreviousVolume(videoRef.current.volume);
-    }, [videoRef]);
+    }, [videoRef, volume]);
 
     const handleToggleVolume = useCallback(() => {
-        if (!videoRef?.current) {
-            return;
+        if (videoRef.current) {
+            videoRef.current.volume = previousVolume;
         }
-
-        setVolume(previousVolume);
-        setPreviousVolume(volume);
     }, [videoRef, previousVolume, volume]);
 
     useEffect(() => {
@@ -202,32 +201,6 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [videoRef]);
-
-    const handleProgressBarClick = useCallback((event: MouseEvent<HTMLDivElement>) => {
-        if (!videoRef?.current || !progressBarRef?.current) {
-            return;
-        }
-
-        const progressBarBoundingRect = progressBarRef.current.getBoundingClientRect();
-
-        videoRef.current.currentTime = durationSeconds * ((event.pageX - progressBarBoundingRect.x) / progressBarBoundingRect.width);
-    }, [videoRef, durationSeconds]);
-
-    const handleProgressBarMouseMove = useCallback((event: MouseEvent<HTMLDivElement>) => {
-        if (!progressBarRef?.current) {
-            return;
-        }
-
-        const progressBarBoundingRect = progressBarRef.current.getBoundingClientRect();
-
-        setHoverTimeSeconds(durationSeconds * ((event.pageX - progressBarBoundingRect.x) / progressBarBoundingRect.width));
-        setHoverTimePercent((((event.pageX - progressBarBoundingRect.x) / progressBarBoundingRect.width) * 10000) / 100);
-    }, [durationSeconds]);
-
-    const handleProgressBarMouseLeave = useCallback((event: MouseEvent<HTMLDivElement>) => {
-        setHoverTimeSeconds(null);
-        setHoverTimePercent(null);
-    }, []);
 
     const handlePlay = useCallback(() => {
         if (!videoRef?.current) {
@@ -312,7 +285,7 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleToggleFullScreen = useCallback(() => {
+    const handleToggleFullscreen = useCallback(() => {
         if (isFullscreen) {
             setIsFullscreen(false);
 
@@ -392,16 +365,24 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
             });
 
             hls.on(Hls.Events.FRAG_LOADED, (event, data) => {
-                console.log("fragment loaded:", data);
+                if (enableDebugLogs) {
+                    console.log("HLS - Fragment loaded:", data);
+                }
+
                 if (!data.frag.stats) {
+                    if (enableDebugLogs) {
+                        console.log("    - No stats");
+                    }
                     return;
                 };
 
-                console.log("Stats: loaded: " + data.frag.stats.loaded + " total: " + data.frag.stats.total);
+                if (enableDebugLogs) {
+                    console.log(`    - Stats: total=${data.frag.stats.total}; loaded=${data.frag.stats.loaded}`);
+                }
             });
 
             hls.on(Hls.Events.ERROR, async(event, err) => {
-                console.log("Hls error; event:", event);
+                console.log(`HLS - Error: fatal=${err?.fatal}; type=${err?.type}`);
                 console.error(err);
 
                 if (err.fatal) {
@@ -432,15 +413,7 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
                 currentHls.destroy();
             }
         };
-    }, [hlsConfig, videoRef, video?.src]);
-
-    const durationFormated = useMemo(() => {
-        return formatDuration(durationSeconds);
-    }, [durationSeconds]);
-
-    const currentTimeFormated = useMemo(() => {
-        return formatDuration(currentTimeSeconds, Math.floor(durationSeconds / 3600) >= 60);
-    }, [currentTimeSeconds, durationSeconds]);
+    }, [hlsConfig, videoRef, video?.src, enableDebugLogs]);
 
     const iconProps = {
         size: isFullscreen ? "34px" : "20px",
@@ -456,128 +429,61 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
     }
 
     return (
-        <div
-            ref={containerRef}
-            className={cx("tt-video-player-container", {
-                "tt-video-player-container-fullscreen": isFullscreen,
-            })}
-            style={{ width, height }}
-            onMouseMove={handleContainerMouseMove}
+        <videoPlayerContext.Provider
+            value={{
+                videoFile: video,
+                isWaiting,
+                isPlaying,
+                isFullscreen,
+                durationSeconds,
+                currentTimeSeconds,
+                volume,
+                iconProps,
+            }}
         >
-            <video
-                {...videoProps}
-                ref={videoRef}
-                className={cx("tt-video-player-video", videoProps?.className)}
-                controls={false}
-                onClick={handleTogglePlayback}
-            />
             <div
-                className={cx("tt-video-player-strips", {
-                    "tt-video-player-strips-hidden": !(!isPlaying || forceShowStrips),
+                ref={containerRef}
+                className={cx("tt-video-player-container", {
+                    "tt-video-player-container-fullscreen": isFullscreen,
                 })}
+                style={{ width, height }}
+                onMouseMove={handleContainerMouseMove}
             >
+                <video
+                    {...videoProps}
+                    ref={videoRef}
+                    className={cx("tt-video-player-video", videoProps?.className)}
+                    controls={false}
+                    onClick={handleTogglePlayback}
+                />
                 <div
-                    ref={progressBarRef}
-                    className="tt-video-player-progress-bar"
-                    onClick={handleProgressBarClick}
-                    onMouseMove={handleProgressBarMouseMove}
-                    onMouseLeave={handleProgressBarMouseLeave}
+                    className={cx("tt-video-player-strips", {
+                        "tt-video-player-strips-hidden": !(!isPlaying || forceShowStrips),
+                    })}
                 >
-                    <div
-                        className="tt-video-player-progress-bar-current"
-                        style={{
-                            width: `${Math.round((currentTimeSeconds / durationSeconds) * 10000) / 100}%`,
-                        }}
-                    />
-                    {hoverTimeSeconds && (
-                        <div
-                            className="tt-video-player-progress-bar-current-label"
-                            style={{ left: `${hoverTimePercent}%` }}
-                        >
-                            {formatDuration(hoverTimeSeconds, Math.floor(durationSeconds / 3600) >= 60)}
-                        </div>
-                    )}
-                </div>
-                <div className="tt-video-player-controls">
-                    <div className="tt-video-player-controls-left">
-                        {isWaiting ? (
-                            <IconLoaderQuarter
-                                {...iconProps}
-                                className="tt-video-player-control tt-video-player-control-rotating"
-                            />
-                        ) : (
-                            isPlaying ? (
-                                <IconPlayerPauseFilled
-                                    {...iconProps}
-                                    className="tt-video-player-control"
-                                    onClick={handlePause}
-                                />
-                            ) : (
-                                <IconPlayerPlayFilled
-                                    {...iconProps}
-                                    className="tt-video-player-control"
-                                    onClick={handlePlay}
-                                />
-                            )
-                        )}
-                    </div>
-                    <div className="tt-video-player-controls-right">
-                        <div className="tt-video-player-control tt-video-player-control-text">
-                            {currentTimeFormated} / {durationFormated}
-                        </div>
-                        <VolumeControl
-                            value={volume}
-                            iconProps={iconProps}
-                            onChange={handleVolumeChange}
+                    <ProgressBar videoEl={videoRef?.current} />
+                    <Controls>
+                        <PlayControl
+                            onPlay={handlePlay}
+                            onPause={handlePause}
                         />
-                        {/* <HoverCard width={280} shadow="md">
-                            <HoverCard.Target>
-                                {volume <= 0 ? (
-                                    <IconVolumeOff
-                                        {...iconProps}
-                                        className={styles.control}
-                                        onClick={handleToggleVolume}
-                                    />
-                                ) : (
-                                    volume <= 0.5 ? (
-                                        <IconVolume2
-                                            {...iconProps}
-                                            className={styles.control}
-                                            onClick={handleToggleVolume}
-                                        />
-                                    ) : (
-                                        <IconVolume
-                                            {...iconProps}
-                                            className={styles.control}
-                                            onClick={handleToggleVolume}
-                                        />
-                                    )
-                                )}
-                            </HoverCard.Target>
-                            <HoverCard.Dropdown>
-                                <VolumeSlider
-                                    value={volume}
-                                    onChange={handleVolumeChange}
-                                />
-                            </HoverCard.Dropdown>
-                        </HoverCard> */}
-                        {isFullscreen ? (
-                            <IconMinimize
-                                {...iconProps}
-                                className="tt-video-player-control"
-                                onClick={handleToggleFullScreen}
-                            />
-                        ) : (
-                            <IconMaximize
-                                {...iconProps}
-                                className="tt-video-player-control"
-                                onClick={handleToggleFullScreen}
-                            />
-                        )}
-                    </div>
+                        <TimeControl
+                            position="right"
+                        />
+                        <VolumeControl
+                            position="right"
+                            container={containerRef?.current}
+                            onChange={handleVolumeChange}
+                            onToggle={handleToggleVolume}
+                        />
+                        <FullscreenControl
+                            position="right"
+                            onToggleFullscreen={handleToggleFullscreen}
+                        />
+                    </Controls>
                 </div>
             </div>
-        </div>
+        </videoPlayerContext.Provider>
     );
 });
 

@@ -1,15 +1,25 @@
-import { MouseEventHandler } from "react";
+import React, { MouseEventHandler, forwardRef } from "react";
 
 export interface IconVolumeProps {
     size?: string;
     color?: string;
     className?: string;
-    onClick?: MouseEventHandler<SVGElement>;
+    onClick?: MouseEventHandler<SVGSVGElement>;
+    onMouseOver?: MouseEventHandler<SVGSVGElement>;
+    onMouseLeave?: MouseEventHandler<SVGSVGElement>;
 }
 
-export const IconVolume = ({ size, color, className, onClick }: IconVolumeProps) => {
+export const IconVolume = forwardRef<SVGSVGElement, IconVolumeProps>(({
+    size,
+    color,
+    className,
+    onClick,
+    onMouseOver,
+    onMouseLeave,
+}, ref) => {
     return (
         <svg
+            ref={ref}
             xmlns="http://www.w3.org/2000/svg"
             width={size || "24"}
             height={size || "24"}
@@ -21,6 +31,8 @@ export const IconVolume = ({ size, color, className, onClick }: IconVolumeProps)
             strokeLinejoin="round"
             className={className}
             onClick={onClick}
+            onMouseOver={onMouseOver}
+            onMouseLeave={onMouseLeave}
         >
             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
             <path d="M15 8a5 5 0 0 1 0 8" />
@@ -28,4 +40,4 @@ export const IconVolume = ({ size, color, className, onClick }: IconVolumeProps)
             <path d="M6 15h-2a1 1 0 0 1 -1 -1v-4a1 1 0 0 1 1 -1h2l3.5 -4.5a.8 .8 0 0 1 1.5 .5v14a.8 .8 0 0 1 -1.5 .5l-3.5 -4.5" />
         </svg>
     );
-};
+});

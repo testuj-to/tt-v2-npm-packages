@@ -1,4 +1,6 @@
 
+import type { VideoFile } from ".";
+
 export const formatDuration = (durationSeconds: number, forceIncludeHours: boolean = false): string => {
     if (typeof durationSeconds !== "number") {
         return "00:00";
@@ -24,4 +26,32 @@ export const formatDuration = (durationSeconds: number, forceIncludeHours: boole
         minimumIntegerDigits: 2,
         useGrouping: false,
     })}:${durationFormated}` : durationFormated;
+};
+
+export const parsePreviewImage = (
+    video: VideoFile,
+    timeMs: number,
+    height: number = 256,
+) => {
+    if (video?.isBeingProcessed || !/\.m3u8$/.test(video?.src)) {
+        return null;
+    }
+
+    const durationMs = video?.videoDetails?.durationMs || 0;
+    const lastFrameTimeMs = durationMs - (durationMs % 1500);
+
+    let frameIndex = "0000000";
+    if (timeMs >= lastFrameTimeMs) {
+        frameIndex = Math
+            .floor(lastFrameTimeMs / 1500)
+            .toString()
+            .padStart(7, "0");
+    } else if (timeMs >= 750) {
+        frameIndex = Math
+            .floor((timeMs + 750) / 1500)
+            .toString()
+            .padStart(7, "0");
+    }
+
+    return String(video.src).replace(/vid/, "img/vid").replace(/\.m3u8$/, `.${frameIndex}.jpg?h=${height}`);
 };
