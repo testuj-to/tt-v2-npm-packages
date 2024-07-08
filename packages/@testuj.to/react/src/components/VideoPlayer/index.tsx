@@ -46,6 +46,8 @@ export interface VideoPlayerProps {
     hlsConfig?: HlsConfig;
     width?: number | string;
     height?: number | string;
+    controlSize?: string | number;
+    progressBarPreviewHeight?: string | number;
     translations?: VideoPlayerTranslations;
     enableDebugLogs?: boolean;
 }
@@ -56,6 +58,8 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
     hlsConfig,
     width,
     height,
+    controlSize,
+    progressBarPreviewHeight,
     translations = defaultTranslations,
     enableDebugLogs,
     ...rest
@@ -416,7 +420,7 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
     }, [hlsConfig, videoRef, video?.src, enableDebugLogs]);
 
     const iconProps = {
-        size: isFullscreen ? "34px" : "20px",
+        size: isFullscreen ? "34px" : (controlSize as string || "20px"),
         // color: "white",
     };
 
@@ -461,7 +465,10 @@ export const VideoPlayer = React.forwardRef<HTMLButtonElement, VideoPlayerProps>
                         "tt-video-player-strips-hidden": !(!isPlaying || forceShowStrips),
                     })}
                 >
-                    <ProgressBar videoEl={videoRef?.current} />
+                    <ProgressBar
+                        videoEl={videoRef?.current}
+                        previewHeight={progressBarPreviewHeight}
+                    />
                     <Controls>
                         <PlayControl
                             onPlay={handlePlay}

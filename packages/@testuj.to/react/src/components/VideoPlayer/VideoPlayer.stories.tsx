@@ -18,7 +18,10 @@ export default {
 export const Previewed: StoryObj<typeof PreviewedVideoPlayer> = {
     args: {
         enableDebugLogs: false,
-        height: 320,
+        // height: 320,
+        height: 120,
+        controlSize: "16px",
+        progressBarPreviewHeight: "50px",
         // video: {
         //     src: "https://btcdn.org/vid/user/6159df69a18c4aa1a74883b75112d040/6159df69a18c4aa1a74883b75112d040.m3u8",
         //     isBeingProcessed: false,
