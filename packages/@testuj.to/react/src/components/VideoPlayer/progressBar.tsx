@@ -3,7 +3,6 @@ import React, {
     useCallback,
     useRef,
     useState,
-    useEffect,
 } from "react";
 
 import { formatDuration, parsePreviewImage } from "./utils";
@@ -11,9 +10,10 @@ import { useVideoPlayerContext } from "./context";
 
 export interface ProgressBarProps {
     videoEl: HTMLVideoElement;
+    previewHeight?: string | number;
 }
 
-export const ProgressBar = ({ videoEl }: ProgressBarProps) => {
+export const ProgressBar = ({ videoEl, previewHeight }: ProgressBarProps) => {
     const { videoFile, durationSeconds, currentTimeSeconds } = useVideoPlayerContext();
 
     const progressBarRef = useRef<HTMLDivElement>();
@@ -82,6 +82,7 @@ export const ProgressBar = ({ videoEl }: ProgressBarProps) => {
                         <img
                             src={previewImageSrc}
                             className="tt-video-player-progress-bar-preview"
+                            style={{ height: previewHeight }}
                         />
                         <div className="tt-video-player-progress-bar-preview-label">
                             {formatDuration(hoverTimeSeconds, Math.floor(durationSeconds / 3600) >= 60)}
