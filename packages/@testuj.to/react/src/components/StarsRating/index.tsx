@@ -26,7 +26,7 @@ export const StarsRating = ({ rating, onChange, readOnly, className, starSize, n
         }
 
         onChange?.(value);
-    }, []);
+    }, [onChange, readOnly]);
 
     const handleHover = useCallback((value: number) => {
         if (readOnly) {
