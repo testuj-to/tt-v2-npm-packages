@@ -1,5 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { CheckIcon, TriangleDownIcon, TriangleUpIcon } from "@radix-ui/react-icons";
 
 import "./styles.css";
@@ -32,8 +32,9 @@ export const DropdownSelect = ({
     const isChecked = (item: SelectItem) =>
         selectedItems.some((selectedItem) => selectedItem.value === item.value);
 
-    const handleCheckItem = (item: SelectItem) => {
-        const itemIndex = selectedItems.findIndex((selectedItem) => selectedItem.value === item.value);
+    const handleCheckItem = useCallback((item: SelectItem) => {
+        const itemIndex = selectedItems.findIndex(selectedItem =>
+            selectedItem.value === item.value);
         const newSelectedItems = [...selectedItems];
 
         if (itemIndex === -1) {
@@ -44,7 +45,7 @@ export const DropdownSelect = ({
 
         setSelectedItemsLocal(newSelectedItems);
         onSelectionChange?.(newSelectedItems);
-    };
+    }, [JSON.stringify(selectedItems)]);
 
     return (
         <DropdownMenu.Root
@@ -78,8 +79,10 @@ export const DropdownSelect = ({
                             key={item.value}
                             className="tt-dropdownSelect-item"
                             checked={isChecked(item)}
-                            onSelect={(e) => e.preventDefault()}
-                            onCheckedChange={() => handleCheckItem(item)}
+                            onSelect={event =>
+                                event?.preventDefault?.()}
+                            onCheckedChange={() =>
+                                handleCheckItem(item)}
                         >
                             <div className="tt-dropdownSelect-checkbox-wrapper">
                                 <DropdownMenu.ItemIndicator className="tt-dropdownSelect-checkbox-checked">

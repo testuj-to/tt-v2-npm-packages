@@ -34,7 +34,7 @@ export const StarsRating = ({ rating, onChange, readOnly, className, starSize, n
         }
 
         setRatingHover(value);
-    }, []);
+    }, [readOnly]);
 
     return (
         <div className={className}>

@@ -5,11 +5,11 @@ import "./styles.css";
 
 export interface RadioGroupProps<Value> {
     ariaLabel?: string;
+    orientation?: "horizontal" | "vertical";
     options: {
         label: string;
         value: Value;
     }[];
-    orientation?: "horizontal" | "vertical";
     value: Value;
     onChange?(value: Value);
 }

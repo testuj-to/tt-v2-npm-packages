@@ -15,7 +15,7 @@ export const Progress = ({ value, maxValue, color, text }: ProgressProps) => {
         return value / maxValue * 100;
     }, [value, maxValue]);
 
-    return(
+    return (
         <div className={cx("tt-gauge-chart-progress")}>
             <div
                 style={{

@@ -1,6 +1,6 @@
 {
   "name": "@testuj.to/react",
-  "version": "0.0.166",
+  "version": "0.0.167",
   "description": "",
   "license": "MIT",
   "author": {
@@ -69,12 +69,15 @@
     "@storybook/react-webpack5": "^8.1.11",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/theming": "^8.1.11",
+    "@testing-library/dom": "^10.3.1",
+    "@testing-library/react": "^16.0.0",
     "@types/lodash.get": "^4.4.7",
     "@types/lodash.merge": "^4.6.7",
     "@types/react": "^18.0.28",
     "@types/react-helmet": "^6.1.6",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.17.0",
+    "jest": "^29.7.0",
     "memoizerific": "^1.11.3",
     "react": "^18.2.0",
     "react-docgen-typescript-plugin": "^1.0.8",

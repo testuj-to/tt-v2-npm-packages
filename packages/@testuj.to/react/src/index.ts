@@ -148,10 +148,6 @@ export {
     RatingBarChart,
 } from "./components/RatingBarChart";
 export {
-    type RegistredCampaignCardProps,
-    RegistredCampaignCard,
-} from "./components/RegistredCampaignCard";
-export {
     type ReviewProps,
     ReviewComponent,
 } from "./components/ReviewComponent";

@@ -8,10 +8,10 @@ export interface FutureCampaignCardProps {
     image?: React.ReactNode;
     liked?: boolean;
     hideLikeButton?: boolean;
-    t: (key: string, args?: any) => string;
-    onClick?: () => void;
-    onDoubleClick?: () => void;
-    onLikeClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+    t(key: string, args?: any): string;
+    onClick?(): void;
+    onDoubleClick?(): void;
+    onLikeClick?(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void;
 }
 
 export const FutureCampaignCard = ({

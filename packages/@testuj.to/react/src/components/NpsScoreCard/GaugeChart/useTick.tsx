@@ -1,29 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useTick = (value: number) => {
     const parsedValue = parseFloat(value.toFixed(0));
     const [currentValue, setCurrentValue] = useState(-100);
-    const [localTimeout, setLocalTimeout] = useState<any>();
+    const timeoutRef = useRef<any>();
 
     const animate = (currentValue: number) => {
-        clearTimeout(localTimeout);
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
 
         if (Math.floor(parsedValue) !== Math.floor(currentValue)) {
             if (parsedValue > currentValue) {
                 setCurrentValue(currentValue + 0.8);
-                setLocalTimeout(setTimeout(() => {
+                timeoutRef.current = setTimeout(() => {
                     animate(currentValue + 0.8);
-                }, 1));
+                }, 1);
             }
 
             if (parsedValue < currentValue) {
                 setCurrentValue(currentValue - 0.8);
-                setLocalTimeout(setTimeout(() => {
+                timeoutRef.current = setTimeout(() => {
                     animate(currentValue - 0.8);
-                }, 1));
+                }, 1);
             }
         }
-    }
+    };
 
     useEffect(() => {
         animate(currentValue);
@@ -32,4 +33,4 @@ export const useTick = (value: number) => {
     return {
         currentValue,
     };
-}
+};
