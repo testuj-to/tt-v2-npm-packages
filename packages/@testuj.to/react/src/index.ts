@@ -98,10 +98,6 @@ export {
     FormItem,
 } from "./components/FormItem";
 export {
-    type FutureCampaignCardProps,
-    FutureCampaignCard,
-} from "./components/FutureCampaignCard";
-export {
     type HighlightedTextProps,
     HighlightedText,
 } from "./components/HighlightedText";
