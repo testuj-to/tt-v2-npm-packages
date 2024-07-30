@@ -127,10 +127,6 @@ export {
     NpsScoreCard,
 } from "./components/NpsScoreCard";
 export {
-    type CampaignCardProps,
-    CampaignCard,
-} from "./components/CampaignCard";
-export {
     type ProgressBarProps,
     ProgressBar,
 } from "./components/ProgressBar";
