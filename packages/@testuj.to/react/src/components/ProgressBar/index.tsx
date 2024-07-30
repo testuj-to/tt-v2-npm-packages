@@ -47,7 +47,7 @@ export const ProgressBar = ({
         <div className={cx("tt-progress-bar-wrapper", className)}>
             <div
                 className={cx("tt-progress-bar")}
-                style={{ backgroundColor: backgroundColor }}
+                style={{ backgroundColor }}
             >
                 {breakpoints?.map((breakpoint: number | Breakpoint, index) => {
                     if (typeof breakpoint === "number") {
@@ -55,7 +55,10 @@ export const ProgressBar = ({
                             <div
                                 key={index}
                                 className="tt-progress-bar-breakpoint"
-                                style={{ left: `${breakpoint}%`, backgroundColor: breakpointColor }}
+                                style={{
+                                    left: `${breakpoint}%`,
+                                    backgroundColor: breakpointColor,
+                                }}
                             />
                         );
                     }

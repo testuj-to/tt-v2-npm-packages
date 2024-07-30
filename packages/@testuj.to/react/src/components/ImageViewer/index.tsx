@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import "./styles.css";
 
@@ -28,28 +28,28 @@ export const ImageViewer: React.FC<ImageViewerProps> = ({
         setIsLoaded(true);
     };
 
+    const handleWindowKeyDown = useCallback((event: KeyboardEvent) => {
+        if (event.key === "ArrowRight") {
+            onClickNext?.();
+            return;
+        }
+
+        if (event.key === "ArrowLeft") {
+            onClickPrevious?.();
+            return;
+        }
+
+        if (event.key === "Escape") {
+            onClose?.();
+            return;
+        }
+    }, [onClickNext, onClickPrevious, onClose]);
+
     useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "ArrowRight") {
-                onClickNext?.();
-                return;
-            }
-
-            if (e.key === "ArrowLeft") {
-                onClickPrevious?.();
-                return;
-            }
-
-            if (e.key === "Escape") {
-                onClose?.();
-                return;
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
+        window.addEventListener("keydown", handleWindowKeyDown);
 
         return () => {
-            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("keydown", handleWindowKeyDown);
         };
     }, [onClickNext, onClickPrevious, onClose]);
 

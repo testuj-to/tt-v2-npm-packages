@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import cx from "classnames";
 
 import "./styles.css";
@@ -8,18 +8,14 @@ import { IconPlus } from "./IconPlus";
 export interface FileUploadAreaProps {
     text?: string;
     className?: string;
-    onChange?: (value: FileList) => void;
+    onChange?(value: FileList): void;
 }
 
-export const FileUploadArea = ({ onChange, text, className }: FileUploadAreaProps) => {
+export const FileUploadArea = ({ text, className, onChange }: FileUploadAreaProps) => {
     const [dragActive, setDragActive] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleFiles = (files: FileList) => {
-        onChange?.(files);
-    };
-
-    const handleDrag = (event: React.DragEvent<HTMLDivElement | HTMLFormElement>) => {
+    const handleDrag = useCallback((event: React.DragEvent<HTMLDivElement | HTMLFormElement>) => {
         event?.preventDefault?.();
         event?.stopPropagation?.();
 
@@ -31,29 +27,30 @@ export const FileUploadArea = ({ onChange, text, className }: FileUploadAreaProp
         if (event?.type === "dragleave") {
             setDragActive(false);
         }
-    };
+    }, [setDragActive]);
 
-    const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event?.preventDefault?.();
         event?.stopPropagation?.();
+
         setDragActive(false);
 
         if (event?.dataTransfer?.files && event?.dataTransfer?.files?.[0]) {
-            handleFiles(event?.dataTransfer?.files);
+            onChange?.(event?.dataTransfer?.files);
         }
-    };
+    }, [setDragActive, onChange]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         event?.preventDefault?.();
 
         if (event?.target?.files && event?.target?.files?.[0]) {
-            handleFiles(event?.target?.files);
+            onChange?.(event?.target?.files);
         }
-    };
+    }, [setDragActive, onChange]);
 
-    const onButtonClick = () => {
+    const onButtonClick = useCallback(() => {
         inputRef.current?.click?.();
-    };
+    }, [inputRef?.current]);
 
     return (
         <form

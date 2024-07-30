@@ -33,8 +33,8 @@ export const Checkbox = ({
                 event.preventDefault();
 
                 if (variant !== "default") {
-                    handleChange(!value)
-                };
+                    handleChange(!value);
+                }
             }}
         >
             <Root

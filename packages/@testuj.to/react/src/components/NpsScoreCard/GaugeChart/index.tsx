@@ -12,12 +12,12 @@ export interface GaugeChartProps {
     t(key: string, args?: any): string;
 }
 
-export const GaugeChart = ({ haters: x, neutrals: y, promoters: z,orangeThreshold, greenThreshold, t }: GaugeChartProps) => {
+export const GaugeChart = ({ haters: x, neutrals: y, promoters: z, orangeThreshold, greenThreshold, t }: GaugeChartProps) => {
     const [gradient, setGradient] = useState("conic-gradient(from 180deg at 50% 60%, #FF001D, #FF001D 0%, #FAB553 0%, #FAB553 0%, #029218 0%, #029218 100%)");
     const [left, setLeft] = useState("");
     const [bottom, setBottom] = useState("");
     const [totalScore, setTotalScore] = useState(-100);
-    const {currentValue} = useTick(totalScore);
+    const { currentValue } = useTick(totalScore);
 
     const bgColor = useMemo(()=>{
         if (currentValue > greenThreshold) {
@@ -71,10 +71,20 @@ export const GaugeChart = ({ haters: x, neutrals: y, promoters: z,orangeThreshol
                 </clipPath>
             </svg>
             <div className={cx("tt-gauge-chart-container")}>
-                <div style={{backgroundImage: gradient}} className={cx("tt-gauge-chart-visualizer")}>
+                <div
+                    className={cx("tt-gauge-chart-visualizer")}
+                    style={{ backgroundImage: gradient }}
+                >
                 </div>
                 <div className={cx("tt-gauge-chart-pointer-container")}>
-                    <div style={{left: left, bottom: bottom, backgroundColor: bgColor}} className={cx("tt-gauge-chart-pointer")}>
+                    <div
+                        className={cx("tt-gauge-chart-pointer")}
+                        style={{
+                            backgroundColor: bgColor,
+                            bottom,
+                            left,
+                        }}
+                    >
                         <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8 14.2222C7.86546 14.2223 7.73264 14.1919 7.61156 14.1333C7.30133 13.9822 0 10.3742 0 4.44439C1.19066e-05 3.56542 0.260649 2.70619 0.748956 1.97535C1.23726 1.2445 1.93131 0.674854 2.74335 0.338432C3.55538 0.0020108 4.44894 -0.0860775 5.31103 0.0853055C6.17313 0.256688 6.96505 0.679847 7.58667 1.30128L8 1.71461L8.41333 1.30128C9.03495 0.679847 9.82687 0.256688 10.689 0.0853055C11.5511 -0.0860775 12.4446 0.0020108 13.2567 0.338432C14.0687 0.674854 14.7627 1.2445 15.251 1.97535C15.7394 2.70619 16 3.56542 16 4.44439C16 10.3519 8.70044 13.9804 8.38933 14.1333C8.26798 14.1921 8.13484 14.2224 8 14.2222Z" fill="white"/>
                         </svg>
