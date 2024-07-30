@@ -177,11 +177,6 @@ export {
     Tag,
 } from "./components/Tag";
 export {
-    type TestedProductCardProps,
-    type TestedProductCardInfo,
-    TestedProductCard,
-} from "./components/TestedProductCard";
-export {
     type TextProps,
     Text,
 } from "./components/Text";
