@@ -14,23 +14,18 @@
     margin-top: 16px;
 }
 
-.tt-state-progress-list-item_content {
+.tt-state-progress-list-item-content {
     font: var(--font-normal-14-600);
     color: var(--color-text);
 }
 
-.tt-state-progress-list-item_content.active {
+.tt-state-progress-list-item-content.active {
     color: var(--color-info);
 }
 
-.tt-state-progress-list-item_content.done {
-}
-
-.tt-state-progress-list-item_content.disabled {
-}
-
-.tt-state-progress-list-item_content.error {
-}
+.tt-state-progress-list-item-content.done {}
+.tt-state-progress-list-item-content.disabled {}
+.tt-state-progress-list-item-content.error {}
 
 .tt-state-progress-indicator {
     display: flex;
@@ -53,4 +48,12 @@
 
 .tt-state-progress-indicator.error {
     color: var(--color-error);
+}
+
+.tt-state-progress-list-item-note {
+    background: #f7f8fa 0% 0% no-repeat padding-box;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font: var(--font-normal-14);
 }
