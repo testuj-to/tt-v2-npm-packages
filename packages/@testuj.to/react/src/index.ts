@@ -161,6 +161,7 @@ export {
 } from "./components/SelectDate";
 export {
     type StateProgressListProps,
+    type StateProgressListItem,
     ProgressState,
     StateProgressList,
 } from "./components/StateProgressList";
