@@ -35,11 +35,15 @@ export const Item = ({ state, note, children, onClick }: ItemProps) => {
                 <div className={cx("tt-state-progress-indicator", state)}>
                     {icons[state]}
                 </div>
-                <div className={cx("tt-state-progress-list-item_content", state)}>
+                <div className={cx("tt-state-progress-list-item-content", state)}>
                     {children}
                 </div>
             </li>
-            {note}
+            {!!note && (
+                <div className="tt-state-progress-list-item-note">
+                    {note}
+                </div>
+            )}
         </>
     );
 };
