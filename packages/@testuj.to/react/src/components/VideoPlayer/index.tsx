@@ -3,7 +3,6 @@ import React, {
     type VideoHTMLAttributes,
     useCallback,
     useEffect,
-    useMemo,
     useRef,
     useState,
 } from "react";
