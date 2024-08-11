@@ -16,7 +16,6 @@ export {
     type Theme,
     useTheme,
 } from "./hooks/theme";
-export { usePagination } from "./hooks/pagination";
 
 export { cssifyTheme } from "./utils/cssifyTheme";
 
