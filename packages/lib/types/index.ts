@@ -32,14 +32,6 @@ export interface CDNFile {
     src: string;
 }
 
-export interface Address {
-    country: string;
-    city: string;
-    postalCode: string;
-    line1: string;
-    line2: string;
-}
-
 export interface ProductCategory {
     id?: string;
     parentId?: string;
@@ -151,10 +143,4 @@ export interface TenantThemeFontFamily {
 export interface Tag {
     key: string;
     color: string;
-}
-
-export enum Gender {
-    female = "female",
-    male = "male",
-    whoKnows = "whoknows",
 }
