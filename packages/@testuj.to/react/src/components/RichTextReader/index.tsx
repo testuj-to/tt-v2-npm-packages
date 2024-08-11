@@ -11,9 +11,7 @@ import {
 import "draft-js/dist/Draft.css";
 import "./styles.css";
 
-export interface RichText {
-    json: string;
-}
+import { RichText } from "@lib/types";
 
 const customStyleMap = {
     FONT_SIZE_10: {

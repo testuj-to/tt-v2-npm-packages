@@ -82,4 +82,4 @@ export const productCategories = [{
 }, {
   key: "auto-moto",
   parent: null,
-}]
+}];
