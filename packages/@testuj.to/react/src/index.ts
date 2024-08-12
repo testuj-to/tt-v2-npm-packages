@@ -200,7 +200,6 @@ export {
 } from "./components/UserMenu";
 export {
     type VideoFile,
-    type VideoFileDetails,
     type VideoPlayerTranslations,
     type VideoPlayerProps,
     VideoPlayer,
