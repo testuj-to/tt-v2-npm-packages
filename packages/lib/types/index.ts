@@ -5,11 +5,18 @@ export interface RichText {
 }
 
 export interface CDNFile {
-    id: string;
-    blob?: string;
-    key?: string;
+    id?: string;
     objectKey?: string;
     src: string;
+    isBeingProcessed?: boolean;
+    videoDetails?: VideoFileDetails;
+}
+
+export interface VideoFileDetails {
+    durationMs?: number;
+    widthPx?: number;
+    heightPx?: number;
+    orientation?: "landscape" | "portrait";
 }
 
 export interface TenantTheme {

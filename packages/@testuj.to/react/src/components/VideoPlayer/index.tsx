@@ -11,6 +11,7 @@ import Hls, { HlsConfig, Level, MediaPlaylist } from "hls.js";
 
 import "./styles.css";
 
+import { CDNFile, VideoFileDetails } from "@lib/types";
 import { videoPlayerContext } from "./context";
 import { withVideoPreview, defaultTranslations } from "./preview";
 import { ProgressBar } from "./progressBar";
@@ -22,17 +23,10 @@ import {
     FullscreenControl,
 } from "./controls";
 
-export interface VideoFile {
+export interface VideoFile extends CDNFile {
     src: string;
-    isBeingProcessed?: boolean;
-    videoDetails: VideoFileDetails;
-}
-
-export interface VideoFileDetails {
-    durationMs: number;
-    widthPx?: number;
-    heightPx?: number;
-    orientation?: "landscape" | "portrait";
+    isBeingProcessed: boolean;
+    videoDetails: Required<VideoFileDetails>;
 }
 
 export interface VideoPlayerTranslations {
