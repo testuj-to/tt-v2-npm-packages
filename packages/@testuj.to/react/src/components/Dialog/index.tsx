@@ -5,34 +5,36 @@ import cx from "classnames";
 import "./styles.css";
 
 export interface DialogProps {
-    content: React.ReactNode;
     hideCloseButton?: boolean;
-    open?: boolean;
+    isOpen?: boolean;
     className?: string;
+    trigger?: React.ReactNode;
     children: React.ReactNode;
-    onOpenChange?: (open: boolean) => void;
+    onChange?(isOpen: boolean): void;
 }
 
 export const Dialog = ({
-    content,
+    trigger,
     hideCloseButton,
-    open,
+    isOpen,
     className,
     children,
-    onOpenChange,
+    onChange,
 }: DialogProps) => {
     return (
         <RadixDialog.Root
-            open={open}
-            onOpenChange={onOpenChange}
+            open={isOpen}
+            onOpenChange={onChange}
         >
-            <RadixDialog.Trigger asChild>
-                {children}
-            </RadixDialog.Trigger>
+            {!!trigger && (
+                <RadixDialog.Trigger asChild>
+                    {trigger}
+                </RadixDialog.Trigger>
+            )}
             <RadixDialog.Portal>
                 <RadixDialog.Overlay className="tt-dialog-overlay" />
                 <RadixDialog.Content className={cx("tt-dialog-content", className)}>
-                    {content}
+                    {children}
                     {!hideCloseButton && (
                         <RadixDialog.Close asChild>
                             <button className="tt-dialog-icon-button" aria-label="Close">
