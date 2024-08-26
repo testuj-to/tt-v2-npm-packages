@@ -26,7 +26,7 @@ export interface SelectOptionProps {
     value: string;
     disabled?: boolean;
     children?: React.ReactNode;
-    onClick?: () => void;
+    onClick?(): void;
 }
 
 const SelectOption = forwardRef<HTMLDivElement, SelectOptionProps>(({ className, children, variant, ...props }, ref) => {
@@ -47,6 +47,8 @@ const SelectOption = forwardRef<HTMLDivElement, SelectOptionProps>(({ className,
 export interface SelectProps {
     value?: string;
     placeholder?: string;
+    id?: string;
+    name?: string;
     label?: string;
     options: {
         value: string;
@@ -62,6 +64,8 @@ export interface SelectProps {
 export const Select = ({
     value,
     placeholder,
+    id,
+    name,
     label,
     options,
     widthAuto,
@@ -83,7 +87,8 @@ export const Select = ({
         <Root value={value} onValueChange={onChange}>
             <Trigger
                 ref={triggerRef}
-                id="tt-select"
+                id={id}
+                name={name}
                 aria-label={label}
                 className={cx("tt-select-trigger", variant, className)}
             >
