@@ -28,6 +28,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
             <input
                 {...rest}
                 ref={ref}
+                disabled={disabled}
                 className={cx("tt-input", className, {
                     "tt-input-dark": variant === "dark",
                     icon: !!icon,
