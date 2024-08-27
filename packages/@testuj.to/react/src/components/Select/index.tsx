@@ -54,6 +54,7 @@ export interface SelectProps {
         value: string;
         label: string;
     }[];
+    disabled?: boolean;
     widthAuto?: boolean;
     variant?: "default" | "bold-text";
     customIcon?: React.ReactNode;
@@ -68,6 +69,7 @@ export const Select = ({
     name,
     label,
     options,
+    disabled,
     widthAuto,
     variant = "default",
     customIcon,
@@ -90,7 +92,7 @@ export const Select = ({
                 id={id}
                 name={name}
                 aria-label={label}
-                className={cx("tt-select-trigger", variant, className)}
+                className={cx("tt-select-trigger", variant, className, { disabled })}
             >
                 <Value placeholder={placeholder} />
                 <Icon className={cx("tt-select-trigger-icon")}>
