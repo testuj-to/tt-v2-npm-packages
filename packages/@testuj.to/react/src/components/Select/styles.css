@@ -27,6 +27,11 @@
     color: var(--color-text-secondary);
 }
 
+.tt-select-trigger.disabled {
+    background-color: var(--color-light-gray);
+    color: var(--color-disabled);
+}
+
 .tt-select-trigger > .tt-select-trigger-icon {
     color: Var(--color-text-secondary);
 }

@@ -5,11 +5,19 @@ import "./styles.css";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     variant?: "default" | "dark";
-    icon?: React.ReactNode;
+    disabled?: boolean;
     iconClassName?: string;
+    icon?: React.ReactNode;
 }
 
-export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ variant, className, icon, iconClassName, ...rest }, ref) => {
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(({
+    variant,
+    disabled,
+    className,
+    iconClassName,
+    icon,
+    ...rest
+}, ref) => {
     return (
         <div className="tt-input-wrapper">
             {icon && (
@@ -20,12 +28,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ variant, 
             <input
                 {...rest}
                 ref={ref}
-                className={cx(
-                    "tt-input",
-                    { "tt-input-dark": variant === "dark" },
-                    { icon: icon },
-                    className,
-                )}
+                className={cx("tt-input", className, {
+                    "tt-input-dark": variant === "dark",
+                    icon: !!icon,
+                    disabled,
+                })}
             />
         </div>
     );
