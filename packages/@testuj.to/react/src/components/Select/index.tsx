@@ -86,7 +86,11 @@ export const Select = ({
     }, [triggerRef?.current]);
 
     return (
-        <Root value={value} onValueChange={onChange}>
+        <Root
+            disabled={disabled}
+            value={value}
+            onValueChange={onChange}
+        >
             <Trigger
                 ref={triggerRef}
                 id={id}
