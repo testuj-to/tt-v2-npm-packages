@@ -1,6 +1,6 @@
 {
   "name": "@testuj.to/react",
-  "version": "0.0.181",
+  "version": "0.0.182",
   "description": "",
   "license": "MIT",
   "author": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/testuj-to/tt-v2-npm-packages"
+    "url": "git+https://github.com/testuj-to/tt-v2-npm-packages.git"
   },
   "types": "./index.d.ts",
   "browser": "./umd/index.js",
