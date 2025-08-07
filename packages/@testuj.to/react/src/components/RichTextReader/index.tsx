@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import {
     CompositeDecorator,
     ContentBlock,
@@ -63,11 +63,11 @@ const blockStyleFn = (contentBlock: ContentBlock): string => {
 
 const blockRendererFn = (block: ContentBlock) => {
     switch (block.getType()) {
-    case "atomic":
-        return {
-            component: Atomic,
-            editable: false,
-        };
+        case "atomic":
+            return {
+                component: Atomic,
+                editable: false,
+            };
     }
 
     return null;
@@ -78,25 +78,40 @@ interface AtomicProps {
     block: ContentBlock;
 }
 
-const Atomic = ({ contentState, block }: AtomicProps) => {
-    const entity = contentState.getEntity(block.getEntityAt(0));
+const Image = (props) => {
+    const { contentState, entityKey } = props;
+    const data = contentState.getEntity(entityKey).getData();
 
-    switch (entity.getType()) {
-    case "IMAGE":
-        const data = entity.getData();
+    return (
+        <img
+            {...data}
+            ref={props?.ref}
+            className={`richtext-image ${data.className || ""}`}
+        />
+    );
+};
 
-        return (
-            <img
-                {...data}
-                className={`richtext-image ${data.className}`}
-            />
-        );
+const Atomic = forwardRef(({ contentState, block }: AtomicProps, ref) => {
+    const entityKey = block.getEntityAt(0);
+    const entity = contentState.getEntity(entityKey);
+
+    switch (entity?.getType?.().toString().toUpperCase()) {
+        case "IMAGE":
+            return (
+                <Image contentState={contentState} entityKey={entityKey} ref={ref} />
+            );
     }
 
     return null;
-};
+});
 
-const Link = (props) => {
+interface LinkProps {
+    contentState: ContentState;
+    entityKey: string;
+    children: React.ReactNode;
+}
+
+const Link = (props: LinkProps) => {
     const { contentState, entityKey } = props;
     const data = contentState.getEntity(entityKey).getData();
 
@@ -113,16 +128,32 @@ const Link = (props) => {
     );
 };
 
-const decorator = new CompositeDecorator([{
-    component: Link,
-    strategy: (contentBlock, callback, contentState) => {
-        contentBlock.findEntityRanges(character => {
-            const entityKey = character.getEntity();
+const decorator = new CompositeDecorator([
+    {
+        component: Link,
+        strategy: (contentBlock, callback, contentState) => {
+            contentBlock.findEntityRanges((character) => {
+                const entityKey = character.getEntity();
 
-            return entityKey && contentState.getEntity(entityKey).getType() === "LINK";
-        }, callback);
+                return (
+                    entityKey && contentState.getEntity(entityKey).getType() === "LINK"
+                );
+            }, callback);
+        },
     },
-}]);
+    {
+        component: Image,
+        strategy: (contentBlock, callback, contentState) => {
+            contentBlock.findEntityRanges((character) => {
+                const entityKey = character.getEntity();
+
+                return (
+                    !!entityKey && contentState.getEntity(entityKey).getType() === "IMAGE"
+                );
+            }, callback);
+        },
+    },
+]);
 
 export interface RichTextReaderProps {
     value: RichText;
@@ -131,18 +162,30 @@ export interface RichTextReaderProps {
     className?: string;
 }
 
-export const RichTextReader = ({ value, placeholder, className }: RichTextReaderProps) => {
+export const RichTextReader = ({
+    value,
+    placeholder,
+    className,
+}: RichTextReaderProps) => {
     const editorRef = useRef<Editor>();
 
-    const [editorState, setEditorState] = useState(/^\{.*\}$/.test(value?.json) ?
-        EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)), decorator) :
-        EditorState.createEmpty(decorator),
+    const [editorState, setEditorState] = useState(
+        /^\{.*\}$/.test(value?.json)
+            ? EditorState.createWithContent(
+                convertFromRaw(JSON.parse(value.json)),
+                decorator
+            )
+            : EditorState.createEmpty(decorator)
     );
 
     useEffect(() => {
-        setEditorState(/^\{.*\}$/.test(value?.json) ?
-            EditorState.createWithContent(convertFromRaw(JSON.parse(value.json)), decorator) :
-            EditorState.createEmpty(decorator),
+        setEditorState(
+            /^\{.*\}$/.test(value?.json)
+                ? EditorState.createWithContent(
+                    convertFromRaw(JSON.parse(value.json)),
+                    decorator
+                )
+                : EditorState.createEmpty(decorator)
         );
     }, [value]);
 

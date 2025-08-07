@@ -1,7 +1,7 @@
 import React from "react";
 import type { StoryObj, Meta } from "@storybook/react";
 
-import { TTContextDecorator } from "../../context.stories";
+import { TTContextDecorator } from "../../context.util";
 import { PreviewedVideoPlayer } from ".";
 
 export default {

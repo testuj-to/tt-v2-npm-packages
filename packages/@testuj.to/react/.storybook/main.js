@@ -1,7 +1,5 @@
 const path = require("path");
 
-const { listPackages } = require("../../../../scripts/listPackages");
-
 module.exports = {
     framework: {
         name: "@storybook/react-webpack5",
@@ -9,9 +7,7 @@ module.exports = {
     },
 
     stories: [
-        // "../src/**/*.mdx",
-        // "../src/**/*.stories.@(js|jsx|ts|tsx)"
-        "../src/components/VideoPlayer/VideoPlayer.stories.tsx"
+        "../src/**/*.stories.@(js|jsx|ts|tsx)"
     ],
 
     addons: [
@@ -24,9 +20,7 @@ module.exports = {
     // managerEntries: [
     //     "./.storybook/ttContextAddon/register",
     // ],
-    webpackFinal: async(config, { configType }) => {
-        const packages = listPackages();
-
+    webpackFinal: async (config, { configType }) => {
         config.devServer = {
             ...(config.devServer || {}),
             open: false,
@@ -36,11 +30,7 @@ module.exports = {
             ...(config.resolve || {}),
             alias: {
                 ...(config.resolve || {}).alias,
-                "@lib": path.resolve(__dirname, "../build/lib"),
-                ...packages.reduce((aliases, pkg) => ({
-                    ...aliases,
-                    [pkg]: path.resolve(__dirname, "../build", pkg, "src"),
-                }), {}),
+                "@lib": path.resolve(__dirname, "../src/lib"),
             },
             extensions: [
                 ...(config.resolve || {}).extensions,
