@@ -13,9 +13,9 @@ clean:
 	rm -Rf $(DIST) || true
 
 build: clean
-	npm i
+	npm ci --only=production=false
 
-	npm run build:ts
+	npx tsc
 	node ../../../scripts/copyStyles.js \
 		--pkg package.json
 
