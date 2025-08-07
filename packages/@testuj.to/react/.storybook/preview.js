@@ -1,5 +1,5 @@
 
-const { defaultPresets } = require("../contextPresets");
+const defaultPresets = require("../contextPresets.json");
 
 export const parameters = {
     // actions: {
