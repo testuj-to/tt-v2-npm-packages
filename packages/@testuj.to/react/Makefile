@@ -15,7 +15,7 @@ clean:
 build: clean
 	npm ci --only=production=false
 
-	npx tsc
+	npm run build:ts
 	node ../../../scripts/copyStyles.js \
 		--pkg package.json
 
