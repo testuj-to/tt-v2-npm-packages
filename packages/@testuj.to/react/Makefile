@@ -13,7 +13,7 @@ clean:
 	rm -Rf $(DIST) || true
 
 build: clean
-	npm i
+	npm ci --only=production=false
 
 	npm run build:ts
 	node ../../../scripts/copyStyles.js \
